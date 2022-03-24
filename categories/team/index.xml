@@ -1,0 +1,276 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – team</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/team/</link><description>Recent content in team on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 20 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/team/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: A Fond Farewell For Now to Community Day &amp; Norman</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-10-20-fond-farewell/</link><pubDate>Wed, 20 Oct 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-10-20-fond-farewell/</guid><description>
+&lt;h2 id="iac-community-day">IAC Community Day&lt;/h2>
+&lt;h3 id="background">Background&lt;/h3>
+&lt;p>The Infrastructure Automation Content (IAC) team formed from the merger of 4 core content-focused teams (Modules, Windows, Cloud &amp;amp; Containers, and Networking),
+maintaining forty-five open-source supported Puppet modules and over a dozen tools that help reduce the content maintenance and support costs.&lt;/p>
+&lt;p>A crucial part of Puppet’s success has always been the support of the community.
+The IAC team, like with all module teams before, would have had a dedicated engineer or engineers assigned to community triage, usually on a rotational basis.&lt;/p>
+&lt;p>The triage rota consumed 20% of the team&amp;rsquo;s engineering resources. It was challenging due to:&lt;/p>
+&lt;ul>
+&lt;li>Lack of domain knowledge&lt;/li>
+&lt;li>Work spilling over either into or out of triage during rotation&lt;/li>
+&lt;li>Impact to other team members not on rotation&lt;/li>
+&lt;li>Engineers left feeling drained, low self-esteem&lt;/li>
+&lt;li>Engineers dreading rotating onto triage.&lt;/li>
+&lt;/ul>
+&lt;h3 id="community-day-introduced-in-november-2020">Community Day (Introduced in November 2020)&lt;/h3>
+&lt;p>Community day came about as part of reviewing of our triaging commitments and chatting with the team listening to their concerns.&lt;/p>
+&lt;p>As mentioned, 20% of the team’s engineering resourcing and effort was already going into the triage rotation. So we asked ourselves the question:&lt;/p>
+&lt;blockquote>
+&lt;p>What if we focused this 20% effort and had the whole team take part in a full day community triage?&lt;/p>
+&lt;/blockquote>
+&lt;p>Benefits:&lt;/p>
+&lt;ul>
+&lt;li>Upskilling&lt;/li>
+&lt;li>Teamwork&lt;/li>
+&lt;li>Reduced distractions&lt;/li>
+&lt;li>Greater community focus&lt;/li>
+&lt;li>Starting the week off with a win&lt;/li>
+&lt;li>Productivity within the team increased (hard to believe even for us, at first)&lt;/li>
+&lt;/ul>
+&lt;p>Not only have we been able to address the backlog of community requests across forty-five supported open source modules (plus over a dozen tooling repos), the team have been able to focus on feature delivery.&lt;/p>
+&lt;p>Since switching to the new community day, over the last eleven months, the team have:&lt;/p>
+&lt;ul>
+&lt;li>Handled† 1536 issues&lt;/li>
+&lt;li>Performed 205 module releases&lt;/li>
+&lt;li>Released 30 tooling updates&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>† Handled meaning a team member has either:&lt;/p>
+&lt;ul>
+&lt;li>Closed a PR or Jira&lt;/li>
+&lt;li>Merged community a PR&lt;/li>
+&lt;li>or provided feedback on a community PR&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;p>By committing to community day and limiting distractions to 1 day, the team have also delivered:&lt;/p>
+&lt;ol>
+&lt;li>A new Cloud CI
+&lt;ol>
+&lt;li>With multi-node testing support&lt;/li>
+&lt;li>New automated workflow&lt;/li>
+&lt;li>Internal developer environment support&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Cisco Network device enhancement&lt;/li>
+&lt;li>New DSC builder generating &amp;gt;300 DSC PowerShell modules uploaded on the forge&lt;/li>
+&lt;li>3 OS certifications&lt;/li>
+&lt;li>Certified all the supported modules again Puppet 7, including:
+&lt;ol>
+&lt;li>Raising and testing fixes for numerous issues in Puppet 7 nightly agent builds prior to release&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Rolled out the Trusted Contributor program&lt;/li>
+&lt;li>Improved our community communication with a weekly blog post, enhancing our community reporting&lt;/li>
+&lt;/ol>
+&lt;p>All in all, the IAC community day has not only enabled the team to reconnect with the community, address the content backlog, and upskill across the team;
+it has also improved team productivity by reducing distraction and increasing team morale.
+Mondays are, at the best of times, a tough day.
+Starting a week off with a win? Priceless.&lt;/p>
+&lt;p>Sadly, Community Day is coming to an end.
+Due to a significant reduction in resourcing, it is no longer possible to provide the technical support needed to run a dedicated community support day.&lt;/p>
+&lt;p>The content maintained by the IAC team is still of high importance to Puppet.
+Puppet would like to encourage our community to reach out via our public slack channels for assistance.
+Our PM team will help prioritize issues raised.&lt;/p>
+&lt;h2 id="farewell-norman-">Farewell, Norman 💜&lt;/h2>
+&lt;p>This week we have to say farewell to Norman, the Engineering Manager of the IAC and DevX Teams.
+This is a particularly sad goodbye as many of us, past and present, consider Norman one of the best leaders we have had the privilege of working with.&lt;/p>
+&lt;p>In just under three years, Norman led us to some fantastic achievements and kept us motivated and moving forward through turbulent times.
+Norman has shown unparalleled dedication to his team’s wellbeing, motivation, and personal development whilst still acting as a clarifying arbiter between the high-level vision and plans of the organisation.
+It was a tough balancing act that he seemed to be able to do, with his usual 110% dedication he never falters from.&lt;/p>
+&lt;p>Norman motivated and enabled us to become far better engineers and people than we were prior to being taken under his wing.
+The remit of the IAC team is a tough one, and one that can often be underappreciated, but Norman always fought our corner and sung our praises to anyone who stood still long enough to listen.
+Norman was great at suggesting and soliciting us to suggest new processes / ideas (Community Day being a prime example), that would make us more efficient and motivated, as a team.
+We benefited from his wealth of knowledge, experience (both technical and managerial) and genuine care for his colleagues and team.&lt;/p>
+&lt;p>We’d like to thank Norman for his hard work and support over these nearly three years.
+The IAC and DevX teams owe him a huge gratitude and we’ll miss him, as we bid farewell and good luck in your next venture!&lt;/p></description></item><item><title>Blog: Reaching the IAC Team</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-20-reaching-out/</link><pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-20-reaching-out/</guid><description>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/hello.png" alt="hello">{:height=&amp;ldquo;170px&amp;rdquo; width=&amp;ldquo;170px&amp;rdquo;}&lt;/p>
+&lt;p>To improve collaboration and avoid issues falling through the cracks, we have collected information on all the ways to get in contact with us. Whether this be to review a PR, highlight a nasty bug or really for any other reason, let us know what we did well, and what we need to do better.&lt;/p>
+&lt;h2 :height="30px" width="30px" id="monday-is-community-day-slackcontent-and-tooling-teamassets2021-01-20-reaching-outcalendarpng">Monday is Community Day &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/calendar.png" alt="slack">&lt;/h2>
+&lt;p>Yes, that&amp;rsquo;s right! The whole team dedicates a full day to you every week. Every Monday we go over pull requests, releases, new issues and anything else module related.&lt;/p>
+&lt;h2 :height="45px" width="45px" id="reaching-out-via-slack-slackcontent-and-tooling-teamassets2021-01-20-reaching-outslackpng">Reaching out via Slack &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/slack.png" alt="slack">&lt;/h2>
+&lt;p>As part of Community Monday, we have weekly office hours on Monday 1.00pm and 5.00pm GMT alternating each week. Check the &lt;a href="https://puppet.com/community/office-hours">calendar&lt;/a> for the events in your timezone. Join #office-hours on our &lt;a href="https://puppetcommunity.slack.com">community-slack&lt;/a>. Between these hours the IAC team will be online and can chat about anything module related and much more!&lt;/p>
+&lt;p>Outside the office hours, some of us hang out in #forge-modules and #testing on our &lt;a href="https://puppetcommunity.slack.com">community-slack&lt;/a>. Even if nobody from the team is around, other community members might be able to help.&lt;/p>
+&lt;p>&lt;strong>Use the &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/sos.gif" alt="sos">{:height=&amp;ldquo;50px&amp;rdquo; width=&amp;ldquo;50px&amp;rdquo;}
+emoji on urgent issues that require the attention of a puppet employee.&lt;/strong>&lt;/p>
+&lt;h2 :height="40px" width="40px" id="reaching-out-via-jirahttpsticketspuppetlabscombrowsemodules-bugcontent-and-tooling-teamassets2021-01-20-reaching-outbugpng">Reaching out via &lt;a href="https://tickets.puppetlabs.com/browse/MODULES">Jira&lt;/a> &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/bug.png" alt="bug">&lt;/h2>
+&lt;p>A link to raising an issue using Jira can be found &lt;a href="https://tickets.puppetlabs.com/browse/MODULES">here&lt;/a>.&lt;/p>
+&lt;p>When you come across an issue with one of our supported modules and want to raise an issue, in order for to it to come directly to us there are a few things we would doing first.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Confirm this issue hasn&amp;rsquo;t already been raised by using the JIRA search function&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>If the repository has issues enabled, use this instead of JIRA&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Once the above has been confirmed, it is recommended that you complete the following settings in the ticket. This will ensure that our team sees the ticket pretty quick.&lt;/p>
+&lt;p>The values we would recommend setting are:&lt;/p>
+&lt;p>&lt;code>Project:&lt;/code> This will always need set to &lt;strong>&amp;lsquo;Modules&amp;rsquo;&lt;/strong> if you want it to land with our team.&lt;/p>
+&lt;p>&lt;code>Issue Type:&lt;/code> In most cases you will be raising bugs against our supported modules however you can choose the description that best suits your problem.&lt;/p>
+&lt;p>&lt;code>Summary:&lt;/code> Just a quick simple summary of the topic you are looking to highlight to us.&lt;/p>
+&lt;p>&lt;code>Component:&lt;/code> This is used to tag the module affected and ensure the correct person sees your issue.&lt;/p>
+&lt;p>&lt;code>Description:&lt;/code> This is one of the most important sections, add in here as much details as you possibly can, this should include:&lt;/p>
+&lt;pre>&lt;code>1) Description of the issue you are seeing
+2) Steps to Reproduce
+3) Expected Results
+4) Actual Results
+5) Logs/Screenshots/Sample Manifests - in particular, logs generated with the --trace and --debug flags
+&lt;/code>&lt;/pre>
+&lt;p>For more information on writing a good bug report check out this page on &lt;a href="https://rubygarage.org/blog/how-to-write-a-quality-bug-report">RubyGarage&lt;/a>.&lt;/p>
+&lt;p>&lt;code>Environment:&lt;/code> What OS did did you see it on? Which puppet version is affected? What is the module version? You can even include more information like the Ruby version. Again the more information you include here, the higher likelihood of us being able to reproduce and speed up our turnaround.&lt;/p>
+&lt;p>&lt;code>Acceptance Criteria:&lt;/code> What exactly do you want to be able to achieve with the issue being resolved?&lt;/p>
+&lt;h2 :height="40px" width="40px" id="some-things-just-cant-wait-clockcontent-and-tooling-teamassets2021-01-20-reaching-outclockpng">Some things just can&amp;rsquo;t wait &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/clock.png" alt="clock">&lt;/h2>
+&lt;p>If you ever find yourself in this position please don&amp;rsquo;t hesitate to reach out to our team using email and we will do our best to help you out. Our team alias is: &lt;a href="mailto:ia_content@puppet.com">ia_content@puppet.com&lt;/a>.&lt;/p>
+&lt;h2 :height="40px" width="40px" id="useful-tips-magiccontent-and-tooling-teamassets2021-01-20-reaching-outmagicpng">Useful Tips &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/magic.png" alt="magic">&lt;/h2>
+&lt;ul>
+&lt;li>All supported modules have an examples directory with example manifests&lt;/li>
+&lt;li>If your struggling to write a manifest check out our tests in &lt;code>spec/acceptance&lt;/code>&lt;/li>
+&lt;li>We have a some demos uploaded on &lt;a href="https://www.youtube.com/user/PuppetLabsInc">youtube&lt;/a>!&lt;/li>
+&lt;/ul>
+&lt;h2 id="other-team-contacts">Other team contacts&lt;/h2>
+&lt;h3 id="security-team">Security Team&lt;/h3>
+&lt;p>For security critical information use &lt;a href="mailto:security@puppet.com">security@puppet.com&lt;/a>.&lt;/p>
+&lt;p>&lt;em>Your alert will be handled by our security specialists and routed to the right team. See also the &lt;a href="https://puppet.com/security/">security page&lt;/a> on puppet.com.&lt;/em>&lt;/p>
+&lt;h3 id="bolt-team">Bolt Team&lt;/h3>
+&lt;p>Use the issues tab &lt;a href="https://github.com/puppetlabs/bolt/issues">on the repo&lt;/a>.&lt;/p>
+&lt;h3 id="puppet-agent-team">Puppet Agent Team&lt;/h3>
+&lt;p>&lt;a href="mailto:team-nw@puppet.com">team-nw@puppet.com&lt;/a>&lt;/p>
+&lt;h3 id="forge-team">Forge Team&lt;/h3>
+&lt;p>&lt;a href="mailto:forge@puppet.com">forge@puppet.com&lt;/a>&lt;/p></description></item><item><title>Blog: Puppetize Digital 2020 - Content Selection</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-11-23-puppetize-digital/</link><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-11-23-puppetize-digital/</guid><description>
+&lt;p>Last week saw &lt;a href="https://digital.puppetize.com/">Puppetize Digital 2020&lt;/a>, our annual conference on all things Puppet.
+Over the weekend, the production team uploaded all the talks to &lt;a href="https://www.youtube.com/user/PuppetLabsInc/videos">the Puppet YouTube channel&lt;/a>, so if you missed anything, you can now catch up at your own leisure.
+There is a &lt;a href="https://www.youtube.com/playlist?list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW">playlist&lt;/a> with all videos, and in this post I&amp;rsquo;ll directly link to my favourites - of course focused on Puppet Content and the IAC team&amp;rsquo;s work.&lt;/p>
+&lt;h2 id="puppet-pair-programming-with-visual-studio-code">Puppet Pair Programming with Visual Studio Code&lt;/h2>
+&lt;p>The &lt;a href="https://puppet-vscode.github.io/">Puppet VSCode Plugin&lt;/a> has evolved into THE canonical way to edit puppet modules.
+The authors of the plugin, &lt;a href="https://www.linkedin.com/in/jamespogran/">James Pogran&lt;/a> and &lt;a href="https://www.linkedin.com/in/glenn-sarti/">Glenn Sarti&lt;/a> are sharing the newest updates to the plugin, as well as some of the benefits of working with a modern, full-featured Development Environment:&lt;/p>
+&lt;p>{% youtube j3o-U1c_dXs 800 450 %}&lt;/p>
+&lt;p>Since last week we also provide a default &lt;a href="https://gitpod.io">gitpod&lt;/a> and &lt;a href="https://github.com/features/codespaces">codespaces&lt;/a> environment on our supported modules. This way you can try out and use all of that goodness directly from your browser.&lt;/p>
+&lt;h2 id="the-new-puppet-developer-experience-its-all-about-you">The new Puppet Developer Experience: it&amp;rsquo;s all about you&lt;/h2>
+&lt;p>&lt;a href="https://www.linkedin.com/in/binford2k/">Ben Ford&lt;/a>, our Developer Advocate and Product Manager, on the state of Puppet Content.&lt;/p>
+&lt;ul>
+&lt;li>recent updates to the Forge in form and function&lt;/li>
+&lt;li>announcing the Trusted Contributor programme&lt;/li>
+&lt;li>a demo by &lt;a href="https://www.linkedin.com/in/daniel-carabas-b2bb0851/">Daniel Carabas&lt;/a> to show off our new public Cloud CI for modules&lt;/li>
+&lt;/ul>
+&lt;p>{% youtube FspzumfFvBg 800 450 %}&lt;/p>
+&lt;h2 id="puppetizing-dsc">Puppetizing DSC&lt;/h2>
+&lt;p>As the IAC&amp;rsquo;s headline feature this year, &lt;a href="https://www.linkedin.com/in/michaeltlombardi/">Michael Lombardi&lt;/a> is talking about how we finally fixed the &amp;ldquo;DSC-update&amp;rdquo; problem.
+From now on, we can publish up-to-date puppet wrappers of &lt;a href="https://www.powershellgallery.com/packages">all DSC module from the gallery&lt;/a> (select &amp;ldquo;DSC Resource&amp;rdquo; in the filters) to the new &lt;a href="https://forge.puppet.com/dsc">DSC namespace on the forge&lt;/a>.
+This means that any improvement on upstream DSC resources will become available in a timely manner - and without additional build steps - to all Puppet users.
+The way it is designed also means that from this point forward, everyone can build their local DSC resources into a puppet module using the &lt;a href="https://www.powershellgallery.com/packages/Puppet.Dsc">Puppet.Dsc Powershell Module&lt;/a>.&lt;/p>
+&lt;p>{% youtube i-eo58NaYKg 800 450 %}&lt;/p>
+&lt;h2 id="automate-everything">Automate Everything&lt;/h2>
+&lt;p>If you need to manage a lot of module repositories, &lt;a href="https://github.com/op-ct">Chris Tessmer&lt;/a> has your back.
+Based on a few scripts and bolt, he single-handedly (and very handily) replaces modulesync and pdksync with a much nicer alternative.
+&lt;a href="https://github.com/op-ct/puppetsync">puppetsync&lt;/a> is a set of tasks and plans supporting managing &lt;a href="https://forge.puppet.com/simp">SIMP&lt;/a>&amp;rsquo;s modules on github.
+In his talk, Chris shows how it is used, and a number of useful tips and tricks for working with bolt plans.&lt;/p>
+&lt;p>{% youtube 48m8b5VRWoY 800 450 %}&lt;/p>
+&lt;h2 id="further-content-watching">Further Content Watching&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=mDhmxH0hi9Q&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=5">ServiceNow integration&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=PEn5UZR0bso&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=8">Preparing People for Proper Patching with Puppet Plans&lt;/a> (also aspirant for alliteration award)&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=55KSc63W1_E&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=18">Roles and Profiles&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=hYdF5vJu_HA&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=20">Application Stack Builds&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=xLF6UkzpBQ4&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=24">Automating Windows&lt;/a>
+&lt;ul>
+&lt;li>More in-depth info in the &lt;a href="https://www.youtube.com/watch?v=NFnVSENjRGs&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=43">workshop&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=bbZ9T3Hp_xI&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=26">Update your code safely&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=8FblErxC1OY&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=33">Git Workflows for Puppet&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>You can find the &lt;a href="https://www.youtube.com/playlist?list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW">entire playlist on YouTube&lt;/a>.&lt;/p></description></item><item><title>Blog: Introduction to the IAC Team</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-01-29-infrastructure-automation-content-team/</link><pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-01-29-infrastructure-automation-content-team/</guid><description>
+&lt;h2 id="workflow-of-the-puppet-iac-team">Workflow of the Puppet IAC Team&lt;/h2>
+&lt;p>During a recent &lt;a href="https://puppet.com/community/office-hours/">Office Hours&lt;/a> event (more about that later!) a question was asked by one of the Puppet Community&amp;rsquo;s many talented and inquisitive folk.
+Usually, in &lt;a href="https://puppet.com/community/office-hours/">Office Hours&lt;/a>, we are used to fielding questions from folks who are trying to enhance functionality in a module, determine the best way to test or maybe they want to know how to get started to write a new module from scratch.
+This one was a little bit different, ragnarkon asked, &amp;ldquo;What is the module development lifecycle like in Puppet?&amp;rdquo;, along with other questions about our tech stack, work priorization processes and my favourite, &amp;ldquo;Who names the conference rooms @ Puppet? ’cause they’re awesome&amp;rdquo;.
+I hope I answered that particular community member&amp;rsquo;s questions, but it prompted a discussion amongst the team about whether the people within the Puppet Community know who we are, what we do, how we can help you, and how to reach us if you need that help.&lt;/p>
+&lt;h2 id="who-are-we">Who are we?&lt;/h2>
+&lt;p>Firstly, an introduction - the Infrastructure Automation Content (IAC) team spans across 3 time zones: from East to West we have three members in Timișoara, Romania, six members in Belfast, Northern Ireland (including our Engineering Manager) and finally, one man and his dog holding the fort in St. Louis, Missouri, USA.
+We also work closely with Product Management teams both in our Portland, Oregon HQ and Belfast.&lt;/p>
+&lt;h2 id="what-do-we-do">What do we do?&lt;/h2>
+&lt;p>The IAC team is responsible for developing and maintaining tooling that contributors to Puppet can use to enhance existing or add new modules to Puppet.
+We are also responsible for reviewing the submissions from the community, assisting in development and testing efforts (if required), and releasing new versions of modules to the Forge.&lt;/p>
+&lt;h2 id="workflow-and-processes">Workflow and Processes&lt;/h2>
+&lt;h3 id="work-prioritization-ticketing-and-development">Work Prioritization, Ticketing and Development&lt;/h3>
+&lt;p>We follow the KanBan model of work prioritization and categorisation.
+We have chosen &lt;a href="https://tickets.puppetlabs.com/projects/IAC/summary">JIRA&lt;/a> as our ticketing system. Within JIRA, the IAC team has a number of epics which we categorise work under.
+A few examples of day-to-day epics we interact with a lot:&lt;/p>
+&lt;ul>
+&lt;li>Customer Escalations&lt;/li>
+&lt;li>&lt;a href="https://tickets.puppetlabs.com/browse/IAC-5">Triage&lt;/a> Tasks (more about Triage later!)&lt;/li>
+&lt;/ul>
+&lt;p>We also have Epics for larger pieces of work, for example:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://tickets.puppetlabs.com/browse/IAC-42">Cloud Platform Provisioning in Litmus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://tickets.puppetlabs.com/browse/IAC-158">Automated Gem &amp;amp; Testing Release&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>We also follow the AGILE methodology of having a stand-up meeting daily, where all members describe what they have been working on since the last meeting, and what they will work on until the next meeting.
+It&amp;rsquo;s also during this meeting that we can attempt to unblock individuals who are stuck - either during the stand-up or by assigning time at some stage after. We&amp;rsquo;re in constant communication throughout the day, either face-to-face or over Slack.
+We can also jump into meeting rooms / booths and chat to our colleagues in other time zones and screen share.
+So it&amp;rsquo;s never the case that we&amp;rsquo;re stuck for very long - we all like to have each other&amp;rsquo;s backs and help at short notice.&lt;/p>
+&lt;p>As mentioned above, there is constant interaction with our fellow team members throughout the process.
+We&amp;rsquo;re constantly asking for or providing feedback, assisting in testing efforts, or pairing up for more tricky issues.
+We tend to use Confluence as a first port of call for our documentation.
+If the note or document is to become public facing, it will be ported somewhere visible by all.
+Github PRs are where we do most of our code reviews from other team members or Puppet Community contributors.&lt;/p>
+&lt;h3 id="testing-and-ci-process">Testing and CI Process&lt;/h3>
+&lt;p>For testing effort, we like to have as much automated coverage as possible and have mechanisms in place to display the CI test results for each PR.
+Sometimes, as part of the planning documentation we may need to outline a test plan more formally; but this should ultimately be translated in to &lt;a href="https://relishapp.com/rspec">RSpec&lt;/a> unit and acceptance tests.
+This means that on every code change and PR, we are quickly be alerted to breaking changes.&lt;/p>
+&lt;h3 id="prioritization-of-work">Prioritization of Work&lt;/h3>
+&lt;p>Work is prioritised by a number of factors.
+Product Management will have an influence over a lot of the work we undertake and they have many factors to consider.
+One key component that drives work prioritization is feedback from the IAC team itself.
+We like to be very interactive with the Puppet Community contributors and understand what they require.
+We will often bring feedback from the community to our stand-ups and more global meetings with Engineering and Product Management.
+Through this feedback we&amp;rsquo;re trying to ensure that the user experience is as close to the requirements of the people using and contributing to the product.&lt;/p>
+&lt;p>One valuable feedback vector is through the weekly &lt;a href="https://puppet.com/community/office-hours/">Office Hours&lt;/a> sessions.
+Once a week, members from the IAC team will down tools and be available to any queries coming in via Slack or the video conferencing session from Puppet Community contributors.
+If you need help with module development or testing, or you want to determine the best way to do something with a module on the Forge, then this is the place to get that help and send that feedback.
+Quite often, if a limitation or issue in a module has been highlighted here, we will bring this up in our next stand-up meeting, raise a JIRA ticket and ensure that it gets prioritization for resources.
+There&amp;rsquo;s no better feedback than the people using actively participating in the module ecosystem and we like to make the most of this valuable resource.&lt;/p>
+&lt;h3 id="types-of-work">Types of Work&lt;/h3>
+&lt;p>Our number one remit and focus is to ensure that those who want to contribute to the Forge have as frictionless an experience as possible.
+That spans everything from a module&amp;rsquo;s lifespan, through initial design / prototyping, to version 1.0.0, right up to the point where it&amp;rsquo;s a veteran module with 100,000s of downloads and a wide and active contributor base.
+Our goal is to develop the tools and processes to ensure that is possible.&lt;/p>
+&lt;p>One very important aspect of our job is the Content Triage rotation.
+Two members of the IAC team will take it in turns to review community contributors to Puppet Forge modules.
+We&amp;rsquo;re there to ensure that the change meets the quality standard required but more important, we&amp;rsquo;re there to help contributors understand how to do that.
+We&amp;rsquo;re very fortunate to receive lots of high quality contributions or those willing to act upon feedback.
+The goal is to ensure that the quality of the Puppet modules remains high, whilst constantly being enhanced and reactive to the needs of the community.&lt;/p>
+&lt;h3 id="tech-stack">Tech Stack&lt;/h3>
+&lt;p>Some folks may be curious as to what we use day-to-day to get the job done.
+There is quite a large amount of software, platforms and tools we use, some you&amp;rsquo;ll likely have heard of and some internal proprietary tools.
+For internal tooling, we&amp;rsquo;re in a constant effort to evolve them and make them available for use by the Puppet Community.
+We have started a collection on the &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/tools/index.html">tools&lt;/a> page.&lt;/p>
+&lt;h4 id="development-and-debugging">Development and Debugging&lt;/h4>
+&lt;h5 id="ides">IDEs&lt;/h5>
+&lt;p>For the most part, the IDE of choice for us is VSCode.
+It has support for Puppet manifests and more via &lt;a href="https://marketplace.visualstudio.com/items?itemName=puppet.puppet-vscode">the Puppet Extension&lt;/a>.
+Some of the team also use RubyMine and Sublime Text can also be found on a lot of laptops.
+The &lt;a href="https://rubygems.org/gems/pry/">Ruby gem pry&lt;/a> is a heavily utilised one.
+This has proven an invaluable tool for debugging during development or investigation when reproducing issues reported to us.&lt;/p>
+&lt;h5 id="pdk">PDK&lt;/h5>
+&lt;p>Some of you in the Puppet Community will be aware of the Puppet Development Kit (PDK) already.
+From the IAC team&amp;rsquo;s use cases it is a very useful tool that allows us to keep modules on the Forge up-to-date with the necessary configuration / metadata changes.
+It also allows us to rapidly prototype or develop new modules should someone from the Puppet Community require help.&lt;/p>
+&lt;h5 id="pdksync">PDKSync&lt;/h5>
+&lt;p>PDKSync is an excellent tool we use to perform and test bulk changes to many modules.
+It also allows us to push PRs to Github so we can quickly deploy these changes.&lt;/p>
+&lt;h4 id="testing-and-ci-tools">Testing and CI Tools&lt;/h4>
+&lt;h5 id="litmus">Litmus&lt;/h5>
+&lt;p>Litmus! Litmus is a fantastic resource and probably the most valuable productivity tools that we use day-to-day.
+I encourage you to check out the &lt;a href="https://puppetlabs.github.io/litmus/">Docs for Litmus&lt;/a> if you&amp;rsquo;re thinking of becoming a module contributor.
+Litmus is a tool that allows us to quickly set up, execute and tear down a test environment for our modules.
+You can provision your test environment using Docker or Vagrant.
+For the IAC team, we have access to vmpooler, a proprietary tool/API that spins up and tears down virtual machines in our vSphere infrastructure.
+In as little as a few seconds, I can have an environment ready to run acceptance tests on all compatible OSs for a given module, or I can have an environment to replicate a specific customer environment (e.g. on Windows Server 2012 R2, with the Scheduled Task module, I was seeing an issue with&amp;hellip;).&lt;/p>
+&lt;h5 id="rspec-and-puppet-rspec">RSpec and Puppet RSpec&lt;/h5>
+&lt;p>&lt;a href="https://relishapp.com/rspec">RSpec&lt;/a> is the test framework we use to write and execute our unit and acceptance tests.
+However, we also have the &lt;a href="https://rspec-puppet.com/">RSpec-Puppet gem&lt;/a> which provides a lot of helper methods to make life easier when testing modules.&lt;/p>
+&lt;h5 id="ci-tools">CI Tools&lt;/h5>
+&lt;p>We use a number of CI automation servers: Jenkins, Travis, AppVeyor, and most recently Github Actions.
+There are different requirements for the variety of modules we have either authored, support, or both, and we are constantly evaluating the best tools / platform for our use cases and those of the Puppet Community.
+CI executed test runs from PRs are available from the PR itself - this allows us to quickly determine if there is an issue and drill down in to more specific test log output if we need to, regardless of the platform.&lt;/p></description></item></channel></rss>

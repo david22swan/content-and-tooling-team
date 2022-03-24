@@ -1,0 +1,418 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – tooling</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/tooling/</link><description>Recent content in tooling on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 04 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/tooling/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Puppet Content Templates 0.1.0 🚀</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-06-04-pct-early-release/</link><pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-06-04-pct-early-release/</guid><description>
+&lt;h1 id="pdk-puppet-content-templates-010-released-">PDK Puppet Content Templates 0.1.0 released ✨&lt;/h1>
+&lt;p>We are proud to announce the first release for the new PDK templating system: &lt;strong>Puppet Content Templates (PCT)&lt;/strong>.&lt;/p>
+&lt;p>&lt;strong>Puppet Content Templates&lt;/strong> codify a structure to produce content for any Puppet Product that can be authored without direct oversight of the Puppet PDK team.&lt;/p>
+&lt;p>To get started download the release from the &lt;a href="https://github.com/puppetlabs/pdkgo/">pdkgo repo&lt;/a>. A step by step guide is included in the README.&lt;/p>
+&lt;blockquote>
+&lt;p>PCT is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">pdkgo/discussions&lt;/a>. ⚠️&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="create-all-types-of-content-">Create all types of content 🎨&lt;/h2>
+&lt;p>A &lt;strong>PCT&lt;/strong> can create any type of a Puppet Product project. You can create Puppet &lt;a href="https://github.com/puppetlabs/control-repo">control repos&lt;/a>, Puppet &lt;a href="https://puppet.com/docs/puppet/7/modules_fundamentals.html">modules&lt;/a>, Bolt &lt;a href="https://puppet.com/docs/bolt/latest/projects.html">projects&lt;/a>, and more!&lt;/p>
+&lt;p>A &lt;strong>PCT&lt;/strong> can also create one or more independent files to be used inside a project. You can create Puppet &lt;a href="https://puppet.com/docs/puppet/7/lang_classes.html">classes&lt;/a>, &lt;a href="https://puppet.com/docs/puppet/7/fact_overview.html">facts&lt;/a>, &lt;a href="https://puppet.com/docs/puppet/7/functions_ruby_overview.html">functions&lt;/a>, or other tooling configuration files such as CI files, gitignores, or rubocop.yml.&lt;/p>
+&lt;p>Since a PCT is external to the PDK code base, Puppet Product teams, Partners and the wider OSS Community can publish their own content without input or effort from the DevX team. This enables a single tool to support many products.&lt;/p>
+&lt;h2 id="building-blocks-">Building blocks 🧱&lt;/h2>
+&lt;p>A set of individual &lt;strong>PCTs&lt;/strong> can be combined to produce something as simple as a Puppet module with several Puppet classes or as complex as a complete Puppet Control repo with roles and profiles ready to deploy.&lt;/p>
+&lt;p>We want to enable a building block experience. An experience where you can pick and choose from an array of templates to build the content you want. We aim to be like your favorite building block toy, where you choose your components and end up with a wonderful structure.&lt;/p>
+&lt;p>An opt-in experience, where you choose what is added to your content, instead of dealing with a long list of files you&amp;rsquo;ll never use.&lt;/p>
+&lt;h2 id="customizable-">Customizable 📐&lt;/h2>
+&lt;p>Each &lt;strong>PCT&lt;/strong> comes with parts that can be controlled via configuration. These parts have common defaults, but can be changed to suit your environment. The idea is to enable quick deployment of templates, but allow customization to suit your needs.&lt;/p>
+&lt;p>This user can customize how PCTs operate by using YAML files and never need to know how to make a template.&lt;/p>
+&lt;p>If you want a more drastic change, you can copy the &lt;strong>PCT&lt;/strong> and add your own files and changes, then use that &lt;strong>PCT&lt;/strong> without having to get a pull request approved.&lt;/p></description></item><item><title>Blog: Run multi-node module tests with cloud continuous integration (CI) in Google Cloud Platform (GCP)</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-05-07-running-multinode-modules-gcp/</link><pubDate>Fri, 07 May 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-05-07-running-multinode-modules-gcp/</guid><description>
+&lt;p>Multi-node modules are modules which use multiple nodes to run integration tests. Integration testing is where you set up multiple Virtual Machines (VM) or containers, and test interactions between them. For example, this could be:&lt;/p>
+&lt;ul>
+&lt;li>Installing Puppet Enterprise (PE) and multiple Puppet agents.&lt;/li>
+&lt;li>Setting up an NTP server and registering NTP clients.&lt;/li>
+&lt;li>Installing open source Puppet Server and multiple Puppet agents.&lt;/li>
+&lt;/ul>
+&lt;p>The order you perform integration tests is important, and you need to be able to run a test on an individual system.&lt;/p>
+&lt;p>Running multi-node modules in GCP involves the following steps:&lt;/p>
+&lt;ul>
+&lt;li>Provision a node using a Bolt task.&lt;/li>
+&lt;li>Set up a multi-node environment for testing using a Bolt task or plan.&lt;/li>
+&lt;li>Run a test - you can use existing serverspec or Litmus helpers to set up any dependencies required by the module.&lt;/li>
+&lt;li>Teardown the machine using a provision task.&lt;/li>
+&lt;/ul>
+&lt;p>This guide walks you through each step, and then provides examples of how your code would look in different environments.&lt;/p>
+&lt;h2 id="provision-a-node">Provision a node&lt;/h2>
+&lt;p>You can use Litmus and a Bolt task to provision a VM or a container. The provision module&amp;rsquo;s &lt;a href="https://github.com/puppetlabs/provision/blob/main/tasks">available tasks&lt;/a> spin up the test environment. When run, it creates a &lt;code>litmus_inventory.yaml&lt;/code> file that allows &lt;a href="https://github.com/puppetlabs/bolt">Bolt&lt;/a> and &lt;a href="https://serverspec.org/">serverspec&lt;/a> to communicate with that VM.&lt;/p>
+&lt;p>Running tasks in the provision module allows you to add arbitrary key/pair values to the Bolt inventory file. The Bolt variables allows you to have multiple labels associated with a single machine. For example:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-05-07-running-multinode-modules-gcp/inventory_role.png" alt="Showing role info in litmus_inventory.yaml file">
+&lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/blob/main/plans/provision_machines.pp">Example_websphere_provision_plan&lt;/a>&lt;/p>
+&lt;h2 id="set-up-a-multi-node-environment-for-testing">Set up a multi-node environment for testing&lt;/h2>
+&lt;p>To step up Litmus for your acceptance tests, you need to:&lt;/p>
+&lt;ul>
+&lt;li>Install a Puppet agent — you can do this using a Bolt &lt;a href="https://github.com/puppetlabs/puppetlabs-puppet_agent/tree/main/tasks">task&lt;/a>.&lt;/li>
+&lt;li>Install a module — use a rake task that uses Puppet Development Kit (PDK) to build the module for testing, and install it on the target VM.&lt;/li>
+&lt;li>Install &lt;code>spec/spec_helper_acceptance_local.rb&lt;/code> — this may require extra setup to test a module. You can use &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/main/spec/spec_helper_acceptance_local.rb">puppetlabs/puppetlabs-apache&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;p>To set up integration testing, use a Bolt plan and inventory variable to add labels. You can then run Puppet code against a specific system. You can use &lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/blob/main/plans/pe_server_setup.pp">puppetlabs-websphere_application_server&lt;/a>&lt;/p>
+&lt;p>An example provision plan looks like:&lt;/p>
+&lt;pre>&lt;code>plan websphere_application_server::provision_machines(
+Optional[String] $using = 'abs',
+Optional[String] $image = 'centos-7-x86_64'
+) {
+# provision machines, set roles
+['server', 'appserver', 'dmgr', 'ihs'].each |$role| {
+run_task(&amp;quot;provision::${using}&amp;quot;, 'localhost', action =&amp;gt; 'provision', platform =&amp;gt; $image, vars =&amp;gt; &amp;quot;role: ${role}&amp;quot;)
+}
+}
+&lt;/code>&lt;/pre>&lt;p>You can use &lt;code>spec/spec_helper_acceptance_local.rb&lt;/code> if you need to test a module — &lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/blob/main/spec/spec_helper_acceptance_local.rb">puppetlabs-websphere_application_server&lt;/a>&lt;/p>
+&lt;h2 id="run-a-test">Run a test&lt;/h2>
+&lt;p>To identify which tests to run in an integeration environment, you can use rspec labelling and rake tasks.&lt;/p>
+&lt;p>You can label tests using rspec labeling — tag the test as an integration and keep everything else can stay the same. For example:&lt;/p>
+&lt;pre>&lt;code>describe 'Install the websphere dmgr', :integration do
+before(:all) do
+@agent = WebSphereHelper.dmgr_host
+WebSphereInstance.install(@agent)
+WebSphereDmgr.install(@agent)
+end
+it 'is installed' do
+expect(WebSphereHelper.remote_file_exists(@agent, WebSphereConstants.dmgr_status))
+expect(WebSphereHelper.remote_file_exists(@agent, WebSphereConstants.ws_admin))
+end
+end
+&lt;/code>&lt;/pre>&lt;p>To run a rake task, add to the Rakefile of the module. For example:&lt;/p>
+&lt;pre>&lt;code>require 'rspec/core/rake_task'
+namespace :websphere_application_server do
+RSpec::Core::RakeTask.new(:integration) do |t|
+t.pattern = 'spec/acceptance/**{,/*/**}/*_spec.rb'
+t.rspec_opts = &amp;quot;--tag integration&amp;quot;
+end
+end
+&lt;/code>&lt;/pre>&lt;p>To target a test at a specific VM or container, you can use helper methods. You need to do this if you are using serverspec or Litmus.&lt;/p>
+&lt;p>The examples below show how to filter to get either a single VM or container, or how to retrieve multiple targets.
+&lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/blob/main/spec/spec_helper_acceptance_local.rb">puppetlabs-websphere_application_server&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/blob/main/spec/spec_helper_acceptance_local.rb">puppetlabs-kubernetes&lt;/a>&lt;/p>
+&lt;p>To identify a target node, the code would look like:&lt;/p>
+&lt;pre>&lt;code> context 'application deployment' do
+before(:all) { change_target_host('controller') }
+after(:all) { reset_target_host }
+it 'can deploy an application into a namespace and expose it' do
+run_shell('KUBECONFIG=/etc/kubernetes/admin.conf kubectl create -f /tmp/nginx.yml') do |r|
+expect(r.stdout).to match(/my-nginx created\nservice\/my-nginx created\n/)
+end
+end
+&lt;/code>&lt;/pre>&lt;p>To only run on tests labelled as ‘integration’, use the following command:&lt;/p>
+&lt;p>&lt;code>bundle exec rake websphere_application_server:integration&lt;/code>&lt;/p>
+&lt;h2 id="teardown-the-machine">Teardown the machine&lt;/h2>
+&lt;p>To teardown all the provisioned machines, use the following provision task:&lt;/p>
+&lt;p>&lt;code>bundle exec rake litmus:tear_down&lt;/code>&lt;/p>
+&lt;h3 id="multi-node-testing-examples">Multi-node testing examples&lt;/h3>
+&lt;p>&lt;em>&lt;strong>Multiple Puppet agents&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>A setup where you have multiple Puppet agents, with a module installed and tests run.&lt;/p>
+&lt;p>Commands&lt;/p>
+&lt;pre>&lt;code>bundle install --path .bundle/gems/ --jobs 4
+bundle exec rake spec_prep
+bundle exec bolt --modulepath spec/fixtures/modules plan run ntp::provision_gcp
+bundle exec rake litmus:install_agent
+bundle exec rake litmus:install_module
+bundle exec rake ntp:integration
+bundle exec rake 'litmus:tear_down'
+&lt;/code>&lt;/pre>&lt;p>Example
+&lt;a href="https://github.com/puppetlabs/puppetlabs-ntp/tree/multinodentp">puppetlabs-ntp&lt;/a>&lt;/p>
+&lt;p>&lt;em>&lt;strong>Puppet server and multiple agents&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>A setup where you have Puppet Server and multiple Puppet agents.&lt;/p>
+&lt;p>You can use Bolt plans for provisioning multiple nodes, with roles tagged to each of it.&lt;/p>
+&lt;p>Puppet has a new &lt;a href="https://github.com/puppetlabs/provision/blob/main/tasks/install_puppetserver.json">task&lt;/a> that installs an open source Puppet server in the provision module.&lt;/p>
+&lt;p>Commands&lt;/p>
+&lt;pre>&lt;code>bundle install --path .bundle/gems/ --jobs 4
+bundle exec rake spec_prep
+bundle exec bolt --modulepath spec/fixtures/modules plan run kubernetes::provision_cluster
+bundle exec bolt --modulepath spec/fixtures/modules -i ./spec/fixtures/litmus_inventory.yaml plan run kubernetes::puppetserver_setup
+bundle exec rake litmus:install_agent
+bundle exec rake litmus:install_module
+bundle exec rake kubernetes:integration
+bundle exec rake 'litmus:tear_down'
+&lt;/code>&lt;/pre>&lt;p>Example
+&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs-kubernetes&lt;/a>&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-05-07-running-multinode-modules-gcp/github_workflow.png" alt="Example github workflow run">&lt;/p>
+&lt;p>&lt;em>&lt;strong>PE and agents&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>A setup where you have a PE server and multiple Puppet agents.&lt;/p>
+&lt;p>You can use Bolt plans for provisioning multiple nodes with roles tagged to each of it.&lt;/p>
+&lt;p>There is a task to install PE in the &lt;code>puppet-deploy_pe module&lt;/code>.
+&lt;a href="https://github.com/jarretlavallee/puppet-deploy_pe/tree/master/plans">provision_master/agents&lt;/a>&lt;/p>
+&lt;p>Commands&lt;/p>
+&lt;pre>&lt;code>bundle install --path .bundle/gems/ --jobs 4
+bundle exec rake spec_prep
+bundle exec bolt --modulepath spec/fixtures/modules plan run ntp::provision_gcp
+bundle exec bolt --modulepath spec/fixtures/modules -i ./spec/fixtures/litmus_inventory.yaml plan run ntp::pe_server
+bundle exec bolt --modulepath spec/fixtures/modules -i ./spec/fixtures/litmus_inventory.yaml plan run ntp::pe_agent
+bundle exec rake litmus:install_module
+bundle exec rake ntp:integration
+bundle exec rake 'litmus:tear_down'
+&lt;/code>&lt;/pre>&lt;p>Example
+&lt;a href="https://github.com/puppetlabs/puppetlabs-ntp/tree/multinodentp">puppetlabs-ntp&lt;/a>&lt;/p>
+&lt;p>An example plan that installs a PE server:&lt;/p>
+&lt;pre>&lt;code>plan ntp::pe_server(
+Optional[String] $version = '2019.8.5',
+Optional[Hash] $pe_settings = {password =&amp;gt; 'puppetlabs'}
+) {
+# identify pe server node
+$puppet_server = get_targets('*').filter |$n| { $n.vars['role'] == 'ntpserver' }
+# install pe server
+run_plan(
+'deploy_pe::provision_master',
+$puppet_server,
+'version' =&amp;gt; $version,
+'pe_settings' =&amp;gt; $pe_settings
+)
+}
+&lt;/code>&lt;/pre>&lt;p>An example plan that installs a Puppet agent:&lt;/p>
+&lt;pre>&lt;code>plan ntp::pe_agent() {
+# identify pe server and agent nodes
+$puppet_server = get_targets('*').filter |$n| { $n.vars['role'] == 'ntpserver' }
+$puppet_agent = get_targets('*').filter |$n| { $n.vars['role'] == 'ntpclient' }
+# install agent
+run_plan(
+'deploy_pe::provision_agent',
+$puppet_agent,
+'master' =&amp;gt; $puppet_server,
+)
+}
+&lt;/code>&lt;/pre>&lt;p>For more GitHub Action workflow examples, see the following:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/tree/main/.github/workflows">puppetlabs-websphere_application_server&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/tree/main/.github/workflows">puppetlabs-kubernetes&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Thanks &lt;a href="https://github.com/tphoney">TP&lt;/a> for the valuable work on integration testing.
+Thanks &lt;a href="https://github.com/MartyEwings">Marty&lt;/a> for the work on installing PE on cloud CI.&lt;/p></description></item><item><title>Blog: Collecting GCP info and system metrics for Honeycomb</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-10-05-honeycomb-gcp-metrics/</link><pubDate>Mon, 05 Oct 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-10-05-honeycomb-gcp-metrics/</guid><description>
+&lt;p>For a new and exciting project, the team is currently onboarding on &lt;a href="https://en.wikipedia.org/wiki/Google_Cloud_Platform">Google Cloud Platform (GCP)&lt;/a> development.&lt;/p>
+&lt;!-- This is part of a series of posts describing our journey. -->
+&lt;p>I can&amp;rsquo;t wait until I&amp;rsquo;m able to share more, but for now I can only say we&amp;rsquo;re looking at a &lt;a href="http://sinatrarb.com/intro.html">Sinatra&lt;/a>-hosted Ruby API server.
+To gain a better understanding how the service is performing, we want to collect some &amp;ldquo;traditional&amp;rdquo; metrics.
+Since we&amp;rsquo;re already using honeycomb for tracing &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/blog/updates/2020-03-30-debugging-unit-tests-with-honeycomb.md">tests&lt;/a> and &lt;a href="https://docs.honeycomb.io/getting-data-in/ruby/beeline/#sinatra">API calls&lt;/a>, looking into honeycomb for more was my first choice.
+Most of the content here is based off the &amp;ldquo;Getting Started With Honeycomb Metrics&amp;rdquo; whitepaper at [https://www.honeycomb.io/white-papers/], made specific to Ruby and GCP.&lt;/p>
+&lt;h2 id="static-runtime-information">Static runtime information&lt;/h2>
+&lt;p>The first thing to collect is some static information about the container runtime hosting the current process.
+We&amp;rsquo;re using &lt;a href="https://cloud.google.com/run/docs">Cloud Run&lt;/a> as our primary deployment infrastructure for the API services, so this is our first stop.
+The &lt;a href="https://cloud.google.com/compute/docs/storing-retrieving-metadata">metadata server&lt;/a> provides details about the container instance as described in &amp;ldquo;&lt;a href="https://cloud.google.com/run/docs/reference/container-contract#metadata-server">Container instance metadata server&lt;/a>&amp;rdquo;.&lt;/p>
+&lt;p>The GCP ruby gems provide &lt;code>Google::Cloud.env&lt;/code> to access the metadata server.
+Here is a pruned example of how to add metadata to all spans for easy filtering:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#8be9fd;font-style:italic">require&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;honeycomb-beeline&amp;#39;&lt;/span>
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>configure &lt;span style="color:#ff79c6">do&lt;/span> &lt;span style="color:#ff79c6">|&lt;/span>config&lt;span style="color:#ff79c6">|&lt;/span>
+config&lt;span style="color:#ff79c6">.&lt;/span>service_name &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;backend&amp;#39;&lt;/span>
+&lt;span style="color:#ff79c6">end&lt;/span>
+env &lt;span style="color:#ff79c6">=&lt;/span> Google&lt;span style="color:#ff79c6">::&lt;/span>Cloud&lt;span style="color:#ff79c6">.&lt;/span>env
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.project_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>project_id)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>lookup_metadata(&lt;span style="color:#f1fa8c">&amp;#39;instance&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;id&amp;#39;&lt;/span>))
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_name&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_name)
+region_result &lt;span style="color:#ff79c6">=&lt;/span> env&lt;span style="color:#ff79c6">.&lt;/span>lookup_metadata &lt;span style="color:#f1fa8c">&amp;#34;instance&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;region&amp;#34;&lt;/span>
+region &lt;span style="color:#ff79c6">=&lt;/span> region_result&lt;span style="color:#ff79c6">&amp;amp;.&lt;/span>split(&lt;span style="color:#f1fa8c">&amp;#39;/&amp;#39;&lt;/span>)&lt;span style="color:#ff79c6">&amp;amp;.&lt;/span>last
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_region&amp;#39;&lt;/span>, region)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_zone&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_zone)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_machine_type&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_machine_type)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_blog_tags&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_blog_tags)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.knative_service_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>knative_service_id)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.knative_service_revision&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>knative_service_revision)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Put this code somewhere that is loaded on app start up.
+For rack-based frameworks like sinatra this is the &lt;code>config.ru&lt;/code>, where we include this code through &lt;code>require&lt;/code>.&lt;/p>
+&lt;p>At the same time, we can also add private configuration flags from our service, to track their influence.
+For example, to capture whether &lt;code>FLAG_ENABLED&lt;/code> has been set in the container&amp;rsquo;s variables:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;flag_enabled&amp;#39;&lt;/span>, ENV&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;FLAG_ENABLED&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;true&amp;#39;&lt;/span>)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The attributes show up in the trace/span sidebar and can be used in any query:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-10-05-honeycomb-gcp-metrics/gcp_attributes.png" alt="">&lt;/p>
+&lt;h2 id="dynamic-data">Dynamic Data&lt;/h2>
+&lt;p>For the actual system metrics, like CPU and memory usage, &lt;a href="https://github.com/honeycombio/libhoney-rb">libhoney&lt;/a> offers builders and &lt;a href="https://docs.honeycomb.io/getting-data-in/ruby/sdk/#advanced-usage-dynamic-fields">dynamic fields&lt;/a> (&lt;a href="https://www.rubydoc.info/gems/libhoney/Libhoney%2FClient:add_dynamic_field">API docs&lt;/a>).
+Dynamic fields get evaluated at the start of each span[&lt;a href="https://github.com/honeycombio/beeline-ruby/blob/15341f01740001acbc1f2748e68cbe380bfc3f7f/lib/honeycomb/span.rb#L31">1&lt;/a>] and added to the fields sent to Honeycomb.&lt;/p>
+&lt;p>To access the current &lt;a href="http://en.wikipedia.org/wiki/Resident_set_size">Resident Set Size&lt;/a> (RSS, &amp;ldquo;memory in use&amp;rdquo;) we use the &lt;a href="https://github.com/schneems/get_process_mem">get_process_mem gem&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#8be9fd;font-style:italic">require&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;get_process_mem&amp;#39;&lt;/span>
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_dynamic_field(&lt;span style="color:#f1fa8c">&amp;#39;global.memory_inuse_bytes&amp;#39;&lt;/span>, &lt;span style="color:#8be9fd;font-style:italic">proc&lt;/span> { GetProcessMem&lt;span style="color:#ff79c6">.&lt;/span>new&lt;span style="color:#ff79c6">.&lt;/span>bytes&lt;span style="color:#ff79c6">.&lt;/span>to_i })
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The total lifetime of the process can be calculated as the difference from the start time to now:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">start &lt;span style="color:#ff79c6">=&lt;/span> Time&lt;span style="color:#ff79c6">.&lt;/span>now
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_dynamic_field(&lt;span style="color:#f1fa8c">&amp;#39;global.process_uptime_seconds&amp;#39;&lt;/span>, &lt;span style="color:#8be9fd;font-style:italic">proc&lt;/span> { Time&lt;span style="color:#ff79c6">.&lt;/span>now &lt;span style="color:#ff79c6">-&lt;/span> start }
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>After a few minutes of the heartbeat API call:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-10-05-honeycomb-gcp-metrics/first_results.png" alt="">&lt;/p>
+&lt;h2 id="closing-notes">Closing Notes&lt;/h2>
+&lt;p>This post was written while implementing the first stab at collecting metrics.
+As we continue to improve our understanding of the capabilities and limitations of GCP, I expect we will have to revisit the exact metrics collected.
+For example, data written to disk in Cloud Run is stored in RAM and also counted against the service&amp;rsquo;s quota.
+This sounds like something to keep an eye on eventually.&lt;/p>
+&lt;p>Honeycomb recommends keeping system metrics in a separate dataset from application events.
+During development we currently have very little traffic on the service, so for simplicities sake, we keep everything global and attached to all events.
+We&amp;rsquo;ll have to revisit this once we get more traffic on the service.&lt;/p></description></item><item><title>Blog: Setting up basic infrastructure for your gem</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-19-infrastructure-for-the-gem/</link><pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-19-infrastructure-for-the-gem/</guid><description>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>Here we will be going through the steps and best practices for setting up basic infrastructure for your gem.
+The steps given can be followed by anyone to setup the basic infrastructure for gem development which does the following.&lt;/p>
+&lt;ul>
+&lt;li>creates the basic file structure for the gem.&lt;/li>
+&lt;li>adds the rubocop which validates the guidelines outlined in the community Ruby Style Guide.&lt;/li>
+&lt;li>adds the travis or appveyor testing to the repo which validates the changes to the repo.&lt;/li>
+&lt;li>adds the dependendabot to the repo which creates pull requests to keep dependencies up to date.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;h4 id="note">Note:&lt;/h4>
+&lt;p>This walkthrough assumes you have the following software installed:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.ruby-lang.org/en/downloads/">Ruby&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>It also assumes familiarity with the &lt;a href="https://rubygems.org/">Ruby gems&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="infrastructure-for-your-gem">Infrastructure for your gem&lt;/h2>
+&lt;p>We&amp;rsquo;re going through the steps and best practices for setting up basic infrastructure for your gem.&lt;/p>
+&lt;p>For any repo created for developing a Gem we add owner, access and license to the repo.
+Follow the steps below to add them.&lt;/p>
+&lt;ol>
+&lt;li>Open a &lt;a href="https://github.com">git hub&lt;/a> page, perform the rest of these actions from there.
+&lt;ol>
+&lt;li>
+&lt;p>Click on + to create a new repo.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/newrepo.png" alt="+">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Provider the owner information, repo name and license.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/owner.png" alt="owner information and repo name">
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/owner.png" alt="Example image">
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/license.png" alt="license">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Click on Create repository button.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Open the new repo created and navigate to settings tab to update the access.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Provide your team as admin on github. (This example shows Puppet&amp;rsquo;s modules team)
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/githubowner.png" alt="admin">&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol>
+&lt;p>Follow the steps below for creating the gem structure, add the rubocop validation, add the travis or appveyor testing to the repo.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Open the command line and perform the rest of these actions from there.&lt;/p>
+&lt;ol>
+&lt;li>Clone the new repo created. Add the upstream project and checkout the branch.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git clone https://github.com/sheenaajay/puppet-modulebuilder.git
+git remote add puppetlabs https://github.com/puppetlabs/puppet-modulebuilder.git
+git checkout -b blogpost
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>Create a ruby gem with bundler and perform the commit.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">bundle gem puppet-modulebuilder
+git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Initial commit of puppet-modulebuilder gem scaffolding&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;pre>&lt;code>See [Clarifying the Roles of the .gemspec and Gemfile](https://yehudakatz.com/2010/12/16/clarifying-the-roles-of-the-gemspec-and-gemfile/) on whether you want to commit the `Gemfile.lock` or not.
+&lt;/code>&lt;/pre>
+&lt;ol start="3">
+&lt;li>Remove unused default gem development scripts if any and perform the commit.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">rm -r bin/console
+rm -r bin/setup
+git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Remove unused default gem development scripts&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>Update gemspec with actual values for spec.authors, spec.email, spec.summary, spec.description, spec.homepage, spec.metadata.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/gemspec.png" alt="gemspec">&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Update gemspec with actual values&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="5">
+&lt;li>Copy puppet-style rubocop rules(Example from &lt;a href="https://github.com/puppetlabs/pdk/blob/master/.rubocop.yml">pdk repo&lt;/a>), activate and apply default fixes.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">bundle install --path .bundle/gems/
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rubocop
+git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Include, activate rubocop, apply default fixes&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="6">
+&lt;li>Add instruction files for travis-ci and appveyor. Sample &lt;a href="https://github.com/puppetlabs/puppet-modulebuilder/pull/1">PR&lt;/a> contains travis.yml and appveyor.yml.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Add instruction files for travis-ci and appveyor&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="7">
+&lt;li>Add modules team to CODEOWNERS.
+Create the CODEOWNERS file in .github/CODEOWNERS&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Add modules team to CODEOWNERS&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Finally push your changes to the branch and create the PR &amp;ldquo;Basic infrastructure&amp;rdquo;
+Sample &lt;a href="https://github.com/puppetlabs/puppet-modulebuilder/pull/1">PR&lt;/a> for reference&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Follow the steps below for enabling CI jobs and dependabot for the repo.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Set up travs-ci.org for simple rubocop and spec testing. Open a &lt;a href="https://travis-ci.org/account/repositories">travis-ci-org&lt;/a> page. Click on Sync account.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/syncaccount.png" alt="Sync account">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Set up appveyor for simple rubocop and spec testing. Open a &lt;a href="https://ci.appveyor.com/account/puppetlabs/projects/new">ci-appveyor&lt;/a> page. Click on Add.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/add.png" alt="Add">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Allow dependabot access the new repo created. Open a &lt;a href="https://app.dependabot.com/accounts/puppetlabs/">dependabot&lt;/a> page.
+Click on + , select the repo and provide access.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/dependabotadd.png" alt="+">&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/dependabot.png" alt="repo created">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Enable dependabot for the repo.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/dependabotenable.png" alt="+">&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="wrapping-up">Wrapping Up&lt;/h2>
+&lt;p>Hooray! We&amp;rsquo;ve created the infrastructure for our gem !&lt;/p></description></item><item><title>Blog: Gem Testing with pdksync</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-12-gem-testing-with-pdksync/</link><pubDate>Wed, 12 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-12-gem-testing-with-pdksync/</guid><description>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>pdksync enables you to do a lot more than just pdk update against a set of defined modules. In this blog post we will be going through single or multi gem testing features of pdksync.&lt;/p>
+&lt;h2 id="setup">Setup&lt;/h2>
+&lt;p>Download a fork of the repo, which can be found here &lt;a href="https://github.com/puppetlabs/pdksync">pdksync&lt;/a>. Or you can install via Rubygems, it can be found here &lt;a href="https://rubygems.org/gems/pdksync">pdksync&lt;/a>.
+Install gems by using &lt;code>bundle install&lt;/code>.
+Ensure you have a GITHUB_TOKEN set in your env, if you don&amp;rsquo;t add it by running &lt;code>export GITHUB_TOKEN=&amp;lt;your github token&amp;gt;&lt;/code>, this is required for authentication.
+Important - Manually edit the list contained in &amp;lsquo;managed_modules.yml&amp;rsquo; to ensure it is correct with the modules you wish to update. Please note this is critical as this tool will create PRs against the repos included in this list - you don&amp;rsquo;t want to run this against a module you aren&amp;rsquo;t familiar with. Do not proceed to the next step without doing this.
+Run the rake task by using &lt;code>bundle exec rake pdksync&lt;/code>.&lt;/p>
+&lt;h2 id="part-one-functionality-single-gem-testing">Part One: Functionality Single Gem Testing&lt;/h2>
+&lt;p>pdksync tool comes with the feature to update the Gemfile. Puppet provides a lot of useful gems to access and manage their functionality between modules. This functionality will help user to perform gem testing prior to release. User is given new rake tasks to update SHA/Version/Branch/line in the Gemfile. Then the changes can be committed, PR can be created which will run the acceptance tests in the PR. If all the tests are executing successfully then the user can close the PRS and release the gem.&lt;/p>
+&lt;blockquote>
+&lt;h4 id="note">Note:&lt;/h4>
+&lt;p>It assumes very limited familiarity with the &lt;a href="https://github.com/puppetlabs/pdksync">pdksync&lt;/a> and &lt;a href="https://puppet.com/blog/keep-your-puppet-modules-up-to-date-pdk/">pdk&lt;/a>&lt;/p>
+&lt;/blockquote>
+&lt;p>Run gem_file_update against modules&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">pdksync:gem_file_update&lt;span style="color:#ff79c6">[&lt;/span>:gem_to_test, :gem_line, :gem_sha_finder, :gem_sha_replacer, :gem_version_finder, :gem_version_replacer, :gem_branch_finder, :gem_branch_replacer&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>eg rake to update gem line&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">pdksync:gem_file_update&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;puppet_litmus&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;gem &amp;#39;puppet_litmus&amp;#39;\, git: &amp;#39;https://github.com/test/puppet_litmus.git&amp;#39;\, branch: &amp;#39;testbranch&amp;#39;&amp;#34;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>&amp;#39;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>eg rake to update sha&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">pdksync:gem_file_update&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;puppet_litmus&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;20ee04ba1234e9e83eb2ffb5056e23d641c7a018&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;20ee04ba1234e9e83eb2ffb5056e23d641c7a31&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>eg rake to update version&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">pdksync:gem_file_update&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;puppet_litmus&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;= 0.9.0&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;&amp;lt;= 0.10.0&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>eg rake to update branch&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">pdksync:gem_file_update&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;puppet_litmus&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;testbranch&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;testbranches&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Below given are the workflows for doing single gem testing with pdksync.&lt;/p>
+&lt;p>In Workflow 1 we can clone modules, update the gem file, create the commit, push the changes and create the PR using separate rake tasks.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">bundle install --path .bundle/gems/
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake git:clone_managed_modules
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake &lt;span style="color:#f1fa8c">&amp;#39;pdksync:gem_file_update[]&amp;#39;&lt;/span>
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake &lt;span style="color:#f1fa8c">&amp;#39;git:create_commit[]&amp;#39;&lt;/span>
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake &lt;span style="color:#f1fa8c">&amp;#39;git:push&amp;#39;&lt;/span>
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake &lt;span style="color:#f1fa8c">&amp;#39;git:create_pr[]&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>In Workflow 2 we can clone modules, update the gem file, create the commit, push the changes and create the PR using single rake task&lt;/p>
+&lt;pre>&lt;code>Using single rake job
+bundle install --path .bundle/gems/
+bundle exec rake 'gem_testing[]'
+&lt;/code>&lt;/pre>&lt;p>Once the verified gem is released we can use pdksync to update the the new version of gem released in the &lt;code>.sync.yaml&lt;/code> file.&lt;/p>
+&lt;h2 id="part-two-functionality-multi-gem-testing">Part Two: Functionality Multi Gem Testing&lt;/h2>
+&lt;p>pdksync tool is extended with the feature to perform multi gem testing (&lt;code>puppet-module-gems&lt;/code>). This functionality will identify the current version and bump the version by one. Then it will build and push the gems to gemfury account. Export the GEMFURY_TOKEN to use this rake task.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">&lt;span style="color:#8be9fd;font-style:italic">export&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">GEMFURY_TOKEN&lt;/span>&lt;span style="color:#ff79c6">=&lt;/span>&amp;lt;access_token&amp;gt;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Run the following commands to check that everything is working as expected:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">bundle install --path .bundle/gems/
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake -T
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake &lt;span style="color:#f1fa8c">&amp;#39;git:clone_gem[puppet-module-gems]&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Run multigem_file_update against modules:&lt;/p>
+&lt;p>Clone gem&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git:clone_gem&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;puppet-module-gems&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Build and Push new gems built to the gemfury account for testing&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">pdksync:multi_gem_testing&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;puppet-module-gems&amp;#39;&lt;/span>,&lt;span style="color:#f1fa8c">&amp;#39;config/info.yml&amp;#39;&lt;/span>,&lt;span style="color:#f1fa8c">&amp;#39;exe/build-gems.rb&amp;#39;&lt;/span>,&lt;span style="color:#f1fa8c">&amp;#39;pkg&amp;#39;&lt;/span>,&lt;span style="color:#f1fa8c">&amp;#39;gem_tester&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Update Gemfile of the modules with the new gem should be pushed to Gemfury.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">pdksync:multigem_file_update&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;puppet-module&amp;#39;&lt;/span>,&lt;span style="color:#f1fa8c">&amp;#39;tester&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Below given is the workflows for doing multi gem testing with pdksync.&lt;/p>
+&lt;p>In this workflow we can clone gems, update the version, build the gem, push the changes to gemfury and update the gem file of the required modules with the latest gem updated in the fury. Then we can create PR or run tests locally or run tests through jenkins to verify the module test results.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">bundle install --path .bundle/gems/
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake &lt;span style="color:#f1fa8c">&amp;#39;git:clone_gem[puppet-module-gems]&amp;#39;&lt;/span>
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake &lt;span style="color:#f1fa8c">&amp;#39;pdksync:multi_gem_testing[]&amp;#39;&lt;/span>
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rake &lt;span style="color:#f1fa8c">&amp;#39;pdksync:multigem_file_update[]&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="wrapping-up">Wrapping Up&lt;/h2>
+&lt;p>These are the steps that we can follow to perform single or multi gem testing using pdksync.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,1072 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – content</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/content/</link><description>Recent content in content on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/content/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Converting to use Puppetized DSC Modules</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-26-converting-puppetized-dsc-modules/</link><pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-26-converting-puppetized-dsc-modules/</guid><description>
+&lt;h2 id="whats-new-with-dsc-and-puppet">What&amp;rsquo;s new with DSC and Puppet?&lt;/h2>
+&lt;p>To check out our reasons on why we think converting your module is a good idea, check out these blog posts written by &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/03/30/dsc-announcement.html">DSC accouncement post&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/09/21/dsc-release.html">DSC release post&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>The blog posts cover information including:&lt;/p>
+&lt;ul>
+&lt;li>Why we are doing this&lt;/li>
+&lt;li>Details about the builder&lt;/li>
+&lt;li>How to Pupperize your Powershell module&lt;/li>
+&lt;li>How to use your Puppetized module&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Seriously though what is there to not love?&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Minimal module maintainence costs&lt;/li>
+&lt;li>Automated module building&lt;/li>
+&lt;li>Property by property reporting&lt;/li>
+&lt;li>VSCode Extension with intellisense&lt;/li>
+&lt;li>We have 68 modules on the Forge in the &lt;a href="https://forge.puppet.com/dsc">DSC namespace&lt;/a>&lt;/li>
+&lt;li>Converting is relatively straight forward&lt;/li>
+&lt;/ul>
+&lt;h2 id="so-how-can-i-do-this">So how can I do this?&lt;/h2>
+&lt;p>&lt;em>Old method:&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#50fa7b">mod&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;puppetlabs-dsc&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;1.9.4&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>New method:&lt;/em>&lt;/p>
+&lt;p>Add entries for &lt;code>puppetlabs-pwshlib&lt;/code> and the &lt;code>dsc-*&lt;/code> modules whose resources you want to use to your puppetfile.
+The entries on the list below are the &lt;em>closest&lt;/em> match for the resources found in the old &lt;code>puppetlabs-dsc&lt;/code> module; while we specified versions here, remember: there have been releases to the DSC modules since the &lt;code>puppetlabs-dsc&lt;/code> last had its resources updated, so there are newer versions you may want to take advantage of (just be sure to test thoroughly when upgrading)!&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Note:&lt;/strong> You want to &lt;em>very specifically&lt;/em> only add the necessary &lt;code>dsc-*&lt;/code> module pins to your puppetfile; if you&amp;rsquo;re not using any of the resources contained in a module, there&amp;rsquo;s no need to specify it and take on the overhead of shipping the code around.&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'puppetlabs-pwshlib', '0.7.1'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-activedirectorycsdsc', '3.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-auditpolicydsc', '1.4.0-0-1'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-certificatedsc', '4.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-computermanagementdsc', '6.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-dfsdsc', '4.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-networkingdsc', '7.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-officeonlineserverdsc', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-securitypolicydsc', '2.7.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-sharepointdsc', '3.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-sqlserverdsc', '12.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-storagedsc', '4.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-systemlocaledsc', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xactivedirectory', '2.24.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xazure', '0.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xazurepack', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xbitlocker', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xcredssp', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdatabase', '1.9.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdefender', '0.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdhcpserver', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdisk', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdismfeature', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdnsserver', '1.11.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xexchange', '1.27.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xfailovercluster', '1.12.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'ddsc-xhyper_v', '3.16.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xinternetexplorerhomepage', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xjea', '0.2.16-6-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xmysql', '2.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpendingreboot', '0.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xphp', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpowershellexecutionpolicy', '3.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpsdesiredstateconfiguration', '8.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xremotedesktopadmin', '1.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xremotedesktopsessionhost', '1.8.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xrobocopy', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscdpm', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscom', '1.3.3-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscsma', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscspf', '1.3.1-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscsr', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscvmm', '1.2.4-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xsmbshare', '2.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xsqlps', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xtimezone', '1.8.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwebadministration', '2.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwebdeploy', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowseventforwarding', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowsrestore', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowsupdate', '2.7.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwineventlog', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwordpress', '1.1.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Note that the versions for the &lt;code>dsc-*&lt;/code> modules are all 5-digits long.
+The first four digits are a match for the puppetized PowerShell module&amp;rsquo;s own version - so &lt;code>1.4.0-0-0&lt;/code> represents a PowerShell module at version &lt;code>1.4.0.0&lt;/code> on the PowerShell Gallery.
+The fifth digit is the &lt;em>Puppetized Build Increment&lt;/em> for that version; that goes up whenever we rebuild the module to fix a bug or add a feature to the Puppet interface to the DSC Resource.
+In general, you&amp;rsquo;ll &lt;em>almost always&lt;/em> want the latest build of a module.
+So even though we specify Puppet Build Increments of &lt;code>0&lt;/code> in the list above, make sure to choose the latest build for the PowerShell module version you want to use.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="a-few-caveats">A few caveats&lt;/h2>
+&lt;p>The following modules cannot be automatically puppetized at the same version because they referenced commit SHAs instead of versions discoverable on the &lt;a href="https://www.powershellgallery.com">gallery;&lt;/a>
+instead, we recommend using the next released stable version after those SHA&amp;rsquo;s, as listed below:&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong> These are close but not precise replacements:&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'dsc-fsrmdsc', '2.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-iscsidsc', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-wsmandsc', '2.4.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Here are links to the specific commit SHAs that have been referenced:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/FSRMDsc/commit/8945f610fa9a6f7f920260abf4e50d91db25bac0">FSRMDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/iSCSIDsc/commit/2208ad24a0cc0a85ce19fb377e72fbc21d366587">iSCSIDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/wsmandsc/commit/1aa6400e7ffa1932505bf9904a7ce9e147af9c45">WSManDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong> puppetized as &lt;code>dsc/wminamespacesecurity&lt;/code> due to the name of the module changing when pushed to the &lt;a href="https://www.powershellgallery.com">PowerShell Gallery&lt;/a> vs the old code repository.&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'dsc-wminamespacesecuritydsc', '0.3.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Again here is a link to the specific commit SHA that has been referenced:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/PowerShell/WmiNamespaceSecurityDsc/commit/d49daa4c18f12aabf32fd60631d927c6d276a453">WmiNamespaceSecurityDsc&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="guidance-on-troubleshooting">Guidance on troubleshooting&lt;/h2>
+&lt;p>Coincidentally, &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a> has just published a blog post on how to troubleshoot for DSC.&lt;/p>
+&lt;p>Check it out on our &lt;a href="https://puppetlabs.github.io/iac/">blog page&lt;/a>!&lt;/p>
+&lt;h2 id="some-things-come-for-free">Some things come for free!&lt;/h2>
+&lt;p>We suggest using the Puppet VSCode extension as it comes built in with an auto-completer. This will help you keep your pins up to date with the puppetfile resolver.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-26-converting-dsc-modules/puppetfile-resolver.gif" alt="Showing validation errors in your Puppetfile">&lt;/p>
+&lt;h2 id="what-else-is-coming">What else is coming&lt;/h2>
+&lt;p>As part of our next phase we plan to flesh out and update our testing infrastructure for this module on our road to the &lt;code>1.0.0&lt;/code> release of &lt;code>Puppet.Dsc&lt;/code>.
+In the pipeline, we still plan on getting nightly builds into place to ensure that there is never more than a 24 hour lag between published Powershell modules with DSC Resources and our Puppetized modules on the Forge.&lt;/p>
+&lt;p>As always if you have any questions don&amp;rsquo;t hesistate to reach out to us via &lt;a href="https://slack.puppet.com/">Slack&lt;/a> or &lt;a href="mailto:dsc@puppet.com">emailing&lt;/a> and we will be as accomodating as we can be!&lt;/p></description></item><item><title>Blog: Docker params change detection</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-23-docker-params-change-detection/</link><pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-23-docker-params-change-detection/</guid><description>
+&lt;h2 id="docker-params-change-detection">Docker params change detection&lt;/h2>
+&lt;p>The problem was reported by a client with the ticket &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10734">MODULES-10734&lt;/a>. After analysis, we discovered that we don&amp;rsquo;t have parameter change detection mechanisms. In this blog post, we try to explain the problem in detail with examples.&lt;/p>
+&lt;p>An interesting behaviour was present in docker::run component. The problem was that if any parameter was added/modified/removed puppet agent would only apply the change only if you stopped, removed the container manually and reapplied the manifest, forcing a new container creation.&lt;/p>
+&lt;p>The solution was to create a new function that detects if at least one parameter is changed. The detection mechanism is based on the check between parameter values from the manifest file and correspondent field from the docker inspect object of the currently running container. The solution is present in the 3.11.0 version.&lt;/p>
+&lt;p>So now let&amp;rsquo;s see how the problem can be reproduced by using version &lt;code>&amp;lt;= 3.10.2&lt;/code>:&lt;/p>
+&lt;h3 id="1-install-puppetlabsdocker-module">1. install puppetlabs/docker module&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: puppet module install puppetlabs/docker --version 3.10.2
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-apply-this-manifest">2. apply this manifest:&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">class&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;docker&amp;#39;&lt;/span>: }
+&lt;span style="color:#50fa7b">docker&lt;/span>::&lt;span style="color:#50fa7b">run&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;servercore&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">image&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;hello-world:linux&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">restart&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;always&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">net&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$facts[&amp;#39;os&amp;#39;]&lt;/span>[&lt;span style="color:#f1fa8c">&amp;#39;name&amp;#39;&lt;/span>] &lt;span style="color:#ff79c6">?&lt;/span> {
+&lt;span style="color:#f1fa8c">&amp;#39;windows&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;nat&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">default&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;bridge&amp;#39;&lt;/span>,
+},
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-check-the-image-tag-by-running-this-command">3. check the image tag by running this command:&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: docker inspect --format&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;{{ .Config.Image }}&amp;#34;&lt;/span> servercore
+$: hello-world:linux
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="4-change-the-image-tag-from-hello-worldlinux-to-hello-worldlatest-and-reapply-the-manifest">4. change the image tag from &lt;code>hello-world:linux&lt;/code> to &lt;code>hello-world:latest&lt;/code> and reapply the manifest.&lt;/h3>
+&lt;p>The manifest should look like this:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">class&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;docker&amp;#39;&lt;/span>: }
+&lt;span style="color:#50fa7b">docker&lt;/span>::&lt;span style="color:#50fa7b">run&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;servercore&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">image&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;hello-world:latest&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">restart&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;always&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">net&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$facts[&amp;#39;os&amp;#39;]&lt;/span>[&lt;span style="color:#f1fa8c">&amp;#39;name&amp;#39;&lt;/span>] &lt;span style="color:#ff79c6">?&lt;/span> {
+&lt;span style="color:#f1fa8c">&amp;#39;windows&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;nat&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">default&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;bridge&amp;#39;&lt;/span>,
+},
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&amp;hellip; and now check if the change was applied&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: docker inspect --format&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;{{ .Config.Image }}&amp;#34;&lt;/span> servercore
+$: hello-world:linux
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>so&amp;hellip; something is wrong, the tag was not changed to &lt;code>hello-world:latest&lt;/code>. If we want to apply this change we need to do a few more steps:&lt;/p>
+&lt;ul>
+&lt;li>stop the container: &lt;code>docker stop servercore&lt;/code>&lt;/li>
+&lt;li>remove the container: &lt;code>docker rm servercore&lt;/code>&lt;/li>
+&lt;li>reapply the manifest detailed above: &lt;code>puppet apply &amp;lt;manifest_file_name&amp;gt;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>In conclusion in the puppetlabs/docker module versions &lt;code>&amp;lt;= 3.10.2 &lt;/code>the parameter change is not detected. If we want to change some parameters for the same container, the puppet agent will not apply these changes for us until we delete the container manually.
+Using the latest versions(&lt;code>&amp;gt;=3.11.0&lt;/code>) this problem is resolved by having the parameter detection mechanism implemented for the most important parameters such as image, volumes and ports.
+Also please take a look at the &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/648">solution&lt;/a>.&lt;/p>
+&lt;p>Kind regards,
+&lt;a href="https://github.com/adrianiurca">Adrian Iurca&lt;/a>&lt;/p></description></item><item><title>Blog: DSC + Puppet: Arrived!</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-21-dsc-release/</link><pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-21-dsc-release/</guid><description>
+&lt;p>Earlier this year, we &lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/03/30/dsc-announcement.html">announced an upcoming project&lt;/a> to drastically improve the story for using DSC Resources with Puppet.
+Today, we&amp;rsquo;re announcing the general availability of that project!&lt;/p>
+&lt;p>The &lt;a href="https://github.com/puppetlabs/Puppet.Dsc">&lt;code>Puppet.Dsc&lt;/code> PowerShell module&lt;/a> is now available on the &lt;a href="https://www.powershellgallery.com/packages/Puppet.Dsc">PowerShell Gallery&lt;/a>;
+furthermore, an initial batch of &lt;strong>twenty-six&lt;/strong> PowerShell modules with DSC Resources have been Puppetized and &lt;a href="https://forge.puppet.com/dsc">published to the Forge&lt;/a>!&lt;/p>
+&lt;p>We picked several of the most-downloaded modules with DSC Resources released in the last year to start with, but in the coming weeks you should find &lt;em>everything&lt;/em> available on the PowerShell Gallery up on the Forge!&lt;/p>
+&lt;p>But today, in addition to sharing this news, I want to go into a bit more detail, both with what&amp;rsquo;s going on under the hood and with how you can use these auto-generated modules.&lt;/p>
+&lt;h3 id="installing-the-modules">Installing the Modules&lt;/h3>
+&lt;p>If you just want to get your hands on the PowerShell module to read the help and experiment on your own, you can install it like any other PowerShell module:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#8be9fd;font-style:italic">Install-Module&lt;/span> -Name Puppet.Dsc
+&lt;span style="color:#8be9fd;font-style:italic">Import-Module&lt;/span> -Name Puppet.Dsc
+&lt;span style="color:#8be9fd;font-style:italic">Get-Command&lt;/span> -Module Puppet.Dsc
+&lt;span style="color:#8be9fd;font-style:italic">Get-Help&lt;/span> -Name &lt;span style="color:#8be9fd;font-style:italic">New-PuppetDscModule&lt;/span> -ShowWindow
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Some of the functions from the PowerShell module rely on the &lt;a href="https://puppet.com/docs/pdk/1.x/pdk.html">Puppet Development Kit (PDK)&lt;/a> being installed;
+we suggest using &lt;a href="https://chocolatey.org/">Chocolatey&lt;/a> to do so, but you can also &lt;a href="https://puppet.com/try-puppet/puppet-development-kit/">manually download and install&lt;/a> if you prefer.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">choco install pdk
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you want to do the same sort of thing with one of the Puppetized modules from the forge, you can install them and treat them just like any other Puppet module:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#6272a4"># For example, installing the Puppetized ComputerManagementDsc module manually:&lt;/span>
+puppet module install dsc-computermanagementdsc --Version 8.4.0-0-0
+&lt;span style="color:#6272a4"># Or via r10k / Code Manager / Bolt:&lt;/span>
+mod &lt;span style="color:#f1fa8c">&amp;#39;dsc-computermanagementdsc&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;8.4.0-0-0&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="puppetizing-a-powershell-module">Puppetizing a PowerShell module&lt;/h2>
+&lt;p>So, you want to turn a PowerShell module with DSC Resources into a Puppet module?
+You can do this with a single command:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#6272a4"># If you run this command without the PassThru flag it returns nothing to the output stream.&lt;/span>
+&lt;span style="color:#6272a4"># Any conversion errors will be in the error stream, as usual.&lt;/span>
+&lt;span style="color:#6272a4"># If you&amp;#39;d like a deeper look at what it&amp;#39;s doing, try running it with the Verbose flag.&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">New-PuppetDscModule&lt;/span> -PowerShellModuleName ComputerManagementDsc -PassThru
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Unfortunately, the output from running it isn&amp;rsquo;t all that exciting:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/new-puppetdscmodule.png" alt="Output from a PowerShell console showing the running of the command above as well as the return output, which is the folder object representing the new Puppet module on disk">&lt;/p>
+&lt;p>Behind the scenes, the command:&lt;/p>
+&lt;ol>
+&lt;li>Uses the &lt;a href="https://puppet.com/docs/pdk/1.x/pdk.html">PDK&lt;/a> to create a new Puppet module&lt;/li>
+&lt;li>Searches the &lt;a href="https://www.powershellgallery.com">PowerShell Gallery&lt;/a> for the ComputerManagementDsc module and vendor it into the new Puppet module&lt;/li>
+&lt;li>Converts each of the DSC Resources from the vendored PowerShell module into a Puppet Resource API type and provider&lt;/li>
+&lt;li>Updates the Puppet module&amp;rsquo;s metadata and documentation based on the PowerShell module.&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>At this time, for best results we strongly recommend you run the command with administrator privileges in a Windows PowerShell 5.1 session.
+While it &lt;em>does&lt;/em> work without administrator privileges, the function cannot fully map nested CIM instances without administrator privileges.
+For more information on this process, check out the &lt;a href="https://github.com/puppetlabs/Puppet.Dsc/blob/main/docs/about_Puppetization.md">&lt;code>about_Puppetization&lt;/code> HelpFile&lt;/a> via &lt;code>Get-Help&lt;/code> for a more in-depth documentation of this process.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="using-puppetized-modules">Using puppetized modules&lt;/h2>
+&lt;p>On the one hand, there&amp;rsquo;s not much to say about using the Puppetized modules with DSC Resources;
+you use them &lt;em>precisely&lt;/em> like any other Puppet module, after all.
+On the other hand, there&amp;rsquo;s some strong utility worth going over in more detail you may or may not be aware of!&lt;/p>
+&lt;p>To get the most value from your workflow, we &lt;strong>strongly&lt;/strong> recommend you author your manifests that include Puppetized DSC Resources in &lt;a href="https://code.visualstudio.com/">VSCode&lt;/a> with the &lt;a href="https://puppet-vscode.github.io/">Puppet extension&lt;/a> enabled.&lt;/p>
+&lt;p>When we open a file named &lt;code>example.pp&lt;/code> to edit, the Puppet extension automatically begins to load;
+once this is finished, we have access to a ton of useful authoring support, including intellisense.&lt;/p>
+&lt;p>For example, if we&amp;rsquo;ve installed the &lt;code>computermanagementdsc&lt;/code> Puppet module, we need only type &lt;code>dsc_execution&lt;/code> before IntelliSense kicks in and helps us out:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/intellisense-resource.png" alt="A VSCode window showing the text &amp;lsquo;dsc_execution&amp;rsquo; has raised a tooltip which lists multiple possible matches, including dsc_powershellexecutionpolicy, and to the right it shows the help information for this resource.">&lt;/p>
+&lt;p>Note that it tells us not just what available resources might match, it also displays the available documentation for each resource.&lt;/p>
+&lt;p>We also get IntelliSense for each property we want to pass, too;
+again, this doesn&amp;rsquo;t just show the available options but also includes any available documentation for each property.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/intellisense-property.png" alt="A VSCode window showing the text &amp;lsquo;dsc&amp;rsquo; inside a Puppet resource declaration for dsc_powershellexecutionpolicy, with a tooltip listing the possible properties, including dsc_executionpolicy and dsc_executionpolicyscope; as before, the help information (now including valid values) is to the right.">&lt;/p>
+&lt;p>You can also review the documentation for a property by hovering over it:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/docs-property.png" alt="A VSCode window showing an empty declaration for &amp;lsquo;dsc_executionpolicy&amp;rsquo; with the mouse hovering over that key, displaying a tooltip which includes the documentation and valid values for the property.">&lt;/p>
+&lt;p>Where this combination really begins to sing is when you&amp;rsquo;ve begun authoring a manifest and something goes wrong.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/problems.png" alt="A VSCode window showing a fully defined manifest with markings to highlight issues.">&lt;/p>
+&lt;p>The image above shows that the file name in the left-hand pane has changed colors and is now red.
+It also underscores two entries in the manifest that VSCode has highlighted - one with orange underlining, indicating a warning, and one with red underlining, indicating an error.
+Finally, down in the bottom left corner it highlights the problem symbols for errors and warnings, both of which display a count of one.&lt;/p>
+&lt;p>VSCode (via the extension) knows &lt;em>something&lt;/em> is wrong with our manifest;
+we can click on those symbols to bring up the Problems Pane and investigate:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/problems-pane.png" alt="A VSCode window displaying the Problems Pane with two entries">&lt;/p>
+&lt;p>This tells us there&amp;rsquo;s a warning about the indentation of a hash rocket and some sort of syntax error preventing the extension from parsing line 3.&lt;/p>
+&lt;p>A quick look at the code tells us that we&amp;rsquo;re missing a comma in the resource declaration on line 2, and as soon as we add that comma in we get confirmation:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/problems-added-comma.png" alt="A VSCode window displaying the Problems Pane with only one warning">&lt;/p>
+&lt;p>All that remains now is the formatting issue.
+Luckily, VSCode is able to automatically handle this for us via the &lt;em>Format Document&lt;/em> command:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/format-document-option.png" alt="A VSCode window displaying the right-click menu over the manifest, highlighting the &amp;lsquo;Format Document&amp;rsquo; command with a hotkey combination of &amp;lsquo;Shift+Alt+F&amp;rsquo;">&lt;/p>
+&lt;p>Which we can see does in fact move the hash rocket and resolve our last problem:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/manifest-fixed.png" alt="A VSCode window displaying the manifest with no issues or warnings, the hash rocket moved appropriately to ensure preferred formatting for the manifest.">&lt;/p>
+&lt;p>We&amp;rsquo;re ready to apply this manifest!&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">puppet apply ./example.pp
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Only&amp;hellip; there was a problem;
+without reading the documentation for &lt;code>dsc_executionpolicyscope&lt;/code> thoroughly enough, we specified &lt;code>Machine&lt;/code> instead of &lt;code>MachinePolicy&lt;/code>!&lt;/p>
+&lt;p>Puppet gives us back a pretty good error message though:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">Error: Parameter dsc_executionpolicyscope failed on Dsc_powershellexecutionpolicy[[OPS-213]]: dsc_powershellexecutionpolicy.dsc_executionpolicyscope expects a match for Enum[&amp;#39;CurrentUser&amp;#39;, &amp;#39;LocalMachine&amp;#39;, &amp;#39;MachinePolicy&amp;#39;, &amp;#39;Process&amp;#39;, &amp;#39;UserPolicy&amp;#39;], got &amp;#39;Machine&amp;#39;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>We get an explicit list of the allowed values &lt;em>before&lt;/em> it tries to invoke DSC with the &lt;code>Set&lt;/code> action.
+This is unlike our prior implementation in &lt;code>puppetlabs-dsc_lite&lt;/code>, which has no way of knowing whether the values you&amp;rsquo;ve provided are correct.&lt;/p>
+&lt;p>Once we correct our manifest to specify &lt;code>LocalMachine&lt;/code> and re-run the command, we get something else:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">Notice: Compiled catalog for michael.lombardi-pf12aa84 in environment workstation_production in 1.04 seconds
+Notice: /Stage[main]/Main/Dsc_powershellexecutionpolicy[[OPS-213]]/dsc_executionpolicy: dsc_executionpolicy changed &amp;#39;Unrestricted&amp;#39; to &amp;#39;RemoteSigned&amp;#39;
+Notice: dsc_powershellexecutionpolicy[{:name=&amp;gt;&amp;#34;[OPS-213]&amp;#34;, :dsc_executionpolicyscope=&amp;gt;&amp;#34;LocalMachine&amp;#34;}]: Updating: Finished in 0.809555 seconds
+Notice: Applied catalog in 1.68 seconds
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>This highlights a change from both of our prior implementations:
+you now get &lt;em>property-by-property&lt;/em> reporting for DSC Resources when using Puppet!
+This implementation knows not just &lt;em>that&lt;/em> a DSC Resource was out of sync and therefore applied, but it can tell you exactly which properties were out of sync, what their value was, and what it has been set to in this run.&lt;/p>
+&lt;p>This brings DSC Resources in line with all of the rest of the resources you manage with Puppet and drastically improves the usefulness of your run reports!&lt;/p>
+&lt;h2 id="coming-up">Coming Up&lt;/h2>
+&lt;p>This wave of converted DSC Resources and the release of the &lt;code>Puppet.Dsc&lt;/code> module to the PowerShell Gallery is not the &lt;em>last&lt;/em> step of our support for using DSC with Puppet, just the initial step.&lt;/p>
+&lt;p>Over the coming weeks we&amp;rsquo;re going to be looking to you for feedback and incorporating it as fast as we can manage.&lt;/p>
+&lt;p>We&amp;rsquo;re also moving towards automatically Puppetizing &lt;em>every&lt;/em> PowerShell module with DSC Resources on the Gallery.
+If there&amp;rsquo;s a module you want to use that isn&amp;rsquo;t yet published under our &lt;a href="https://forge.puppet.com/dsc">&lt;strong>dsc&lt;/strong> namespace on the Forge&lt;/a>, let us know in &lt;a href="https://slack.puppet.com/">Slack&lt;/a> or by &lt;a href="mailto:dsc@puppet.com">emailing us&lt;/a> and we&amp;rsquo;ll publish it as soon as we can!&lt;/p>
+&lt;p>In the long run, we plan to get some nightly builds in place to ensure that there&amp;rsquo;s never more than a 24 hour lag between when a PowerShell module with DSC Resources is published (new or merely updated) to the Gallery and when that same module is Puppetized and published to the Forge.&lt;/p>
+&lt;p>We hope to hear from you soon!&lt;/p></description></item><item><title>Blog: Apache MOD Test Maintenance</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-07-03-apache-mod-test-improvements/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-07-03-apache-mod-test-improvements/</guid><description>
+&lt;p>This week sees version &lt;code>v5.5.0&lt;/code> of the &lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs-apache&lt;/a> module released.
+There are a lot of new features within this release - check out the &lt;a href="https://forge.puppet.com/puppetlabs/apache/changelog#v550-2020-07-01">CHANGELOG entry for this version&lt;/a> to see what&amp;rsquo;s included.&lt;/p>
+&lt;p>The last release of this module was &lt;code>v5.4.0&lt;/code> on &lt;code>2020-01-23&lt;/code>, over 5 months ago.
+Currently the IAC Team is responsible for [these supported modules]({% link modules.html %}) and [tools]({% link tools.html %}).
+As a small team we always continue to improve our processes to ensure we&amp;rsquo;re maximising our time and efforts.
+Still, the gap in time between the release of &lt;code>v5.4.0&lt;/code> and &lt;code>v5.5.0&lt;/code> of the &lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs-apache&lt;/a> module was a concern for us.
+What happened and how did we address this issue?&lt;/p>
+&lt;h2 id="why-the-delay">Why the delay?&lt;/h2>
+&lt;p>There was no shortage of excellent community contributions to the &lt;a href="https://github.com/puppetlabs/puppetlabs-apache">puppetlabs-apache&lt;/a> module in the period between these two releases.
+The team were keen to get a new release of the module out sooner than this, so the community could take advantage of these contributions.
+Part of the process of releasing a module involves us running our release check suite on our internal VM infrastructure.
+We were finding that there were cases where tests for &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a> were failing on certain platforms after someone in the community put forward a fix.&lt;/p>
+&lt;h2 id="what-was-the-issue">What was the issue?&lt;/h2>
+&lt;p>There are multiple reasons we ended up in this scenario, which ultimately had the same root cause, namely, a lack of test coverage.
+Some examples are:&lt;/p>
+&lt;ul>
+&lt;li>New platforms changing MOD package names (e.g. &lt;a href="https://github.com/farebers">farebers&amp;rsquo;s&lt;/a> fix in &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2021">#2021&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/1913">Fixes for one environment&lt;/a> having a knock-on effect for a &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2041">different environment&lt;/a> (thanks to &lt;a href="https://github.com/h-haaks">h-haaks&lt;/a> for the fix!)&lt;/li>
+&lt;/ul>
+&lt;p>When a new version of an OS comes out, it is quite common for issues to manifest when trying to configure some of the less mainstream &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>A simple change in it&amp;rsquo;s package name (&lt;em>thankfully a relatively quick fix!&lt;/em>)&lt;/li>
+&lt;li>The package is no longer available from the core &amp;ldquo;out-of-the-box&amp;rdquo; repositories (e.g. a 3rd party repos or edge/experimental/extra package streams need to be configured)&lt;/li>
+&lt;li>Package dependencies are unavailable in non-standard repositories&lt;/li>
+&lt;li>Support is dropped altogether - there is no way to locate the package or dependencies for a newer OS version&lt;/li>
+&lt;/ul>
+&lt;p>This led us to a conversation about how we continue to support all the various prerequisites and configurations required when presented with a matrix of &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a> and &lt;a href="https://forge.puppet.com/puppetlabs/apache/compatibility">compatible OSs&lt;/a>.
+We could, if time permitted, ensure that we have the steps to install every version&amp;hellip;of every MOD&amp;hellip;on every OS&amp;hellip;documented and implemented.&lt;/p>
+&lt;p>Time permitting&amp;hellip;&lt;/p>
+&lt;h2 id="solution">Solution&lt;/h2>
+&lt;h3 id="test-support-policy">Test Support Policy&lt;/h3>
+&lt;p>Straight away, we realised that, in the future, we need to strictly time box the amount of time we spend attempting to configure the OS with the correct repositories and/or dependencies for any given MOD.
+A rule of thumb was that if it&amp;rsquo;s not available in the default repositories of the OS, or a common, well supported auxiliary repository (e.g. EPEL), then we are not going to pin down the very unique snowflake configuration required for that MOD.
+There is always the concept of &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/master/manifests/default_mods.pp">default MODs&lt;/a> in Apache and these will &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/master/spec/acceptance/default_mods_spec.rb">remain supported&lt;/a> with the module, however, in future, we are going to evaluate how we proceed with a test failure with a much stricter time limit.&lt;/p>
+&lt;h3 id="mods-arent-supported-anymore">MODs aren&amp;rsquo;t supported anymore!?&lt;/h3>
+&lt;p>Absolutely not! They are still supported! If you want to add support for a new MOD, we do ask that you also write an acceptance test too.
+The IAC Team are always happy to help you with this process.&lt;/p>
+&lt;h3 id="i-cant-get-the-test-to-pass-on-all-platforms">I can&amp;rsquo;t get the test to pass on all platforms!&lt;/h3>
+&lt;p>Yes - this is likely an issue you&amp;rsquo;re going to run in to.
+Kudos to those who chase down ALL the package, package dependencies and configurations required for ALL of the &lt;a href="https://forge.puppet.com/puppetlabs/apache/compatibility">compatible platforms&lt;/a> of the Apache module.
+Realistically, you will likely encounter a few OSs where it is beyond reasonable to try and get this MOD working.
+In these scenarios, we&amp;rsquo;ll start a conversation on the PR about what the acceptable minimum is for the change being proposed - there&amp;rsquo;s no hard/fast rule here.&lt;/p>
+&lt;h3 id="weve-agreed-were-not-supporting-this-mod-on-this-os-version---what-now">We&amp;rsquo;ve agreed we&amp;rsquo;re not supporting this MOD on this OS version - what now?&lt;/h3>
+&lt;p>You may be familiar with &lt;a href="https://relishapp.com/rspec/rspec-core/v/3-8/docs/filtering/conditional-filters">RSpec&amp;rsquo;s conditional filtering&lt;/a>?
+If not, &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/51ce2adcfc231c6a78dda5cc59c2aaf4028bb5bd/spec/acceptance/mod_ldap_spec.rb#L4">here is an example&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">describe &lt;span style="color:#f1fa8c">&amp;#39;apache::mod::ldap&amp;#39;&lt;/span>, &lt;span style="color:#ff79c6">unless&lt;/span>: os&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:family&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;redhat&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">&amp;amp;&amp;amp;&lt;/span> os&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:release&lt;/span>&lt;span style="color:#ff79c6">].&lt;/span>to_i &lt;span style="color:#ff79c6">&amp;gt;=&lt;/span> &lt;span style="color:#bd93f9">8&lt;/span> &lt;span style="color:#ff79c6">do&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will mean that this test will &lt;strong>not&lt;/strong> run if the OS family is &lt;code>RedHat&lt;/code> and the version is &lt;code>8&lt;/code> or higher.
+These work well, but, things can start to get messy when there is quite a narrow band of compatible OSs for a MOD.
+Consider &lt;a href="https://github.com/zmartzone/mod_auth_openidc/releases/tag/v2.4.3">&lt;code>v2.4.3&lt;/code> of &lt;code>mod_auth_openidc&lt;/code>&lt;/a> - we can see from the build artifacts' names that we &amp;ldquo;officially&amp;rdquo; have support for:&lt;/p>
+&lt;ul>
+&lt;li>Ubuntu 16.04&lt;/li>
+&lt;li>Ubuntu 18.04&lt;/li>
+&lt;li>Debian 10&lt;/li>
+&lt;li>RHEL 7&lt;/li>
+&lt;/ul>
+&lt;p>This does not consider the fact that there are many other OSs derived from RHEL and other distro vendors / maintainers can port packages to their OS.
+For example, after a bit more digging, I can see that the &lt;code>mod_auth_openidc&lt;/code> package is available for the following OSs too:&lt;/p>
+&lt;ul>
+&lt;li>CentOS 7&lt;/li>
+&lt;li>CentOS 8 (via AppStream)&lt;/li>
+&lt;li>RHEL 8 (via AppStream)&lt;/li>
+&lt;li>Fedora 30&lt;/li>
+&lt;li>Fedora 31&lt;/li>
+&lt;li>Fedora 32&lt;/li>
+&lt;/ul>
+&lt;p>This search was not exhaustive, and to make it so would require a lot more effort, which is part of the issue we find ourselves up against.
+Still, we now have a list of platforms that we want to include/exclude from being tested - depending on how we look at it.
+I&amp;rsquo;m sure you can envisage that the filtering rule for this test is going to become pretty gnarly?
+What if I were to also throw in some of the challenges the IAC team face, on top:&lt;/p>
+&lt;ul>
+&lt;li>Expanding test coverage uncovering more MOD / OS incompatibility&lt;/li>
+&lt;li>Some tests invoking a MOD load/configure indirectly whist testing other functionality&lt;/li>
+&lt;li>New OS support requirements&lt;/li>
+&lt;/ul>
+&lt;h3 id="tagging-and-helper-methods">Tagging and Helper Methods&lt;/h3>
+&lt;p>We had to come up with some better solution than ridiculously complex filtering rules.
+After some conversations and design reviews, we settled on an idea of using &lt;a href="https://www.rubydoc.info/gems/yard/file/docs/blog_tags.md#note">YARD&amp;rsquo;s note blog_tags&lt;/a>.
+This gives us the benefit of:&lt;/p>
+&lt;ul>
+&lt;li>Keeping within the conventions already in use&lt;/li>
+&lt;li>Easy syntax to understand&lt;/li>
+&lt;li>Free documentation whilst we&amp;rsquo;re at it&lt;/li>
+&lt;/ul>
+&lt;p>All the class definitions for &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a> live under &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/tree/983b1fd3ff178d46145f4b8c0a88bae36dfad12b/manifests/mod">&lt;code>manifest/mod&lt;/code>&lt;/a>.
+This seemed like the most logical place for our blog_tags to live.
+Next, we wanted to decide whether this was an &amp;ldquo;opt-in&amp;rdquo; or &amp;ldquo;opt-out&amp;rdquo; affair.
+In the end, we determined that it would be best to &amp;ldquo;opt-out&amp;rdquo; and so, the tag became &lt;code>Unsupported platforms&lt;/code>.
+You can now define what platforms a given MOD will &lt;em>not&lt;/em> be expected to run on:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#6272a4"># @note Unsupported platforms: RedHat: 5, 6; Ubuntu: 14.04; SLES: all; Scientific: 11 SP1&lt;/span>
+&lt;span style="color:#ff79c6">class&lt;/span> apache&lt;span style="color:#ff79c6">::&lt;/span>mod&lt;span style="color:#ff79c6">::&lt;/span>actions {
+apache&lt;span style="color:#ff79c6">::&lt;/span>mod { &lt;span style="color:#f1fa8c">&amp;#39;actions&amp;#39;&lt;/span>: }
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>For a full overview of the tag syntax rules, see &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/c726313dad64683d05465d2f978965ad14690f35/README.md#apache-mod-test--support-lifecycle">this section of the README&lt;/a> in the module.&lt;/p>
+&lt;p>When RSpec tests are kicked off in the module, we will parse the &lt;code>Unsupported platform&lt;/code> blog_tags under &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/tree/983b1fd3ff178d46145f4b8c0a88bae36dfad12b/manifests/mod">&lt;code>manifest/mod&lt;/code>&lt;/a> as part of the &lt;code>Rspec.before&lt;/code> hooks and generate a mapping of MOD -&amp;gt; Unsupported Platforms.
+Now, from within the tests, you can make use of the &lt;code>mod_supported_on_platform&lt;/code> helper method to determine whether the test should run on a given platform or be filtered out:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">describe &lt;span style="color:#f1fa8c">&amp;#39;auth_oidc&amp;#39;&lt;/span>, &lt;span style="color:#ff79c6">if&lt;/span>: mod_supported_on_platform(&lt;span style="color:#f1fa8c">&amp;#39;apache::mod::auth_openidc&amp;#39;&lt;/span>) &lt;span style="color:#ff79c6">do&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Hopefully you&amp;rsquo;ll agree that this is a much cleaner solution that a complex filtering rule?
+For the IAC Team, it makes our life a lot easier, and hopefully means more frequent updates released for the Apache module for the community.&lt;/p>
+&lt;h4 id="want-more-details">Want more details?&lt;/h4>
+&lt;p>You can see the implementation on &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2036">#2036&lt;/a>, which has a detailed description outlining the functionality.
+JIRA tickets &lt;a href="https://tickets.puppetlabs.com/browse/IAC-801">IAC-801&lt;/a> and &lt;a href="https://tickets.puppetlabs.com/browse/IAC-824">IAC-824&lt;/a> outline the design and implementation, respectively, should you wish to take a look.&lt;/p></description></item><item><title>Blog: Debugging unit-tests with Honeycomb</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-30-debugging-unit-tests-with-honeycomb/</link><pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-30-debugging-unit-tests-with-honeycomb/</guid><description>
+&lt;p>Since &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/blog/updates/2020-03-27-status-update.md#litmus-progress">last week&lt;/a> we&amp;rsquo;re collecting unit-test results and acceptance test runs in &lt;a href="https://honeycomb.io/">honeycomb&lt;/a>, a tool for introspecting and interrogating production systems. In our team&amp;rsquo;s case, CI is the &amp;ldquo;production&amp;rdquo; environment we manage. Today Daniel pointed out that there was a curious issue with one of our test suites:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#f1fa8c">NoMethodError&lt;/span>:
+undefined &lt;span style="color:#8be9fd;font-style:italic">method&lt;/span> &lt;span style="color:#f1fa8c">`message_lines&amp;#39; for #&amp;lt;RSpec::Core::Notifications::SkippedExampleNotification:0x00007f8407ac3018&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"># /Users/danielcarabas/.rvm/gems/ruby-2.6.3/gems/rspec_honeycomb_formatter-0.2.0/lib/rspec_honeycomb_formatter.rb:95:in `&lt;/span>example_pending&amp;#39;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>That clearly rings a bell, but a trivial try at reproducing this using &lt;code>pending&lt;/code> brought up a weird issue:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#f1fa8c">From&lt;/span>: &lt;span style="color:#f1fa8c">/home/&lt;/span>david&lt;span style="color:#ff79c6">/&lt;/span>git&lt;span style="color:#ff79c6">/&lt;/span>rspec_honeycomb_formatter&lt;span style="color:#ff79c6">/&lt;/span>lib&lt;span style="color:#ff79c6">/&lt;/span>rspec_honeycomb_formatter&lt;span style="color:#ff79c6">.&lt;/span>rb @ line &lt;span style="color:#bd93f9">99&lt;/span> RSpecHoneycombFormatter&lt;span style="color:#6272a4">#example_pending:&lt;/span>
+&lt;span style="color:#bd93f9">95&lt;/span>: &lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">example_pending&lt;/span>(notification)
+&lt;span style="color:#bd93f9">96&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;rspec.result&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;pending&amp;#39;&lt;/span>)
+&lt;span style="color:#bd93f9">97&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;name&amp;#39;&lt;/span>, notification&lt;span style="color:#ff79c6">.&lt;/span>example&lt;span style="color:#ff79c6">.&lt;/span>description)
+&lt;span style="color:#bd93f9">98&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;rspec.description&amp;#39;&lt;/span>, notification&lt;span style="color:#ff79c6">.&lt;/span>example&lt;span style="color:#ff79c6">.&lt;/span>description)
+&lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#bd93f9">99&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">require&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;pry&amp;#39;&lt;/span>;&lt;span style="color:#8be9fd;font-style:italic">binding&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>pry
+&lt;span style="color:#bd93f9">100&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;rspec.message&amp;#39;&lt;/span>, strip_ansi(notification&lt;span style="color:#ff79c6">.&lt;/span>message_lines&lt;span style="color:#ff79c6">.&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#f1fa8c">\n&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>)))
+&lt;span style="color:#bd93f9">101&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;rspec.backtrace&amp;#39;&lt;/span>, notification&lt;span style="color:#ff79c6">.&lt;/span>formatted_backtrace&lt;span style="color:#ff79c6">.&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#f1fa8c">\n&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>))
+&lt;span style="color:#bd93f9">102&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>send
+&lt;span style="color:#bd93f9">103&lt;/span>: &lt;span style="color:#ff79c6">end&lt;/span>
+&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#bd93f9">1&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> pry(&lt;span style="color:#6272a4">#&amp;lt;RSpecHoneycombFormatter&amp;gt;)&amp;gt; notification.class&lt;/span>
+&lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> RSpec&lt;span style="color:#ff79c6">::&lt;/span>Core&lt;span style="color:#ff79c6">::&lt;/span>Notifications&lt;span style="color:#ff79c6">::&lt;/span>PendingExampleFailedAsExpectedNotification
+&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#bd93f9">2&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> pry(&lt;span style="color:#6272a4">#&amp;lt;RSpecHoneycombFormatter&amp;gt;)&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The class here is not the same as the initial report is complaining about.
+And this does not fail.
+&lt;code>PendingExampleFailedAsExpectedNotification&lt;/code> does have &lt;code>message_lines&lt;/code>.
+Since the original report didn&amp;rsquo;t have any more information attached (and for the sake of the pacing of this blog post) I went to honeycomb to see if other modules were exhibiting the same problem.
+After a couple of clicks this was what I had:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-03-30-debugging-with-honeycomb/honeycomb-heatmap.png" alt="honeycomb heatmap screenshot">&lt;/p>
+&lt;p>The query selects by the error message and returns all examples with that error message.
+Clearly this has been going on for a while.
+Clicking through to the raw data I could jump to the full log of one of the runs:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-03-30-debugging-with-honeycomb/honeycomb-raw-data.png" alt="honeycomb raw data screenshot">&lt;/p>
+&lt;p>Which brings us to &lt;a href="https://github.com/puppetlabs/puppetlabs-package/runs/544125013#step:3:445">this failure on github actions&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">================&lt;/span>
+unlikely&lt;span style="color:#ff79c6">-&lt;/span>toxin&lt;span style="color:#ff79c6">.&lt;/span>delivery&lt;span style="color:#ff79c6">.&lt;/span>puppetlabs&lt;span style="color:#ff79c6">.&lt;/span>net, win&lt;span style="color:#ff79c6">-&lt;/span>&lt;span style="color:#bd93f9">2008&lt;/span>r2&lt;span style="color:#ff79c6">-&lt;/span>x86_64
+&lt;span style="color:#ff79c6">**&lt;/span>F&lt;span style="color:#ff79c6">****&lt;/span>FFFFFF
+&lt;span style="color:#f1fa8c">Pending&lt;/span>: (Failures listed here are expected &lt;span style="color:#ff79c6">and&lt;/span> &lt;span style="color:#ff79c6">do&lt;/span> &lt;span style="color:#ff79c6">not&lt;/span> affect your suite&lt;span style="color:#f1fa8c">&amp;#39;s status)
+&lt;/span>&lt;span style="color:#f1fa8c">
+&lt;/span>&lt;span style="color:#f1fa8c"> 1) package task install installs pry
+&lt;/span>&lt;span style="color:#f1fa8c"> # Don&amp;#39;&lt;/span>t run on Windows
+On host &lt;span style="color:#f1fa8c">`unlikely-toxin.delivery.puppetlabs.net&amp;#39;
+&lt;/span>&lt;span style="color:#f1fa8c"> Failure/Error: @example_span.add_field(&amp;#39;rspec.message&amp;#39;, strip_ansi(notification.message_lines.join(&amp;#34;&lt;/span>&lt;span style="color:#f1fa8c">\n&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;)))
+&lt;/span>&lt;span style="color:#f1fa8c"> NoMethodError:
+&lt;/span>&lt;span style="color:#f1fa8c"> undefined method `&lt;/span>message_lines&amp;#39; &lt;span style="color:#ff79c6">for&lt;/span> &lt;span style="color:#6272a4">#&amp;lt;RSpec::Core::Notifications::SkippedExampleNotification:0x00007fe474773368&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>This in turn I can look up in &lt;a href="https://github.com/puppetlabs/puppetlabs-package/blob/b7ff8d9a3982287f30a20111f86413b0350d20d6/spec/acceptance/init_spec.rb">the source code&lt;/a>.
+I&amp;rsquo;m assuming the following clause is the issue:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">before(&lt;span style="color:#f1fa8c">:each&lt;/span>) &lt;span style="color:#ff79c6">do&lt;/span>
+skip &lt;span style="color:#f1fa8c">&amp;#34;Don&amp;#39;t run on Windows&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">if&lt;/span> operating_system_fact &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;windows&amp;#39;&lt;/span>
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Putting that into the manual test case quickly confirmed that this was indeed the problem.
+After being able to reproduce this locally, it was a matter of poking pry to figure out what needs to be done about it.
+The &lt;code>SkippedExampleNotification&lt;/code> doesn&amp;rsquo;t have a &lt;code>message_lines&lt;/code> method, and needs to be handled differently.
+The result has been posted in the &lt;a href="https://github.com/puppetlabs/rspec_honeycomb_formatter/pull/10">&amp;ldquo;Fix missing message_lines method&amp;rdquo; PR&lt;/a> and should be merged and released by the time you read this post.&lt;/p>
+&lt;p>Finally, to cross-check that this is the only problem we&amp;rsquo;ve been seeing, I&amp;rsquo;ve added a &lt;code>rspec.message does-not-contain SkippedExampleNotification&lt;/code> clause to the honeycomb query.
+That new query did not return any results, increasing my confidence in having addressed all currently visible issues with the formatter.&lt;/p></description></item><item><title>Blog: DSC + Puppet: Incoming!</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-30-dsc-announcement/</link><pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-30-dsc-announcement/</guid><description>
+&lt;p>As &lt;a href="https://github.com/glennsarti">Glenn&lt;/a> and I alluded to on the &lt;a href="https://player.fm/series/powerscripting-podcast/episode-334-powerscripting-podcast-glenn-sarti-michael-lombardi">PowerScripting Podcast&lt;/a>, our team has been hard at work re-envisioning how we want to present the DSC + Puppet story for our users.&lt;/p>
+&lt;p>&lt;a href="https://tickets.puppetlabs.com/browse/IAC-41">Long story short&lt;/a>, for lots of reasons, our &lt;a href="https://forge.puppet.com/puppetlabs/dsc">original implementation&lt;/a> for calling DSC resources from inside Puppet (shoutout to &lt;a href="https://github.com/msutter">Marc Sutter&lt;/a>, the initial implementer!) was getting fragile, stale, and maintenance costs kept rising.&lt;/p>
+&lt;p>As a stop gap, we put together the &lt;a href="https://forge.puppet.com/puppetlabs/dsc_lite">dsc_lite&lt;/a> module for people to use which dropped the guardrails and help in exchange for letting you just get to work if you needed to use it.
+Essentially the thinnest of wrappers over &lt;a href="https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/invoke-dscresource?view=powershell-7">&lt;code>Invoke-DscResource&lt;/code>&lt;/a>, requiring you to get those resources onto the target and to pass an arbitrary hash of &lt;em>hopefully&lt;/em> correct properties to the DSC resource;
+no way to tell if you goofed til run time.&lt;/p>
+&lt;p>We made &lt;a href="https://forge.puppet.com/puppetlabs/dsc_lite">dsc_lite&lt;/a> for the DSC expert, &lt;a href="https://github.com/puppetlabs/puppetlabs-dsc_lite/blob/master/README_Tradeoffs.md">basically&lt;/a>.
+But as time went on and we could no longer use our old builder to update our original module&amp;hellip;
+we were leaving a &lt;strong>lot&lt;/strong> of people in the cold with a less than stellar UX.&lt;/p>
+&lt;p>So my team decided to change that story.&lt;/p>
+&lt;p>We talked it out, &lt;a href="https://tickets.puppetlabs.com/browse/IAC-41">planned some stuff&lt;/a> and adopted &lt;a href="https://github.com/jpogran">James Pogran&lt;/a>&amp;rsquo;s INCREDIBLE &lt;a href="https://github.com/jpogran/PuppetDscBuilder">prototype work&lt;/a>—he did 80% of the initial work for this, basically all the hardest bits. 💜&lt;/p>
+&lt;h2 id="so-about-this-builder">So, About This Builder&lt;/h2>
+&lt;p>The &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder">whole thing&lt;/a> is written in and relies on PowerShell, not Ruby.
+The only non-PowerShell dependency is the &lt;a href="https://puppet.com/docs/pdk/1.x/pdk.html">Puppet Development Kit&lt;/a> for scaffolding the Puppet module out (no reason to re-implement that!)&lt;/p>
+&lt;p>It builds on two important technologies:&lt;/p>
+&lt;ol>
+&lt;li>The &lt;a href="https://puppet.com/docs/puppet/latest/about_the_resource_api.html">resource_api&lt;/a> (largely developed by &lt;a href="https://github.com/DavidS">David Schmitt&lt;/a>), makes writing Puppet types and providers &lt;em>actually&lt;/em> doable for people like me—the type file is just data, the provider adheres to a simple schema.&lt;/li>
+&lt;li>The &lt;a href="https://github.com/puppetlabs/ruby-pwsh/">ruby-pwsh&lt;/a> gem, based on work by numerous members of the former Windows team at Puppet:
+&lt;a href="https://github.com/glennsarti">Glenn Sarti&lt;/a>, &lt;a href="https://github.com/jpogran">James Pogran&lt;/a>, &lt;a href="https://github.com/Iristyle">Ethan Brown&lt;/a>, &lt;a href="https://github.com/RandomNoun7">Bill Hurt&lt;/a>, &lt;a href="https://github.com/ThoughtCrhyme">Erick Banks&lt;/a>, &lt;a href="https://github.com/ferventcoder">Rob Reynolds&lt;/a>, and me.
+This gem is a library that gives you a &lt;a href="https://github.com/puppetlabs/ruby-pwsh/blob/master/DESIGN.md">PowerShell manager&lt;/a>, enabling you to interop between PowerShell &amp;amp; Ruby.
+That lets us take advantage of having a PowerShell host process and not shell out for every command.
+It&amp;rsquo;s &lt;em>much&lt;/em> faster and paves the way for some really cool improvements.
+It&amp;rsquo;s also what powers all of our Puppet modules which rely heavily on PowerShell calls!&lt;/li>
+&lt;/ol>
+&lt;p>This builder scaffolds a new Puppet module, vendors a PowerShell module from the Gallery (&lt;em>with&lt;/em> dependencies), introspects that module for DSC resources, then generates a Puppet resource_api type and provider for each DSC resource.&lt;/p>
+&lt;p>It has a &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/blob/c5d349f51883abcca926a0dc6be465a037dfe957/Get-DscResourceTypeInformation.ps1">helper function&lt;/a> which desperately needs refactoring but which parses the &lt;a href="https://mikefrobbins.com/2018/09/28/learning-about-the-powershell-abstract-syntax-tree-ast/">AST&lt;/a> for the DSC resource&amp;rsquo;s source file (if it can) to retrieve the reference docs, default values, and whether the parameter is mandatory for get/set operations.
+If it &lt;em>can&amp;rsquo;t&lt;/em> parse the AST (as with binary/class-based DSC resources in this iteration) it still works&amp;ndash;
+it just won&amp;rsquo;t have the reference docs and will rely on the best info it can find in the output from &lt;a href="https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/get-dscresource?view=powershell-7">&lt;code>Get-DscResource&lt;/code>&lt;/a>.&lt;/p>
+&lt;p>Okay, &lt;em>fine&lt;/em>, &lt;em>&lt;strong>weeeee&lt;/strong>&lt;/em>, it &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/files/4395886/michaeltlombardi-powershellget-0.1.0.tar.gz">builds a module&lt;/a>, great.
+But what does using it look like?
+I&amp;rsquo;m glad you asked.
+First of all, here&amp;rsquo;s what a very basic manifest using a &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/files/4395886/michaeltlombardi-powershellget-0.1.0.tar.gz">puppetized module&lt;/a> looks like&amp;ndash;in this case, &lt;a href="https://www.powershellgallery.com/packages/PowerShellGet/2.2.3">PowerShellGet&lt;/a>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#50fa7b">dsc_psrepository&lt;/span> {&lt;span style="color:#f1fa8c">&amp;#39;Add team shared module folder as a repository&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">dsc_name&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;foo&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,&lt;span style="color:#6272a4">
+&lt;/span>&lt;span style="color:#6272a4"> # This location is nonsense, can be any valid folder on your
+&lt;/span>&lt;span style="color:#6272a4"> # machine or in a share, any location the SourceLocation param
+&lt;/span>&lt;span style="color:#6272a4"> # for the DSC resource will accept.&lt;/span>
+&lt;span style="color:#50fa7b">dsc_sourcelocation&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;C:\Program Files&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_installationpolicy&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#50fa7b">untrusted&lt;/span>,
+}
+&lt;span style="color:#50fa7b">dsc_psrepository&lt;/span> {&lt;span style="color:#f1fa8c">&amp;#39;Trust the PowerShell Gallery&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">dsc_name&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;PSGallery&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_installationpolicy&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#50fa7b">trusted&lt;/span>,
+}
+&lt;span style="color:#50fa7b">dsc_psmodule&lt;/span> {&lt;span style="color:#f1fa8c">&amp;#39;Ensure Ruby is Manageable via uru&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">dsc_name&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;RubyInstaller&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">absent&lt;/span>,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>And, well? It works! It&amp;rsquo;s idempotent! And, much more interestingly from my perspective, it gives you property-by-property reporting for your DSC resources&amp;ndash;it knows what the state of the resource is on your node before it calls the Set method for Invoke-DscResource&amp;hellip;&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-03-30-dsc-announcement/property-rep.png" alt="Puppet run output reading &amp;ldquo;dsc_sourcelocation changed &amp;lsquo;C:\code\temp&amp;rsquo; to &amp;lsquo;C:\Program Files&amp;rsquo;"">&lt;/p>
+&lt;p>So it can actually tell you &lt;em>what changed&lt;/em> during the run and when.
+In other words, DSC resources in this implementation now report &lt;strong>just&lt;/strong> like any other Puppet resource.&lt;/p>
+&lt;p>That&amp;rsquo;s pretty neat!!&lt;/p>
+&lt;p>What else do you get?
+Intellisense and some other awesome magic!
+Thanks to the &lt;a href="https://puppet-vscode.github.io/">VSCode extension&lt;/a> maintained by &lt;a href="https://github.com/jpogran">James Pogran&lt;/a> and &lt;a href="https://github.com/glennsarti">Glenn Sarti&lt;/a>—in this screenshot, the editor is aware of all the parameters you might select, what their type is, and the valid values!&lt;/p>
+&lt;p>![Image displaying intellisense capabilities of the VSCode extension where it is predicting which parameters to use and displaying their help information inline in the editor.](/content-and-tooling-team/assets/2020-03-30-dsc-announcement/intellisense.jfif %})&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Aside:&lt;/strong>
+You &lt;em>are&lt;/em> writing your Puppet code in VSCode with the &lt;a href="https://puppet-vscode.github.io/">Puppet extension&lt;/a> installed, aren&amp;rsquo;t you?
+You&amp;rsquo;re taking advantage of the &lt;a href="https://puppet-vscode.github.io/docs/features/intellisense">intellisense&lt;/a>, &lt;a href="https://puppet-vscode.github.io/docs/features/code-navigation">code navigation&lt;/a>, &lt;a href="https://puppet-vscode.github.io/docs/features/linting">auto linting&lt;/a>, &lt;a href="https://puppet-vscode.github.io/docs/features/debugging-puppet-code">debugging&lt;/a>, and the &lt;a href="https://puppet-vscode.github.io/docs/features/puppet-development-kit">PDK&lt;/a>, &lt;a href="https://puppet-vscode.github.io/docs/features/puppet-bolt">Bolt&lt;/a>, &amp;amp; &lt;a href="https://puppet-vscode.github.io/docs/features/control-repository">Control Repo&lt;/a> integrations&amp;hellip; right??&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="so-it-works-what-next">So It Works. What Next?&lt;/h2>
+&lt;p>We still have some testing and a host of improvements to make (including probably swapping our template engine out, shout out to &lt;a href="https://github.com/FriedrichWeinmann">Fred Weinmann&lt;/a> for the &lt;a href="https://psframework.org/documentation/documents/psmoduledevelopment/templates.html">templating engine&lt;/a> in the &lt;a href="https://github.com/PowershellFrameworkCollective/PSModuleDevelopment">PSModuleDevelopment&lt;/a> module), but the next big step—and likely the last I&amp;rsquo;ll be involved with before my paternity leave hits—is &lt;a href="https://tickets.puppetlabs.com/browse/IAC-648">turning this build script into a PowerShell module and adding testing to it&lt;/a>.
+It &lt;em>works&lt;/em> as a build script, but it can definitely be improved.
+And, okay, a module on the Gallery is great and all&amp;hellip;&lt;/p>
+&lt;p>But the &lt;strong>really cool&lt;/strong> end-user magic will arrive in the &lt;a href="https://tickets.puppetlabs.com/browse/IAC-649">third phase&lt;/a>, where we hope to be able to automatically build and publish Puppet modules that 1:1 wrap PowerShell modules with DSC resources and expose them as Puppet types and providers!&lt;/p>
+&lt;p>We&amp;rsquo;re envisioning a future where not only can you Puppetize any DSC-Resource-having-module you want for yourself, but you can just find all of the modules publicly available on the Gallery already wrapped up and ready for you on the Puppet Forge!&lt;/p>
+&lt;h2 id="caveats-and-warnings">Caveats and Warnings&lt;/h2>
+&lt;p>We&amp;rsquo;re &lt;em>just&lt;/em> wrapping the underlying DSC resources and making them available to you.
+If there&amp;rsquo;s a problem &lt;em>calling&lt;/em> the DSC resources from Puppet, we&amp;rsquo;ll work on it, but if there&amp;rsquo;s a problem with &lt;em>how&lt;/em> those resources behave, that&amp;rsquo;s upstream.&lt;/p>
+&lt;p>Our team is full of lovely humans who do incredible amounts of work (seven people for &lt;a href="https://puppetlabs.github.io/community_management/">&amp;gt;250 PRs/month, ~50 supported modules&lt;/a>, &lt;a href="https://puppetlabs.github.io/iac/tools/">over a dozen open source tools&lt;/a>, contributing to dozens more) but we can&amp;rsquo;t adopt &amp;gt; 300 DSC modules too. 💔&lt;/p>
+&lt;p>We&amp;rsquo;ll also continue to improve the underlying provider and build system, of course, and are excited to get the output modules fully functional for PowerShell 7+ - meaning they&amp;rsquo;ll be cross-platform compatible if the underlying resources are!
+This first prototype is just 5.1 though.&lt;/p>
+&lt;h2 id="wrapping-up-call-to-action">Wrapping Up, Call to Action&lt;/h2>
+&lt;p>So! If you&amp;rsquo;re interested in the work so far, you can &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder">check it out on GitHub&lt;/a>&amp;ndash;
+the &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/pull/1">latest PR&lt;/a> includes functional instructions for testing the new builder or just &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/files/4395886/michaeltlombardi-powershellget-0.1.0.tar.gz">grabbing the test module&lt;/a> and playing with it in your own lab!&lt;/p>
+&lt;p>We wanna tighten the loop and ensure we&amp;rsquo;re solving your problems with this rework because the &lt;em>whole point&lt;/em> is to make your lives easier if you&amp;rsquo;re using Puppet and DSC.
+We&amp;rsquo;re here to help you get your configuration under control and free you up to do all the other hard work you have on your backlog.&lt;/p>
+&lt;p>With that in mind, we would love your feedback, so if this tickles your interest at all, please &lt;a href="mailto:dsc@puppet.com">email us&lt;/a> (&lt;a href="mailto:dsc@puppet.com">dsc@puppet.com&lt;/a>) or comment below and let us know:&lt;/p>
+&lt;ol>
+&lt;li>What are the top three PowerShell modules with DSC resources you&amp;rsquo;d like to see Puppetized?&lt;/li>
+&lt;li>Are you interested in joining our beta test group for this ongoing project?&lt;/li>
+&lt;/ol>
+&lt;p>If you just wanna keep an eye on things, you can follow the repository on GitHub and the &lt;a href="https://tickets.puppetlabs.com/browse/IAC-41">parent epic in JIRA&lt;/a>!&lt;/p>
+&lt;p>Thanks, folx!&lt;/p></description></item><item><title>Blog: How to use agent-side information on the puppetserver</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-18-how-to-use-agent-information-on-puppetserver/</link><pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-18-how-to-use-agent-information-on-puppetserver/</guid><description>
+&lt;p>This question was posted on the &lt;a href="https://slack.puppet.com/">Puppet Community Slack&lt;/a> yesterday:&lt;/p>
+&lt;blockquote>
+&lt;p>Is there any way like the below in puppet code we can use:&lt;/p>
+&lt;pre>&lt;code>$var=‘run command locally on agent, if $?=0 echo “present”, else echo “absent”’
+if $var == present {
+# my code
+} else {
+# something else
+}
+&lt;/code>&lt;/pre>&lt;/blockquote>
+&lt;p>(by user &lt;a href="https://app.slack.com/team/URGFPBS0N">IlovPuppet&lt;/a>, edited for presentation)&lt;/p>
+&lt;p>There are a number of reasons why this question comes up.
+First is likely that folks are not aware of the options available at all.
+Then, sometimes, the common options (like custom facts) just don&amp;rsquo;t cut it for security or performance reasons.
+Last but not least, organisational and technical circumstances can make one option more appealing than others.&lt;/p>
+&lt;p>From my answer there, I wrote up a more detailed exposition here.
+Based on the specifics of your situation,
+there are several different options to solve this,
+described in detail below:&lt;/p>
+&lt;ul>
+&lt;li>make the decision explicit&lt;/li>
+&lt;li>a &lt;code>Deferred&lt;/code> function call&lt;/li>
+&lt;li>using &lt;code>onlyif&lt;/code> or &lt;code>unless&lt;/code> on an &lt;code>exec&lt;/code> resource&lt;/li>
+&lt;li>a custom fact&lt;/li>
+&lt;li>a custom resource&lt;/li>
+&lt;/ul>
+&lt;h2 id="explicit-decisions">Explicit Decisions&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>Puppet shines when we can make our configuration decisions explicit.
+Make the dynamic decision a static configuration and ensure that whatever is producing the different states is also managed by puppet.
+Having a hard look at what the command is trying to decide and whether this couldn&amp;rsquo;t be enforced instead of queried can save complexity.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>A simple example from my past as a technical consultant is a client who wanted to base a configuration decision off whether or not a particular package was installed on a workstation. In this particular case it turned out that installing that additional package was not very expensive (compared to coding up a dynamic solution), so we just rolled out the package to everyone and removed another thing that was different across the fleet.&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>if you can take control of the source of your question.&lt;/li>
+&lt;li>if you can key off another configuration instead of querying active system state.&lt;/li>
+&lt;li>if you can make your general configuration easier by removing a source of variation.&lt;/li>
+&lt;li>if the query code is difficult and/or unreliable.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>the input is truly dynamic.&lt;/li>
+&lt;li>the configuration is outside of your organisational scope (but try talking to the other team first!).&lt;/li>
+&lt;li>the computed value is sensitive and should not be transmitted or stored outside the node.&lt;/li>
+&lt;/ul>
+&lt;h2 id="deferred">&lt;code>Deferred&lt;/code>&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>The &lt;code>Deferred&lt;/code> function computes a value on the agent everytime the catalog is executed and uses the value immediately in the catalog.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppet/vault_lookup">puppet/vault_lookup&lt;/a> module shows how to use &lt;code>Deferred&lt;/code> with its &lt;code>vault_lookup::lookup&lt;/code> function:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#8be9fd;font-style:italic">$d&lt;/span> &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#50fa7b">Deferred&lt;/span>(&lt;span style="color:#f1fa8c">&amp;#39;vault_lookup::lookup&amp;#39;&lt;/span>, [&lt;span style="color:#f1fa8c">&amp;#34;secret/test&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;https://vault.hostname:8200&amp;#39;&lt;/span>])
+&lt;span style="color:#ff79c6">node&lt;/span> &lt;span style="color:#ff79c6">default&lt;/span> {
+&lt;span style="color:#ff79c6">notify&lt;/span> { &lt;span style="color:#50fa7b">example&lt;/span> :
+&lt;span style="color:#50fa7b">message&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$d&lt;/span>
+}
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(from &lt;a href="https://github.com/voxpupuli/puppet-vault_lookup#usage">voxpupuli/puppet-vault_lookup&lt;/a>)&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>for values specific to one or a few agents, for which managing via Hiera would be cumbersome.&lt;/li>
+&lt;li>for sensitive values that should not be exposed outside the individual agent.&lt;/li>
+&lt;li>for setting properties on resources.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>you need to change &lt;strong>which&lt;/strong> resources are managed.&lt;/li>
+&lt;li>you need the value in PE Console for classification or reporting.&lt;/li>
+&lt;li>the computed value depends on resources managed earlier in the catalog.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/write_a_puppet_function_to_store_secrets.html">Write a Puppet function to store secrets&lt;/a>: the original use-case for &lt;code>Deferred&lt;/code>&lt;/li>
+&lt;li>&lt;a href="http://puppet-on-the-edge.blogspot.com/2018/10/the-topic-is-deferred.html">The Topic is Deferred&lt;/a>: blogpost with hints and tricks how to use &lt;code>Deferred&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://binford2k.com/2019/11/12/deferred-functions/">Agent Side Functions in Puppet 6&lt;/a>: technical deep-dive on how &lt;code>Deferred&lt;/code> works&lt;/li>
+&lt;li>&lt;a href="https://www.hashicorp.com/resources/agent-side-lookups-with-hashicorp-vault-puppet-6">HashiCorp Vault 🧡 Puppet6 webinar&lt;/a>: deferred functions in Puppet 6, which unlocks new authentication methods and workflows for HashiCorp Vault + Puppet setups.&lt;/li>
+&lt;/ul>
+&lt;h2 id="exec-resources">&lt;code>exec&lt;/code> resources&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>The &lt;code>exec&lt;/code> resource has attributes to dynamically decide to run the managed command or not.
+By passing a command to &lt;code>onlyif&lt;/code> or &lt;code>unless&lt;/code> the command is executed &lt;em>only if&lt;/em> or &lt;em>unless&lt;/em> the condition successfully executes.
+Use &lt;code>refreshonly&lt;/code> to react to another resource being changed.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppetlabs/mysql">mysql module&lt;/a> has this &lt;code>exec&lt;/code> resource to clean up after installation. This should never run after &lt;code>${secret_file}&lt;/code> has been dealt with.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">exec&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;remove install pass&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">command&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$rm_pass_cmd,&lt;/span>
+&lt;span style="color:#50fa7b">onlyif&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;test -f ${secret_file}&amp;#34;&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin&amp;#39;&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(from &lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/blob/312aca80ba7699ab37f9051d871aac2e05b217b3/manifests/server/root_password.pp#L20-L24">root_password.pp&lt;/a>)&lt;/p>
+&lt;p>&lt;strong>Use it for &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>running one-off commands on a condition.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>an exec is not a good fit for your problem.&lt;/li>
+&lt;li>the condition is very complex or timeconsuming.&lt;/li>
+&lt;li>the condition has to be repeated often.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/types/exec.html">Resource Type: &lt;code>exec&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="custom-facts">Custom Facts&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>Custom facts are distributed to Puppet clients and are available for use in manifests and templates,
+just like any other fact is.
+They can be used to write conditional expressions based on site-specific data that isn’t available via Facter.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The apt module has a few &lt;a href="https://github.com/puppetlabs/puppetlabs-apt#facts">custom facts&lt;/a>. The &lt;code>apt_update_last_success&lt;/code> fact is used in &lt;a href="https://github.com/puppetlabs/puppetlabs-apt/blob/master/manifests/update.pp">update.pp&lt;/a> to decide whether or not it is necessary to update apt caches depending on the various configurations specified.&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>when you need to centrally collect and evaluate the values.&lt;/li>
+&lt;li>when you want to get the value from all your nodes.&lt;/li>
+&lt;li>to change the set of resources and classes included for each node.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>the computed value is sensitive and should not be transmitted or stored outside the node.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/fact_overview.html">Custom facts&lt;/a>: the current puppet documentation&lt;/li>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/custom_facts.html">Custom facts walkthrough&lt;/a>: how to write your own facts&lt;/li>
+&lt;li>&lt;a href="https://glennsarti.github.io/blog/puppet-ruby-facts/">Starting out with Puppet custom facts&lt;/a>: a quick start to converting external facts to ruby custom facts on Windows&lt;/li>
+&lt;/ul>
+&lt;h2 id="custom-resources">Custom Resources&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>With a native ruby plugin you can fully take control of how puppet manages a resource. Through this you get fine-grained control over reporting and enforcing system state through puppet.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppetlabs/mysql">mysql module&lt;/a> contains custom types and providers to control databases, users and grants.&lt;/p>
+&lt;blockquote>
+&lt;p>Note that the mysql module is still using the low-level API. Using the PDK and the Resource API, programming types and providers has become a lot easier as of late. Check out the &amp;ldquo;Further Reading&amp;rdquo; section below.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Use it for &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>things that can be modeled as a puppet resource.&lt;/li>
+&lt;li>fine-grained control.&lt;/li>
+&lt;li>full integration into the puppet tooling.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>you do not want to code ruby.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/custom_resources.html">Custom Resources&lt;/a>: main documentation on writing custom resources.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-resource_api/tree/master/docs">HUE hands on lab&lt;/a>: hands-on lab for a custom remote resource interacting with a API.&lt;/li>
+&lt;/ul>
+&lt;h2 id="final-words">Final Words&lt;/h2>
+&lt;p>To summarize, Puppet provides you with a number of alternatives to make your configuration smarter.
+Thanks to IluvPuppet for the great question, and &lt;a href="https://github.com/hpcprofessional">Paul Anderson&lt;/a> and Paul Reed for reviewing and feedback.&lt;/p></description></item><item><title>Blog: Developing a PowerShell-Dependent Puppet Type &amp; Provider</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-05-powershell-type-and-provider-i/</link><pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-05-powershell-type-and-provider-i/</guid><description>
+&lt;blockquote>
+&lt;p>Part One: Basic Functionality&lt;/p>
+&lt;/blockquote>
+&lt;p>Sometimes when managing resources with Puppet you come across a use case that you might initially solve via a few custom &lt;code>exec&lt;/code> resources&amp;ndash;
+but though this solves your problem in the short run, it doesn&amp;rsquo;t scale well and leaves a lot of problems around managing reporting and idempotency.
+At a certain point, it becomes advisable to write a type and provider&amp;ndash;for more information, check out our &lt;a href="https://learn.puppet.com/course/getting-started-with-the-puppet-resource-api">hands on lab&lt;/a>!&lt;/p>
+&lt;p>For the purposes of this walkthrough, we&amp;rsquo;re going to create a resource API compliant type and provider to manage SMB shares on Windows.
+What we want to be able to do is put something like this into a manifest, thereby creating a share on the machine:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#50fa7b">smb_share&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;basic_example&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;C:\Path\To\A\Share&amp;#39;&lt;/span>,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Before we can dig into the meat of writing the type and provider though, we&amp;rsquo;ve got some standardized setup to do.&lt;/p>
+&lt;blockquote>
+&lt;h4 id="note">Note:&lt;/h4>
+&lt;p>This walkthrough assumes you have the following software installed:&lt;/p>
+&lt;ul>
+&lt;li>The &lt;a href="https://puppet.com/docs/pdk/1.x/pdk_install.html">Puppet Development Kit&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://code.visualstudio.com/download">Visual Studio Code&lt;/a> with the &lt;a href="https://lingua-pupuli.github.io/">Puppet extension&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>It also assumes very limited familiarity with the &lt;a href="https://puppet.com/blog/introducing-puppet-resource-api/">Resource API Walkthrough&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>Open a PowerShell console, perform the rest of these actions from there.&lt;/li>
+&lt;li>&lt;code>pdk new module smb&lt;/code>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): PDK collects anonymous usage information to help us understand how
+it is being used and make decisions on how to improve it. You can
+find out more about what data we collect and how it is used in the
+PDK documentation at
+https://puppet.com/docs/pdk/latest/pdk_install.html.
+[Q 1/1] Do you consent to the collection of anonymous PDK usage information?
+--&amp;gt; Yes
+pdk (INFO): You can opt in or out of the usage data collection at any time by
+editing the analytics configuration file at
+C:\Users\vagrant\AppData\Local/puppet/analytics.yml and changing
+the &amp;#39;disabled&amp;#39; value.
+pdk (INFO): Creating new module: smb
+We need to create the metadata.json file for this module, so we&amp;#39;re going to ask you 4 questions.
+If the question is not applicable to this module, accept the default option shown after each question. You can modify any answers at any time by manually updating the metadata.json file.
+[Q 1/4] If you have a Puppet Forge username, add it here.
+We can use this to upload your module to the Forge when it&amp;#39;s complete.
+--&amp;gt; michaeltlombardi
+[Q 2/4] Who wrote this module?
+This is used to credit the module&amp;#39;s author.
+--&amp;gt; michaeltlombardi
+[Q 3/4] What license does this module code fall under?
+This should be an identifier from https://spdx.org/licenses/. Common values are &amp;#34;Apache-2.0&amp;#34;, &amp;#34;MIT&amp;#34;, or &amp;#34;proprietary&amp;#34;.
+--&amp;gt; Apache-2.0
+[Q 4/4] What operating systems does this module support?
+Use the up and down keys to move between the choices, space to select and enter to continue.
+--&amp;gt; Windows
+Metadata will be generated based on this information, continue? Yes
+pdk (INFO): Module &amp;#39;smb&amp;#39; generated at path &amp;#39;C:/Users/vagrant/smb&amp;#39;, from template &amp;#39;file:///C:/Program Files/Puppet Labs/DevelopmentKit/share/cache/pdk-templates.git&amp;#39;.
+pdk (INFO): In your module directory, add classes with the &amp;#39;pdk new class&amp;#39; command.
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>cd smb ; code .&lt;/code>&lt;/li>
+&lt;li>Update dependencies by editing the following files in VSCode:
+&lt;ul>
+&lt;li>&lt;code>.fixtures.yml&lt;/code>:
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#ff79c6">fixtures&lt;/span>:
+&lt;span style="color:#ff79c6">forge_modules&lt;/span>:
+&lt;span style="color:#ff79c6">pwshlib&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;puppetlabs/pwshlib&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>.sync.yml&lt;/code> (you&amp;rsquo;ll need to create this file):
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#ff79c6">Gemfile&lt;/span>:
+&lt;span style="color:#ff79c6">optional&lt;/span>:
+&lt;span style="color:#ff79c6">&amp;#39;:development&amp;#39;&lt;/span>:
+- &lt;span style="color:#ff79c6">gem&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;ruby-pwsh&amp;#39;&lt;/span>
+- &lt;span style="color:#ff79c6">gem&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;puppet-resource_api&amp;#39;&lt;/span>
+&lt;span style="color:#ff79c6">spec/spec_helper.rb&lt;/span>:
+&lt;span style="color:#ff79c6">mock_with&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;:rspec&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>metadata.json&lt;/code>:
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">&lt;span style="color:#f1fa8c">&amp;#34;dependencies&amp;#34;&lt;/span>: [
+{
+&lt;span style="color:#ff79c6">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;puppetlabs/pwshlib&amp;#34;&lt;/span>,
+&lt;span style="color:#ff79c6">&amp;#34;version_requirement&amp;#34;&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;gt;= 0.4.0 &amp;lt; 2.0.0&amp;#34;&lt;/span>
+}
+],
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>pdk update&lt;/code>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Updating michaeltlombardi-smb using the default template, from blog_tags/1.15.0 to 1.15.0
+----------Files to be modified----------
+Gemfile
+spec/spec_helper.rb
+----------------------------------------
+You can find a report of differences in update_report.txt.
+Do you want to continue and make these changes to your module? Yes
+[*] Installing missing Gemfile dependencies.
+------------Update completed------------
+2 files modified.
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>pdk new provider smb_share&lt;/code>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Creating &amp;#39;C:/Users/vagrant/smb/lib/puppet/provider/smb_share/smb_share.rb&amp;#39; from template.
+pdk (INFO): Creating &amp;#39;C:/Users/vagrant/smb/lib/puppet/type/smb_share.rb&amp;#39; from template.
+pdk (INFO): Creating &amp;#39;C:/Users/vagrant/smb/spec/unit/puppet/provider/smb_share/smb_share_spec.rb&amp;#39; from template.
+pdk (INFO): Creating &amp;#39;C:/Users/vagrant/smb/spec/unit/puppet/type/smb_share_spec.rb&amp;#39; from template.
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>pdk bundle exec rake spec_prep&lt;/code>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+I, [2020-01-17T13:18:26.702383 #1696] INFO -- : Creating symlink from spec/fixtures/modules/smb to C:\Users\vagrant\smb
+Notice: Preparing to install into C:/Users/vagrant/smb/spec/fixtures/modules ...
+Notice: Downloading from https://forgeapi.puppet.com ...
+Notice: Installing -- do not interrupt ...
+C:/Users/vagrant/smb/spec/fixtures/modules
+└── puppetlabs-pwshlib (v0.4.0)
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;p>Now we&amp;rsquo;re ready to really dig into writing our type and provider.&lt;/p>
+&lt;h2 id="defining-the-initial-type">Defining the Initial Type&lt;/h2>
+&lt;p>The type file, &lt;code>lib/puppet/type/smb_share.rb&lt;/code>, requires a little editing.
+We&amp;rsquo;ll be adding some documentation and filling out the different properties of the SMB share we want to manage.&lt;/p>
+&lt;p>Two properties are already provided for us in the &lt;code>attributes&lt;/code> key: &lt;code>ensure&lt;/code> and &lt;code>name&lt;/code>.
+In order to get a minimum viable implementation for our share, we&amp;rsquo;ll need to implement &lt;code>path&lt;/code> as well.
+Add the following hash to the list of attributes in the type file:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#f1fa8c">path&lt;/span>: {
+&lt;span style="color:#f1fa8c">type&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;String&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">desc&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;The path of the SMB share.&amp;#39;&lt;/span>,
+},
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>This property is fairly simple to define - the path to the SMB share will always be a string.
+For now, this is all we need to add to be able to implement the basic provider functionality.&lt;/p>
+&lt;blockquote>
+&lt;h4 id="note-1">Note:&lt;/h4>
+&lt;p>We did not update the rest of the docs here - we will return to the documentation aspect in a future blog post when we expand the properties this type manages.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="writing-the-prototype-provider">Writing the Prototype Provider&lt;/h2>
+&lt;p>The next file we need to look at is the provider, &lt;code>lib/puppet/provider/smb_share.rb&lt;/code>, which is where most of the heavy lifting will happen.&lt;/p>
+&lt;!-- First, at the top of the file _just_ inside the provider class definition (after line 4), we need to confine this provider to only run on Windows machines when the ruby-pwsh library is available:
+```ruby
+class Puppet::Provider::SmbShare::SmbShare &lt; Puppet::ResourceApi::SimpleProvider
+confine :operatingsystem => :windows
+confine :feature => :pwshlib
+``` -->
+&lt;p>First, add a requires statement to the top of the file to ensure we have access to the PowerShell gem:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#8be9fd;font-style:italic">require&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;ruby-pwsh&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Next, inside the provider class definition, we need to add two new methods which make using the PowerShell gem&amp;rsquo;s manager easier:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#6272a4"># Returns a new instance of the PowerShell manager if one does not exist or is dead,&lt;/span>
+&lt;span style="color:#6272a4"># otherwise returns the existing usable instance for performance reasons.&lt;/span>
+&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">ps_manager&lt;/span>
+debug_output &lt;span style="color:#ff79c6">=&lt;/span> Puppet&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">::&lt;/span>Log&lt;span style="color:#ff79c6">.&lt;/span>level &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">:debug&lt;/span>
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Manager&lt;span style="color:#ff79c6">.&lt;/span>instance(Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Manager&lt;span style="color:#ff79c6">.&lt;/span>powershell_path, Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Manager&lt;span style="color:#ff79c6">.&lt;/span>powershell_args, &lt;span style="color:#f1fa8c">debug&lt;/span>: debug_output)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;span style="color:#6272a4"># Wraps executions for the PowerShell Manager to do some basic error raising in Puppet.&lt;/span>
+&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">invoke_command&lt;/span>(command)
+result &lt;span style="color:#ff79c6">=&lt;/span> ps_manager&lt;span style="color:#ff79c6">.&lt;/span>execute(command)
+&lt;span style="color:#ff79c6">raise&lt;/span> result&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:errormessage&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> &lt;span style="color:#ff79c6">unless&lt;/span> result&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:exitcode&lt;/span>&lt;span style="color:#ff79c6">].&lt;/span>zero?
+result
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, we&amp;rsquo;re ready to start implementing some functionality.&lt;/p>
+&lt;h3 id="getting-the-shares">Getting the Shares&lt;/h3>
+&lt;p>The information we need to retrieve about our shares was defined in our type file; right now, we need the name of the share, the path to the share, and whether or not it exists. To find out this information though, we&amp;rsquo;re going to need to do a little PowerShell:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#8be9fd;font-style:italic">Get-SMBShare&lt;/span> -ErrorAction Stop |
+&lt;span style="color:#8be9fd;font-style:italic">Select-Object&lt;/span> -Property Name, Path
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Which in Ruby, using the PowerShell manager, would be:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Get-SMBShare -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;Select-Object -Property Name, Path&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; | &amp;#39;&lt;/span>)
+invoke_command(command)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Here, we declare the commands in a Ruby array and join them with a &lt;code>|&lt;/code>.
+This makes it easier for us to modify the commands we need to run without having to manage a huge string that&amp;rsquo;s hard to read.
+This will return all of the SMB shares on the machine, but there&amp;rsquo;s a couple problems:&lt;/p>
+&lt;ol>
+&lt;li>We need to return JSON for easy translation to usable objects in ruby&lt;/li>
+&lt;li>We need to add a property for Ensure - right now, we&amp;rsquo;re missing that third property.
+We could add it either to the &lt;code>Select-Object statement&lt;/code> (as a name-expression hash with a static expression of &lt;code>'present'&lt;/code>) or to ruby afterwards.
+For the purpose of this example, we&amp;rsquo;ll just add it to the Select-Object statement.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">properties &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Name&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;Path&amp;#39;&lt;/span>,
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>custom_powershell_property(&lt;span style="color:#f1fa8c">&amp;#39;ensure&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;present&amp;#34;&amp;#39;&lt;/span>),
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39;, &amp;#39;&lt;/span>)
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Get-SMBShare -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#34;Select-Object -Property &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>properties&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;ConvertTo-Json&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; | &amp;#39;&lt;/span>)
+result &lt;span style="color:#ff79c6">=&lt;/span> invoke_command(command)
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>symbolize_hash_keys(Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>snake_case_hash_keys(JSON&lt;span style="color:#ff79c6">.&lt;/span>parse(result&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:stdout&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>)))
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Notice we added a new &lt;code>properties&lt;/code> variable, in which we declare the properties we want to return on the SMB share and join them with a comma, which is how they&amp;rsquo;ll need to be passed to &lt;code>Select-Object&lt;/code>.
+This lets us decouple the properties to select from the command itself and will make things more readable as we add more properties to manage.&lt;/p>
+&lt;p>We&amp;rsquo;re also using a helper method (&lt;code>custom_powershell_property&lt;/code>) from the PowerShell gem to create a PowerShell hash representing a custom object property.
+In this case, it will be:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">@{Name = &lt;span style="color:#f1fa8c">&amp;#39;ensure&amp;#39;&lt;/span>; Expression = {&lt;span style="color:#f1fa8c">&amp;#34;present&amp;#34;&lt;/span>}}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>It&amp;rsquo;s important to note that the string passed as the expression is &lt;em>exactly&lt;/em> what will be placed in the expression script block;
+without the internal quotes, PowerShell would try to run a command called &lt;code>present&lt;/code> in the scriptlock and fail.&lt;/p>
+&lt;p>For our command, the major changes are that we interpolate the properties list for Select-Object and ensure we convert our output to JSON before passing it back to Ruby.&lt;/p>
+&lt;p>Finally, we want to capture the output of our command invocation so we can return the results.
+The last line of this command is doing a &lt;em>bunch&lt;/em> of heavy lifting, so let&amp;rsquo;s break it down:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>result[:stdout]&lt;/code> - this is what we returned from our command pipeline - in this case, we told PowerShell to return us the SMB object with the properties we specified as a JSON string.&lt;/li>
+&lt;li>&lt;code>JSON.parse()&lt;/code> - this is the Ruby method for converting from a JSON string to a Ruby hash, loosely analogous to &lt;code>ConvertFrom-Json&lt;/code> in PowerShell.&lt;/li>
+&lt;li>&lt;code>Pwsh::Util.symbolize_hash_keys()&lt;/code> - this is a helper method for converting a Ruby hash&amp;rsquo;s keys from strings &lt;code>&amp;quot;key_name&amp;quot;&lt;/code> to symbols &lt;code>:key_name&lt;/code> which is necessary for returning values in a way that will neatly compare with what our type and provider are expecting.&lt;/li>
+&lt;li>&lt;code>Pwsh::Util.snake_case_hash_keys()&lt;/code> - this is another helper method, this one converting a Ruby hash&amp;rsquo;s keys to a &lt;code>snake_case&lt;/code> from &lt;code>PascalCase&lt;/code>, &lt;code>camelCase&lt;/code>, or &lt;code>kebab-case&lt;/code>.
+As with &lt;code>symbolize_hash_keys()&lt;/code>, this method helps ensure we&amp;rsquo;re returning a hash that our type/provider can neatly compare to.&lt;/li>
+&lt;/ul>
+&lt;p>So, if we put this all together for a ruby method to use in our provider, we&amp;rsquo;ll have:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">get_smb_share&lt;/span> &lt;span style="color:#6272a4"># rubocop:disable Style/AccessorMethodName&lt;/span>
+properties &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Name&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;Path&amp;#39;&lt;/span>,
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>custom_powershell_property(&lt;span style="color:#f1fa8c">&amp;#39;ensure&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;present&amp;#34;&amp;#39;&lt;/span>),
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39;, &amp;#39;&lt;/span>)
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Get-SMBShare -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#34;Select-Object -Property &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>properties&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;ConvertTo-Json&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; | &amp;#39;&lt;/span>)
+result &lt;span style="color:#ff79c6">=&lt;/span> invoke_command(command)
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>symbolize_hash_keys(Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>snake_case_hash_keys(JSON&lt;span style="color:#ff79c6">.&lt;/span>parse(result&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:stdout&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>)))
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>Note: We added a comment to tell rubocop, a tool for enforcing ruby style guidelines, to ignore this method&amp;rsquo;s name.
+In Ruby, methods like &lt;code>get_smb_share&lt;/code> are normally just &lt;code>smb_share&lt;/code> - in this case, it will help PowerShell folx better understand what&amp;rsquo;s happening, so it makes sense to ignore the rule.&lt;/p>
+&lt;/blockquote>
+&lt;p>For now, this is good enough, so we&amp;rsquo;ll update the &lt;code>get&lt;/code> method in our provider to just call &lt;code>get_smb_share&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">get&lt;/span>(context)
+context&lt;span style="color:#ff79c6">.&lt;/span>debug(&lt;span style="color:#f1fa8c">&amp;#39;Returning discovered SMB shares&amp;#39;&lt;/span>)
+get_smb_share
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>We can test that our code is working by running &lt;a href="https://puppet.com/docs/puppet/latest/man/resource.html">puppet resource&lt;/a>.&lt;/p>
+&lt;blockquote>
+&lt;p>Note that we&amp;rsquo;re using the PDK bundle for development purposes;
+We&amp;rsquo;re also specifying the modulepath to a special folder in our repository;
+This was created in the set up stage when you ran &lt;code>pdk bundle exec rake spec_prep&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet resource smb_share --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>That should give you back information that looks like this:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+smb_share { &amp;#39;ADMIN$&amp;#39;:
+path =&amp;gt; &amp;#39;C:\Windows&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;C$&amp;#39;:
+path =&amp;gt; &amp;#39;C:\&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;IPC$&amp;#39;:
+path =&amp;gt; &amp;#39;&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Later, when we start adding to our use case (managing, say, permissions) we will expand on this method.&lt;/p>
+&lt;h3 id="creating-a-share">Creating a Share&lt;/h3>
+&lt;p>Retrieving resources from a machine is useful, but not as useful as creating them, so let&amp;rsquo;s enable that functionality next.&lt;/p>
+&lt;p>We&amp;rsquo;ll create a &lt;code>new_smb_share()&lt;/code> method that passes along the arguments we specified to the &lt;code>New-SmbShare&lt;/code> cmdlet:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">new_smb_share&lt;/span>(arguments)
+arguments&lt;span style="color:#ff79c6">.&lt;/span>reject! { &lt;span style="color:#ff79c6">|&lt;/span>k, _v&lt;span style="color:#ff79c6">|&lt;/span> k&lt;span style="color:#ff79c6">.&lt;/span>to_s &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;Ensure&amp;#39;&lt;/span> }
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#34;$Arguments = &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>format_powershell_value(arguments)&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;New-SmbShare @Arguments -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; ; &amp;#39;&lt;/span>)
+invoke_command(command)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The first thing we do is remove &lt;code>Ensure&lt;/code> from the hash of arguments passed to this method if it exists &amp;ndash; since we&amp;rsquo;re sending that hash to PowerShell for splatting and &lt;code>New-SmbShare&lt;/code> will have &lt;strong>no&lt;/strong> idea what to do with an &lt;code>Ensure&lt;/code> parameter, we need to make sure it gets removed.
+The &lt;code>reject&lt;/code> method used here iterates over the &lt;code>arguments&lt;/code> hash for each key-value pair and filters out any pairs which match the condition; in this case, if the key is &lt;code>Ensure&lt;/code>.
+In PowerShell, this is loosely analogous to doing something like:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#8be9fd;font-style:italic">$Arguments&lt;/span> = &lt;span style="color:#8be9fd;font-style:italic">$Should&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">$Arguments&lt;/span>.Remove(&lt;span style="color:#f1fa8c">&amp;#39;Ensure&amp;#39;&lt;/span>)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>In the command array we can rely on another utility from the PowerShell gem: &lt;code>format_powershell_value&lt;/code> will convert a Ruby object into an appropriate PowerShell representation.
+In this case, arguments is a hash and so will be represented as something like:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">@{KeyName = &lt;span style="color:#f1fa8c">&amp;#39;value&amp;#39;&lt;/span>; NextKey = 1}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>We then rely on the hash table we stored in &lt;code>$Arguments&lt;/code> to enable us to do some &lt;a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_splatting?view=powershell-7">splatting&lt;/a>.
+Finally, we join these commands with a semi-colon&amp;ndash;remember, each invocation against the Manager does &lt;em>not&lt;/em> share state with prior ones!&lt;/p>
+&lt;p>Okay, great, but how do we pass the correct arguments to &lt;code>new_smb_share&lt;/code>?
+We can do that with a little munging in the &lt;code>create&lt;/code> method:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">create&lt;/span>(context, &lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>, should)
+context&lt;span style="color:#ff79c6">.&lt;/span>notice(&lt;span style="color:#f1fa8c">&amp;#34;Creating &amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39; with &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>should&lt;span style="color:#ff79c6">.&lt;/span>inspect&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>)
+arguments &lt;span style="color:#ff79c6">=&lt;/span> Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>pascal_case_hash_keys(should)
+new_smb_share(arguments)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">new_smb_share&lt;/span>(arguments)
+arguments&lt;span style="color:#ff79c6">.&lt;/span>reject! { &lt;span style="color:#ff79c6">|&lt;/span>k, _v&lt;span style="color:#ff79c6">|&lt;/span> k&lt;span style="color:#ff79c6">.&lt;/span>to_s &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;Ensure&amp;#39;&lt;/span> }
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#34;$Arguments = &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>format_powershell_value(arguments)&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;New-SmbShare @Arguments -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; ; &amp;#39;&lt;/span>)
+invoke_command(command)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that the create and update methods both specify the &lt;code>name&lt;/code> and something called &lt;code>should&lt;/code>; these are automatically handled and passed by Puppet during a run.
+The &lt;code>should&lt;/code> variable is a Ruby hash representing the parameters specified for a given resource.
+So if someone defined a manifest, it would include all of the properties and parameters for the specified SMB share included in that resource declaration.&lt;/p>
+&lt;p>The notice will show up in the logs of a run, explaining what share is being created and specifying the parameters.&lt;/p>
+&lt;p>We then pass the arguments hash to a utility function, &lt;code>pascal_case_hash_keys&lt;/code> converts them from the snake_case Ruby prefers to the PascalCase that PowerShell normally prefers;
+though our current parameters are all single words, this will help us in the future should we want to specify something like the concurrent user limit on the SMB share.&lt;/p>
+&lt;p>Once we&amp;rsquo;ve munged our arguments to be what we need we can pass them to our helper function, &lt;code>new_smb_share&lt;/code>.&lt;/p>
+&lt;p>We can test this code by adding a manifest to our examples folder.
+Create a new file, &lt;code>examples/basic.pp&lt;/code>, and paste the following into it:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#8be9fd;font-style:italic">$share_path&lt;/span> &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;C:\\smb_share_folder_example_a&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">file&lt;/span> { &lt;span style="color:#8be9fd;font-style:italic">$share_path:&lt;/span>
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;directory&amp;#39;&lt;/span>
+}
+&lt;span style="color:#50fa7b">smb_share&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;basic_example&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$share_path,&lt;/span>
+&lt;span style="color:#50fa7b">require&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">File&lt;/span>[&lt;span style="color:#8be9fd;font-style:italic">$share_path]&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>Note that we have to ensure that the directory we will use as the path for the SMB share&amp;ndash;if it doesn&amp;rsquo;t exist, the command will fail.&lt;/p>
+&lt;p>Also note that VSCode will present you with a pop up in the bottom right corner asking if you want to add an extension for &lt;code>.pp&lt;/code> files - you &lt;em>absolutely&lt;/em> do want to add the &lt;a href="https://puppet-vscode.github.io/">Puppet Extension for VSCode&lt;/a> if you&amp;rsquo;re not already using it; it includes dozens of helpful features to make writing and maintaining Puppet code easier!&lt;/p>
+&lt;/blockquote>
+&lt;p>And then we&amp;rsquo;ll run a command &lt;em>with administrative privileges&lt;/em> (needed to create the SMB share) to execute this manifest:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet apply ./examples/basic.pp --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Which should produce output like this:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+Notice: Compiled catalog for .mshome.net in environment production in 0.21 seconds
+Notice: /Stage[main]/Main/File[C:\smb_share_folder_example_a]/ensure: created
+Notice: /Stage[main]/Main/Smb_share[basic_example]/ensure: defined &amp;#39;ensure&amp;#39; as &amp;#39;present&amp;#39;
+Notice: smb_share[basic_example]: Creating: Creating &amp;#39;basic_example&amp;#39; with {:name=&amp;gt;&amp;#34;basic_example&amp;#34;, :ensure=&amp;gt;&amp;#34;present&amp;#34;, :path=&amp;gt;&amp;#34;C:\\smb_share_folder_example_a&amp;#34;}
+Notice: smb_share[basic_example]: Creating: Finished in 1.23 seconds
+Notice: Applied catalog in 9.22 seconds
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Awesome! We&amp;rsquo;ve created an SMB share!
+We can even verify this by rerunning the &lt;code>puppet resource&lt;/code> command from earlier:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet resource smb_share --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+smb_share { &amp;#39;ADMIN$&amp;#39;:
+path =&amp;gt; &amp;#39;C:\Windows&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;C$&amp;#39;:
+path =&amp;gt; &amp;#39;C:\&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;IPC$&amp;#39;:
+path =&amp;gt; &amp;#39;&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;basic_example&amp;#39;:
+path =&amp;gt; &amp;#39;C:\smb_share_folder_example_a&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="removing-a-share">Removing a Share&lt;/h3>
+&lt;p>Now, let&amp;rsquo;s figure out how to remove an SMB share.
+Luckily, removing a share in PowerShell is straightforward:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#8be9fd;font-style:italic">Remove-SmbShare&lt;/span> -Name &lt;span style="color:#f1fa8c">&amp;#39;name of the share&amp;#39;&lt;/span> -Force
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>So we can write this in ruby leveraging the PowerShell manager:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">remove_smb_share&lt;/span>(&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>)
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;Remove-SmbShare -Name &amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39; -Force -ErrorAction Stop&amp;#34;&lt;/span>
+invoke_command(command)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>And call it from the &lt;code>delete()&lt;/code> method:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">delete&lt;/span>(context, &lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>)
+context&lt;span style="color:#ff79c6">.&lt;/span>notice(&lt;span style="color:#f1fa8c">&amp;#34;Deleting &amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;&lt;/span>)
+remove_smb_share(&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Let&amp;rsquo;s test our newly updated provider!
+We can use &lt;code>puppet resource&lt;/code> to change the property of a managed resource&amp;ndash;in this case, we want to use &lt;code>ensure=absent&lt;/code> to remove the SMB share.
+Remember, this needs to be run &lt;em>with&lt;/em> administrative privileges.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet resource smb_share basic_example ensure=absent --modulepath ./spec/fixtures/modules
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+Notice: /Smb_share[basic_example]/ensure: undefined &amp;#39;ensure&amp;#39; from &amp;#39;present&amp;#39;
+Notice: smb_share[basic_example]: Deleting: Deleting &amp;#39;basic_example&amp;#39;
+Notice: smb_share[basic_example]: Deleting: Finished in 0.804902 seconds
+smb_share { &amp;#39;basic_example&amp;#39;:
+ensure =&amp;gt; &amp;#39;absent&amp;#39;,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>You should see a notification that the share has been removed.
+Go ahead and rerun the manifest to recreate the share and prepare for our next step:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet apply ./examples/basic.pp --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="updating-a-share">Updating a Share&lt;/h3>
+&lt;p>While there are &lt;em>better&lt;/em> ways to manage updating SMB shares, the &lt;em>easiest&lt;/em> is to delete it and recreate it with the appropriate parameters passed through&amp;ndash;in fact, this is &lt;em>necessary&lt;/em> if you need to change the path of an SMB share.&lt;/p>
+&lt;p>Luckily, we&amp;rsquo;ve already written the methods for creating and deleting the share so all we need to do is fill in the &lt;code>update&lt;/code> method:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">update&lt;/span>(context, &lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>, should)
+context&lt;span style="color:#ff79c6">.&lt;/span>notice(&lt;span style="color:#f1fa8c">&amp;#34;Updating &amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39; with &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>should&lt;span style="color:#ff79c6">.&lt;/span>inspect&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>)
+arguments &lt;span style="color:#ff79c6">=&lt;/span> Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>pascal_case_hash_keys(should)
+remove_smb_share(&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>)
+new_smb_share(arguments)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Let&amp;rsquo;s modify the share path variable to end in &lt;code>b&lt;/code> instead of &lt;code>a&lt;/code>; this will cause Puppet to create a new folder, remove the original SMB share, and create a new one that uses the correct folder.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#8be9fd;font-style:italic">$share_path&lt;/span> &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;C:\\smb_share_folder_example_b&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">file&lt;/span> { &lt;span style="color:#8be9fd;font-style:italic">$share_path:&lt;/span>
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;directory&amp;#39;&lt;/span>
+}
+&lt;span style="color:#50fa7b">smb_share&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;basic_example&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$share_path,&lt;/span>
+&lt;span style="color:#50fa7b">require&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">File&lt;/span>[&lt;span style="color:#8be9fd;font-style:italic">$share_path]&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>And then rerun the manifest:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet apply ./examples/basic.pp --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>You should see a line like this in your Puppet output:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+Notice: Compiled catalog for .mshome.net in environment production in 0.21 seconds
+Notice: /Stage[main]/Main/File[C:\smb_share_folder_example_b]/ensure: created
+Notice: /Stage[main]/Main/Smb_share[basic_example]/path: path changed &amp;#39;C:\smb_share_folder_example_a&amp;#39; to &amp;#39;C:\smb_share_folder_example_b&amp;#39;
+Notice: smb_share[basic_example]: Updating: Updating &amp;#39;basic_example&amp;#39; with {:name=&amp;gt;&amp;#34;basic_example&amp;#34;, :ensure=&amp;gt;&amp;#34;present&amp;#34;, :path=&amp;gt;&amp;#34;C:\\smb_share_folder_example_b&amp;#34;}
+Notice: smb_share[basic_example]: Updating: Finished in 1.67 seconds
+Notice: Applied catalog in 9.23 seconds
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="wrapping-up">Wrapping Up&lt;/h2>
+&lt;p>Hooray! We&amp;rsquo;ve written a functional implementation of a type and provider for an SMB Share using the PowerShell gem and manager!
+Next time, we&amp;rsquo;re going to expand on our start here to make sure we are able to fully manage the properties and access of an SMB share, so stay tuned!&lt;/p></description></item></channel></rss>
