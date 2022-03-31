@@ -34,7 +34,7 @@ PRM is currently in an EXPERIMENTAL phase and feedback is encouraged via [our Di
 By default, PRM collects some telemetry during each run.
 This information is non-identifying and does not include any personal or organizational details.
 
-For more information, see [our documentation on Telemetry]({{< ref "/prm/concepts/telemetry.md" >}}).
+For more information, see [our documentation on Telemetry]({{< ref "/docs/prm/concepts/telemetry.md" >}}).
 
 If you'd like to install PRM _without_ telemetry, you can use these scripts:
 
@@ -77,7 +77,7 @@ prm exec --help # Displays the help for the prm exec command
 {{< /tab >}}
 {{< /tabpane >}}
 
-To read the concept and narrative documentation locally instead of [online]({{< ref "/prm/_index.md" >}}):
+To read the concept and narrative documentation locally instead of [online]({{< ref "/docs/prm/_index.md" >}}):
 
 {{< tabpane langEqualsHeader=false >}}
 {{< tab header="List Available Topics" lang="Bash" >}}
@@ -97,7 +97,7 @@ prm exec --help # Displays the help for the prm exec command
 {{< /tab >}}
 {{< /tabpane >}}
 
-For more detailed information on the `explain` subsystem and documentation, see [our narrative document on it]({{< ref "/prm/usage/explain-subsystem.md" >}}).
+For more detailed information on the `explain` subsystem and documentation, see [our narrative document on it]({{< ref "/docs/prm/usage/explain-subsystem.md" >}}).
 
 ## Run Tools Against Your Content 🏃🏻‍♀️
 
@@ -119,7 +119,7 @@ We've shipped with a subset of tools you can use:
 - rspec-puppet
 
 These tools are currently maintained by the DevX team in the [fantastic-adventure repository](https://github.com/puppetlabs/fantastic-adventure).
-If you'd like to learn more about how they're constructed or how to develop your own, check out our [_Anatomy of a Tool_ guide]({{< ref "/prm/concepts/tool-anatomy" >}}).
+If you'd like to learn more about how they're constructed or how to develop your own, check out our [_Anatomy of a Tool_ guide]({{< ref "/docs/prm/concepts/tool-anatomy" >}}).
 
 Since PRM tools are external to the PRM code base, Puppet Product teams, Partners and the wider OSS Community can publish their own tool packages without input or effort from the DevX team.
 This enables a single tool to support many products.
@@ -127,7 +127,7 @@ This enables a single tool to support many products.
 ### Example: Generate Reference Docs for puppetlabs-acl
 
 {{% alert color="info" %}}
-This example is a shortened version of our [Quick Start Guide]({{< ref "/prm/quick-start.md" >}}), which includes a more detailed walkthrough and includes configuring PRM beyond the defaults.
+This example is a shortened version of our [Quick Start Guide]({{< ref "/docs/prm/quick-start.md" >}}), which includes a more detailed walkthrough and includes configuring PRM beyond the defaults.
 {{% /alert %}}
 
 Before we generate the reference documents for a Puppet module, we might want to ensure that we have full coverage for our module.
