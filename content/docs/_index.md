@@ -2,6 +2,6 @@
 title: Docs
 menu:
   main:
-    weight: 9
+    weight: 2
 github_repo: "" # Disable the edit commands
 ---
