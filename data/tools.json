@@ -1,0 +1,176 @@
+[
+    {
+        "name": "action-litmus_parallel",
+        "owner": "puppetlabs",
+        "description": "This action was designed to allow running acceptance tests for Puppet modules using Litmus.",
+        "category": "Puppet Litmus"
+    },
+    {
+        "name": "action-litmus_spec",
+        "owner": "puppetlabs",
+        "description": "This action was designed to allow running spec tests for Puppet modules.",
+        "category": "Puppet Litmus"
+    },
+    {
+        "name": "community_management",
+        "owner": "puppetlabs",
+        "description": "This set of scripts collates daily reports on our responsibilities as the stewards of supported modules.",
+        "category": "Misc Module tools"
+    },
+    {
+        "name": "dependency_checker",
+        "owner": "puppetlabs",
+        "description": "The dependency-checker tool validates dependencies in metadata.json files in Puppet modules or YAML files containing arrays of Puppet modules against the latest published versions on the Puppet Forge.",
+        "category": "Misc Module tools"
+    },
+    {
+        "name": "dropsonde",
+        "owner": "puppetlabs",
+        "description": "A simple telemetry probe for gathering non-identifiable information about Puppet infrastructures.",
+        "category": "Misc Module tools"
+    },
+    {
+        "name": "facterdb",
+        "owner": "camptocamp",
+        "description": "A Database of OS facts provided by Facter.",
+        "category": "PDK - external dependencies"
+    },
+    {
+        "name": "iac",
+        "owner": "puppetlabs",
+        "description": "Infrastructure Automation Content Team Content.",
+        "category": "Misc Module tools"
+    },
+    {
+        "name": "litmus",
+        "owner": "puppetlabs",
+        "description": "This repository contains the docs mini site for Puppet Litmus.",
+        "category": "Puppet Litmus"
+    },
+    {
+        "name": "puppet_litmus",
+        "owner": "puppetlabs",
+        "description": "Litmus provides a simple command line tool for Puppet content creators, to enable both simple and complex test deployments against specifically configured target systems.",
+        "category": "Puppet Litmus"
+    },
+    {
+        "name": "litmusimage",
+        "owner": "puppetlabs",
+        "description": "This repository creates docker image files, for testing puppet modules with services with Puppet Litmus.",
+        "category": "Puppet Litmus"
+    },
+    {
+        "name": "metadata-json-lint",
+        "owner": "voxpupuli",
+        "description": "Tool to check the validity of Puppet metadata.json files.",
+        "category": "PDK - external dependencies"
+    },
+    {
+        "name": "pdk-docker",
+        "owner": "puppetlabs",
+        "description": "Official Puppet Development Kit (PDK) Docker Image.",
+        "category": "PDK"
+    },
+    {
+        "name": "pdk-planning",
+        "owner": "puppetlabs",
+        "description": "Public planning repository for the PDK project.",
+        "category": "PDK"
+    },
+    {
+        "name": "pdk-templates",
+        "owner": "puppetlabs",
+        "description": "The templates used by the PDK to create new modules and other objects.",
+        "category": "PDK"
+    },
+    {
+        "name": "pdk-vanagon",
+        "owner": "puppetlabs",
+        "description": "This project contains all the code to create native packages of the PDK for all supported platforms.",
+        "category": "PDK"
+    },
+    {
+        "name": "pdk",
+        "owner": "puppetlabs",
+        "description": "Command line tool for generating and testing modules.",
+        "category": "PDK"
+    },
+    {
+        "name": "pdksync",
+        "owner": "puppetlabs",
+        "description": "PDKSync is an efficient way to run a command against the various Puppet module repositories that you manage \u2014 keeping them up-to-date with the changes made to PDK.",
+        "category": "PDK"
+    },
+    {
+        "name": "puppet-approved",
+        "owner": "puppetlabs",
+        "description": "A small script to test for the easy Puppet Approved criteria.",
+        "category": "Misc Module tools"
+    },
+    {
+        "name": "PuppetDscBuilder",
+        "owner": "puppetlabs",
+        "description": "A PowerShell function to wrap DSC resources in puppet providers.",
+        "category": "Misc Module tools"
+    },
+    {
+        "name": "puppet-lint",
+        "owner": "puppetlabs",
+        "description": "Check that your Puppet manifests conform to the style guide.",
+        "category": "PDK - external dependencies"
+    },
+    {
+        "name": "puppet-module-gems",
+        "owner": "puppetlabs",
+        "description": "dependency management gems for all puppet modules.",
+        "category": "PDK"
+    },
+    {
+        "name": "puppet-modulebuilder",
+        "owner": "puppetlabs",
+        "description": "The canonical gem to build puppet modules.",
+        "category": "PDK"
+    },
+    {
+        "name": "puppet-strings",
+        "owner": "puppetlabs",
+        "description": "Puppet Strings generates documentation for Puppet code and extensions written in Puppet and Ruby. Strings processes code and YARD-style code comments to create documentation in HTML, Markdown, or JSON formats.",
+        "category": "PDK"
+    },
+    {
+        "name": "puppet-syntax",
+        "owner": "voxpupuli",
+        "description": "Syntax checks for Puppet manifests and templates.",
+        "category": "PDK - external dependencies"
+    },
+    {
+        "name": "puppetlabs_spec_helper",
+        "owner": "puppetlabs",
+        "description": "A set of shared spec helpers specific to Puppetlabs projects.",
+        "category": "PDK - external dependencies"
+    },
+    {
+        "name": "puppet-resource_api",
+        "owner": "puppetlabs",
+        "description": "This library provides a simple way to write new native resources.",
+        "category": "Resource API"
+    },
+    {
+        "name": "rspec-puppet-facts",
+        "owner": "mcanevet",
+        "description": "Simplify your unit tests by looping on every supported Operating System and populating facts.",
+        "category": "PDK - external dependencies"
+    },
+    {
+        "name": "rspec-puppet",
+        "owner": "puppetlabs",
+        "description": "RSpec tests for your Puppet manifests.",
+        "category": "PDK - external dependencies"
+    },
+    {
+        "name": "ruby-pwsh",
+        "owner": "puppetlabs",
+        "description": "This gem enables you to execute PowerShell from within ruby without having to instantiate and tear down a PowerShell process for each command called.",
+        "category": "Misc Module tools"
+    }
+]
