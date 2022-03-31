@@ -1,7 +1,7 @@
 ---
-title: PRM
+title: Tools
 menu:
   main:
-    weight: 15
+    weight: 10
 github_repo: "" # Disable the edit commands
 ---

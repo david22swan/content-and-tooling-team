@@ -18,7 +18,6 @@ footer {
     text-decoration: none;
     -webkit-transition: color 0.2s;
     
-    
     &:hover {
       background-color: $primary;
       color: $white;
@@ -35,4 +34,12 @@ footer {
 
 .hidden {
     display: none;
+}
+
+.card-deck{
+  margin-top: 10px;
+  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-gap: .5rem;
 }
