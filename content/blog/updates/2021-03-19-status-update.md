@@ -18,7 +18,7 @@ title: '2021-03-19: IAC Team Status Update'
 
 All of the team located in Belfast were off on Wednesday this week for St Patricks day. For everyone it was pretty quiet due to local restrictions in place but nice to get a break in the middle of the week! :-)
 
-![st_patricks_day](/devx/assets/2021-03-19-status-update/stp_day.png){:align="center"}
+![st_patricks_day](/content-and-tooling-team/assets/2021-03-19-status-update/stp_day.png){:align="center"}
 
 ## Community Contributions
 

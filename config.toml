@@ -1,5 +1,5 @@
-baseURL = "https://puppetlabs.github.io/devx/"
-title = "DevX Tools & Modules"
+baseURL = "https://puppetlabs.github.io/content-and-tooling-team/"
+title = "Content and Tooling"
   
 enableRobotsTXT = true
 
@@ -78,7 +78,7 @@ id = "UA-00000000-0"
 
 # [languages]
 # [languages.en]
-# title = "DevX Tooling Docs"
+# title = "Content and Tooling Team"
 # description = "A Docsy example site"
 # languageName ="English"
 # # Weight used for sorting.
@@ -127,9 +127,9 @@ version = "0.0"
 url_latest_version = "https://example.com"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
-github_repo = "https://github.com/puppetlabs/devx"
+github_repo = "https://github.com/puppetlabs/content-and-tooling-team"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
-github_project_repo = "https://github.com/puppetlabs/devx"
+github_project_repo = "https://github.com/puppetlabs/content-and-tooling-team"
 
 # Specify a value here if your content directory is not in your repo's root directory
 # github_subdir = ""
@@ -198,12 +198,12 @@ enable = false
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
 	name = "GitHub"
-	url = "https://github.com/puppetlabs/devx"
+	url = "https://github.com/puppetlabs/content-and-tooling"
 	icon = "fab fa-github"
         desc = "Development takes place here!"
 # [[params.links.developer]]
 #         name = "Project Maintainers"
-#         url = "https://github.com/orgs/devx/people"
+#         url = "https://github.com/orgs/modules/people"
 #         icon = "fa fa-user-friends"
 #         desc = "Project Maintainers"
 

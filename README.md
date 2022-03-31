@@ -1,4 +1,4 @@
-# DevX Tooling Docs Site
+# Content and Tooling Team
 
 ## Requirements
 
@@ -35,4 +35,4 @@ When using the `get` command, if the `cannot find module providing package` mess
 
 The site will be deployed when commits are merged into the main branch of the repo.
 
-Alternatively, the site can be deployed by running the [`github_pages` workflow action](https://github.com/puppetlabs/devx/actions/workflows/gh-pages.yml).
+Alternatively, the site can be deployed by running the [`github_pages` workflow action](https://github.com/puppetlabs/content-and-tooling-team/actions/workflows/gh-pages.yml).

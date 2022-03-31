@@ -114,11 +114,11 @@ While functional, the initial implementation was rather ... drab.
 
 **Before:**
 
-![screenshot of the old report, with lots of black lines and wasteful vertical layout.](/devx/assets/2021-03-12-status-update/actions-report-before.png)
+![screenshot of the old report, with lots of black lines and wasteful vertical layout.](/content-and-tooling-team/assets/2021-03-12-status-update/actions-report-before.png)
 
 **After:**
 
-![screenshot of the new report, with a donut chart of overall success and compact horizontal arrangement.](/devx/assets/2021-03-12-status-update/actions-report-after.png)
+![screenshot of the new report, with a donut chart of overall success and compact horizontal arrangement.](/content-and-tooling-team/assets/2021-03-12-status-update/actions-report-after.png)
 
 ## Other Work
 
