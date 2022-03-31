@@ -5,7 +5,7 @@ categories:
 - status
 date: "2021-10-20T00:00:00Z"
 blog_tags: null
-title: '2021-10-21: A Fond Farewell For Now to Community Day & Norman'
+title: 'A Fond Farewell For Now to Community Day & Norman'
 ---
 
 ## IAC Community Day
