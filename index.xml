@@ -1,4 +1,4 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>DevX Tools &amp; Modules – DevX</title><link>https://puppetlabs.github.io/devx/</link><description>Recent content in DevX on DevX Tools &amp; Modules</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://puppetlabs.github.io/devx/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Puppet Runtime Manager 0.1.0 Release 🚀</title><link>https://puppetlabs.github.io/devx/blog/posts/prm-initial-release/</link><pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/devx/blog/posts/prm-initial-release/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – Content and Tooling</title><link>https://puppetlabs.github.io/content-and-tooling-team/</link><description>Recent content on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Puppet Runtime Manager 0.1.0 Release 🚀</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/prm-initial-release/</link><pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/prm-initial-release/</guid><description>
 &lt;p>We are proud to announce the first release for the new tool for executing arbitrary commands against your code in a Puppet runtime: The &lt;strong>Puppet Runtime Manager (PRM)&lt;/strong>.&lt;/p>
 &lt;p>The &lt;strong>Puppet Runtime Manager&lt;/strong> abstracts away the Puppet Ruby development environment to enable you to execute against and validate content for any Puppet Product that you might author!&lt;/p>
 &lt;h2 id="installing-prm-">Installing PRM 💾&lt;/h2>
@@ -29,7 +29,7 @@ PRM is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a h
 &lt;h3 id="telemetry--prm">Telemetry &amp;amp; PRM&lt;/h3>
 &lt;p>By default, PRM collects some telemetry during each run.
 This information is non-identifying and does not include any personal or organizational details.&lt;/p>
-&lt;p>For more information, see &lt;a href="https://puppetlabs.github.io/devx/prm/concepts/telemetry/">our documentation on Telemetry&lt;/a>.&lt;/p>
+&lt;p>For more information, see &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/prm/concepts/telemetry/">our documentation on Telemetry&lt;/a>.&lt;/p>
 &lt;p>If you&amp;rsquo;d like to install PRM &lt;em>without&lt;/em> telemetry, you can use these scripts:&lt;/p>
 &lt;ul class="nav nav-tabs" id="tabs-3" role="tablist">&lt;li class="nav-item">
 &lt;a class="nav-link active tab-Notel-on-Unix-Systems"
@@ -78,7 +78,7 @@ prm &lt;span style="color:#8be9fd;font-style:italic">help&lt;/span> &lt;span sty
 id="tabs-4-1" role="tabpanel" aria-labelled-by="tabs-4-1-tab">&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Bash" data-lang="Bash">prm --help &lt;span style="color:#6272a4"># Displays the help for PRM itself&lt;/span>
 prm &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> --help &lt;span style="color:#6272a4"># Displays the help for the prm exec command&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>
 &lt;/div>
-&lt;p>To read the concept and narrative documentation locally instead of &lt;a href="https://puppetlabs.github.io/devx/prm/">online&lt;/a>:&lt;/p>
+&lt;p>To read the concept and narrative documentation locally instead of &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/prm/">online&lt;/a>:&lt;/p>
 &lt;ul class="nav nav-tabs" id="tabs-6" role="tablist">&lt;li class="nav-item">
 &lt;a class="nav-link active tab-List-Available-Topics"
 id="tabs-6-0-tab" data-toggle="tab" href="#tabs-6-0" role="tab" onclick="handleClick(&amp;#34;List-Available-Topics&amp;#34;);"
@@ -109,7 +109,7 @@ prm explain --category concept --tag tools &lt;span style="color:#6272a4"># Mult
 id="tabs-6-2" role="tabpanel" aria-labelled-by="tabs-6-2-tab">&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-Bash" data-lang="Bash">prm --help &lt;span style="color:#6272a4"># Displays the help for PRM itself&lt;/span>
 prm &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> --help &lt;span style="color:#6272a4"># Displays the help for the prm exec command&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/div>
 &lt;/div>
-&lt;p>For more detailed information on the &lt;code>explain&lt;/code> subsystem and documentation, see &lt;a href="https://puppetlabs.github.io/devx/prm/usage/explain-subsystem/">our narrative document on it&lt;/a>.&lt;/p>
+&lt;p>For more detailed information on the &lt;code>explain&lt;/code> subsystem and documentation, see &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/prm/usage/explain-subsystem/">our narrative document on it&lt;/a>.&lt;/p>
 &lt;h2 id="run-tools-against-your-content-">Run Tools Against Your Content 🏃🏻‍♀️&lt;/h2>
 &lt;p>&lt;strong>PRM&lt;/strong> can run tools against any type of a Puppet Product project.
 You can run r10k against Puppet &lt;a href="https://github.com/puppetlabs/control-repo">control repos&lt;/a>, validate EPP files in Puppet &lt;a href="https://puppet.com/docs/puppet/7/modules_fundamentals.html">modules&lt;/a>, rubocop Bolt &lt;a href="https://puppet.com/docs/bolt/latest/projects.html">projects&lt;/a>, and more!&lt;/p>
@@ -128,12 +128,12 @@ You can run r10k against Puppet &lt;a href="https://github.com/puppetlabs/contro
 &lt;li>rspec-puppet&lt;/li>
 &lt;/ul>
 &lt;p>These tools are currently maintained by the DevX team in the &lt;a href="https://github.com/puppetlabs/fantastic-adventure">fantastic-adventure repository&lt;/a>.
-If you&amp;rsquo;d like to learn more about how they&amp;rsquo;re constructed or how to develop your own, check out our &lt;a href="https://puppetlabs.github.io/devx/prm/concepts/tool-anatomy/">&lt;em>Anatomy of a Tool&lt;/em> guide&lt;/a>.&lt;/p>
+If you&amp;rsquo;d like to learn more about how they&amp;rsquo;re constructed or how to develop your own, check out our &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/prm/concepts/tool-anatomy/">&lt;em>Anatomy of a Tool&lt;/em> guide&lt;/a>.&lt;/p>
 &lt;p>Since PRM tools are external to the PRM code base, Puppet Product teams, Partners and the wider OSS Community can publish their own tool packages without input or effort from the DevX team.
 This enables a single tool to support many products.&lt;/p>
 &lt;h3 id="example-generate-reference-docs-for-puppetlabs-acl">Example: Generate Reference Docs for puppetlabs-acl&lt;/h3>
 &lt;div class="alert alert-info" role="alert">
-This example is a shortened version of our &lt;a href="https://puppetlabs.github.io/devx/prm/quick-start/">Quick Start Guide&lt;/a>, which includes a more detailed walkthrough and includes configuring PRM beyond the defaults.
+This example is a shortened version of our &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/prm/quick-start/">Quick Start Guide&lt;/a>, which includes a more detailed walkthrough and includes configuring PRM beyond the defaults.
 &lt;/div>
 &lt;p>Before we generate the reference documents for a Puppet module, we might want to ensure that we have full coverage for our module.&lt;/p>
 &lt;p>Assuming we&amp;rsquo;ve already cloned a copy of [https://github.com/puppetlabs/puppetlabs-acl] locally to &lt;code>~/code/modules/puppetlabs-acl&lt;/code>, we can run the following command:&lt;/p>
@@ -199,7 +199,92 @@ We are targeting this release for late March/early April.&lt;/p>
 &lt;p>After that, our &lt;code>0.3.0&lt;/code> release will add local execution as a backend, removing the dependency on Docker so long as you have the Puppet Agent installed locally.&lt;/p>
 &lt;p>In the meantime, we will be improving and adding tools; if you add any yourself, we&amp;rsquo;d love to hear about it and highlight them in future blog posts!&lt;/p>
 &lt;p>Til next time!&lt;/p>
-&lt;p>~ The DevX Team&lt;/p></description></item><item><title>Blog: The future of the Puppet Developer Kit (PDK)</title><link>https://puppetlabs.github.io/devx/blog/posts/future-of-pdk/</link><pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/devx/blog/posts/future-of-pdk/</guid><description>
+&lt;p>~ The DevX Team&lt;/p></description></item><item><title>Blog: A Fond Farewell For Now to Community Day &amp; Norman</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-10-20-fond-farewell/</link><pubDate>Wed, 20 Oct 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-10-20-fond-farewell/</guid><description>
+&lt;h2 id="iac-community-day">IAC Community Day&lt;/h2>
+&lt;h3 id="background">Background&lt;/h3>
+&lt;p>The Infrastructure Automation Content (IAC) team formed from the merger of 4 core content-focused teams (Modules, Windows, Cloud &amp;amp; Containers, and Networking),
+maintaining forty-five open-source supported Puppet modules and over a dozen tools that help reduce the content maintenance and support costs.&lt;/p>
+&lt;p>A crucial part of Puppet’s success has always been the support of the community.
+The IAC team, like with all module teams before, would have had a dedicated engineer or engineers assigned to community triage, usually on a rotational basis.&lt;/p>
+&lt;p>The triage rota consumed 20% of the team&amp;rsquo;s engineering resources. It was challenging due to:&lt;/p>
+&lt;ul>
+&lt;li>Lack of domain knowledge&lt;/li>
+&lt;li>Work spilling over either into or out of triage during rotation&lt;/li>
+&lt;li>Impact to other team members not on rotation&lt;/li>
+&lt;li>Engineers left feeling drained, low self-esteem&lt;/li>
+&lt;li>Engineers dreading rotating onto triage.&lt;/li>
+&lt;/ul>
+&lt;h3 id="community-day-introduced-in-november-2020">Community Day (Introduced in November 2020)&lt;/h3>
+&lt;p>Community day came about as part of reviewing of our triaging commitments and chatting with the team listening to their concerns.&lt;/p>
+&lt;p>As mentioned, 20% of the team’s engineering resourcing and effort was already going into the triage rotation. So we asked ourselves the question:&lt;/p>
+&lt;blockquote>
+&lt;p>What if we focused this 20% effort and had the whole team take part in a full day community triage?&lt;/p>
+&lt;/blockquote>
+&lt;p>Benefits:&lt;/p>
+&lt;ul>
+&lt;li>Upskilling&lt;/li>
+&lt;li>Teamwork&lt;/li>
+&lt;li>Reduced distractions&lt;/li>
+&lt;li>Greater community focus&lt;/li>
+&lt;li>Starting the week off with a win&lt;/li>
+&lt;li>Productivity within the team increased (hard to believe even for us, at first)&lt;/li>
+&lt;/ul>
+&lt;p>Not only have we been able to address the backlog of community requests across forty-five supported open source modules (plus over a dozen tooling repos), the team have been able to focus on feature delivery.&lt;/p>
+&lt;p>Since switching to the new community day, over the last eleven months, the team have:&lt;/p>
+&lt;ul>
+&lt;li>Handled† 1536 issues&lt;/li>
+&lt;li>Performed 205 module releases&lt;/li>
+&lt;li>Released 30 tooling updates&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>† Handled meaning a team member has either:&lt;/p>
+&lt;ul>
+&lt;li>Closed a PR or Jira&lt;/li>
+&lt;li>Merged community a PR&lt;/li>
+&lt;li>or provided feedback on a community PR&lt;/li>
+&lt;/ul>
+&lt;/blockquote>
+&lt;p>By committing to community day and limiting distractions to 1 day, the team have also delivered:&lt;/p>
+&lt;ol>
+&lt;li>A new Cloud CI
+&lt;ol>
+&lt;li>With multi-node testing support&lt;/li>
+&lt;li>New automated workflow&lt;/li>
+&lt;li>Internal developer environment support&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Cisco Network device enhancement&lt;/li>
+&lt;li>New DSC builder generating &amp;gt;300 DSC PowerShell modules uploaded on the forge&lt;/li>
+&lt;li>3 OS certifications&lt;/li>
+&lt;li>Certified all the supported modules again Puppet 7, including:
+&lt;ol>
+&lt;li>Raising and testing fixes for numerous issues in Puppet 7 nightly agent builds prior to release&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;li>Rolled out the Trusted Contributor program&lt;/li>
+&lt;li>Improved our community communication with a weekly blog post, enhancing our community reporting&lt;/li>
+&lt;/ol>
+&lt;p>All in all, the IAC community day has not only enabled the team to reconnect with the community, address the content backlog, and upskill across the team;
+it has also improved team productivity by reducing distraction and increasing team morale.
+Mondays are, at the best of times, a tough day.
+Starting a week off with a win? Priceless.&lt;/p>
+&lt;p>Sadly, Community Day is coming to an end.
+Due to a significant reduction in resourcing, it is no longer possible to provide the technical support needed to run a dedicated community support day.&lt;/p>
+&lt;p>The content maintained by the IAC team is still of high importance to Puppet.
+Puppet would like to encourage our community to reach out via our public slack channels for assistance.
+Our PM team will help prioritize issues raised.&lt;/p>
+&lt;h2 id="farewell-norman-">Farewell, Norman 💜&lt;/h2>
+&lt;p>This week we have to say farewell to Norman, the Engineering Manager of the IAC and DevX Teams.
+This is a particularly sad goodbye as many of us, past and present, consider Norman one of the best leaders we have had the privilege of working with.&lt;/p>
+&lt;p>In just under three years, Norman led us to some fantastic achievements and kept us motivated and moving forward through turbulent times.
+Norman has shown unparalleled dedication to his team’s wellbeing, motivation, and personal development whilst still acting as a clarifying arbiter between the high-level vision and plans of the organisation.
+It was a tough balancing act that he seemed to be able to do, with his usual 110% dedication he never falters from.&lt;/p>
+&lt;p>Norman motivated and enabled us to become far better engineers and people than we were prior to being taken under his wing.
+The remit of the IAC team is a tough one, and one that can often be underappreciated, but Norman always fought our corner and sung our praises to anyone who stood still long enough to listen.
+Norman was great at suggesting and soliciting us to suggest new processes / ideas (Community Day being a prime example), that would make us more efficient and motivated, as a team.
+We benefited from his wealth of knowledge, experience (both technical and managerial) and genuine care for his colleagues and team.&lt;/p>
+&lt;p>We’d like to thank Norman for his hard work and support over these nearly three years.
+The IAC and DevX teams owe him a huge gratitude and we’ll miss him, as we bid farewell and good luck in your next venture!&lt;/p></description></item><item><title>Blog: The future of the Puppet Developer Kit (PDK)</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/future-of-pdk/</link><pubDate>Tue, 14 Sep 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/future-of-pdk/</guid><description>
 &lt;p>The Puppet Developer Kit was launched in 2017 to help our users develop high quality modules faster and over the years, it has seen regular development towards that goal.&lt;/p>
 &lt;p>It was designed to be a single install that would provide everything you needed to write, lint, test and publish a Puppet module — and for the most part, that&amp;rsquo;s what it did.&lt;/p>
 &lt;h2 id="what-worked">What worked&lt;/h2>
