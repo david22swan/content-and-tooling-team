@@ -43,3 +43,11 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: .5rem;
 }
+
+.link-secondary {
+    color: $secondary;
+}
+
+.link-secondary:hover {
+    color: $scondary-dark;
+}
