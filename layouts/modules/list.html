@@ -1,0 +1,20 @@
+{{ define "main" }}
+<a class="td-offset-anchor"></a>
+<section class="row td-box td-box--1 position-relative td-box--gradient td-box--height-auto">
+	<div class="container text-center td-arrow-down">
+		<span class="h4 mb-0">
+			<h1>Modules</h1>
+		</span>
+		The modules developed and maintained by us.<br>
+		For commercial support policies, check out the <a href="https://forge.puppet.com/supported" class="link-secondary">Puppet Supported Modules</a> page on the forge.
+	</div>
+</section>
+
+<div class="td-content">
+	<div class="card-deck p-0 center mt-5 mb-5 container-md mx-auto">
+		{{ range .Site.Data.modules }}
+			{{ partial "module_card.html" . }}
+		{{ end }}
+	</div>
+</div>
+{{ end }}

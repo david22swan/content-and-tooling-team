@@ -198,7 +198,7 @@ enable = false
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
 	name = "GitHub"
-	url = "https://github.com/puppetlabs/content-and-tooling"
+	url = "https://github.com/puppetlabs"
 	icon = "fab fa-github"
         desc = "Development takes place here!"
 # [[params.links.developer]]
@@ -215,7 +215,7 @@ enable = false
   path = 'github.com/puppetlabs/pdkgo/docs/md'
   [[module.imports.mounts]]
     source = 'content'
-    target = 'content/pct/'
+    target = 'content/docs/pct/'
     
 
 [[module.imports]]
@@ -224,4 +224,4 @@ enable = false
   path = 'github.com/puppetlabs/prm/docs/md'  # Change to correct Git URI
   [[module.imports.mounts]]
     source = 'content'
-    target = 'content/prm/'
+    target = 'content/docs/prm/'
