@@ -10,7 +10,7 @@ blog_tags:
 - tips-and-tricks
 - videos
 title: Puppetize Digital 2020 - Content Selection
-draft: true
+draft: false
 ---
 
 Last week saw [Puppetize Digital 2020](https://digital.puppetize.com/), our annual conference on all things Puppet.

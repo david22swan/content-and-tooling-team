@@ -9,7 +9,7 @@ blog_tags:
 - modules
 - gems
 title: Gem Testing with pdksync
-draft: true
+draft: false
 ---
 
 ## Introduction
