@@ -1,3 +1,4 @@
+{{ $forgeName := index (last 1 (split .name "-" ) ) 0}}
 <div class="card text-center">
   <div class="card-header">
     <div class="d-flex justify-content-center">
@@ -11,7 +12,7 @@
     <a class="btn btn-m btn-primary mr-3 mb-4" href="https://github.com/{{ .owner }}/{{ .name }}">
       <span style="font-size: medium;">GitHub</span><i class="fas fa-code ml-2"></i>
     </a>
-    <a class="btn btn-m btn-secondary mr-3 mb-4" href="https://forge.puppet.com/modules/{{ .owner }}/{{ .name }}">
+    <a class="btn btn-m btn-secondary mr-3 mb-4" href="https://forge.puppet.com/modules/{{ .owner }}/{{ $forgeName }}">
       <span style="font-size: medium;">Forge</span><i class="fas fa-download ml-2 "></i>
     </a>
   </container>
