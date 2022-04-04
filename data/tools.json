@@ -12,6 +12,18 @@
         "category": "Puppet Litmus"
     },
     {
+        "name": "device_manager",
+        "owner": "puppetlabs",
+        "description": "Manage devices used by 'puppet device' on puppet agents.",
+        "category": "Networking"
+    },
+    {
+        "name": "provision",
+        "owner": "puppetlabs",
+        "description": "Provisions and tears down containers / vms / machines through tasks.",
+        "category": "Other"
+    },
+    {
         "name": "community_management",
         "owner": "puppetlabs",
         "description": "This set of scripts collates daily reports on our responsibilities as the stewards of supported modules.",

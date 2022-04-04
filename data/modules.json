@@ -6,18 +6,6 @@
         "category": "Networking"
     },
     {
-        "name": "device_manager",
-        "owner": "puppetlabs",
-        "description": "Manage devices used by 'puppet device' on puppet agents.",
-        "category": "Networking"
-    },
-    {
-        "name": "provision",
-        "owner": "puppetlabs",
-        "description": "Provisions and tears down containers / vms / machines through tasks.",
-        "category": "Other"
-    },
-    {
         "name": "puppetlabs-accounts",
         "owner": "puppetlabs",
         "description": "Account management module.",
