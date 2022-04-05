@@ -9,7 +9,7 @@ blog_tags:
 - docker
 - personal
 title: Docker params change detection
-draft: true
+draft: false
 ---
 
 ## Docker params change detection

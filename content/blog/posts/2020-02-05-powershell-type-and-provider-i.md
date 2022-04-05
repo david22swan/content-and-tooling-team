@@ -11,7 +11,7 @@ blog_tags:
 - Windows
 - types and providers
 title: Developing a PowerShell-Dependent Puppet Type & Provider
-draft: true
+draft: false
 ---
 
 > Part One: Basic Functionality

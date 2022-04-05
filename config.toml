@@ -97,9 +97,14 @@ id = "UA-00000000-0"
 
 # Everything below this are Site Params
 
+[outputFormats]
+[outputFormats.jsonlist]
+baseName = 'list'
+mediaType = 'application/json'
+
 # Comment out if you don't want the "print entire section" link enabled.
 [outputs]
-section = ["HTML"] #"print"
+section = ["HTML", "jsonlist"] #"print"
 
 [params]
 copyright = "Puppet"
@@ -161,7 +166,9 @@ navbar_logo = true
 # Set to true if you don't want the top navbar to be translucent when over a `block/cover`, like on the homepage.
 navbar_translucent_over_cover_disable = false
 # Enable to show the side bar menu in its compact state.
-sidebar_menu_compact = false
+sidebar_menu_compact = true
+# Show expand/collapse icon for sidebar sections
+sidebar_menu_foldable = true
 # Set to true to hide the sidebar search box (the top nav search box will still be displayed if search is enabled)
 sidebar_search_disable = false
 # Toggle if versions dropdown menu is shown
@@ -194,7 +201,12 @@ enable = false
 	name = "Slack"
 	url = "https://puppetcommunity.slack.com/"
 	icon = "fab fa-slack"
-        desc = "Chat with other project developers"
+        desc = "Chat with us!"
+[[params.links.user]]
+	name = "Dev.to"
+	url = "https://dev.to/puppet"
+	icon = "fa fa-blog"
+        desc = "See what others are saying."
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
 	name = "GitHub"

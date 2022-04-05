@@ -13,7 +13,7 @@ blog_tags:
 - forge
 - powershell gallery
 title: Converting to use Puppetized DSC Modules
-draft: true
+draft: false
 ---
 
 ## What's new with DSC and Puppet?

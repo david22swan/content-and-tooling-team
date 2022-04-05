@@ -9,7 +9,7 @@ blog_tags:
 - tooling
 - personal
 title: Introduction to the IAC Team
-draft: true
+draft: false
 ---
 
 ## Workflow of the Puppet IAC Team
