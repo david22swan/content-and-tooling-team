@@ -1,0 +1,137 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – modules</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/modules/</link><description>Recent content in modules on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/modules/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Converting to use Puppetized DSC Modules</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-26-converting-puppetized-dsc-modules/</link><pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-26-converting-puppetized-dsc-modules/</guid><description>
+&lt;h2 id="whats-new-with-dsc-and-puppet">What&amp;rsquo;s new with DSC and Puppet?&lt;/h2>
+&lt;p>To check out our reasons on why we think converting your module is a good idea, check out these blog posts written by &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/03/30/dsc-announcement.html">DSC accouncement post&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/09/21/dsc-release.html">DSC release post&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>The blog posts cover information including:&lt;/p>
+&lt;ul>
+&lt;li>Why we are doing this&lt;/li>
+&lt;li>Details about the builder&lt;/li>
+&lt;li>How to Pupperize your Powershell module&lt;/li>
+&lt;li>How to use your Puppetized module&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Seriously though what is there to not love?&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Minimal module maintainence costs&lt;/li>
+&lt;li>Automated module building&lt;/li>
+&lt;li>Property by property reporting&lt;/li>
+&lt;li>VSCode Extension with intellisense&lt;/li>
+&lt;li>We have 68 modules on the Forge in the &lt;a href="https://forge.puppet.com/dsc">DSC namespace&lt;/a>&lt;/li>
+&lt;li>Converting is relatively straight forward&lt;/li>
+&lt;/ul>
+&lt;h2 id="so-how-can-i-do-this">So how can I do this?&lt;/h2>
+&lt;p>&lt;em>Old method:&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#50fa7b">mod&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;puppetlabs-dsc&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;1.9.4&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>New method:&lt;/em>&lt;/p>
+&lt;p>Add entries for &lt;code>puppetlabs-pwshlib&lt;/code> and the &lt;code>dsc-*&lt;/code> modules whose resources you want to use to your puppetfile.
+The entries on the list below are the &lt;em>closest&lt;/em> match for the resources found in the old &lt;code>puppetlabs-dsc&lt;/code> module; while we specified versions here, remember: there have been releases to the DSC modules since the &lt;code>puppetlabs-dsc&lt;/code> last had its resources updated, so there are newer versions you may want to take advantage of (just be sure to test thoroughly when upgrading)!&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Note:&lt;/strong> You want to &lt;em>very specifically&lt;/em> only add the necessary &lt;code>dsc-*&lt;/code> module pins to your puppetfile; if you&amp;rsquo;re not using any of the resources contained in a module, there&amp;rsquo;s no need to specify it and take on the overhead of shipping the code around.&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'puppetlabs-pwshlib', '0.7.1'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-activedirectorycsdsc', '3.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-auditpolicydsc', '1.4.0-0-1'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-certificatedsc', '4.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-computermanagementdsc', '6.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-dfsdsc', '4.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-networkingdsc', '7.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-officeonlineserverdsc', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-securitypolicydsc', '2.7.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-sharepointdsc', '3.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-sqlserverdsc', '12.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-storagedsc', '4.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-systemlocaledsc', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xactivedirectory', '2.24.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xazure', '0.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xazurepack', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xbitlocker', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xcredssp', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdatabase', '1.9.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdefender', '0.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdhcpserver', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdisk', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdismfeature', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdnsserver', '1.11.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xexchange', '1.27.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xfailovercluster', '1.12.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'ddsc-xhyper_v', '3.16.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xinternetexplorerhomepage', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xjea', '0.2.16-6-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xmysql', '2.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpendingreboot', '0.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xphp', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpowershellexecutionpolicy', '3.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpsdesiredstateconfiguration', '8.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xremotedesktopadmin', '1.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xremotedesktopsessionhost', '1.8.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xrobocopy', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscdpm', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscom', '1.3.3-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscsma', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscspf', '1.3.1-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscsr', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscvmm', '1.2.4-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xsmbshare', '2.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xsqlps', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xtimezone', '1.8.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwebadministration', '2.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwebdeploy', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowseventforwarding', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowsrestore', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowsupdate', '2.7.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwineventlog', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwordpress', '1.1.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Note that the versions for the &lt;code>dsc-*&lt;/code> modules are all 5-digits long.
+The first four digits are a match for the puppetized PowerShell module&amp;rsquo;s own version - so &lt;code>1.4.0-0-0&lt;/code> represents a PowerShell module at version &lt;code>1.4.0.0&lt;/code> on the PowerShell Gallery.
+The fifth digit is the &lt;em>Puppetized Build Increment&lt;/em> for that version; that goes up whenever we rebuild the module to fix a bug or add a feature to the Puppet interface to the DSC Resource.
+In general, you&amp;rsquo;ll &lt;em>almost always&lt;/em> want the latest build of a module.
+So even though we specify Puppet Build Increments of &lt;code>0&lt;/code> in the list above, make sure to choose the latest build for the PowerShell module version you want to use.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="a-few-caveats">A few caveats&lt;/h2>
+&lt;p>The following modules cannot be automatically puppetized at the same version because they referenced commit SHAs instead of versions discoverable on the &lt;a href="https://www.powershellgallery.com">gallery;&lt;/a>
+instead, we recommend using the next released stable version after those SHA&amp;rsquo;s, as listed below:&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong> These are close but not precise replacements:&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'dsc-fsrmdsc', '2.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-iscsidsc', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-wsmandsc', '2.4.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Here are links to the specific commit SHAs that have been referenced:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/FSRMDsc/commit/8945f610fa9a6f7f920260abf4e50d91db25bac0">FSRMDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/iSCSIDsc/commit/2208ad24a0cc0a85ce19fb377e72fbc21d366587">iSCSIDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/wsmandsc/commit/1aa6400e7ffa1932505bf9904a7ce9e147af9c45">WSManDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong> puppetized as &lt;code>dsc/wminamespacesecurity&lt;/code> due to the name of the module changing when pushed to the &lt;a href="https://www.powershellgallery.com">PowerShell Gallery&lt;/a> vs the old code repository.&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'dsc-wminamespacesecuritydsc', '0.3.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Again here is a link to the specific commit SHA that has been referenced:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/PowerShell/WmiNamespaceSecurityDsc/commit/d49daa4c18f12aabf32fd60631d927c6d276a453">WmiNamespaceSecurityDsc&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="guidance-on-troubleshooting">Guidance on troubleshooting&lt;/h2>
+&lt;p>Coincidentally, &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a> has just published a blog post on how to troubleshoot for DSC.&lt;/p>
+&lt;p>Check it out on our &lt;a href="https://puppetlabs.github.io/iac/">blog page&lt;/a>!&lt;/p>
+&lt;h2 id="some-things-come-for-free">Some things come for free!&lt;/h2>
+&lt;p>We suggest using the Puppet VSCode extension as it comes built in with an auto-completer. This will help you keep your pins up to date with the puppetfile resolver.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-26-converting-dsc-modules/puppetfile-resolver.gif" alt="Showing validation errors in your Puppetfile">&lt;/p>
+&lt;h2 id="what-else-is-coming">What else is coming&lt;/h2>
+&lt;p>As part of our next phase we plan to flesh out and update our testing infrastructure for this module on our road to the &lt;code>1.0.0&lt;/code> release of &lt;code>Puppet.Dsc&lt;/code>.
+In the pipeline, we still plan on getting nightly builds into place to ensure that there is never more than a 24 hour lag between published Powershell modules with DSC Resources and our Puppetized modules on the Forge.&lt;/p>
+&lt;p>As always if you have any questions don&amp;rsquo;t hesistate to reach out to us via &lt;a href="https://slack.puppet.com/">Slack&lt;/a> or &lt;a href="mailto:dsc@puppet.com">emailing&lt;/a> and we will be as accomodating as we can be!&lt;/p></description></item></channel></rss>

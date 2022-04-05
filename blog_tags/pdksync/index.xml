@@ -1,0 +1,155 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – pdksync</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/pdksync/</link><description>Recent content in pdksync on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 16 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/pdksync/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-08-16: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-08-16-status-update/</link><pubDate>Mon, 16 Aug 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-08-16-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/388">&lt;code>puppetlabs-accounts#388&lt;/code>&lt;/a>: &amp;ldquo;MODULES-11100 - Add sk-ecdsa public key support, and implement tests for sk-ecdsa and ecdsa keys&amp;rdquo;, thanks to &lt;a href="https://github.com/vollmerk">vollmerk&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/530">&lt;code>puppetlabs-kubernetes#530&lt;/code>&lt;/a>: &amp;ldquo;Enable live-restore for Docker daemon.&amp;rdquo;, thanks to &lt;a href="https://github.com/peteroruba">peteroruba&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1427">&lt;code>puppetlabs-mysql#1427&lt;/code>&lt;/a>: &amp;ldquo;MODULES-8373 Fix mysql_grant resource to be idempodent on MySQL 8+&amp;rdquo;, thanks to &lt;a href="https://github.com/theq86">theq86&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1291">&lt;code>puppetlabs-postgresql#1291&lt;/code>&lt;/a>: &amp;ldquo;[IAC-1735] Fix test suite&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/smortex">smortex&lt;/a>, &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1196">&lt;code>puppetlabs-stdlib#1196&lt;/code>&lt;/a>: &amp;ldquo;Flip installed and present in Function ensure_packages&amp;rdquo;, thanks to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>, &lt;a href="https://github.com/ekohl">ekohl&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/443">&lt;code>pdk-templates#443&lt;/code>&lt;/a>: &amp;ldquo;Only auto release if the changelog is updated&amp;rdquo;, thanks to &lt;a href="https://github.com/jarretlavallee">jarretlavallee&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/metadata-json-lint/pull/118">&lt;code>metadata-json-lint#118&lt;/code>&lt;/a>: &amp;ldquo;release 3.0.1&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ekohl">ekohl&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-java">&lt;code>puppetlabs-java&lt;/code>&lt;/a> (&lt;code>7.1.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">&lt;code>puppetlabs-accounts&lt;/code>&lt;/a> (&lt;code>7.1.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-package">&lt;code>puppetlabs-package&lt;/code>&lt;/a> (&lt;code>2.1.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/pdksync">&lt;code>pdksync&lt;/code>&lt;/a> (&lt;code>0.6.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="debian-11-support">Debian 11 Support&lt;/h2>
+&lt;p>We are currently adding support for Debian 11 across our modules and will release them over the next few weeks.&lt;/p>
+&lt;!-- check https://tickets.puppetlabs.com/secure/RapidBoard.jspa?rapidView=1176&amp;quickFilter=8745 for other tickets closed out this week that should be mentioned here --></description></item><item><title>Blog: 2021-02-19: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-02-19-status-update/</link><pubDate>Fri, 19 Feb 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-02-19-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2122">&lt;code>puppetlabs-apache#2122&lt;/code>&lt;/a>: &amp;ldquo;(IAC-1186) Add $use_port_for_filenames parameter&amp;rdquo;, thanks to &lt;a href="https://github.com/smortex">&lt;code>smortex&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2121">&lt;code>puppetlabs-apache#2121&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-10899) Handle PHP8 MOD package naming convention changes, thanks to &lt;a href="https://github.com/cdamage">&lt;code>cdamage&lt;/code>&lt;/a> for the original fix, &lt;a href="https://github.com/beatchristen">&lt;code>beatchristen&lt;/code>&lt;/a> for some enhancements for Debian 10 and &lt;a href="https://github.com/gguillotte">&lt;code>gguillotte&lt;/code>&lt;/a> for reviewing.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2120">&lt;code>puppetlabs-apache#2120&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Use shared examples for facts + other spec cleanups&amp;rdquo;, thanks to [&lt;code>ekohl&lt;/code>][ekohl]&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/461">&lt;code>puppetlabs-java#461&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-10935) - Switch legacy operatingsystem fact to modern kernel one&amp;rdquo;, thanks to [&lt;code>rjd1&lt;/code>][rjd1]&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/473">&lt;code>puppetlabs-kubernetes#473&lt;/code>&lt;/a>: &amp;ldquo;Fix calico CNI support&amp;rdquo;, thanks to &lt;a href="https://github.com/djschaap">&lt;code>djschaap&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1363">&lt;code>puppetlabs-mysql#1363&lt;/code>&lt;/a>: &amp;ldquo;Support compression command and extension&amp;rdquo;, thanks to [&lt;code>dploeger&lt;/code>][dploeger]&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/941">&lt;code>pdk#941&lt;/code>&lt;/a>: &amp;ldquo;Allow Facter4 to be co-installed with PDK&amp;rdquo;, thanks to &lt;a href="https://github.com/GabrielNagy">&lt;code>GabrielNagy&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/927">&lt;code>pdk#927&lt;/code>&lt;/a>: &amp;ldquo;Adds AIX support when creating a new module&amp;rdquo;, thanks to &lt;a href="https://github.com/logicminds">&lt;code>logicminds&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/400">&lt;code>pdk-templates#400&lt;/code>&lt;/a>: &amp;ldquo;gitlab-ci: unbreak litmus acceptance tests&amp;rdquo;, thanks to &lt;a href="https://github.com/cdenneen">&lt;code>cdenneen&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/399">&lt;code>pdk-templates#399&lt;/code>&lt;/a>: &amp;ldquo;gitlab-ci: make litmus[variables] optional&amp;rdquo;, thanks to &lt;a href="https://github.com/cdenneen">&lt;code>cdenneen&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>&lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10899">&lt;code>MODULES-10899&lt;/code>&lt;/a>: Thanks to &lt;a href="https://github.com/cdamage">&lt;code>cdamage&lt;/code>&lt;/a> for liaising with the original reporter of this issue and getting a PR with a fix ready so promptly.
+We&amp;rsquo;d also like to thank &lt;a href="https://github.com/beatchristen">&lt;code>beatchristen&lt;/code>&lt;/a> for additional contributions for this PR to allow PHP 8 packages to be installed on Debian 10 when using the experimental repositories.
+Finally, thanks to &lt;a href="https://github.com/gguillotte">&lt;code>gguillotte&lt;/code>&lt;/a> for reviewing and helping to get it over the line.&lt;/p>
+&lt;p>The IAC team would like to thank &lt;a href="https://github.com/mcka1n">Edwin Maldonado&lt;/a> from Puppets Solution Architect team, for joining our Community day this week. It was great having Edwin sit in and help out.&lt;/p>
+&lt;p>Edwin&amp;rsquo;s first contribution during Community Day to &lt;a href="https://github.com/voxpupuli/hiera-eyaml/pull/313">hiera-eyaml&lt;/a> has already been released.&lt;/p>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module-releases">New Module Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt">&lt;code>puppetlabs-apt&lt;/code>&lt;/a> (&lt;code>7.7.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">&lt;code>puppetlabs-apache&lt;/code>&lt;/a> (&lt;code>5.10.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="http://github.com/puppetlabs/puppetlabs-mysql">&lt;code>puppetlabs-mysql&lt;/code>&lt;/a> (&lt;code>10.10.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tagmail/">&lt;code>puppetlabs-tagmail&lt;/code>&lt;/a> (&lt;code>3.5.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-wsus_client">&lt;code>puppetlabs-wsus_client&lt;/code>&lt;/a> (&lt;code>3.2.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;p>During the release process for the &lt;a href="https://github.com/puppetlabs/puppetlabs-wsus_client">puppetlabs-wsus_client&lt;/a> &lt;a href="https://github.com/Disha-maker">Disha&lt;/a> discovered that tests were failing on AppVeyor due to a legacy parameter error which adapted Pester 5 to Pester 4 syntax. Thanks to &lt;a href="https://github.com/pmcmaw">Paula&lt;/a> for fixing this issue by raising a new &lt;a href="https://github.com/puppetlabs/puppetlabs-wsus_client/pull/150">PR&lt;/a> and taking time out with me to explain what was wrong, as well as releasing the new version on the &lt;a href="https://forge.puppet.com/modules/puppetlabs/wsus_client">Puppet Forge&lt;/a>&lt;/p>
+&lt;h2 id="puppet-litmus-and-pdksync">Puppet Litmus and PDKSync&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://rubygems.org/gems/puppet_litmus/versions/0.24.0">puppet_litmus v0.24.0&lt;/a> release removes Puppet 5 from matrix_from_metadata setup script&lt;/li>
+&lt;/ul>
+&lt;p>Good news this week! The PDKSync run for all our supported modules:&lt;/p>
+&lt;ul>
+&lt;li>Removes Puppet 5 testing based on the new PDK Templates &lt;a href="https://github.com/puppetlabs/pdk-templates/pull/403">config_defaults.yml&lt;/a>&lt;/li>
+&lt;li>Added an automated module release preparation workflow that will trigger at the end of each week and prepare a PR for Community Day&lt;/li>
+&lt;li>Cleans up provision.yaml files on all modules&lt;/li>
+&lt;/ul>
+&lt;p>Work on Puppet Litmus continues with the update of the matrix_from_metadata_v2 script that will generate a complete matrix of the OSs in the metadata.json file including the possible docker containers we can use. With these changes merged in we will update the pdk-templates nightly and PR test acceptance workflows to maximize acceptance test coverage in the Github Action workflows as this will allow us to easily remove Travis and Appveyor from our PR testing in the near future.&lt;/p>
+&lt;h2 id="cloud-ci">Cloud CI&lt;/h2>
+&lt;p>This week work has mainly focused on wrappring up the initial setup for the automated module release preparation workflow that is now part of PDK Templates. Having this feature will definitely ease module releases for everyone in the future.&lt;/p>
+&lt;p>The work we are currently doing on Puppet Litmus and the PDK Templates will improve our Github Action acceptance tests coverage. For a quick preview on how the acceptance tests will look in the future see the tests we are currently running with both VMs and docker containers &lt;a href="https://github.com/puppetlabs/puppetlabs-testing/pull/346/checks">here&lt;/a>&lt;/p>
+&lt;p>On the multi-node testing we have begun &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/481">work&lt;/a> on the puppetlabs-kubernetes module, where we are preparing an integration test setup that will use the Cloud CI provisioning mechanism to test puppetlabs-kubernetes module with the associated puppetlabs-helm and puppetlabs-rook modules.&lt;/p></description></item><item><title>Blog: 29th May 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-05-29-status-update/</link><pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-05-29-status-update/</guid><description>
+&lt;p>Greetings from the IAC Team - here&amp;rsquo;s our status update for this week!&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>Here&amp;rsquo;s the new releases in the modules this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd">puppetlabs/docker&lt;/a> (3.10.1)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java">puppetlabs/java&lt;/a> (6.3.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="module-releases-from-puppet">Module Releases from Puppet&lt;/h2>
+&lt;p>Here&amp;rsquo;s some module releases from other teams in Puppet you may be interested in:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/python_task_helper">puppetlabs/python_task_helper&lt;/a> (v0.4.3)&lt;/li>
+&lt;/ul>
+&lt;h2 id="gem-releases">Gem Releases&lt;/h2>
+&lt;p>We&amp;rsquo;re happy to announce a new version of &lt;a href="https://github.com/puppetlabs/puppet_litmus">Litmus&lt;/a> has been released:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet_litmus/blob/master/CHANGELOG.md#0182-2020-05-28">v0.18.2&lt;/a> contains a number of fixes from &lt;a href="https://github.com/pmcmaw">Paula&lt;/a>, &lt;a href="https://github.com/DavidS">DavidS&lt;/a> and &lt;a href="https://github.com/mmarod">mmarod&lt;/a>. Full details in the &lt;a href="https://github.com/puppetlabs/puppet_litmus/blob/master/CHANGELOG.md#0182-2020-05-28">CHANGELOG&lt;/a>!&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>The wonderful community members that continue to contribute to our modules have provided us with the following enhancements:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/938">&lt;code>puppetlabs-apt#938&lt;/code>&lt;/a>:&lt;/strong> &lt;a href="https://github.com/mdklapwijk">mdklapwijk&lt;/a> added support for https repositories by making use of the &lt;a href="https://www.unix-ag.uni-kl.de/~bloch/acng/html/howtos.html#ssluse">&lt;code>tell-me-what-you-need&lt;/code>&lt;/a> method in &lt;a href="https://wiki.debian.org/AptCacherNg">&lt;code>apt-cacher-ng&lt;/code>&lt;/a>.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/412">&lt;code>puppetlabs-kubernetes#412&lt;/code>&lt;/a>:&lt;/strong> A HUGE number of improvements from &lt;a href="https://github.com/Wiston999">Wiston999&lt;/a>. Check out &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/412">the PR&lt;/a> for all the details.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2033">&lt;code>puppetlabs-apache#2033&lt;/code>&lt;/a>:&lt;/strong> &lt;a href="https://github.com/thechristschn">thechristschn&lt;/a> enhanced the &lt;code>proxy_protocol_exceptions&lt;/code> param in &lt;code>mod_remoteip&lt;/code> to accept IPv6 addresses in CIDR notation.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/429">&lt;code>puppetlabs-java#429&lt;/code>&lt;/a>:&lt;/strong> &lt;a href="https://github.com/fraenki">fraenki&lt;/a> made an enhacement to allow management of symlinks in the &lt;code>java::adopt&lt;/code> defined type.&lt;/li>
+&lt;/ul>
+&lt;p>Many thanks to &lt;a href="https://github.com/mdklapwijk">mdklapwijk&lt;/a>, &lt;a href="https://github.com/Wiston999">Wiston999&lt;/a>, &lt;a href="https://github.com/thechristschn">thechristschn&lt;/a> and &lt;a href="https://github.com/fraenki">fraenki&lt;/a> for your excellent contributions!&lt;/p>
+&lt;h2 id="iac-team-demos">IAC Team Demos&lt;/h2>
+&lt;p>We frequently demo some of the the enhancements to the [tools]({% link tools.html %}) under our management to ourselves or the wider company.
+Check out the videos on our new [demos]({% link _docs/demos.md) page where you can see:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/carabasdaniel">Danny&lt;/a> taking you through the steps for adding a new provisioner to &lt;a href="https://github.com/puppetlabs/puppet_litmus">Litmus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/sheenaajay">Sheena&lt;/a> demonstrating how we use the invaluable &lt;a href="https://github.com/puppetlabs/pdksync">pdksync&lt;/a> for deploying and testing the same change to multiple repos&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppetdscbuilder-beta-testing">PuppetDSCBuilder Beta Testing&lt;/h2>
+&lt;p>It has been greatly encouraging to see a number of people signed up to be early adopters of the &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder">&lt;code>PuppetDSCBuilder&lt;/code>&lt;/a> project.
+We just had another sign up this week!
+If you&amp;rsquo;re heavily involved in Windows admin, Powershell and DSC, check out the &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-03-30-dsc-announcement.md">previous blog post&lt;/a> from &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a> which outlines the functionality and how to get in touch with us to participate!&lt;/p>
+&lt;p>That&amp;rsquo;s a wrap for this week!
+To our Romanian IAC team members (&lt;a href="https://github.com/carabasdaniel">Danny&lt;/a>, &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a>, &lt;a href="https://github.com/adrianiurca">Adrian&lt;/a>) and any Romanian readers out there - enjoy the long weekend!&lt;/p></description></item><item><title>Blog: 22nd May 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-05-22-status-update/</link><pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-05-22-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of new things over the past week. We want to share with our community some pretty interesting things. Here&amp;rsquo;s a brief overview of what we&amp;rsquo;ve been up to:&lt;/p>
+&lt;h2 id="daiana-has-been-made-permanent">Daiana has been made permanent!&lt;/h2>
+&lt;p>We are absolutely delighted to announce our current intern, &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a>, has recently been offered a permanent job role. Daiana has been a major influence on our community reporting tool for when we are triaging PRs and releasing modules. Some of the work Daiana has been carrying out can be viewed &lt;a href="https://github.com/puppetlabs/community_management/pull/22/">here&lt;/a>. We are so excited that she will be hanging around! We are all looking forward to have a celebratory beverage together at some point in the future.&lt;/p>
+&lt;h2 id="module-releases">Module Releases&lt;/h2>
+&lt;p>Modules released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy">puppetlabs/haproxy&lt;/a> (4.2.1)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd">puppetlabs/motd&lt;/a> (4.1.1)&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We absolutely love our community contributors, they are always ready to help and they have excellent ideas. Here are some highlights of this week:&lt;/p>
+&lt;p>Thank you to Trey Dockendorf for raising an issue on the latest release of the PDK, and to &lt;a href="https://github.com/scotje">Jesse Scott&lt;/a> for providing a &lt;a href="https://github.com/puppetlabs/pdk/pull/883">fix&lt;/a>. &lt;a href="https://github.com/DavidS">DavidS&lt;/a> has now merged this and this fix will make it out in the next release.&lt;/p>
+&lt;p>Thank you to &lt;a href="https://github.com/Wiston999">Victor Cabezas&lt;/a> for a fantastic PR for &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs/kubernetes&lt;/a>. Its great to see such attention to detail in a PR from a community member.&lt;/p>
+&lt;p>Thank you to &lt;a href="https://github.com/andeman">andeman&lt;/a> for contributing to our &lt;a href="https://github.com/puppetlabs/puppetlabs-mysql">puppetlabs/mysql&lt;/a> module and providing us with such a great feature.&lt;/p>
+&lt;p>Thank you to [https://github.com/vchepkov](Vadym Chepkov) for your &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/613">Docker PR&lt;/a>. Housekeeping on our modules is always beneficial and we really appreciate you taking the time to contribute.&lt;/p>
+&lt;h2 id="community-management-tool">Community Management Tool&lt;/h2>
+&lt;p>We wanted to have all the information about our supported modules in one place. We decided to change the data source of the &lt;a href="https://puppetlabs.github.io/community_management/">Community Tool&lt;/a> from a local file called &lt;code>modules.json&lt;/code> to the online available &lt;code>https://puppetlabs.github.io/iac/modules.json&lt;/code> which is generated from the same information that is powering the &lt;a href="https://puppetlabs.github.io/iac/modules/">team&amp;rsquo;s modules page&lt;/a>. You can check the new updates &lt;a href="https://github.com/puppetlabs/community_management/pull/22">here&lt;/a>.&lt;/p>
+&lt;p>The report for our tooling has been using the &lt;a href="https://github.com/puppetlabs/community_management/pull/12">same mechanism&lt;/a> since March. We will continue to build all our future automation tooling based on this data set, so that we can update-once-run-everywhere.&lt;/p>
+&lt;h2 id="pdksync-runs">PDKSync Runs&lt;/h2>
+&lt;p>&lt;a href="https://github.com/david22swan">David Swan&lt;/a> has performed 2 PDKSync runs this week to include generic template updates in our modules and to add Ubuntu 20.04 support. &lt;a href="https://github.com/carabasdaniel">Danny&lt;/a> has been running one to switch our default provisioner from VMPooler to ABS for our weekly and pre-release CI runs. Travis was busy! &lt;code>:D&lt;/code>&lt;/p>
+&lt;h2 id="making-it-possible-to-visualize-data">Making it Possible to Visualize Data&lt;/h2>
+&lt;p>&lt;a href="https://github.com/DavidS">DavidS&lt;/a> has &lt;del>been working hard&lt;/del> spent a few more minutes on making use of &lt;a href="https://honeycomb.io/">honeycomb&lt;/a>. This week&amp;rsquo;s new query will track our migration from VMPooler to ABS. It is super exciting that we can now see dashboards and drill down rather than scrolling through large log files.&lt;/p>
+&lt;p>You can see when we started rolling out the first changes:
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-05-22-status-update/vmpooler-abs-migration-tracker.png" alt="A graph comparing 1073 vmpooler calls with 502 ABS calls, which started around the 18th">&lt;/p>
+&lt;h2 id="litmus-image-creation">Litmus Image Creation&lt;/h2>
+&lt;p>Since the end of 2019 we&amp;rsquo;re using custom-built &lt;a href="https://github.com/puppetlabs/litmusimage">images&lt;/a> to test modules with &lt;a href="https://github.com/puppetlabs/puppet_litmus">litmus&lt;/a>. Litmus image creation is now part of the IAC team OS certification process. As part of our work on validating all modules for Ubuntu 20.04, &lt;a href="https://github.com/david22swan">David Swan&lt;/a> put in &lt;a href="https://github.com/puppetlabs/litmusimage/pull/23/files">a quick PR&lt;/a> to add it to our list of images. Being able to easily create a new Litmus image enables the IAC to team run OS certification test across multiple modules quickly. Great Job &lt;a href="https://github.com/florindragos">Florin&lt;/a> on the Litmus image creation scripting.&lt;/p>
+&lt;h2 id="the-iac-team-adapting-to-the-new-norm">The IAC Team Adapting to the New &amp;lsquo;Norm&amp;rsquo;&lt;/h2>
+&lt;p>Everyone in the team seems to have started adapting to the new ‘norm’ of working from home every day. It seems everyone has started trying out new things. Here are some of the things we have been getting up to:&lt;/p>
+&lt;p>&lt;a href="https://github.com/DavidS">DavidS&lt;/a> has been taking Oscar and Miku out walking almost daily, soaking up the lovely views around Belfast and of course playing &lt;a href="https://factorio.com/">factorio&lt;/a> for way too long. Can we blame him when confined to the house, lets just refer to it mastering skills online.&lt;/p>
+&lt;p>Norman over the past year has had a lot of landscaping carried out in his garden therefore he finds himself spending more time in his garden than before. With the weather we have been having in Belfast recently he would be crazy to miss the opportunity.&lt;/p>
+&lt;p>&lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> now knows his neighborhood by the back of his hand, has taken up more cooking opportunities at home (he currently has enough Bolognese in his freezer to feed the whole IAC team), is getting a big nostalgia hit playing Streets of Rage 4 online with his mate and has big plans on getting back into playing guitar, it just hasn’t happened yet. Sounds like Ciaran has been doing great at keeping busy!&lt;/p>
+&lt;p>&lt;a href="https://github.com/carabasdaniel">Danny&lt;/a> has found himself spending more time chilling out and reading books and when he is not doing that he is ‘fine tuning’ his video gaming skills.&lt;/p>
+&lt;p>&lt;a href="https://github.com/david22swan">David Swan&lt;/a> carries out a vigorous home workout regime on Tuesday, Wednesday and Thursdays. Way to go David, serious commitment there!&lt;/p>
+&lt;p>&lt;a href="https://github.com/sheenaajay">Sheena&lt;/a> is currently home schooling 2 lovely girls. Although when they have some down time she is exploring new recipes with them.&lt;/p>
+&lt;p>&lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> has started to do some home workouts and has started eating healthy. I wonder if this is a result of mastering how to bake a perfect lava cake? I also wonder how shipping a lava cake would work!?&lt;/p>
+&lt;p>&lt;a href="https://github.com/adrianiurca">Adrian&lt;/a> has started spending more time soaking up the surrounding views and has taken up some gardening. There is nothing more therapeutic than admiring blooming flowers at this time of the year.&lt;/p>
+&lt;p>Finally &lt;a href="https://github.com/pmcmaw">me&lt;/a>, In my down time I have been enjoying walks, for a while I collected wild flowers, pressed them and put them into a frame to remind me of this strange time. I also spend most of my time playing with my 11 month old baby. This ranges from getting paint EVERYWHERE to letting her play in multi colored spaghetti or creating strange toys such as a rain cloud made out of cotton wool, tin foil and plastic bags.&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That&amp;rsquo;s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item></channel></rss>

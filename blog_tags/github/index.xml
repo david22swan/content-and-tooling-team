@@ -1,0 +1,41 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – github</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/github/</link><description>Recent content in github on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 07 Feb 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/github/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 7th Feb 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-07-status-update/</link><pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-07-status-update/</guid><description>
+&lt;p>The IAC team have been working on a lot of interesting things these past two weeks. Here&amp;rsquo;s a brief overview of what we&amp;rsquo;ve been up to:&lt;/p>
+&lt;h2 id="team-blog">Team Blog&lt;/h2>
+&lt;p>If you&amp;rsquo;re here, you&amp;rsquo;re already aware of it - the IAC team will now be giving status updates as to what we&amp;rsquo;ve been working on, any insights we&amp;rsquo;ve made and cool new tech we&amp;rsquo;ve been playing with. We&amp;rsquo;re also hoping to share more of the tools that we use internally with the community.&lt;/p>
+&lt;h2 id="updates-to-puppet-modules">Updates to Puppet Modules&lt;/h2>
+&lt;p>We&amp;rsquo;ve released a number of new modules as part of our Content Triage Process.
+Check out the CHANGELOG in each of the modules for more details as to what has been added:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/accounts">puppetlabs/accounts&lt;/a> (v6.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs/apache&lt;/a> (v5.4.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/java">puppetlabs/java&lt;/a> (v6.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">puppetlabs/kubernetes&lt;/a> (v5.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/puppet_agent">puppetlabs/puppet_agent&lt;/a> (v3.0.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/puppet_agent">puppetlabs/puppet_agent&lt;/a> (v3.0.1)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/reboot">puppetlabs/reboot&lt;/a> (v2.4.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/websphere_application_server">puppetlabs/websphere_application_server&lt;/a> (v2.0.1)&lt;/li>
+&lt;/ul>
+&lt;h2 id="kubernetes-v510">Kubernetes v5.1.0&lt;/h2>
+&lt;p>The &lt;a href="https://www.cncf.io/">CNCF&lt;/a> have certified the latest version (v5.1.0) of the &lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">puppetlabs/kubernetes&lt;/a> module with &lt;a href="https://kubernetes.io/">Kubernetes&lt;/a> v1.16.6.
+Check out the &lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">module on The Forge&lt;/a> to see how to bootstrap K8 clusters and save yourself time and effort.
+You may also be interested in Kubetool (bundled with the module and as a &lt;a href="https://hub.docker.com/r/puppet/kubetool">Docker image&lt;/a>) which auto-generates the Hiera security parameters, the discovery token hash, and other configurations for your Kubernetes cluster.&lt;/p>
+&lt;h2 id="theres-a-buzz-about-honeycombio">There&amp;rsquo;s a buzz about Honeycomb.io&lt;/h2>
+&lt;p>We&amp;rsquo;re very excited to be in the POC stage rolling out &lt;a href="https://www.honeycomb.io/">Honeycomb&lt;/a> to collect data from our CI / Test infrastructure.
+This is going to give us much more visibility in to a number of important metrics and allow us to make the test process for modules a lot slicker.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/iac/assets/2020-02-07-status-update/honeycomb_travis_appveyor.png" alt="Execution time of pdksync run on AppVeyor &amp; Travis">
+&lt;strong>Execution Time of PDK Sync run on Travis and AppVeyor CI platforms&lt;/strong>&lt;/p>
+&lt;p>We were very excited to be working with this very cool solution and we&amp;rsquo;re already starting to get some interesting insights.
+A more in depth blog post about this in the near future - don&amp;rsquo;t fly too far away!&lt;/p>
+&lt;h2 id="module-statistics-dashboards">Module Statistics Dashboards&lt;/h2>
+&lt;p>A vital part of the Content Triage Process is visibility in to the status of the modules:&lt;/p>
+&lt;ul>
+&lt;li>How many PRs are open?&lt;/li>
+&lt;li>What is the status of the last &lt;code>N&lt;/code> test results?&lt;/li>
+&lt;li>When was the last comment from a contributor?&lt;/li>
+&lt;/ul>
+&lt;p>There are a lot of modules on &lt;a href="https://forge.puppet.com/supported/">The Forge&lt;/a>, so we need a way to quickly view all this data.
+We have made some great improvements to our &lt;a href="https://puppetlabs.github.io/community_management/">Community Management&lt;/a> dashboards recently:&lt;/p>
+&lt;ul>
+&lt;li>More accurate reporting on module metrics&lt;/li>
+&lt;li>Integration with &lt;a href="https://github.com/features/actions">Github Actions&lt;/a> reports / artifact to provide quicker feedback of the results from our release checks and our future nightly CI runs&lt;/li>
+&lt;/ul></description></item></channel></rss>

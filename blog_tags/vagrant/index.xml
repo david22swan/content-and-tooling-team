@@ -1,0 +1,26 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – vagrant</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/vagrant/</link><description>Recent content in vagrant on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 31 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/vagrant/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 31th July 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-07-31-status-update/</link><pubDate>Fri, 31 Jul 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-07-31-status-update/</guid><description>
+&lt;p>It&amp;rsquo;s Friday - time for another status update from the IAC Team!
+Here&amp;rsquo;s an overview of some of the work we and the community have been up to recently:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>We&amp;rsquo;ve had a few modules released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/firewall">puppetlabs-firewall&lt;/a>&lt;a href="https://forge.puppet.com/puppetlabs/firewall/2.5.0/changelog">&lt;code>v2.5.0&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/websphere_application_server">puppetlabs-websphere_application_server&lt;/a>&lt;a href="https://forge.puppet.com/puppetlabs/websphere_application_server/2.1.0/changelog">&lt;code>v2.1.0&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;ve had plenty of great community contributions this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/kenyon">kenyon&lt;/a> &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/641">spotted a mistake in the supported list&lt;/a> for the &lt;a href="https://github.com/puppetlabs/puppetlabs-docker">Docker module&lt;/a>.&lt;/li>
+&lt;li>&lt;a href="https://github.com/kajinamit">kajinamit&lt;/a> has given us two PRs for the &lt;a href="https://github.com/puppetlabs/puppetlabs-apache">Apache module&lt;/a>, the first of which &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2053">standardises the use of distrelease within the module&lt;/a> to ensure that the same logic is used to retrieve the Major version throughout, while the second sets &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2052">&lt;code>python3-mod_wsgi&lt;/code> to be used in place of &lt;code>mod_wsgi&lt;/code> on CentOS 8&lt;/a> as the older name no longer works.&lt;/li>
+&lt;li>&lt;a href="https://github.com/bFekete">bFekete&lt;/a> has put in a PR to &lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat/pull/404">increase the puppetlabs-concat lower bound&lt;/a> within the &lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat">Tomcat module&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;h2 id="newly-released-blog">Newly released blog&lt;/h2>
+&lt;p>In response to some questions from the community, the wonderfully talented &lt;a href="https://github.com/david22swan">David Swan&lt;/a> a proud member of the IAC team, has released a new blog post detailing the use of Litmus with Vagrant, covering both the basic usage as well as some more detailed functions. So if you have some free time or just want to learn more about Vagrant please give it a look. You can find it through the link shown &lt;a href="https://puppetlabs.github.io/iac/docs/LitmusVagrantTesting.html">here&lt;/a>.&lt;/p>
+&lt;h2 id="puppet-7">Puppet 7&lt;/h2>
+&lt;p>Testing with the Puppet 7 nightly builds began in earnest, this week.
+Whilst building out our automation for more extensive and regular testing (&lt;em>using &lt;a href="https://puppetlabs.github.io/iac/tools/pdksync.html">pdksync&lt;/a> at it&amp;rsquo;s core&lt;/em>), we have been running tests against a subset of the [supported modules]({% link modules.html %}).
+So far, testing has generally been quite positive, with some minor issues arising.
+Fortunately, we work with awesome colleagues who are very quick to react to any issues we discover, helping with the debugging process and providing fixes really quickly.
+Thanks to &lt;a href="https://github.com/joshcooper">joshcooper&lt;/a>, we hope to have a fix for one of these issues quite soon!
+&lt;a href="https://github.com/gimmyxd">gimmyxd&lt;/a> and &lt;a href="https://github.com/mihaibuzgau">mihaibuzgau&lt;/a> are helping to analyse the other issue we&amp;rsquo;re currently encountering and &lt;a href="https://github.com/binford2k">binford2k&lt;/a> has been assisting in how we communicate any potential impacts to the Puppet Community.
+On that note, it goes without saying, we are doing everything possible to make the jump to Puppet 7 as seamless as possible and provide clear communication to the Community for anything that you will need to be aware of.&lt;/p></description></item></channel></rss>

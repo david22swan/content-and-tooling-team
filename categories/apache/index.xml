@@ -1,0 +1,36 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – apache</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/apache/</link><description>Recent content in apache on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 13 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/apache/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-09-13: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-09-13-status-update/</link><pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-09-13-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2193">&lt;code>puppetlabs-apache#2193&lt;/code>&lt;/a>: &amp;ldquo;Restore Ubuntu 14.04 support in suphp&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2189">&lt;code>puppetlabs-apache#2189&lt;/code>&lt;/a>: &amp;ldquo;Drop Debian &amp;lt; 8 and Ubuntu &amp;lt; 14.04 code&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/999">&lt;code>puppetlabs-apt#999&lt;/code>&lt;/a>: &amp;ldquo;(maint) Set DEBIAN_FRONTEND=noninteractive on upgrade&amp;rdquo;, thanks to &lt;a href="https://github.com/smortex">smortex&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/773">&lt;code>puppetlabs-docker#773&lt;/code>&lt;/a>: &amp;ldquo;Fix facts gathering&amp;rdquo;, thanks to &lt;a href="https://github.com/smortex">smortex&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-firewall/pull/1010">&lt;code>puppetlabs-firewall#1010&lt;/code>&lt;/a>: &amp;ldquo;Fix &amp;ldquo;undefined method &lt;code>gsub&lt;/code> for nil:NilClass&amp;rdquo; when changing existing rule UID from absent to any present&amp;rdquo;, thanks to &lt;a href="https://github.com/onyxmaster">onyxmaster&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-firewall/pull/1006">&lt;code>puppetlabs-firewall#1006&lt;/code>&lt;/a>: &amp;ldquo;Replace travis link in README.md with GHA&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy/pull/498">&lt;code>puppetlabs-haproxy#498&lt;/code>&lt;/a>: &amp;ldquo;Adding chroot_dir_manage parameter.&amp;rdquo;, thanks to &lt;a href="https://github.com/Tamerz">Tamerz&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/493">&lt;code>puppetlabs-java#493&lt;/code>&lt;/a>: &amp;ldquo;Allow archive 6.x&amp;rdquo;, thanks to &lt;a href="https://github.com/smortex">smortex&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-package/pull/265">&lt;code>puppetlabs-package#265&lt;/code>&lt;/a>: &amp;ldquo;Expose package manager options to task&amp;rdquo;, thanks to &lt;a href="https://github.com/MartyEwings">MartyEwings&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1209">&lt;code>puppetlabs-stdlib#1209&lt;/code>&lt;/a>: &amp;ldquo;Added to_toml function&amp;rdquo;, thanks to &lt;a href="https://github.com/nmaludy">nmaludy&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/451">&lt;code>pdk-templates#451&lt;/code>&lt;/a>: &amp;ldquo;Remove env from GitHub template if all sub-keys are unset&amp;rdquo;, thanks to &lt;a href="https://github.com/thebeanogamer">thebeanogamer&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/446">&lt;code>pdk-templates#446&lt;/code>&lt;/a>: &amp;ldquo;Don&amp;rsquo;t append a tag to image name if one already exists&amp;rdquo;, thanks to &lt;a href="https://github.com/silug">silug&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdksync/pull/156">&lt;code>pdksync#156&lt;/code>&lt;/a>: &amp;ldquo;Remove reference to non existent branch&amp;rdquo;, thanks to &lt;a href="https://github.com/attachmentgenie">attachmentgenie&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="http://github.com/puppetlabs/puppetlabs-firewall">&lt;code>puppetlabs-firewall&lt;/code>&lt;/a> (&lt;code>3.2.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">&lt;code>puppetlabs-kubernetes&lt;/code>&lt;/a> (&lt;code>6.3.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppetlabs-apache-module-droppped-code-for-debian--8-and-ubuntu--1404">puppetlabs-apache module droppped code for Debian &amp;lt; 8 and Ubuntu &amp;lt; 14.04&lt;/h2>
+&lt;p>Removed the Debian &amp;lt; 8 and Ubuntu &amp;lt; 14.04 code from the apache module with the following PRs. Thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2189">&lt;code>puppetlabs-apache#2189&lt;/code>&lt;/a>: &amp;ldquo;Drop Debian &amp;lt; 8 and Ubuntu &amp;lt; 14.04 code&amp;rdquo;.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2193">&lt;code>puppetlabs-apache#2193&lt;/code>&lt;/a>: &amp;ldquo;Restore Ubuntu 14.04 support in suphp&amp;rdquo;.&lt;/li>
+&lt;/ul>
+&lt;p>This will be a backward incompatible changes and the next release will be major version bump &lt;code>v7.0.0&lt;/code>.&lt;/p></description></item></channel></rss>

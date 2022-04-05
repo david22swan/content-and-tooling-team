@@ -1,0 +1,29 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – ci cloud</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/ci-cloud/</link><description>Recent content in ci cloud on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 04 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/ci-cloud/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2020-12-04: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-12-04-status-update/</link><pubDate>Fri, 04 Dec 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-12-04-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/451">&lt;code>puppetlabs-kubernetes#451&lt;/code>&lt;/a>: &amp;ldquo;Add scheduler_extra_arguments parameter&amp;rdquo;, thanks to &lt;a href="https://github.com/treydock">treydock&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/action-litmus_parallel/pull/71">&lt;code>action-litmus_parallel#71&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Fix user install bug&amp;rdquo;, thanks to &lt;a href="https://github.com/RandomNoun7">RandomNoun7&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/action-litmus_parallel/pull/69">&lt;code>action-litmus_parallel#69&lt;/code>&lt;/a>: &amp;ldquo;Fix ENV Set Method&amp;rdquo;, thanks to &lt;a href="https://github.com/RandomNoun7">RandomNoun7&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/action-litmus_spec/pull/61">&lt;code>action-litmus_spec#61&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Fix user install bug&amp;rdquo;, thanks to &lt;a href="https://github.com/RandomNoun7">RandomNoun7&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/action-litmus_spec/pull/60">&lt;code>action-litmus_spec#60&lt;/code>&lt;/a>: &amp;ldquo;Fix ENV Set Method&amp;rdquo;, thanks to &lt;a href="https://github.com/RandomNoun7">RandomNoun7&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/360">&lt;code>pdk-templates#360&lt;/code>&lt;/a>: &amp;ldquo;(fix) Set rubocop ruby version to 2.4&amp;rdquo;, thanks to &lt;a href="https://github.com/tuxmea">tuxmea&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-modulebuilder/pull/26">&lt;code>puppet-modulebuilder#26&lt;/code>&lt;/a>: &amp;ldquo;Use match_path instead of match_paths&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet_litmus/pull/344">&lt;code>puppet_litmus#344&lt;/code>&lt;/a>: &amp;ldquo;Fix append_cli parameters&amp;rdquo;, thanks to &lt;a href="https://github.com/hajee">hajee&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-concat">&lt;code>puppetlabs-concat&lt;/code>&lt;/a> (&lt;code>6.3.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-acl">&lt;code>puppetlabs-acl&lt;/code>&lt;/a> (&lt;code>3.2.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">&lt;code>puppetlabs-kubernetes&lt;/code>&lt;/a> (&lt;code>5.4.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/device_manager">&lt;code>puppetlabs-device_manager&lt;/code>&lt;/a> (&lt;code>3.1.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="triage-day">Triage day&lt;/h2>
+&lt;p>Even if half of the team was on PTO, we got through all the supported modules repos and most of all our tooling processing, so we managed to review and merge 11 PRs as well as releasing 4 modules.&lt;/p>
+&lt;h2 id="ci-and-special-wednesday">CI and special Wednesday&lt;/h2>
+&lt;p>Again, we applied the principle &amp;ldquo;Team work, dream work&amp;rdquo; and together we successfully ported 22 modules onto the Cloud CI. Many thanks to the entire team for the hard work! Check out the new look of our module test runs: &lt;a href="https://github.com/puppetlabs/puppetlabs-chocolatey/pull/235/checks">&lt;code>puppetlabs-chocolatey#235&lt;/code>&lt;/a>&lt;/p>
+&lt;h2 id="happy-3-months-for-disha">Happy 3 months for Disha!&lt;/h2>
+&lt;p>It&amp;rsquo;s been 3 months since Disha joined the team and she started her journey in our team. If you want to know more about her work and last updates, you can always check her blog &lt;a href="https://puppetlabs.github.io/iac/lifeofinternatpuppet/post_14.html">here&lt;/a>.&lt;/p>
+&lt;h4 id="wrap-up">Wrap-up&lt;/h4>
+&lt;p>That&amp;rsquo;s it for this week, have a great week-end and stay safe !&lt;/p></description></item></channel></rss>

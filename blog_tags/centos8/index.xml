@@ -1,0 +1,46 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – centos8</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/centos8/</link><description>Recent content in centos8 on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/centos8/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 26th June 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-06-26-status-update/</link><pubDate>Fri, 26 Jun 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-06-26-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of things over the past week.
+We want to share with our community some of the most interesting things.
+Here’s a brief overview of what we’ve been up to:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>To avoid the various infrastructure issues that have been plaguing our release verification, we&amp;rsquo;ve switched to manual test runs and have managed to release the following modules:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">puppetlabs/postgresql&lt;/a> (6.6.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql">puppetlabs/mysql&lt;/a> (10.6.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-package">puppetlabs/package&lt;/a> (1.2.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-package">puppetlabs/vcsrepo&lt;/a> (3.1.1)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-vsphere">puppetlabs/vsphere&lt;/a> (1.5.0)&lt;/li>
+&lt;/ul>
+&lt;p>As you might have noticed, in the past weeks we have been having trouble with our Github Actions CI setup for our usual in-depth testing and releases.
+Due to this issue we currently do the release checks manually until we have a stable solution.
+This was one of the reasons you might have seen a drop in our release schedule.
+We&amp;rsquo;re already working on a improved fix which we hope to be able to share soon.
+As always we want to thank the community for their support and understanding and we hope to see you continuing your contributions.&lt;/p>
+&lt;h2 id="community-reports-updated">Community Reports Updated&lt;/h2>
+&lt;p>The &lt;a href="https://puppetlabs.github.io/community_management/">community reports&lt;/a> are used by us to handle responding to all your fabulous contributions to the 82 repos we&amp;rsquo;re responsible for.
+As part of her thesis, &lt;a href="https://github.com/daianamezdrea/">Diana&lt;/a> added a number of new reports and filters to these pages, and also has done a complete overhaul of the design.
+The reporting changes are already deployed, and the design changes will follow after her final exams at the start of next week.
+Please join us in wishing her all the best for the exams.
+We know you&amp;rsquo;ll crush it, Diana!&lt;/p>
+&lt;p>To give you something to feast your eyes on until we get it merged and deployed, here some screenshots of what&amp;rsquo;s to come:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-06-26-status-update/pr-work-done.png" alt="bar chart of commented and merged PRs over time">&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-06-26-status-update/prs-created.png" alt="line chart of PRs created by day by community members and puppet employees">&lt;/p>
+&lt;h2 id="centos-8-testing">CentOS 8 testing&lt;/h2>
+&lt;p>&lt;a href="https://github.com/david22swan">David Swan&lt;/a> added PR-testing for CentOS 8 on all our linux modules.
+Since we support RHEL 8 and friends since a while, we realised we need to add some PR-time testing so that we don&amp;rsquo;t accidentally merge regresssions.&lt;/p>
+&lt;h2 id="ruby-27">Ruby 2.7&lt;/h2>
+&lt;p>We&amp;rsquo;ve rolled out &lt;a href="https://tickets.puppetlabs.com/browse/IAC-857">Ruby 2.7 compatibility and testing&lt;/a> for all our tools over the last weeks.
+This includes new &lt;code>-r2.7&lt;/code> versions of the &lt;a href="https://github.com/puppetlabs/puppet-module-gems">puppet-module-gems&lt;/a>, as well as sundry fixes across the repos.
+The most common issue that needs addressing is disambiguating passing hashes vs keyword arguments, which &lt;a href="https://rubyreferences.github.io/rubychanges/2.7.html#keyword-argument-related-changes">ruby 2.7 is getting picky about&lt;/a>.&lt;/p>
+&lt;h2 id="updating-bolt">Updating Bolt&lt;/h2>
+&lt;p>Thanks to the Bolt team for fixing &lt;a href="https://github.com/puppetlabs/bolt/issues/1846">an issue&lt;/a> that was impacting Litmus use.
+&lt;a href="https://github.com/sheenaajay">Sheena&lt;/a> &lt;a href="https://tickets.puppetlabs.com/browse/IAC-897">successfully updated&lt;/a> all our test suites to the most recent release of bolt.&lt;/p>
+&lt;h2 id="community-shoutouts">Community Shoutouts&lt;/h2>
+&lt;p>Special thanks to the following community folks:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/ekohl">ekohl&lt;/a> chipped in quite a bit of work on a number of &lt;a href="https://github.com/puppetlabs/puppetlabs-apache">puppetlabs-apache&lt;/a> PRs: &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2043">#2043&lt;/a>, &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2042">#2042&lt;/a>, &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2041">#2041&lt;/a>.&lt;/li>
+&lt;li>&lt;a href="https://github.com/fhrbek">fhrbek&lt;/a> posted a new feature for windows at &lt;a href="https://github.com/puppetlabs/puppetlabs-package/pull/200">puppetlabs-package#200&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;p>Thanks to everyone who&amp;rsquo;s helping out on github and on slack, making this the wonderful community we love!&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That’s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,44 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – content</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/content/</link><description>Recent content in content on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 23 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/content/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Puppetize Digital 2020 - Content Selection</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-11-23-puppetize-digital/</link><pubDate>Mon, 23 Nov 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-11-23-puppetize-digital/</guid><description>
+&lt;p>Last week saw &lt;a href="https://digital.puppetize.com/">Puppetize Digital 2020&lt;/a>, our annual conference on all things Puppet.
+Over the weekend, the production team uploaded all the talks to &lt;a href="https://www.youtube.com/user/PuppetLabsInc/videos">the Puppet YouTube channel&lt;/a>, so if you missed anything, you can now catch up at your own leisure.
+There is a &lt;a href="https://www.youtube.com/playlist?list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW">playlist&lt;/a> with all videos, and in this post I&amp;rsquo;ll directly link to my favourites - of course focused on Puppet Content and the IAC team&amp;rsquo;s work.&lt;/p>
+&lt;h2 id="puppet-pair-programming-with-visual-studio-code">Puppet Pair Programming with Visual Studio Code&lt;/h2>
+&lt;p>The &lt;a href="https://puppet-vscode.github.io/">Puppet VSCode Plugin&lt;/a> has evolved into THE canonical way to edit puppet modules.
+The authors of the plugin, &lt;a href="https://www.linkedin.com/in/jamespogran/">James Pogran&lt;/a> and &lt;a href="https://www.linkedin.com/in/glenn-sarti/">Glenn Sarti&lt;/a> are sharing the newest updates to the plugin, as well as some of the benefits of working with a modern, full-featured Development Environment:&lt;/p>
+&lt;p>{% youtube j3o-U1c_dXs 800 450 %}&lt;/p>
+&lt;p>Since last week we also provide a default &lt;a href="https://gitpod.io">gitpod&lt;/a> and &lt;a href="https://github.com/features/codespaces">codespaces&lt;/a> environment on our supported modules. This way you can try out and use all of that goodness directly from your browser.&lt;/p>
+&lt;h2 id="the-new-puppet-developer-experience-its-all-about-you">The new Puppet Developer Experience: it&amp;rsquo;s all about you&lt;/h2>
+&lt;p>&lt;a href="https://www.linkedin.com/in/binford2k/">Ben Ford&lt;/a>, our Developer Advocate and Product Manager, on the state of Puppet Content.&lt;/p>
+&lt;ul>
+&lt;li>recent updates to the Forge in form and function&lt;/li>
+&lt;li>announcing the Trusted Contributor programme&lt;/li>
+&lt;li>a demo by &lt;a href="https://www.linkedin.com/in/daniel-carabas-b2bb0851/">Daniel Carabas&lt;/a> to show off our new public Cloud CI for modules&lt;/li>
+&lt;/ul>
+&lt;p>{% youtube FspzumfFvBg 800 450 %}&lt;/p>
+&lt;h2 id="puppetizing-dsc">Puppetizing DSC&lt;/h2>
+&lt;p>As the IAC&amp;rsquo;s headline feature this year, &lt;a href="https://www.linkedin.com/in/michaeltlombardi/">Michael Lombardi&lt;/a> is talking about how we finally fixed the &amp;ldquo;DSC-update&amp;rdquo; problem.
+From now on, we can publish up-to-date puppet wrappers of &lt;a href="https://www.powershellgallery.com/packages">all DSC module from the gallery&lt;/a> (select &amp;ldquo;DSC Resource&amp;rdquo; in the filters) to the new &lt;a href="https://forge.puppet.com/dsc">DSC namespace on the forge&lt;/a>.
+This means that any improvement on upstream DSC resources will become available in a timely manner - and without additional build steps - to all Puppet users.
+The way it is designed also means that from this point forward, everyone can build their local DSC resources into a puppet module using the &lt;a href="https://www.powershellgallery.com/packages/Puppet.Dsc">Puppet.Dsc Powershell Module&lt;/a>.&lt;/p>
+&lt;p>{% youtube i-eo58NaYKg 800 450 %}&lt;/p>
+&lt;h2 id="automate-everything">Automate Everything&lt;/h2>
+&lt;p>If you need to manage a lot of module repositories, &lt;a href="https://github.com/op-ct">Chris Tessmer&lt;/a> has your back.
+Based on a few scripts and bolt, he single-handedly (and very handily) replaces modulesync and pdksync with a much nicer alternative.
+&lt;a href="https://github.com/op-ct/puppetsync">puppetsync&lt;/a> is a set of tasks and plans supporting managing &lt;a href="https://forge.puppet.com/simp">SIMP&lt;/a>&amp;rsquo;s modules on github.
+In his talk, Chris shows how it is used, and a number of useful tips and tricks for working with bolt plans.&lt;/p>
+&lt;p>{% youtube 48m8b5VRWoY 800 450 %}&lt;/p>
+&lt;h2 id="further-content-watching">Further Content Watching&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=mDhmxH0hi9Q&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=5">ServiceNow integration&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=PEn5UZR0bso&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=8">Preparing People for Proper Patching with Puppet Plans&lt;/a> (also aspirant for alliteration award)&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=55KSc63W1_E&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=18">Roles and Profiles&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=hYdF5vJu_HA&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=20">Application Stack Builds&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=xLF6UkzpBQ4&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=24">Automating Windows&lt;/a>
+&lt;ul>
+&lt;li>More in-depth info in the &lt;a href="https://www.youtube.com/watch?v=NFnVSENjRGs&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=43">workshop&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=bbZ9T3Hp_xI&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=26">Update your code safely&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.youtube.com/watch?v=8FblErxC1OY&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=33">Git Workflows for Puppet&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>You can find the &lt;a href="https://www.youtube.com/playlist?list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW">entire playlist on YouTube&lt;/a>.&lt;/p></description></item></channel></rss>

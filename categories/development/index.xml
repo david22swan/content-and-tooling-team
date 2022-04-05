@@ -1,0 +1,1010 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – development</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/development/</link><description>Recent content in development on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 04 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/development/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Puppet Content Templates 0.1.0 🚀</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-06-04-pct-early-release/</link><pubDate>Fri, 04 Jun 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-06-04-pct-early-release/</guid><description>
+&lt;h1 id="pdk-puppet-content-templates-010-released-">PDK Puppet Content Templates 0.1.0 released ✨&lt;/h1>
+&lt;p>We are proud to announce the first release for the new PDK templating system: &lt;strong>Puppet Content Templates (PCT)&lt;/strong>.&lt;/p>
+&lt;p>&lt;strong>Puppet Content Templates&lt;/strong> codify a structure to produce content for any Puppet Product that can be authored without direct oversight of the Puppet PDK team.&lt;/p>
+&lt;p>To get started download the release from the &lt;a href="https://github.com/puppetlabs/pdkgo/">pdkgo repo&lt;/a>. A step by step guide is included in the README.&lt;/p>
+&lt;blockquote>
+&lt;p>PCT is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">pdkgo/discussions&lt;/a>. ⚠️&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="create-all-types-of-content-">Create all types of content 🎨&lt;/h2>
+&lt;p>A &lt;strong>PCT&lt;/strong> can create any type of a Puppet Product project. You can create Puppet &lt;a href="https://github.com/puppetlabs/control-repo">control repos&lt;/a>, Puppet &lt;a href="https://puppet.com/docs/puppet/7/modules_fundamentals.html">modules&lt;/a>, Bolt &lt;a href="https://puppet.com/docs/bolt/latest/projects.html">projects&lt;/a>, and more!&lt;/p>
+&lt;p>A &lt;strong>PCT&lt;/strong> can also create one or more independent files to be used inside a project. You can create Puppet &lt;a href="https://puppet.com/docs/puppet/7/lang_classes.html">classes&lt;/a>, &lt;a href="https://puppet.com/docs/puppet/7/fact_overview.html">facts&lt;/a>, &lt;a href="https://puppet.com/docs/puppet/7/functions_ruby_overview.html">functions&lt;/a>, or other tooling configuration files such as CI files, gitignores, or rubocop.yml.&lt;/p>
+&lt;p>Since a PCT is external to the PDK code base, Puppet Product teams, Partners and the wider OSS Community can publish their own content without input or effort from the DevX team. This enables a single tool to support many products.&lt;/p>
+&lt;h2 id="building-blocks-">Building blocks 🧱&lt;/h2>
+&lt;p>A set of individual &lt;strong>PCTs&lt;/strong> can be combined to produce something as simple as a Puppet module with several Puppet classes or as complex as a complete Puppet Control repo with roles and profiles ready to deploy.&lt;/p>
+&lt;p>We want to enable a building block experience. An experience where you can pick and choose from an array of templates to build the content you want. We aim to be like your favorite building block toy, where you choose your components and end up with a wonderful structure.&lt;/p>
+&lt;p>An opt-in experience, where you choose what is added to your content, instead of dealing with a long list of files you&amp;rsquo;ll never use.&lt;/p>
+&lt;h2 id="customizable-">Customizable 📐&lt;/h2>
+&lt;p>Each &lt;strong>PCT&lt;/strong> comes with parts that can be controlled via configuration. These parts have common defaults, but can be changed to suit your environment. The idea is to enable quick deployment of templates, but allow customization to suit your needs.&lt;/p>
+&lt;p>This user can customize how PCTs operate by using YAML files and never need to know how to make a template.&lt;/p>
+&lt;p>If you want a more drastic change, you can copy the &lt;strong>PCT&lt;/strong> and add your own files and changes, then use that &lt;strong>PCT&lt;/strong> without having to get a pull request approved.&lt;/p></description></item><item><title>Blog: Run multi-node module tests with cloud continuous integration (CI) in Google Cloud Platform (GCP)</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-05-07-running-multinode-modules-gcp/</link><pubDate>Fri, 07 May 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-05-07-running-multinode-modules-gcp/</guid><description>
+&lt;p>Multi-node modules are modules which use multiple nodes to run integration tests. Integration testing is where you set up multiple Virtual Machines (VM) or containers, and test interactions between them. For example, this could be:&lt;/p>
+&lt;ul>
+&lt;li>Installing Puppet Enterprise (PE) and multiple Puppet agents.&lt;/li>
+&lt;li>Setting up an NTP server and registering NTP clients.&lt;/li>
+&lt;li>Installing open source Puppet Server and multiple Puppet agents.&lt;/li>
+&lt;/ul>
+&lt;p>The order you perform integration tests is important, and you need to be able to run a test on an individual system.&lt;/p>
+&lt;p>Running multi-node modules in GCP involves the following steps:&lt;/p>
+&lt;ul>
+&lt;li>Provision a node using a Bolt task.&lt;/li>
+&lt;li>Set up a multi-node environment for testing using a Bolt task or plan.&lt;/li>
+&lt;li>Run a test - you can use existing serverspec or Litmus helpers to set up any dependencies required by the module.&lt;/li>
+&lt;li>Teardown the machine using a provision task.&lt;/li>
+&lt;/ul>
+&lt;p>This guide walks you through each step, and then provides examples of how your code would look in different environments.&lt;/p>
+&lt;h2 id="provision-a-node">Provision a node&lt;/h2>
+&lt;p>You can use Litmus and a Bolt task to provision a VM or a container. The provision module&amp;rsquo;s &lt;a href="https://github.com/puppetlabs/provision/blob/main/tasks">available tasks&lt;/a> spin up the test environment. When run, it creates a &lt;code>litmus_inventory.yaml&lt;/code> file that allows &lt;a href="https://github.com/puppetlabs/bolt">Bolt&lt;/a> and &lt;a href="https://serverspec.org/">serverspec&lt;/a> to communicate with that VM.&lt;/p>
+&lt;p>Running tasks in the provision module allows you to add arbitrary key/pair values to the Bolt inventory file. The Bolt variables allows you to have multiple labels associated with a single machine. For example:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-05-07-running-multinode-modules-gcp/inventory_role.png" alt="Showing role info in litmus_inventory.yaml file">
+&lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/blob/main/plans/provision_machines.pp">Example_websphere_provision_plan&lt;/a>&lt;/p>
+&lt;h2 id="set-up-a-multi-node-environment-for-testing">Set up a multi-node environment for testing&lt;/h2>
+&lt;p>To step up Litmus for your acceptance tests, you need to:&lt;/p>
+&lt;ul>
+&lt;li>Install a Puppet agent — you can do this using a Bolt &lt;a href="https://github.com/puppetlabs/puppetlabs-puppet_agent/tree/main/tasks">task&lt;/a>.&lt;/li>
+&lt;li>Install a module — use a rake task that uses Puppet Development Kit (PDK) to build the module for testing, and install it on the target VM.&lt;/li>
+&lt;li>Install &lt;code>spec/spec_helper_acceptance_local.rb&lt;/code> — this may require extra setup to test a module. You can use &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/main/spec/spec_helper_acceptance_local.rb">puppetlabs/puppetlabs-apache&lt;/a>.&lt;/li>
+&lt;/ul>
+&lt;p>To set up integration testing, use a Bolt plan and inventory variable to add labels. You can then run Puppet code against a specific system. You can use &lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/blob/main/plans/pe_server_setup.pp">puppetlabs-websphere_application_server&lt;/a>&lt;/p>
+&lt;p>An example provision plan looks like:&lt;/p>
+&lt;pre>&lt;code>plan websphere_application_server::provision_machines(
+Optional[String] $using = 'abs',
+Optional[String] $image = 'centos-7-x86_64'
+) {
+# provision machines, set roles
+['server', 'appserver', 'dmgr', 'ihs'].each |$role| {
+run_task(&amp;quot;provision::${using}&amp;quot;, 'localhost', action =&amp;gt; 'provision', platform =&amp;gt; $image, vars =&amp;gt; &amp;quot;role: ${role}&amp;quot;)
+}
+}
+&lt;/code>&lt;/pre>&lt;p>You can use &lt;code>spec/spec_helper_acceptance_local.rb&lt;/code> if you need to test a module — &lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/blob/main/spec/spec_helper_acceptance_local.rb">puppetlabs-websphere_application_server&lt;/a>&lt;/p>
+&lt;h2 id="run-a-test">Run a test&lt;/h2>
+&lt;p>To identify which tests to run in an integeration environment, you can use rspec labelling and rake tasks.&lt;/p>
+&lt;p>You can label tests using rspec labeling — tag the test as an integration and keep everything else can stay the same. For example:&lt;/p>
+&lt;pre>&lt;code>describe 'Install the websphere dmgr', :integration do
+before(:all) do
+@agent = WebSphereHelper.dmgr_host
+WebSphereInstance.install(@agent)
+WebSphereDmgr.install(@agent)
+end
+it 'is installed' do
+expect(WebSphereHelper.remote_file_exists(@agent, WebSphereConstants.dmgr_status))
+expect(WebSphereHelper.remote_file_exists(@agent, WebSphereConstants.ws_admin))
+end
+end
+&lt;/code>&lt;/pre>&lt;p>To run a rake task, add to the Rakefile of the module. For example:&lt;/p>
+&lt;pre>&lt;code>require 'rspec/core/rake_task'
+namespace :websphere_application_server do
+RSpec::Core::RakeTask.new(:integration) do |t|
+t.pattern = 'spec/acceptance/**{,/*/**}/*_spec.rb'
+t.rspec_opts = &amp;quot;--tag integration&amp;quot;
+end
+end
+&lt;/code>&lt;/pre>&lt;p>To target a test at a specific VM or container, you can use helper methods. You need to do this if you are using serverspec or Litmus.&lt;/p>
+&lt;p>The examples below show how to filter to get either a single VM or container, or how to retrieve multiple targets.
+&lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/blob/main/spec/spec_helper_acceptance_local.rb">puppetlabs-websphere_application_server&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/blob/main/spec/spec_helper_acceptance_local.rb">puppetlabs-kubernetes&lt;/a>&lt;/p>
+&lt;p>To identify a target node, the code would look like:&lt;/p>
+&lt;pre>&lt;code> context 'application deployment' do
+before(:all) { change_target_host('controller') }
+after(:all) { reset_target_host }
+it 'can deploy an application into a namespace and expose it' do
+run_shell('KUBECONFIG=/etc/kubernetes/admin.conf kubectl create -f /tmp/nginx.yml') do |r|
+expect(r.stdout).to match(/my-nginx created\nservice\/my-nginx created\n/)
+end
+end
+&lt;/code>&lt;/pre>&lt;p>To only run on tests labelled as ‘integration’, use the following command:&lt;/p>
+&lt;p>&lt;code>bundle exec rake websphere_application_server:integration&lt;/code>&lt;/p>
+&lt;h2 id="teardown-the-machine">Teardown the machine&lt;/h2>
+&lt;p>To teardown all the provisioned machines, use the following provision task:&lt;/p>
+&lt;p>&lt;code>bundle exec rake litmus:tear_down&lt;/code>&lt;/p>
+&lt;h3 id="multi-node-testing-examples">Multi-node testing examples&lt;/h3>
+&lt;p>&lt;em>&lt;strong>Multiple Puppet agents&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>A setup where you have multiple Puppet agents, with a module installed and tests run.&lt;/p>
+&lt;p>Commands&lt;/p>
+&lt;pre>&lt;code>bundle install --path .bundle/gems/ --jobs 4
+bundle exec rake spec_prep
+bundle exec bolt --modulepath spec/fixtures/modules plan run ntp::provision_gcp
+bundle exec rake litmus:install_agent
+bundle exec rake litmus:install_module
+bundle exec rake ntp:integration
+bundle exec rake 'litmus:tear_down'
+&lt;/code>&lt;/pre>&lt;p>Example
+&lt;a href="https://github.com/puppetlabs/puppetlabs-ntp/tree/multinodentp">puppetlabs-ntp&lt;/a>&lt;/p>
+&lt;p>&lt;em>&lt;strong>Puppet server and multiple agents&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>A setup where you have Puppet Server and multiple Puppet agents.&lt;/p>
+&lt;p>You can use Bolt plans for provisioning multiple nodes, with roles tagged to each of it.&lt;/p>
+&lt;p>Puppet has a new &lt;a href="https://github.com/puppetlabs/provision/blob/main/tasks/install_puppetserver.json">task&lt;/a> that installs an open source Puppet server in the provision module.&lt;/p>
+&lt;p>Commands&lt;/p>
+&lt;pre>&lt;code>bundle install --path .bundle/gems/ --jobs 4
+bundle exec rake spec_prep
+bundle exec bolt --modulepath spec/fixtures/modules plan run kubernetes::provision_cluster
+bundle exec bolt --modulepath spec/fixtures/modules -i ./spec/fixtures/litmus_inventory.yaml plan run kubernetes::puppetserver_setup
+bundle exec rake litmus:install_agent
+bundle exec rake litmus:install_module
+bundle exec rake kubernetes:integration
+bundle exec rake 'litmus:tear_down'
+&lt;/code>&lt;/pre>&lt;p>Example
+&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs-kubernetes&lt;/a>&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-05-07-running-multinode-modules-gcp/github_workflow.png" alt="Example github workflow run">&lt;/p>
+&lt;p>&lt;em>&lt;strong>PE and agents&lt;/strong>&lt;/em>&lt;/p>
+&lt;p>A setup where you have a PE server and multiple Puppet agents.&lt;/p>
+&lt;p>You can use Bolt plans for provisioning multiple nodes with roles tagged to each of it.&lt;/p>
+&lt;p>There is a task to install PE in the &lt;code>puppet-deploy_pe module&lt;/code>.
+&lt;a href="https://github.com/jarretlavallee/puppet-deploy_pe/tree/master/plans">provision_master/agents&lt;/a>&lt;/p>
+&lt;p>Commands&lt;/p>
+&lt;pre>&lt;code>bundle install --path .bundle/gems/ --jobs 4
+bundle exec rake spec_prep
+bundle exec bolt --modulepath spec/fixtures/modules plan run ntp::provision_gcp
+bundle exec bolt --modulepath spec/fixtures/modules -i ./spec/fixtures/litmus_inventory.yaml plan run ntp::pe_server
+bundle exec bolt --modulepath spec/fixtures/modules -i ./spec/fixtures/litmus_inventory.yaml plan run ntp::pe_agent
+bundle exec rake litmus:install_module
+bundle exec rake ntp:integration
+bundle exec rake 'litmus:tear_down'
+&lt;/code>&lt;/pre>&lt;p>Example
+&lt;a href="https://github.com/puppetlabs/puppetlabs-ntp/tree/multinodentp">puppetlabs-ntp&lt;/a>&lt;/p>
+&lt;p>An example plan that installs a PE server:&lt;/p>
+&lt;pre>&lt;code>plan ntp::pe_server(
+Optional[String] $version = '2019.8.5',
+Optional[Hash] $pe_settings = {password =&amp;gt; 'puppetlabs'}
+) {
+# identify pe server node
+$puppet_server = get_targets('*').filter |$n| { $n.vars['role'] == 'ntpserver' }
+# install pe server
+run_plan(
+'deploy_pe::provision_master',
+$puppet_server,
+'version' =&amp;gt; $version,
+'pe_settings' =&amp;gt; $pe_settings
+)
+}
+&lt;/code>&lt;/pre>&lt;p>An example plan that installs a Puppet agent:&lt;/p>
+&lt;pre>&lt;code>plan ntp::pe_agent() {
+# identify pe server and agent nodes
+$puppet_server = get_targets('*').filter |$n| { $n.vars['role'] == 'ntpserver' }
+$puppet_agent = get_targets('*').filter |$n| { $n.vars['role'] == 'ntpclient' }
+# install agent
+run_plan(
+'deploy_pe::provision_agent',
+$puppet_agent,
+'master' =&amp;gt; $puppet_server,
+)
+}
+&lt;/code>&lt;/pre>&lt;p>For more GitHub Action workflow examples, see the following:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/tree/main/.github/workflows">puppetlabs-websphere_application_server&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/tree/main/.github/workflows">puppetlabs-kubernetes&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Thanks &lt;a href="https://github.com/tphoney">TP&lt;/a> for the valuable work on integration testing.
+Thanks &lt;a href="https://github.com/MartyEwings">Marty&lt;/a> for the work on installing PE on cloud CI.&lt;/p></description></item><item><title>Blog: Collecting GCP info and system metrics for Honeycomb</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-10-05-honeycomb-gcp-metrics/</link><pubDate>Mon, 05 Oct 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-10-05-honeycomb-gcp-metrics/</guid><description>
+&lt;p>For a new and exciting project, the team is currently onboarding on &lt;a href="https://en.wikipedia.org/wiki/Google_Cloud_Platform">Google Cloud Platform (GCP)&lt;/a> development.&lt;/p>
+&lt;!-- This is part of a series of posts describing our journey. -->
+&lt;p>I can&amp;rsquo;t wait until I&amp;rsquo;m able to share more, but for now I can only say we&amp;rsquo;re looking at a &lt;a href="http://sinatrarb.com/intro.html">Sinatra&lt;/a>-hosted Ruby API server.
+To gain a better understanding how the service is performing, we want to collect some &amp;ldquo;traditional&amp;rdquo; metrics.
+Since we&amp;rsquo;re already using honeycomb for tracing &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-teamblog/updates/2020-03-30-debugging-unit-tests-with-honeycomb.md">tests&lt;/a> and &lt;a href="https://docs.honeycomb.io/getting-data-in/ruby/beeline/#sinatra">API calls&lt;/a>, looking into honeycomb for more was my first choice.
+Most of the content here is based off the &amp;ldquo;Getting Started With Honeycomb Metrics&amp;rdquo; whitepaper at [https://www.honeycomb.io/white-papers/], made specific to Ruby and GCP.&lt;/p>
+&lt;h2 id="static-runtime-information">Static runtime information&lt;/h2>
+&lt;p>The first thing to collect is some static information about the container runtime hosting the current process.
+We&amp;rsquo;re using &lt;a href="https://cloud.google.com/run/docs">Cloud Run&lt;/a> as our primary deployment infrastructure for the API services, so this is our first stop.
+The &lt;a href="https://cloud.google.com/compute/docs/storing-retrieving-metadata">metadata server&lt;/a> provides details about the container instance as described in &amp;ldquo;&lt;a href="https://cloud.google.com/run/docs/reference/container-contract#metadata-server">Container instance metadata server&lt;/a>&amp;rdquo;.&lt;/p>
+&lt;p>The GCP ruby gems provide &lt;code>Google::Cloud.env&lt;/code> to access the metadata server.
+Here is a pruned example of how to add metadata to all spans for easy filtering:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#8be9fd;font-style:italic">require&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;honeycomb-beeline&amp;#39;&lt;/span>
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>configure &lt;span style="color:#ff79c6">do&lt;/span> &lt;span style="color:#ff79c6">|&lt;/span>config&lt;span style="color:#ff79c6">|&lt;/span>
+config&lt;span style="color:#ff79c6">.&lt;/span>service_name &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;backend&amp;#39;&lt;/span>
+&lt;span style="color:#ff79c6">end&lt;/span>
+env &lt;span style="color:#ff79c6">=&lt;/span> Google&lt;span style="color:#ff79c6">::&lt;/span>Cloud&lt;span style="color:#ff79c6">.&lt;/span>env
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.project_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>project_id)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>lookup_metadata(&lt;span style="color:#f1fa8c">&amp;#39;instance&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;id&amp;#39;&lt;/span>))
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_name&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_name)
+region_result &lt;span style="color:#ff79c6">=&lt;/span> env&lt;span style="color:#ff79c6">.&lt;/span>lookup_metadata &lt;span style="color:#f1fa8c">&amp;#34;instance&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;region&amp;#34;&lt;/span>
+region &lt;span style="color:#ff79c6">=&lt;/span> region_result&lt;span style="color:#ff79c6">&amp;amp;.&lt;/span>split(&lt;span style="color:#f1fa8c">&amp;#39;/&amp;#39;&lt;/span>)&lt;span style="color:#ff79c6">&amp;amp;.&lt;/span>last
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_region&amp;#39;&lt;/span>, region)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_zone&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_zone)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_machine_type&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_machine_type)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_blog_tags&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_blog_tags)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.knative_service_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>knative_service_id)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.knative_service_revision&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>knative_service_revision)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Put this code somewhere that is loaded on app start up.
+For rack-based frameworks like sinatra this is the &lt;code>config.ru&lt;/code>, where we include this code through &lt;code>require&lt;/code>.&lt;/p>
+&lt;p>At the same time, we can also add private configuration flags from our service, to track their influence.
+For example, to capture whether &lt;code>FLAG_ENABLED&lt;/code> has been set in the container&amp;rsquo;s variables:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;flag_enabled&amp;#39;&lt;/span>, ENV&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;FLAG_ENABLED&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;true&amp;#39;&lt;/span>)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The attributes show up in the trace/span sidebar and can be used in any query:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-10-05-honeycomb-gcp-metrics/gcp_attributes.png" alt="">&lt;/p>
+&lt;h2 id="dynamic-data">Dynamic Data&lt;/h2>
+&lt;p>For the actual system metrics, like CPU and memory usage, &lt;a href="https://github.com/honeycombio/libhoney-rb">libhoney&lt;/a> offers builders and &lt;a href="https://docs.honeycomb.io/getting-data-in/ruby/sdk/#advanced-usage-dynamic-fields">dynamic fields&lt;/a> (&lt;a href="https://www.rubydoc.info/gems/libhoney/Libhoney%2FClient:add_dynamic_field">API docs&lt;/a>).
+Dynamic fields get evaluated at the start of each span[&lt;a href="https://github.com/honeycombio/beeline-ruby/blob/15341f01740001acbc1f2748e68cbe380bfc3f7f/lib/honeycomb/span.rb#L31">1&lt;/a>] and added to the fields sent to Honeycomb.&lt;/p>
+&lt;p>To access the current &lt;a href="http://en.wikipedia.org/wiki/Resident_set_size">Resident Set Size&lt;/a> (RSS, &amp;ldquo;memory in use&amp;rdquo;) we use the &lt;a href="https://github.com/schneems/get_process_mem">get_process_mem gem&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#8be9fd;font-style:italic">require&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;get_process_mem&amp;#39;&lt;/span>
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_dynamic_field(&lt;span style="color:#f1fa8c">&amp;#39;global.memory_inuse_bytes&amp;#39;&lt;/span>, &lt;span style="color:#8be9fd;font-style:italic">proc&lt;/span> { GetProcessMem&lt;span style="color:#ff79c6">.&lt;/span>new&lt;span style="color:#ff79c6">.&lt;/span>bytes&lt;span style="color:#ff79c6">.&lt;/span>to_i })
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The total lifetime of the process can be calculated as the difference from the start time to now:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">start &lt;span style="color:#ff79c6">=&lt;/span> Time&lt;span style="color:#ff79c6">.&lt;/span>now
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_dynamic_field(&lt;span style="color:#f1fa8c">&amp;#39;global.process_uptime_seconds&amp;#39;&lt;/span>, &lt;span style="color:#8be9fd;font-style:italic">proc&lt;/span> { Time&lt;span style="color:#ff79c6">.&lt;/span>now &lt;span style="color:#ff79c6">-&lt;/span> start }
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>After a few minutes of the heartbeat API call:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-10-05-honeycomb-gcp-metrics/first_results.png" alt="">&lt;/p>
+&lt;h2 id="closing-notes">Closing Notes&lt;/h2>
+&lt;p>This post was written while implementing the first stab at collecting metrics.
+As we continue to improve our understanding of the capabilities and limitations of GCP, I expect we will have to revisit the exact metrics collected.
+For example, data written to disk in Cloud Run is stored in RAM and also counted against the service&amp;rsquo;s quota.
+This sounds like something to keep an eye on eventually.&lt;/p>
+&lt;p>Honeycomb recommends keeping system metrics in a separate dataset from application events.
+During development we currently have very little traffic on the service, so for simplicities sake, we keep everything global and attached to all events.
+We&amp;rsquo;ll have to revisit this once we get more traffic on the service.&lt;/p></description></item><item><title>Blog: Docker params change detection</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-23-docker-params-change-detection/</link><pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-23-docker-params-change-detection/</guid><description>
+&lt;h2 id="docker-params-change-detection">Docker params change detection&lt;/h2>
+&lt;p>The problem was reported by a client with the ticket &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10734">MODULES-10734&lt;/a>. After analysis, we discovered that we don&amp;rsquo;t have parameter change detection mechanisms. In this blog post, we try to explain the problem in detail with examples.&lt;/p>
+&lt;p>An interesting behaviour was present in docker::run component. The problem was that if any parameter was added/modified/removed puppet agent would only apply the change only if you stopped, removed the container manually and reapplied the manifest, forcing a new container creation.&lt;/p>
+&lt;p>The solution was to create a new function that detects if at least one parameter is changed. The detection mechanism is based on the check between parameter values from the manifest file and correspondent field from the docker inspect object of the currently running container. The solution is present in the 3.11.0 version.&lt;/p>
+&lt;p>So now let&amp;rsquo;s see how the problem can be reproduced by using version &lt;code>&amp;lt;= 3.10.2&lt;/code>:&lt;/p>
+&lt;h3 id="1-install-puppetlabsdocker-module">1. install puppetlabs/docker module&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: puppet module install puppetlabs/docker --version 3.10.2
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-apply-this-manifest">2. apply this manifest:&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">class&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;docker&amp;#39;&lt;/span>: }
+&lt;span style="color:#50fa7b">docker&lt;/span>::&lt;span style="color:#50fa7b">run&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;servercore&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">image&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;hello-world:linux&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">restart&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;always&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">net&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$facts[&amp;#39;os&amp;#39;]&lt;/span>[&lt;span style="color:#f1fa8c">&amp;#39;name&amp;#39;&lt;/span>] &lt;span style="color:#ff79c6">?&lt;/span> {
+&lt;span style="color:#f1fa8c">&amp;#39;windows&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;nat&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">default&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;bridge&amp;#39;&lt;/span>,
+},
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-check-the-image-tag-by-running-this-command">3. check the image tag by running this command:&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: docker inspect --format&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;{{ .Config.Image }}&amp;#34;&lt;/span> servercore
+$: hello-world:linux
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="4-change-the-image-tag-from-hello-worldlinux-to-hello-worldlatest-and-reapply-the-manifest">4. change the image tag from &lt;code>hello-world:linux&lt;/code> to &lt;code>hello-world:latest&lt;/code> and reapply the manifest.&lt;/h3>
+&lt;p>The manifest should look like this:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">class&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;docker&amp;#39;&lt;/span>: }
+&lt;span style="color:#50fa7b">docker&lt;/span>::&lt;span style="color:#50fa7b">run&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;servercore&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">image&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;hello-world:latest&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">restart&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;always&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">net&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$facts[&amp;#39;os&amp;#39;]&lt;/span>[&lt;span style="color:#f1fa8c">&amp;#39;name&amp;#39;&lt;/span>] &lt;span style="color:#ff79c6">?&lt;/span> {
+&lt;span style="color:#f1fa8c">&amp;#39;windows&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;nat&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">default&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;bridge&amp;#39;&lt;/span>,
+},
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&amp;hellip; and now check if the change was applied&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: docker inspect --format&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;{{ .Config.Image }}&amp;#34;&lt;/span> servercore
+$: hello-world:linux
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>so&amp;hellip; something is wrong, the tag was not changed to &lt;code>hello-world:latest&lt;/code>. If we want to apply this change we need to do a few more steps:&lt;/p>
+&lt;ul>
+&lt;li>stop the container: &lt;code>docker stop servercore&lt;/code>&lt;/li>
+&lt;li>remove the container: &lt;code>docker rm servercore&lt;/code>&lt;/li>
+&lt;li>reapply the manifest detailed above: &lt;code>puppet apply &amp;lt;manifest_file_name&amp;gt;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>In conclusion in the puppetlabs/docker module versions &lt;code>&amp;lt;= 3.10.2 &lt;/code>the parameter change is not detected. If we want to change some parameters for the same container, the puppet agent will not apply these changes for us until we delete the container manually.
+Using the latest versions(&lt;code>&amp;gt;=3.11.0&lt;/code>) this problem is resolved by having the parameter detection mechanism implemented for the most important parameters such as image, volumes and ports.
+Also please take a look at the &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/648">solution&lt;/a>.&lt;/p>
+&lt;p>Kind regards,
+&lt;a href="https://github.com/adrianiurca">Adrian Iurca&lt;/a>&lt;/p></description></item><item><title>Blog: Debugging unit-tests with Honeycomb</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-30-debugging-unit-tests-with-honeycomb/</link><pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-30-debugging-unit-tests-with-honeycomb/</guid><description>
+&lt;p>Since &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-teamblog/updates/2020-03-27-status-update.md#litmus-progress">last week&lt;/a> we&amp;rsquo;re collecting unit-test results and acceptance test runs in &lt;a href="https://honeycomb.io/">honeycomb&lt;/a>, a tool for introspecting and interrogating production systems. In our team&amp;rsquo;s case, CI is the &amp;ldquo;production&amp;rdquo; environment we manage. Today Daniel pointed out that there was a curious issue with one of our test suites:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#f1fa8c">NoMethodError&lt;/span>:
+undefined &lt;span style="color:#8be9fd;font-style:italic">method&lt;/span> &lt;span style="color:#f1fa8c">`message_lines&amp;#39; for #&amp;lt;RSpec::Core::Notifications::SkippedExampleNotification:0x00007f8407ac3018&amp;gt;
+&lt;/span>&lt;span style="color:#f1fa8c"># /Users/danielcarabas/.rvm/gems/ruby-2.6.3/gems/rspec_honeycomb_formatter-0.2.0/lib/rspec_honeycomb_formatter.rb:95:in `&lt;/span>example_pending&amp;#39;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>That clearly rings a bell, but a trivial try at reproducing this using &lt;code>pending&lt;/code> brought up a weird issue:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#f1fa8c">From&lt;/span>: &lt;span style="color:#f1fa8c">/home/&lt;/span>david&lt;span style="color:#ff79c6">/&lt;/span>git&lt;span style="color:#ff79c6">/&lt;/span>rspec_honeycomb_formatter&lt;span style="color:#ff79c6">/&lt;/span>lib&lt;span style="color:#ff79c6">/&lt;/span>rspec_honeycomb_formatter&lt;span style="color:#ff79c6">.&lt;/span>rb @ line &lt;span style="color:#bd93f9">99&lt;/span> RSpecHoneycombFormatter&lt;span style="color:#6272a4">#example_pending:&lt;/span>
+&lt;span style="color:#bd93f9">95&lt;/span>: &lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">example_pending&lt;/span>(notification)
+&lt;span style="color:#bd93f9">96&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;rspec.result&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;pending&amp;#39;&lt;/span>)
+&lt;span style="color:#bd93f9">97&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;name&amp;#39;&lt;/span>, notification&lt;span style="color:#ff79c6">.&lt;/span>example&lt;span style="color:#ff79c6">.&lt;/span>description)
+&lt;span style="color:#bd93f9">98&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;rspec.description&amp;#39;&lt;/span>, notification&lt;span style="color:#ff79c6">.&lt;/span>example&lt;span style="color:#ff79c6">.&lt;/span>description)
+&lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#bd93f9">99&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">require&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;pry&amp;#39;&lt;/span>;&lt;span style="color:#8be9fd;font-style:italic">binding&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>pry
+&lt;span style="color:#bd93f9">100&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;rspec.message&amp;#39;&lt;/span>, strip_ansi(notification&lt;span style="color:#ff79c6">.&lt;/span>message_lines&lt;span style="color:#ff79c6">.&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#f1fa8c">\n&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>)))
+&lt;span style="color:#bd93f9">101&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;rspec.backtrace&amp;#39;&lt;/span>, notification&lt;span style="color:#ff79c6">.&lt;/span>formatted_backtrace&lt;span style="color:#ff79c6">.&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>&lt;span style="color:#f1fa8c">\n&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>))
+&lt;span style="color:#bd93f9">102&lt;/span>: &lt;span style="color:#8be9fd;font-style:italic">@example_span&lt;/span>&lt;span style="color:#ff79c6">.&lt;/span>send
+&lt;span style="color:#bd93f9">103&lt;/span>: &lt;span style="color:#ff79c6">end&lt;/span>
+&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#bd93f9">1&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> pry(&lt;span style="color:#6272a4">#&amp;lt;RSpecHoneycombFormatter&amp;gt;)&amp;gt; notification.class&lt;/span>
+&lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> RSpec&lt;span style="color:#ff79c6">::&lt;/span>Core&lt;span style="color:#ff79c6">::&lt;/span>Notifications&lt;span style="color:#ff79c6">::&lt;/span>PendingExampleFailedAsExpectedNotification
+&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#bd93f9">2&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> pry(&lt;span style="color:#6272a4">#&amp;lt;RSpecHoneycombFormatter&amp;gt;)&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The class here is not the same as the initial report is complaining about.
+And this does not fail.
+&lt;code>PendingExampleFailedAsExpectedNotification&lt;/code> does have &lt;code>message_lines&lt;/code>.
+Since the original report didn&amp;rsquo;t have any more information attached (and for the sake of the pacing of this blog post) I went to honeycomb to see if other modules were exhibiting the same problem.
+After a couple of clicks this was what I had:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-03-30-debugging-with-honeycomb/honeycomb-heatmap.png" alt="honeycomb heatmap screenshot">&lt;/p>
+&lt;p>The query selects by the error message and returns all examples with that error message.
+Clearly this has been going on for a while.
+Clicking through to the raw data I could jump to the full log of one of the runs:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-03-30-debugging-with-honeycomb/honeycomb-raw-data.png" alt="honeycomb raw data screenshot">&lt;/p>
+&lt;p>Which brings us to &lt;a href="https://github.com/puppetlabs/puppetlabs-package/runs/544125013#step:3:445">this failure on github actions&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">================&lt;/span>
+unlikely&lt;span style="color:#ff79c6">-&lt;/span>toxin&lt;span style="color:#ff79c6">.&lt;/span>delivery&lt;span style="color:#ff79c6">.&lt;/span>puppetlabs&lt;span style="color:#ff79c6">.&lt;/span>net, win&lt;span style="color:#ff79c6">-&lt;/span>&lt;span style="color:#bd93f9">2008&lt;/span>r2&lt;span style="color:#ff79c6">-&lt;/span>x86_64
+&lt;span style="color:#ff79c6">**&lt;/span>F&lt;span style="color:#ff79c6">****&lt;/span>FFFFFF
+&lt;span style="color:#f1fa8c">Pending&lt;/span>: (Failures listed here are expected &lt;span style="color:#ff79c6">and&lt;/span> &lt;span style="color:#ff79c6">do&lt;/span> &lt;span style="color:#ff79c6">not&lt;/span> affect your suite&lt;span style="color:#f1fa8c">&amp;#39;s status)
+&lt;/span>&lt;span style="color:#f1fa8c">
+&lt;/span>&lt;span style="color:#f1fa8c"> 1) package task install installs pry
+&lt;/span>&lt;span style="color:#f1fa8c"> # Don&amp;#39;&lt;/span>t run on Windows
+On host &lt;span style="color:#f1fa8c">`unlikely-toxin.delivery.puppetlabs.net&amp;#39;
+&lt;/span>&lt;span style="color:#f1fa8c"> Failure/Error: @example_span.add_field(&amp;#39;rspec.message&amp;#39;, strip_ansi(notification.message_lines.join(&amp;#34;&lt;/span>&lt;span style="color:#f1fa8c">\n&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;)))
+&lt;/span>&lt;span style="color:#f1fa8c"> NoMethodError:
+&lt;/span>&lt;span style="color:#f1fa8c"> undefined method `&lt;/span>message_lines&amp;#39; &lt;span style="color:#ff79c6">for&lt;/span> &lt;span style="color:#6272a4">#&amp;lt;RSpec::Core::Notifications::SkippedExampleNotification:0x00007fe474773368&amp;gt;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>This in turn I can look up in &lt;a href="https://github.com/puppetlabs/puppetlabs-package/blob/b7ff8d9a3982287f30a20111f86413b0350d20d6/spec/acceptance/init_spec.rb">the source code&lt;/a>.
+I&amp;rsquo;m assuming the following clause is the issue:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">before(&lt;span style="color:#f1fa8c">:each&lt;/span>) &lt;span style="color:#ff79c6">do&lt;/span>
+skip &lt;span style="color:#f1fa8c">&amp;#34;Don&amp;#39;t run on Windows&amp;#34;&lt;/span> &lt;span style="color:#ff79c6">if&lt;/span> operating_system_fact &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;windows&amp;#39;&lt;/span>
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Putting that into the manual test case quickly confirmed that this was indeed the problem.
+After being able to reproduce this locally, it was a matter of poking pry to figure out what needs to be done about it.
+The &lt;code>SkippedExampleNotification&lt;/code> doesn&amp;rsquo;t have a &lt;code>message_lines&lt;/code> method, and needs to be handled differently.
+The result has been posted in the &lt;a href="https://github.com/puppetlabs/rspec_honeycomb_formatter/pull/10">&amp;ldquo;Fix missing message_lines method&amp;rdquo; PR&lt;/a> and should be merged and released by the time you read this post.&lt;/p>
+&lt;p>Finally, to cross-check that this is the only problem we&amp;rsquo;ve been seeing, I&amp;rsquo;ve added a &lt;code>rspec.message does-not-contain SkippedExampleNotification&lt;/code> clause to the honeycomb query.
+That new query did not return any results, increasing my confidence in having addressed all currently visible issues with the formatter.&lt;/p></description></item><item><title>Blog: How to use agent-side information on the puppetserver</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-18-how-to-use-agent-information-on-puppetserver/</link><pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-18-how-to-use-agent-information-on-puppetserver/</guid><description>
+&lt;p>This question was posted on the &lt;a href="https://slack.puppet.com/">Puppet Community Slack&lt;/a> yesterday:&lt;/p>
+&lt;blockquote>
+&lt;p>Is there any way like the below in puppet code we can use:&lt;/p>
+&lt;pre>&lt;code>$var=‘run command locally on agent, if $?=0 echo “present”, else echo “absent”’
+if $var == present {
+# my code
+} else {
+# something else
+}
+&lt;/code>&lt;/pre>&lt;/blockquote>
+&lt;p>(by user &lt;a href="https://app.slack.com/team/URGFPBS0N">IlovPuppet&lt;/a>, edited for presentation)&lt;/p>
+&lt;p>There are a number of reasons why this question comes up.
+First is likely that folks are not aware of the options available at all.
+Then, sometimes, the common options (like custom facts) just don&amp;rsquo;t cut it for security or performance reasons.
+Last but not least, organisational and technical circumstances can make one option more appealing than others.&lt;/p>
+&lt;p>From my answer there, I wrote up a more detailed exposition here.
+Based on the specifics of your situation,
+there are several different options to solve this,
+described in detail below:&lt;/p>
+&lt;ul>
+&lt;li>make the decision explicit&lt;/li>
+&lt;li>a &lt;code>Deferred&lt;/code> function call&lt;/li>
+&lt;li>using &lt;code>onlyif&lt;/code> or &lt;code>unless&lt;/code> on an &lt;code>exec&lt;/code> resource&lt;/li>
+&lt;li>a custom fact&lt;/li>
+&lt;li>a custom resource&lt;/li>
+&lt;/ul>
+&lt;h2 id="explicit-decisions">Explicit Decisions&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>Puppet shines when we can make our configuration decisions explicit.
+Make the dynamic decision a static configuration and ensure that whatever is producing the different states is also managed by puppet.
+Having a hard look at what the command is trying to decide and whether this couldn&amp;rsquo;t be enforced instead of queried can save complexity.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>A simple example from my past as a technical consultant is a client who wanted to base a configuration decision off whether or not a particular package was installed on a workstation. In this particular case it turned out that installing that additional package was not very expensive (compared to coding up a dynamic solution), so we just rolled out the package to everyone and removed another thing that was different across the fleet.&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>if you can take control of the source of your question.&lt;/li>
+&lt;li>if you can key off another configuration instead of querying active system state.&lt;/li>
+&lt;li>if you can make your general configuration easier by removing a source of variation.&lt;/li>
+&lt;li>if the query code is difficult and/or unreliable.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>the input is truly dynamic.&lt;/li>
+&lt;li>the configuration is outside of your organisational scope (but try talking to the other team first!).&lt;/li>
+&lt;li>the computed value is sensitive and should not be transmitted or stored outside the node.&lt;/li>
+&lt;/ul>
+&lt;h2 id="deferred">&lt;code>Deferred&lt;/code>&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>The &lt;code>Deferred&lt;/code> function computes a value on the agent everytime the catalog is executed and uses the value immediately in the catalog.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppet/vault_lookup">puppet/vault_lookup&lt;/a> module shows how to use &lt;code>Deferred&lt;/code> with its &lt;code>vault_lookup::lookup&lt;/code> function:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#8be9fd;font-style:italic">$d&lt;/span> &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#50fa7b">Deferred&lt;/span>(&lt;span style="color:#f1fa8c">&amp;#39;vault_lookup::lookup&amp;#39;&lt;/span>, [&lt;span style="color:#f1fa8c">&amp;#34;secret/test&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;https://vault.hostname:8200&amp;#39;&lt;/span>])
+&lt;span style="color:#ff79c6">node&lt;/span> &lt;span style="color:#ff79c6">default&lt;/span> {
+&lt;span style="color:#ff79c6">notify&lt;/span> { &lt;span style="color:#50fa7b">example&lt;/span> :
+&lt;span style="color:#50fa7b">message&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$d&lt;/span>
+}
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(from &lt;a href="https://github.com/voxpupuli/puppet-vault_lookup#usage">voxpupuli/puppet-vault_lookup&lt;/a>)&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>for values specific to one or a few agents, for which managing via Hiera would be cumbersome.&lt;/li>
+&lt;li>for sensitive values that should not be exposed outside the individual agent.&lt;/li>
+&lt;li>for setting properties on resources.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>you need to change &lt;strong>which&lt;/strong> resources are managed.&lt;/li>
+&lt;li>you need the value in PE Console for classification or reporting.&lt;/li>
+&lt;li>the computed value depends on resources managed earlier in the catalog.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/write_a_puppet_function_to_store_secrets.html">Write a Puppet function to store secrets&lt;/a>: the original use-case for &lt;code>Deferred&lt;/code>&lt;/li>
+&lt;li>&lt;a href="http://puppet-on-the-edge.blogspot.com/2018/10/the-topic-is-deferred.html">The Topic is Deferred&lt;/a>: blogpost with hints and tricks how to use &lt;code>Deferred&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://binford2k.com/2019/11/12/deferred-functions/">Agent Side Functions in Puppet 6&lt;/a>: technical deep-dive on how &lt;code>Deferred&lt;/code> works&lt;/li>
+&lt;li>&lt;a href="https://www.hashicorp.com/resources/agent-side-lookups-with-hashicorp-vault-puppet-6">HashiCorp Vault 🧡 Puppet6 webinar&lt;/a>: deferred functions in Puppet 6, which unlocks new authentication methods and workflows for HashiCorp Vault + Puppet setups.&lt;/li>
+&lt;/ul>
+&lt;h2 id="exec-resources">&lt;code>exec&lt;/code> resources&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>The &lt;code>exec&lt;/code> resource has attributes to dynamically decide to run the managed command or not.
+By passing a command to &lt;code>onlyif&lt;/code> or &lt;code>unless&lt;/code> the command is executed &lt;em>only if&lt;/em> or &lt;em>unless&lt;/em> the condition successfully executes.
+Use &lt;code>refreshonly&lt;/code> to react to another resource being changed.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppetlabs/mysql">mysql module&lt;/a> has this &lt;code>exec&lt;/code> resource to clean up after installation. This should never run after &lt;code>${secret_file}&lt;/code> has been dealt with.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">exec&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;remove install pass&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">command&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$rm_pass_cmd,&lt;/span>
+&lt;span style="color:#50fa7b">onlyif&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;test -f ${secret_file}&amp;#34;&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin&amp;#39;&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(from &lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/blob/312aca80ba7699ab37f9051d871aac2e05b217b3/manifests/server/root_password.pp#L20-L24">root_password.pp&lt;/a>)&lt;/p>
+&lt;p>&lt;strong>Use it for &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>running one-off commands on a condition.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>an exec is not a good fit for your problem.&lt;/li>
+&lt;li>the condition is very complex or timeconsuming.&lt;/li>
+&lt;li>the condition has to be repeated often.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/types/exec.html">Resource Type: &lt;code>exec&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="custom-facts">Custom Facts&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>Custom facts are distributed to Puppet clients and are available for use in manifests and templates,
+just like any other fact is.
+They can be used to write conditional expressions based on site-specific data that isn’t available via Facter.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The apt module has a few &lt;a href="https://github.com/puppetlabs/puppetlabs-apt#facts">custom facts&lt;/a>. The &lt;code>apt_update_last_success&lt;/code> fact is used in &lt;a href="https://github.com/puppetlabs/puppetlabs-apt/blob/master/manifests/update.pp">update.pp&lt;/a> to decide whether or not it is necessary to update apt caches depending on the various configurations specified.&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>when you need to centrally collect and evaluate the values.&lt;/li>
+&lt;li>when you want to get the value from all your nodes.&lt;/li>
+&lt;li>to change the set of resources and classes included for each node.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>the computed value is sensitive and should not be transmitted or stored outside the node.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/fact_overview.html">Custom facts&lt;/a>: the current puppet documentation&lt;/li>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/custom_facts.html">Custom facts walkthrough&lt;/a>: how to write your own facts&lt;/li>
+&lt;li>&lt;a href="https://glennsarti.github.io/blog/puppet-ruby-facts/">Starting out with Puppet custom facts&lt;/a>: a quick start to converting external facts to ruby custom facts on Windows&lt;/li>
+&lt;/ul>
+&lt;h2 id="custom-resources">Custom Resources&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>With a native ruby plugin you can fully take control of how puppet manages a resource. Through this you get fine-grained control over reporting and enforcing system state through puppet.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppetlabs/mysql">mysql module&lt;/a> contains custom types and providers to control databases, users and grants.&lt;/p>
+&lt;blockquote>
+&lt;p>Note that the mysql module is still using the low-level API. Using the PDK and the Resource API, programming types and providers has become a lot easier as of late. Check out the &amp;ldquo;Further Reading&amp;rdquo; section below.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Use it for &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>things that can be modeled as a puppet resource.&lt;/li>
+&lt;li>fine-grained control.&lt;/li>
+&lt;li>full integration into the puppet tooling.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>you do not want to code ruby.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/custom_resources.html">Custom Resources&lt;/a>: main documentation on writing custom resources.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-resource_api/tree/master/docs">HUE hands on lab&lt;/a>: hands-on lab for a custom remote resource interacting with a API.&lt;/li>
+&lt;/ul>
+&lt;h2 id="final-words">Final Words&lt;/h2>
+&lt;p>To summarize, Puppet provides you with a number of alternatives to make your configuration smarter.
+Thanks to IluvPuppet for the great question, and &lt;a href="https://github.com/hpcprofessional">Paul Anderson&lt;/a> and Paul Reed for reviewing and feedback.&lt;/p></description></item><item><title>Blog: Setting up basic infrastructure for your gem</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-19-infrastructure-for-the-gem/</link><pubDate>Wed, 19 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-19-infrastructure-for-the-gem/</guid><description>
+&lt;h2 id="introduction">Introduction&lt;/h2>
+&lt;p>Here we will be going through the steps and best practices for setting up basic infrastructure for your gem.
+The steps given can be followed by anyone to setup the basic infrastructure for gem development which does the following.&lt;/p>
+&lt;ul>
+&lt;li>creates the basic file structure for the gem.&lt;/li>
+&lt;li>adds the rubocop which validates the guidelines outlined in the community Ruby Style Guide.&lt;/li>
+&lt;li>adds the travis or appveyor testing to the repo which validates the changes to the repo.&lt;/li>
+&lt;li>adds the dependendabot to the repo which creates pull requests to keep dependencies up to date.&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;h4 id="note">Note:&lt;/h4>
+&lt;p>This walkthrough assumes you have the following software installed:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://www.ruby-lang.org/en/downloads/">Ruby&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>It also assumes familiarity with the &lt;a href="https://rubygems.org/">Ruby gems&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="infrastructure-for-your-gem">Infrastructure for your gem&lt;/h2>
+&lt;p>We&amp;rsquo;re going through the steps and best practices for setting up basic infrastructure for your gem.&lt;/p>
+&lt;p>For any repo created for developing a Gem we add owner, access and license to the repo.
+Follow the steps below to add them.&lt;/p>
+&lt;ol>
+&lt;li>Open a &lt;a href="https://github.com">git hub&lt;/a> page, perform the rest of these actions from there.
+&lt;ol>
+&lt;li>
+&lt;p>Click on + to create a new repo.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/newrepo.png" alt="+">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Provider the owner information, repo name and license.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/owner.png" alt="owner information and repo name">
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/owner.png" alt="Example image">
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/license.png" alt="license">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Click on Create repository button.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Open the new repo created and navigate to settings tab to update the access.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Provide your team as admin on github. (This example shows Puppet&amp;rsquo;s modules team)
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/githubowner.png" alt="admin">&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol>
+&lt;p>Follow the steps below for creating the gem structure, add the rubocop validation, add the travis or appveyor testing to the repo.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Open the command line and perform the rest of these actions from there.&lt;/p>
+&lt;ol>
+&lt;li>Clone the new repo created. Add the upstream project and checkout the branch.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git clone https://github.com/sheenaajay/puppet-modulebuilder.git
+git remote add puppetlabs https://github.com/puppetlabs/puppet-modulebuilder.git
+git checkout -b blogpost
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="2">
+&lt;li>Create a ruby gem with bundler and perform the commit.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">bundle gem puppet-modulebuilder
+git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Initial commit of puppet-modulebuilder gem scaffolding&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;pre>&lt;code>See [Clarifying the Roles of the .gemspec and Gemfile](https://yehudakatz.com/2010/12/16/clarifying-the-roles-of-the-gemspec-and-gemfile/) on whether you want to commit the `Gemfile.lock` or not.
+&lt;/code>&lt;/pre>
+&lt;ol start="3">
+&lt;li>Remove unused default gem development scripts if any and perform the commit.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">rm -r bin/console
+rm -r bin/setup
+git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Remove unused default gem development scripts&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="4">
+&lt;li>Update gemspec with actual values for spec.authors, spec.email, spec.summary, spec.description, spec.homepage, spec.metadata.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/gemspec.png" alt="gemspec">&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Update gemspec with actual values&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="5">
+&lt;li>Copy puppet-style rubocop rules(Example from &lt;a href="https://github.com/puppetlabs/pdk/blob/master/.rubocop.yml">pdk repo&lt;/a>), activate and apply default fixes.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">bundle install --path .bundle/gems/
+bundle &lt;span style="color:#8be9fd;font-style:italic">exec&lt;/span> rubocop
+git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Include, activate rubocop, apply default fixes&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="6">
+&lt;li>Add instruction files for travis-ci and appveyor. Sample &lt;a href="https://github.com/puppetlabs/puppet-modulebuilder/pull/1">PR&lt;/a> contains travis.yml and appveyor.yml.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Add instruction files for travis-ci and appveyor&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;ol start="7">
+&lt;li>Add modules team to CODEOWNERS.
+Create the CODEOWNERS file in .github/CODEOWNERS&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-shell" data-lang="shell">git add -A
+git commit -m &lt;span style="color:#f1fa8c">&amp;#34;Add modules team to CODEOWNERS&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>
+&lt;p>Finally push your changes to the branch and create the PR &amp;ldquo;Basic infrastructure&amp;rdquo;
+Sample &lt;a href="https://github.com/puppetlabs/puppet-modulebuilder/pull/1">PR&lt;/a> for reference&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Follow the steps below for enabling CI jobs and dependabot for the repo.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Set up travs-ci.org for simple rubocop and spec testing. Open a &lt;a href="https://travis-ci.org/account/repositories">travis-ci-org&lt;/a> page. Click on Sync account.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/syncaccount.png" alt="Sync account">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Set up appveyor for simple rubocop and spec testing. Open a &lt;a href="https://ci.appveyor.com/account/puppetlabs/projects/new">ci-appveyor&lt;/a> page. Click on Add.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/add.png" alt="Add">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Allow dependabot access the new repo created. Open a &lt;a href="https://app.dependabot.com/accounts/puppetlabs/">dependabot&lt;/a> page.
+Click on + , select the repo and provide access.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/dependabotadd.png" alt="+">&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/dependabot.png" alt="repo created">&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Enable dependabot for the repo.
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-02-19-infrastructure-for-the-gem/dependabotenable.png" alt="+">&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;/li>
+&lt;/ol>
+&lt;h2 id="wrapping-up">Wrapping Up&lt;/h2>
+&lt;p>Hooray! We&amp;rsquo;ve created the infrastructure for our gem !&lt;/p></description></item><item><title>Blog: Developing a PowerShell-Dependent Puppet Type &amp; Provider</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-05-powershell-type-and-provider-i/</link><pubDate>Wed, 05 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-02-05-powershell-type-and-provider-i/</guid><description>
+&lt;blockquote>
+&lt;p>Part One: Basic Functionality&lt;/p>
+&lt;/blockquote>
+&lt;p>Sometimes when managing resources with Puppet you come across a use case that you might initially solve via a few custom &lt;code>exec&lt;/code> resources&amp;ndash;
+but though this solves your problem in the short run, it doesn&amp;rsquo;t scale well and leaves a lot of problems around managing reporting and idempotency.
+At a certain point, it becomes advisable to write a type and provider&amp;ndash;for more information, check out our &lt;a href="https://learn.puppet.com/course/getting-started-with-the-puppet-resource-api">hands on lab&lt;/a>!&lt;/p>
+&lt;p>For the purposes of this walkthrough, we&amp;rsquo;re going to create a resource API compliant type and provider to manage SMB shares on Windows.
+What we want to be able to do is put something like this into a manifest, thereby creating a share on the machine:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#50fa7b">smb_share&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;basic_example&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;C:\Path\To\A\Share&amp;#39;&lt;/span>,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Before we can dig into the meat of writing the type and provider though, we&amp;rsquo;ve got some standardized setup to do.&lt;/p>
+&lt;blockquote>
+&lt;h4 id="note">Note:&lt;/h4>
+&lt;p>This walkthrough assumes you have the following software installed:&lt;/p>
+&lt;ul>
+&lt;li>The &lt;a href="https://puppet.com/docs/pdk/1.x/pdk_install.html">Puppet Development Kit&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://code.visualstudio.com/download">Visual Studio Code&lt;/a> with the &lt;a href="https://lingua-pupuli.github.io/">Puppet extension&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>It also assumes very limited familiarity with the &lt;a href="https://puppet.com/blog/introducing-puppet-resource-api/">Resource API Walkthrough&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;ol>
+&lt;li>Open a PowerShell console, perform the rest of these actions from there.&lt;/li>
+&lt;li>&lt;code>pdk new module smb&lt;/code>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): PDK collects anonymous usage information to help us understand how
+it is being used and make decisions on how to improve it. You can
+find out more about what data we collect and how it is used in the
+PDK documentation at
+https://puppet.com/docs/pdk/latest/pdk_install.html.
+[Q 1/1] Do you consent to the collection of anonymous PDK usage information?
+--&amp;gt; Yes
+pdk (INFO): You can opt in or out of the usage data collection at any time by
+editing the analytics configuration file at
+C:\Users\vagrant\AppData\Local/puppet/analytics.yml and changing
+the &amp;#39;disabled&amp;#39; value.
+pdk (INFO): Creating new module: smb
+We need to create the metadata.json file for this module, so we&amp;#39;re going to ask you 4 questions.
+If the question is not applicable to this module, accept the default option shown after each question. You can modify any answers at any time by manually updating the metadata.json file.
+[Q 1/4] If you have a Puppet Forge username, add it here.
+We can use this to upload your module to the Forge when it&amp;#39;s complete.
+--&amp;gt; michaeltlombardi
+[Q 2/4] Who wrote this module?
+This is used to credit the module&amp;#39;s author.
+--&amp;gt; michaeltlombardi
+[Q 3/4] What license does this module code fall under?
+This should be an identifier from https://spdx.org/licenses/. Common values are &amp;#34;Apache-2.0&amp;#34;, &amp;#34;MIT&amp;#34;, or &amp;#34;proprietary&amp;#34;.
+--&amp;gt; Apache-2.0
+[Q 4/4] What operating systems does this module support?
+Use the up and down keys to move between the choices, space to select and enter to continue.
+--&amp;gt; Windows
+Metadata will be generated based on this information, continue? Yes
+pdk (INFO): Module &amp;#39;smb&amp;#39; generated at path &amp;#39;C:/Users/vagrant/smb&amp;#39;, from template &amp;#39;file:///C:/Program Files/Puppet Labs/DevelopmentKit/share/cache/pdk-templates.git&amp;#39;.
+pdk (INFO): In your module directory, add classes with the &amp;#39;pdk new class&amp;#39; command.
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>cd smb ; code .&lt;/code>&lt;/li>
+&lt;li>Update dependencies by editing the following files in VSCode:
+&lt;ul>
+&lt;li>&lt;code>.fixtures.yml&lt;/code>:
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#ff79c6">fixtures&lt;/span>:
+&lt;span style="color:#ff79c6">forge_modules&lt;/span>:
+&lt;span style="color:#ff79c6">pwshlib&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;puppetlabs/pwshlib&amp;#34;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>.sync.yml&lt;/code> (you&amp;rsquo;ll need to create this file):
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="color:#ff79c6">Gemfile&lt;/span>:
+&lt;span style="color:#ff79c6">optional&lt;/span>:
+&lt;span style="color:#ff79c6">&amp;#39;:development&amp;#39;&lt;/span>:
+- &lt;span style="color:#ff79c6">gem&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;ruby-pwsh&amp;#39;&lt;/span>
+- &lt;span style="color:#ff79c6">gem&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;puppet-resource_api&amp;#39;&lt;/span>
+&lt;span style="color:#ff79c6">spec/spec_helper.rb&lt;/span>:
+&lt;span style="color:#ff79c6">mock_with&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;:rspec&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>metadata.json&lt;/code>:
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-json" data-lang="json">&lt;span style="color:#f1fa8c">&amp;#34;dependencies&amp;#34;&lt;/span>: [
+{
+&lt;span style="color:#ff79c6">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;puppetlabs/pwshlib&amp;#34;&lt;/span>,
+&lt;span style="color:#ff79c6">&amp;#34;version_requirement&amp;#34;&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#34;&amp;gt;= 0.4.0 &amp;lt; 2.0.0&amp;#34;&lt;/span>
+}
+],
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>pdk update&lt;/code>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Updating michaeltlombardi-smb using the default template, from blog_tags/1.15.0 to 1.15.0
+----------Files to be modified----------
+Gemfile
+spec/spec_helper.rb
+----------------------------------------
+You can find a report of differences in update_report.txt.
+Do you want to continue and make these changes to your module? Yes
+[*] Installing missing Gemfile dependencies.
+------------Update completed------------
+2 files modified.
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>pdk new provider smb_share&lt;/code>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Creating &amp;#39;C:/Users/vagrant/smb/lib/puppet/provider/smb_share/smb_share.rb&amp;#39; from template.
+pdk (INFO): Creating &amp;#39;C:/Users/vagrant/smb/lib/puppet/type/smb_share.rb&amp;#39; from template.
+pdk (INFO): Creating &amp;#39;C:/Users/vagrant/smb/spec/unit/puppet/provider/smb_share/smb_share_spec.rb&amp;#39; from template.
+pdk (INFO): Creating &amp;#39;C:/Users/vagrant/smb/spec/unit/puppet/type/smb_share_spec.rb&amp;#39; from template.
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;li>&lt;code>pdk bundle exec rake spec_prep&lt;/code>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+I, [2020-01-17T13:18:26.702383 #1696] INFO -- : Creating symlink from spec/fixtures/modules/smb to C:\Users\vagrant\smb
+Notice: Preparing to install into C:/Users/vagrant/smb/spec/fixtures/modules ...
+Notice: Downloading from https://forgeapi.puppet.com ...
+Notice: Installing -- do not interrupt ...
+C:/Users/vagrant/smb/spec/fixtures/modules
+└── puppetlabs-pwshlib (v0.4.0)
+&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
+&lt;/ol>
+&lt;p>Now we&amp;rsquo;re ready to really dig into writing our type and provider.&lt;/p>
+&lt;h2 id="defining-the-initial-type">Defining the Initial Type&lt;/h2>
+&lt;p>The type file, &lt;code>lib/puppet/type/smb_share.rb&lt;/code>, requires a little editing.
+We&amp;rsquo;ll be adding some documentation and filling out the different properties of the SMB share we want to manage.&lt;/p>
+&lt;p>Two properties are already provided for us in the &lt;code>attributes&lt;/code> key: &lt;code>ensure&lt;/code> and &lt;code>name&lt;/code>.
+In order to get a minimum viable implementation for our share, we&amp;rsquo;ll need to implement &lt;code>path&lt;/code> as well.
+Add the following hash to the list of attributes in the type file:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#f1fa8c">path&lt;/span>: {
+&lt;span style="color:#f1fa8c">type&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;String&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">desc&lt;/span>: &lt;span style="color:#f1fa8c">&amp;#39;The path of the SMB share.&amp;#39;&lt;/span>,
+},
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>This property is fairly simple to define - the path to the SMB share will always be a string.
+For now, this is all we need to add to be able to implement the basic provider functionality.&lt;/p>
+&lt;blockquote>
+&lt;h4 id="note-1">Note:&lt;/h4>
+&lt;p>We did not update the rest of the docs here - we will return to the documentation aspect in a future blog post when we expand the properties this type manages.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="writing-the-prototype-provider">Writing the Prototype Provider&lt;/h2>
+&lt;p>The next file we need to look at is the provider, &lt;code>lib/puppet/provider/smb_share.rb&lt;/code>, which is where most of the heavy lifting will happen.&lt;/p>
+&lt;!-- First, at the top of the file _just_ inside the provider class definition (after line 4), we need to confine this provider to only run on Windows machines when the ruby-pwsh library is available:
+```ruby
+class Puppet::Provider::SmbShare::SmbShare &lt; Puppet::ResourceApi::SimpleProvider
+confine :operatingsystem => :windows
+confine :feature => :pwshlib
+``` -->
+&lt;p>First, add a requires statement to the top of the file to ensure we have access to the PowerShell gem:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#8be9fd;font-style:italic">require&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;ruby-pwsh&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Next, inside the provider class definition, we need to add two new methods which make using the PowerShell gem&amp;rsquo;s manager easier:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#6272a4"># Returns a new instance of the PowerShell manager if one does not exist or is dead,&lt;/span>
+&lt;span style="color:#6272a4"># otherwise returns the existing usable instance for performance reasons.&lt;/span>
+&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">ps_manager&lt;/span>
+debug_output &lt;span style="color:#ff79c6">=&lt;/span> Puppet&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">::&lt;/span>Log&lt;span style="color:#ff79c6">.&lt;/span>level &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">:debug&lt;/span>
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Manager&lt;span style="color:#ff79c6">.&lt;/span>instance(Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Manager&lt;span style="color:#ff79c6">.&lt;/span>powershell_path, Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Manager&lt;span style="color:#ff79c6">.&lt;/span>powershell_args, &lt;span style="color:#f1fa8c">debug&lt;/span>: debug_output)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;span style="color:#6272a4"># Wraps executions for the PowerShell Manager to do some basic error raising in Puppet.&lt;/span>
+&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">invoke_command&lt;/span>(command)
+result &lt;span style="color:#ff79c6">=&lt;/span> ps_manager&lt;span style="color:#ff79c6">.&lt;/span>execute(command)
+&lt;span style="color:#ff79c6">raise&lt;/span> result&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:errormessage&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> &lt;span style="color:#ff79c6">unless&lt;/span> result&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:exitcode&lt;/span>&lt;span style="color:#ff79c6">].&lt;/span>zero?
+result
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Now, we&amp;rsquo;re ready to start implementing some functionality.&lt;/p>
+&lt;h3 id="getting-the-shares">Getting the Shares&lt;/h3>
+&lt;p>The information we need to retrieve about our shares was defined in our type file; right now, we need the name of the share, the path to the share, and whether or not it exists. To find out this information though, we&amp;rsquo;re going to need to do a little PowerShell:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#8be9fd;font-style:italic">Get-SMBShare&lt;/span> -ErrorAction Stop |
+&lt;span style="color:#8be9fd;font-style:italic">Select-Object&lt;/span> -Property Name, Path
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Which in Ruby, using the PowerShell manager, would be:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Get-SMBShare -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;Select-Object -Property Name, Path&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; | &amp;#39;&lt;/span>)
+invoke_command(command)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Here, we declare the commands in a Ruby array and join them with a &lt;code>|&lt;/code>.
+This makes it easier for us to modify the commands we need to run without having to manage a huge string that&amp;rsquo;s hard to read.
+This will return all of the SMB shares on the machine, but there&amp;rsquo;s a couple problems:&lt;/p>
+&lt;ol>
+&lt;li>We need to return JSON for easy translation to usable objects in ruby&lt;/li>
+&lt;li>We need to add a property for Ensure - right now, we&amp;rsquo;re missing that third property.
+We could add it either to the &lt;code>Select-Object statement&lt;/code> (as a name-expression hash with a static expression of &lt;code>'present'&lt;/code>) or to ruby afterwards.
+For the purpose of this example, we&amp;rsquo;ll just add it to the Select-Object statement.&lt;/li>
+&lt;/ol>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">properties &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Name&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;Path&amp;#39;&lt;/span>,
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>custom_powershell_property(&lt;span style="color:#f1fa8c">&amp;#39;ensure&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;present&amp;#34;&amp;#39;&lt;/span>),
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39;, &amp;#39;&lt;/span>)
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Get-SMBShare -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#34;Select-Object -Property &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>properties&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;ConvertTo-Json&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; | &amp;#39;&lt;/span>)
+result &lt;span style="color:#ff79c6">=&lt;/span> invoke_command(command)
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>symbolize_hash_keys(Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>snake_case_hash_keys(JSON&lt;span style="color:#ff79c6">.&lt;/span>parse(result&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:stdout&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>)))
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Notice we added a new &lt;code>properties&lt;/code> variable, in which we declare the properties we want to return on the SMB share and join them with a comma, which is how they&amp;rsquo;ll need to be passed to &lt;code>Select-Object&lt;/code>.
+This lets us decouple the properties to select from the command itself and will make things more readable as we add more properties to manage.&lt;/p>
+&lt;p>We&amp;rsquo;re also using a helper method (&lt;code>custom_powershell_property&lt;/code>) from the PowerShell gem to create a PowerShell hash representing a custom object property.
+In this case, it will be:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">@{Name = &lt;span style="color:#f1fa8c">&amp;#39;ensure&amp;#39;&lt;/span>; Expression = {&lt;span style="color:#f1fa8c">&amp;#34;present&amp;#34;&lt;/span>}}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>It&amp;rsquo;s important to note that the string passed as the expression is &lt;em>exactly&lt;/em> what will be placed in the expression script block;
+without the internal quotes, PowerShell would try to run a command called &lt;code>present&lt;/code> in the scriptlock and fail.&lt;/p>
+&lt;p>For our command, the major changes are that we interpolate the properties list for Select-Object and ensure we convert our output to JSON before passing it back to Ruby.&lt;/p>
+&lt;p>Finally, we want to capture the output of our command invocation so we can return the results.
+The last line of this command is doing a &lt;em>bunch&lt;/em> of heavy lifting, so let&amp;rsquo;s break it down:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>result[:stdout]&lt;/code> - this is what we returned from our command pipeline - in this case, we told PowerShell to return us the SMB object with the properties we specified as a JSON string.&lt;/li>
+&lt;li>&lt;code>JSON.parse()&lt;/code> - this is the Ruby method for converting from a JSON string to a Ruby hash, loosely analogous to &lt;code>ConvertFrom-Json&lt;/code> in PowerShell.&lt;/li>
+&lt;li>&lt;code>Pwsh::Util.symbolize_hash_keys()&lt;/code> - this is a helper method for converting a Ruby hash&amp;rsquo;s keys from strings &lt;code>&amp;quot;key_name&amp;quot;&lt;/code> to symbols &lt;code>:key_name&lt;/code> which is necessary for returning values in a way that will neatly compare with what our type and provider are expecting.&lt;/li>
+&lt;li>&lt;code>Pwsh::Util.snake_case_hash_keys()&lt;/code> - this is another helper method, this one converting a Ruby hash&amp;rsquo;s keys to a &lt;code>snake_case&lt;/code> from &lt;code>PascalCase&lt;/code>, &lt;code>camelCase&lt;/code>, or &lt;code>kebab-case&lt;/code>.
+As with &lt;code>symbolize_hash_keys()&lt;/code>, this method helps ensure we&amp;rsquo;re returning a hash that our type/provider can neatly compare to.&lt;/li>
+&lt;/ul>
+&lt;p>So, if we put this all together for a ruby method to use in our provider, we&amp;rsquo;ll have:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">get_smb_share&lt;/span> &lt;span style="color:#6272a4"># rubocop:disable Style/AccessorMethodName&lt;/span>
+properties &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Name&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;Path&amp;#39;&lt;/span>,
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>custom_powershell_property(&lt;span style="color:#f1fa8c">&amp;#39;ensure&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;present&amp;#34;&amp;#39;&lt;/span>),
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39;, &amp;#39;&lt;/span>)
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#39;Get-SMBShare -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#34;Select-Object -Property &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>properties&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;ConvertTo-Json&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; | &amp;#39;&lt;/span>)
+result &lt;span style="color:#ff79c6">=&lt;/span> invoke_command(command)
+Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>symbolize_hash_keys(Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>snake_case_hash_keys(JSON&lt;span style="color:#ff79c6">.&lt;/span>parse(result&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:stdout&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span>)))
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>Note: We added a comment to tell rubocop, a tool for enforcing ruby style guidelines, to ignore this method&amp;rsquo;s name.
+In Ruby, methods like &lt;code>get_smb_share&lt;/code> are normally just &lt;code>smb_share&lt;/code> - in this case, it will help PowerShell folx better understand what&amp;rsquo;s happening, so it makes sense to ignore the rule.&lt;/p>
+&lt;/blockquote>
+&lt;p>For now, this is good enough, so we&amp;rsquo;ll update the &lt;code>get&lt;/code> method in our provider to just call &lt;code>get_smb_share&lt;/code>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">get&lt;/span>(context)
+context&lt;span style="color:#ff79c6">.&lt;/span>debug(&lt;span style="color:#f1fa8c">&amp;#39;Returning discovered SMB shares&amp;#39;&lt;/span>)
+get_smb_share
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>We can test that our code is working by running &lt;a href="https://puppet.com/docs/puppet/latest/man/resource.html">puppet resource&lt;/a>.&lt;/p>
+&lt;blockquote>
+&lt;p>Note that we&amp;rsquo;re using the PDK bundle for development purposes;
+We&amp;rsquo;re also specifying the modulepath to a special folder in our repository;
+This was created in the set up stage when you ran &lt;code>pdk bundle exec rake spec_prep&lt;/code>&lt;/p>
+&lt;/blockquote>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet resource smb_share --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>That should give you back information that looks like this:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+smb_share { &amp;#39;ADMIN$&amp;#39;:
+path =&amp;gt; &amp;#39;C:\Windows&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;C$&amp;#39;:
+path =&amp;gt; &amp;#39;C:\&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;IPC$&amp;#39;:
+path =&amp;gt; &amp;#39;&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Later, when we start adding to our use case (managing, say, permissions) we will expand on this method.&lt;/p>
+&lt;h3 id="creating-a-share">Creating a Share&lt;/h3>
+&lt;p>Retrieving resources from a machine is useful, but not as useful as creating them, so let&amp;rsquo;s enable that functionality next.&lt;/p>
+&lt;p>We&amp;rsquo;ll create a &lt;code>new_smb_share()&lt;/code> method that passes along the arguments we specified to the &lt;code>New-SmbShare&lt;/code> cmdlet:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">new_smb_share&lt;/span>(arguments)
+arguments&lt;span style="color:#ff79c6">.&lt;/span>reject! { &lt;span style="color:#ff79c6">|&lt;/span>k, _v&lt;span style="color:#ff79c6">|&lt;/span> k&lt;span style="color:#ff79c6">.&lt;/span>to_s &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;Ensure&amp;#39;&lt;/span> }
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#34;$Arguments = &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>format_powershell_value(arguments)&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;New-SmbShare @Arguments -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; ; &amp;#39;&lt;/span>)
+invoke_command(command)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The first thing we do is remove &lt;code>Ensure&lt;/code> from the hash of arguments passed to this method if it exists &amp;ndash; since we&amp;rsquo;re sending that hash to PowerShell for splatting and &lt;code>New-SmbShare&lt;/code> will have &lt;strong>no&lt;/strong> idea what to do with an &lt;code>Ensure&lt;/code> parameter, we need to make sure it gets removed.
+The &lt;code>reject&lt;/code> method used here iterates over the &lt;code>arguments&lt;/code> hash for each key-value pair and filters out any pairs which match the condition; in this case, if the key is &lt;code>Ensure&lt;/code>.
+In PowerShell, this is loosely analogous to doing something like:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#8be9fd;font-style:italic">$Arguments&lt;/span> = &lt;span style="color:#8be9fd;font-style:italic">$Should&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">$Arguments&lt;/span>.Remove(&lt;span style="color:#f1fa8c">&amp;#39;Ensure&amp;#39;&lt;/span>)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>In the command array we can rely on another utility from the PowerShell gem: &lt;code>format_powershell_value&lt;/code> will convert a Ruby object into an appropriate PowerShell representation.
+In this case, arguments is a hash and so will be represented as something like:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">@{KeyName = &lt;span style="color:#f1fa8c">&amp;#39;value&amp;#39;&lt;/span>; NextKey = 1}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>We then rely on the hash table we stored in &lt;code>$Arguments&lt;/code> to enable us to do some &lt;a href="https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_splatting?view=powershell-7">splatting&lt;/a>.
+Finally, we join these commands with a semi-colon&amp;ndash;remember, each invocation against the Manager does &lt;em>not&lt;/em> share state with prior ones!&lt;/p>
+&lt;p>Okay, great, but how do we pass the correct arguments to &lt;code>new_smb_share&lt;/code>?
+We can do that with a little munging in the &lt;code>create&lt;/code> method:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">create&lt;/span>(context, &lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>, should)
+context&lt;span style="color:#ff79c6">.&lt;/span>notice(&lt;span style="color:#f1fa8c">&amp;#34;Creating &amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39; with &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>should&lt;span style="color:#ff79c6">.&lt;/span>inspect&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>)
+arguments &lt;span style="color:#ff79c6">=&lt;/span> Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>pascal_case_hash_keys(should)
+new_smb_share(arguments)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">new_smb_share&lt;/span>(arguments)
+arguments&lt;span style="color:#ff79c6">.&lt;/span>reject! { &lt;span style="color:#ff79c6">|&lt;/span>k, _v&lt;span style="color:#ff79c6">|&lt;/span> k&lt;span style="color:#ff79c6">.&lt;/span>to_s &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;Ensure&amp;#39;&lt;/span> }
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#ff79c6">[&lt;/span>
+&lt;span style="color:#f1fa8c">&amp;#34;$Arguments = &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>format_powershell_value(arguments)&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>,
+&lt;span style="color:#f1fa8c">&amp;#39;New-SmbShare @Arguments -ErrorAction Stop&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">].&lt;/span>join(&lt;span style="color:#f1fa8c">&amp;#39; ; &amp;#39;&lt;/span>)
+invoke_command(command)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Note that the create and update methods both specify the &lt;code>name&lt;/code> and something called &lt;code>should&lt;/code>; these are automatically handled and passed by Puppet during a run.
+The &lt;code>should&lt;/code> variable is a Ruby hash representing the parameters specified for a given resource.
+So if someone defined a manifest, it would include all of the properties and parameters for the specified SMB share included in that resource declaration.&lt;/p>
+&lt;p>The notice will show up in the logs of a run, explaining what share is being created and specifying the parameters.&lt;/p>
+&lt;p>We then pass the arguments hash to a utility function, &lt;code>pascal_case_hash_keys&lt;/code> converts them from the snake_case Ruby prefers to the PascalCase that PowerShell normally prefers;
+though our current parameters are all single words, this will help us in the future should we want to specify something like the concurrent user limit on the SMB share.&lt;/p>
+&lt;p>Once we&amp;rsquo;ve munged our arguments to be what we need we can pass them to our helper function, &lt;code>new_smb_share&lt;/code>.&lt;/p>
+&lt;p>We can test this code by adding a manifest to our examples folder.
+Create a new file, &lt;code>examples/basic.pp&lt;/code>, and paste the following into it:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#8be9fd;font-style:italic">$share_path&lt;/span> &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;C:\\smb_share_folder_example_a&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">file&lt;/span> { &lt;span style="color:#8be9fd;font-style:italic">$share_path:&lt;/span>
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;directory&amp;#39;&lt;/span>
+}
+&lt;span style="color:#50fa7b">smb_share&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;basic_example&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$share_path,&lt;/span>
+&lt;span style="color:#50fa7b">require&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">File&lt;/span>[&lt;span style="color:#8be9fd;font-style:italic">$share_path]&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>Note that we have to ensure that the directory we will use as the path for the SMB share&amp;ndash;if it doesn&amp;rsquo;t exist, the command will fail.&lt;/p>
+&lt;p>Also note that VSCode will present you with a pop up in the bottom right corner asking if you want to add an extension for &lt;code>.pp&lt;/code> files - you &lt;em>absolutely&lt;/em> do want to add the &lt;a href="https://puppet-vscode.github.io/">Puppet Extension for VSCode&lt;/a> if you&amp;rsquo;re not already using it; it includes dozens of helpful features to make writing and maintaining Puppet code easier!&lt;/p>
+&lt;/blockquote>
+&lt;p>And then we&amp;rsquo;ll run a command &lt;em>with administrative privileges&lt;/em> (needed to create the SMB share) to execute this manifest:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet apply ./examples/basic.pp --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Which should produce output like this:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+Notice: Compiled catalog for .mshome.net in environment production in 0.21 seconds
+Notice: /Stage[main]/Main/File[C:\smb_share_folder_example_a]/ensure: created
+Notice: /Stage[main]/Main/Smb_share[basic_example]/ensure: defined &amp;#39;ensure&amp;#39; as &amp;#39;present&amp;#39;
+Notice: smb_share[basic_example]: Creating: Creating &amp;#39;basic_example&amp;#39; with {:name=&amp;gt;&amp;#34;basic_example&amp;#34;, :ensure=&amp;gt;&amp;#34;present&amp;#34;, :path=&amp;gt;&amp;#34;C:\\smb_share_folder_example_a&amp;#34;}
+Notice: smb_share[basic_example]: Creating: Finished in 1.23 seconds
+Notice: Applied catalog in 9.22 seconds
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Awesome! We&amp;rsquo;ve created an SMB share!
+We can even verify this by rerunning the &lt;code>puppet resource&lt;/code> command from earlier:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet resource smb_share --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+smb_share { &amp;#39;ADMIN$&amp;#39;:
+path =&amp;gt; &amp;#39;C:\Windows&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;C$&amp;#39;:
+path =&amp;gt; &amp;#39;C:\&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;IPC$&amp;#39;:
+path =&amp;gt; &amp;#39;&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+smb_share { &amp;#39;basic_example&amp;#39;:
+path =&amp;gt; &amp;#39;C:\smb_share_folder_example_a&amp;#39;,
+ensure =&amp;gt; &amp;#39;present&amp;#39;,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="removing-a-share">Removing a Share&lt;/h3>
+&lt;p>Now, let&amp;rsquo;s figure out how to remove an SMB share.
+Luckily, removing a share in PowerShell is straightforward:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#8be9fd;font-style:italic">Remove-SmbShare&lt;/span> -Name &lt;span style="color:#f1fa8c">&amp;#39;name of the share&amp;#39;&lt;/span> -Force
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>So we can write this in ruby leveraging the PowerShell manager:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">remove_smb_share&lt;/span>(&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>)
+command &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;Remove-SmbShare -Name &amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39; -Force -ErrorAction Stop&amp;#34;&lt;/span>
+invoke_command(command)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>And call it from the &lt;code>delete()&lt;/code> method:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">delete&lt;/span>(context, &lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>)
+context&lt;span style="color:#ff79c6">.&lt;/span>notice(&lt;span style="color:#f1fa8c">&amp;#34;Deleting &amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;&amp;#34;&lt;/span>)
+remove_smb_share(&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Let&amp;rsquo;s test our newly updated provider!
+We can use &lt;code>puppet resource&lt;/code> to change the property of a managed resource&amp;ndash;in this case, we want to use &lt;code>ensure=absent&lt;/code> to remove the SMB share.
+Remember, this needs to be run &lt;em>with&lt;/em> administrative privileges.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet resource smb_share basic_example ensure=absent --modulepath ./spec/fixtures/modules
+&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+Notice: /Smb_share[basic_example]/ensure: undefined &amp;#39;ensure&amp;#39; from &amp;#39;present&amp;#39;
+Notice: smb_share[basic_example]: Deleting: Deleting &amp;#39;basic_example&amp;#39;
+Notice: smb_share[basic_example]: Deleting: Finished in 0.804902 seconds
+smb_share { &amp;#39;basic_example&amp;#39;:
+ensure =&amp;gt; &amp;#39;absent&amp;#39;,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>You should see a notification that the share has been removed.
+Go ahead and rerun the manifest to recreate the share and prepare for our next step:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet apply ./examples/basic.pp --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="updating-a-share">Updating a Share&lt;/h3>
+&lt;p>While there are &lt;em>better&lt;/em> ways to manage updating SMB shares, the &lt;em>easiest&lt;/em> is to delete it and recreate it with the appropriate parameters passed through&amp;ndash;in fact, this is &lt;em>necessary&lt;/em> if you need to change the path of an SMB share.&lt;/p>
+&lt;p>Luckily, we&amp;rsquo;ve already written the methods for creating and deleting the share so all we need to do is fill in the &lt;code>update&lt;/code> method:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#ff79c6">def&lt;/span> &lt;span style="color:#50fa7b">update&lt;/span>(context, &lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>, should)
+context&lt;span style="color:#ff79c6">.&lt;/span>notice(&lt;span style="color:#f1fa8c">&amp;#34;Updating &amp;#39;&lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39; with &lt;/span>&lt;span style="color:#f1fa8c">#{&lt;/span>should&lt;span style="color:#ff79c6">.&lt;/span>inspect&lt;span style="color:#f1fa8c">}&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;&lt;/span>)
+arguments &lt;span style="color:#ff79c6">=&lt;/span> Pwsh&lt;span style="color:#ff79c6">::&lt;/span>Util&lt;span style="color:#ff79c6">.&lt;/span>pascal_case_hash_keys(should)
+remove_smb_share(&lt;span style="color:#8be9fd;font-style:italic">name&lt;/span>)
+new_smb_share(arguments)
+&lt;span style="color:#ff79c6">end&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Let&amp;rsquo;s modify the share path variable to end in &lt;code>b&lt;/code> instead of &lt;code>a&lt;/code>; this will cause Puppet to create a new folder, remove the original SMB share, and create a new one that uses the correct folder.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#8be9fd;font-style:italic">$share_path&lt;/span> &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;C:\\smb_share_folder_example_b&amp;#34;&lt;/span>
+&lt;span style="color:#ff79c6">file&lt;/span> { &lt;span style="color:#8be9fd;font-style:italic">$share_path:&lt;/span>
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;directory&amp;#39;&lt;/span>
+}
+&lt;span style="color:#50fa7b">smb_share&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;basic_example&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$share_path,&lt;/span>
+&lt;span style="color:#50fa7b">require&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">File&lt;/span>[&lt;span style="color:#8be9fd;font-style:italic">$share_path]&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>And then rerun the manifest:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">pdk bundle exec puppet apply ./examples/basic.pp --modulepath ./spec/fixtures/modules/
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>You should see a line like this in your Puppet output:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">pdk (INFO): Using Ruby 2.5.7
+pdk (INFO): Using Puppet 6.11.1
+Notice: Compiled catalog for .mshome.net in environment production in 0.21 seconds
+Notice: /Stage[main]/Main/File[C:\smb_share_folder_example_b]/ensure: created
+Notice: /Stage[main]/Main/Smb_share[basic_example]/path: path changed &amp;#39;C:\smb_share_folder_example_a&amp;#39; to &amp;#39;C:\smb_share_folder_example_b&amp;#39;
+Notice: smb_share[basic_example]: Updating: Updating &amp;#39;basic_example&amp;#39; with {:name=&amp;gt;&amp;#34;basic_example&amp;#34;, :ensure=&amp;gt;&amp;#34;present&amp;#34;, :path=&amp;gt;&amp;#34;C:\\smb_share_folder_example_b&amp;#34;}
+Notice: smb_share[basic_example]: Updating: Finished in 1.67 seconds
+Notice: Applied catalog in 9.23 seconds
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="wrapping-up">Wrapping Up&lt;/h2>
+&lt;p>Hooray! We&amp;rsquo;ve written a functional implementation of a type and provider for an SMB Share using the PowerShell gem and manager!
+Next time, we&amp;rsquo;re going to expand on our start here to make sure we are able to fully manage the properties and access of an SMB share, so stay tuned!&lt;/p></description></item></channel></rss>

@@ -1,0 +1,40 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – big-monday</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/big-monday/</link><description>Recent content in big-monday on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/big-monday/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-02-26: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-02-26-status-update/</link><pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-02-26-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/971">&lt;code>puppetlabs-apt#971&lt;/code>&lt;/a>: &amp;ldquo;Fix typo in weak_ssl documentation&amp;rdquo;, thanks to &lt;a href="https://github.com/Safranil">Safranil&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/475">&lt;code>puppetlabs-kubernetes#475&lt;/code>&lt;/a>: &amp;ldquo;Update criSocket to avoid deprecation warnings&amp;rdquo;, thanks to &lt;a href="https://github.com/treydock">treydock&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-package/pull/237">&lt;code>puppetlabs-package#237&lt;/code>&lt;/a>: &amp;ldquo;Fix package task for yum when passing version&amp;rdquo;, thanks to &lt;a href="https://github.com/cliveweir">cliveweir&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/948">&lt;code>pdk#948&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Release prep for 2.0.0&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/947">&lt;code>pdk#947&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Drop gemspec requirement to Ruby &amp;gt;= 2.4.0&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/946">&lt;code>pdk#946&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Require Ruby &amp;gt;= 2.5.0 in gemspec and simplify Gemfile&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/21">&lt;code>pdk-docker#21&lt;/code>&lt;/a>: &amp;ldquo;(PF-2183) Updates to reflect new default branch of &lt;code>main&lt;/code>&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/20">&lt;code>pdk-docker#20&lt;/code>&lt;/a>: &amp;ldquo;(FIXUP) Add additional error handling for Anubis v2 evaluations&amp;rdquo;, thanks to &lt;a href="https://github.com/nkanderson">nkanderson&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-vanagon/pull/275">&lt;code>pdk-vanagon#275&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Add latest puppets&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module">New Module&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-vcsrepo">&lt;code>puppetlabs-vcsrepo&lt;/code>&lt;/a> (&lt;code>3.2.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">&lt;code>puppetlabs-postgresql&lt;/code>&lt;/a> (&lt;code>6.10.2&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="gem-releases">Gem Releases&lt;/h2>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppet_litmus">&lt;code>puppet-litmus&lt;/code>&lt;/a> (&lt;code>0.25.0&lt;/code>)&lt;/p>
+&lt;h2 id="pdk-200-is-now-available">PDK 2.0.0 is now available!&lt;/h2>
+&lt;p>Special thanks to &lt;a href="https://github.com/DavidS">David Schmitt&lt;/a> and [Jesse Scott][Jesse Scott] for their hard work and dedication in getting PDK 2.0.0 released this week.
+In the new version you can find new features and enhancements as: ability to generate new facts, the pdk new fact command to generate new custom facts in a module, ability to generate new functions, the pdk new function command to generate new functions in a module, AIX option to new module interview options, AIX to OS compatibility picker during the guided interview for pdk new module and more surprises. Check &lt;a href="https://puppet.com/docs/pdk/2.x/release_notes_pdk.html#pdk-20">here&lt;/a> and see what we have for you!&lt;/p>
+&lt;h2 id="big-news-and-big-next-monday">Big news and big next Monday!&lt;/h2>
+&lt;p>We are in the process of dropping Puppet 5 support from our supported modules. Puppet 5 reached End of Life (EOL) in January 2021. The plan is to start rolling out updated modules with Puppet 5 support removed by the start of next week (March 1st 2021). We have a lot of releases planned - stay tuned, it&amp;rsquo;s going to be a big Monday!&lt;/p>
+&lt;h2 id="cloud-ci-update">Cloud CI Update&lt;/h2>
+&lt;p>This week after the release of Puppet Litmus &lt;code>0.25.0&lt;/code> and the update of the acceptance test workflows (&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/398),">https://github.com/puppetlabs/pdk-templates/pull/398),&lt;/a> a PDKSync across all our supported modules will ensure that all acceptance tests for PRs and nightly runs are now using both the Cloud CI resources as well as the &lt;code>litmusimage&lt;/code> docker containers in their respective Github Actions workflows.
+As part of the multi-node acceptance tests we are slowly making progress in stabilizing the &lt;code>puppetlabs-kubernetes&lt;/code> and started the investigation for the port of the &lt;code>puppetlabs-websphere_application_server&lt;/code> module.
+A PDKSync run with the update to the latest pdk-templates will follow soon. A lot of thanks to Daniel and Sheena for this work.&lt;/p>
+&lt;h2 id="dsc">DSC&lt;/h2>
+&lt;p>For the last few weeks focus has been on triaging/debugging and fixing issues from the field. Michael has been leading this charge to provide top-notch technical support on all things DSC related. Thank you, Michael!&lt;/p>
+&lt;h2 id="iac--nights-watch-collaboration">IAC &amp;amp; Night&amp;rsquo;s Watch Collaboration&lt;/h2>
+&lt;p>A big shout out to &lt;a href="https://github.com/gimmyxd">gimmyxd&lt;/a>for the great sync up session with &lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> where they used &lt;a href="https://github.com/puppetlabs/pdksync">pdksync&lt;/a> and the &lt;a href="https://github.com/puppetlabs/pdk">PDK&lt;/a> to update a number of the core modules under the &lt;a href="https://github.com/orgs/puppetlabs/teams/night-s-watch">Night&amp;rsquo;s Watch&lt;/a> remit.
+We&amp;rsquo;re always keen to get feedback on the tooling we develop and maintain, and the &lt;a href="https://github.com/orgs/puppetlabs/teams/night-s-watch">Night&amp;rsquo;s Watch&lt;/a> team are always great to collaborate with!
+There&amp;rsquo;s always a good bit of two way traffic between our two teams and it&amp;rsquo;s usually the case that the combined results are greater than the sum of its parts. Thank you Ciaran and Gimmy for your time and efforts!&lt;/p>
+&lt;h2 id="see-you-next-week">See you next week!&lt;/h2>
+&lt;p>This is all for this week, have a great weekend and be ready for the next week updates!&lt;/p></description></item></channel></rss>

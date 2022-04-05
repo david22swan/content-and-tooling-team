@@ -1,0 +1,30 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – exec</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/exec/</link><description>Recent content in exec on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 09 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/exec/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2020-10-09: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-10-09-status-update/</link><pubDate>Fri, 09 Oct 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-10-09-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We had a busy week and the community was very active so we&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;p>Thanks to &lt;a href="https://github.com/jcpunk">jcpunk&lt;/a> for the folowing PRs where he resolves &lt;code>puppet-lint&lt;/code> and &lt;code>yamllint&lt;/code> warnings across the following repos:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2066">&lt;code>puppetlabs-apache#2066&lt;/code>&lt;/a>, thanks also to &lt;a href="https://github.com/igalic">igalic&lt;/a>, who helped get it over the line.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1327">&lt;code>puppetlabs-mysql#1327&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-inifile/pull/414">&lt;code>puppetlabs-inifile#414&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd/pull/333">&lt;code>puppetlabs-motd#333&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1191">&lt;code>puppetlabs-postgresql#1191&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-firewall/pull/945">&lt;code>puppetlabs-firewall#945&lt;/code>&lt;/a>: Thanks to &lt;a href="https://github.com/pellisesol">pellisesol&lt;/a> for ading carp protocol to :proto property.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1133">&lt;code>puppetlabs-stdlib#1133&lt;/code>&lt;/a>: Thanks to &lt;a href="https://github.com/smortex">smortex&lt;/a> for his fix from CHANGELOG.md.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-concat/pull/661">&lt;code>puppetlabs-concat#661&lt;/code>&lt;/a>: Thanks to &lt;a href="https://github.com/seanmil">seanmil&lt;/a> who treats the case when no concat_fragment resources are specified.&lt;/li>
+&lt;/ul>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">&lt;code>puppetlabs-apache&lt;/code>&lt;/a> (&lt;code>5.6.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="http://github.com/puppetlabs/puppetlabs-firewall">&lt;code>puppetlabs-firewall&lt;/code>&lt;/a> (&lt;code>2.6.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-exec">&lt;code>puppetlabs-exec&lt;/code>&lt;/a> (&lt;code>0.8.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="life-of-an-intern-at-puppet">Life of an intern at Puppet&lt;/h2>
+&lt;p>&lt;a href="https://github.com/disha-maker">Disha&lt;/a> continues her journey at Puppet and &lt;a href="https://puppetlabs.github.io/iac/docs/life_of_intern">here&lt;/a> you can find the last updates of ** Life of an intern at Puppet ** .&lt;/p>
+&lt;h2 id="dsc">DSC&lt;/h2>
+&lt;p>With the first customers starting to use the &lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/09/21/dsc-release.html">wonderful new DSC modules&lt;/a> we encountered some hurdles when directly upgrading from old DSC management options. While we&amp;rsquo;re working on a complete fix, we recommend for now to start with removing old DSC modules completely before rolling out the new. For any DSC issues, you can always find us &lt;a href="https://github.com/puppetlabs/puppetlabs-dsc">here&lt;/a> ready to help!&lt;/p>
+&lt;h2 id="ci-improvements">CI Improvements&lt;/h2>
+&lt;p>Work continues on a solution for public on-demand acceptance tests for modules. This week saw us finishing up a fully automated deployment solution for all the involved cloud components, some light testing, and tightening up of code. If nothing goes horribly wrong, we&amp;rsquo;ll be able to share more details and a sneak-peak of the final results in the next two weeks.&lt;/p>
+&lt;p>If you want to know about the project in person, check out the &lt;a href="https://puppet.com/blog/hacktoberfest-2020/">Puppet Hacktoberfest Hackathon&lt;/a> on 20 October, 2020 (GMT and PST).&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That&amp;rsquo;s it for this weeks update, have a great weekend everyone!&lt;/p></description></item></channel></rss>

@@ -1,0 +1,445 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – kubernetes</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/kubernetes/</link><description>Recent content in kubernetes on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 21 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/kubernetes/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-05-21: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-05-21-status-update/</link><pubDate>Fri, 21 May 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-05-21-status-update/</guid><description>
+&lt;h2 id="community-support-day">Community Support Day&lt;/h2>
+&lt;p>The IAC Team processed 91 community PRs/issues across modules and tools.&lt;/p>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/provision/pull/166">&lt;code>provision#166&lt;/code>&lt;/a>: &amp;ldquo;(REPLATS-169) Add a timestamp to abs job_id&amp;rdquo;, thanks to &lt;a href="https://github.com/jpartlow">jpartlow&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2152">&lt;code>puppetlabs-apache#2152&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-11068) Allow apache::vhost ssl_honorcipherorder to take boolean parameter&amp;rdquo;, thanks to &lt;a href="https://github.com/davidc">davidc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2150">&lt;code>puppetlabs-apache#2150&lt;/code>&lt;/a>: &amp;ldquo;support for uri for severname with use_servername_for_filenames&amp;rdquo;, thanks to &lt;a href="https://github.com/Zarne">Zarne&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2145">&lt;code>puppetlabs-apache#2145&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-11061) mod_security custom rule functionality&amp;rdquo;, thanks to &lt;a href="https://github.com/k2patel">k2patel&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-firewall/pull/993">&lt;code>puppetlabs-firewall#993&lt;/code>&lt;/a>: &amp;ldquo;Fixed link to REFERENCE.md&amp;rdquo;, thanks to &lt;a href="https://github.com/Samgarr">Samgarr&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1266">&lt;code>puppetlabs-postgresql#1266&lt;/code>&lt;/a>: &amp;ldquo;MODULES-11047 - Allow managing rights for PUBLIC role&amp;rdquo;, thanks to &lt;a href="https://github.com/mtancoigne">mtancoigne&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/436">&lt;code>pdk-templates#436&lt;/code>&lt;/a>: &amp;ldquo;added more fine-grained control of custom_before_steps&amp;rdquo;, thanks to &lt;a href="https://github.com/skoef">skoef&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/434">&lt;code>pdk-templates#434&lt;/code>&lt;/a>: &amp;ldquo;added blog_tags to .gitlab-ci.yml.erb&amp;rdquo;, thanks to &lt;a href="https://github.com/skoef">skoef&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-strings/pull/266">&lt;code>puppet-strings#266&lt;/code>&lt;/a>: &amp;ldquo;Only set tasks = true when parsing plans.&amp;rdquo;, thanks to &lt;a href="https://github.com/binford2k">binford2k&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib">&lt;code>puppetlabs-stdlib&lt;/code>&lt;/a> (&lt;code>7.1.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">&lt;code>puppetlabs-apache&lt;/code>&lt;/a> (&lt;code>6.1.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;p>The following gems were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://rubygems.org/gems/puppet-strings">&lt;code>puppet-strings&lt;/code>&lt;/a> (&lt;code>2.7.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://rubygems.org/gems/puppet-modulebuilder">&lt;code>puppet-modulebuilder&lt;/code>&lt;/a> (&lt;code>0.3.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://rubygems.org/gems/rspec-puppet">&lt;code>rspec-puppet&lt;/code>&lt;/a> (&lt;code>2.9.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="life-of-an-intern-at-puppet">Life of an intern at Puppet&lt;/h2>
+&lt;p>&lt;a href="https://github.com/Disha-maker">Disha&lt;/a> continues her journey at Puppet and &lt;a href="https://puppetlabs.github.io/iac/docs/life_of_intern">here&lt;/a> you can find the last updates of ** Life of an intern at Puppet ** .&lt;/p>
+&lt;h2 id="spring-cleaning-guide">Spring Cleaning Guide&lt;/h2>
+&lt;p>&lt;a href="https://dev.to/raphink">Raphaël Pinson&lt;/a> of &lt;a href="https://www.camptocamp.com">Camptocamp&lt;/a> fame has published a guide to &lt;a href="https://dev.to/camptocamp-ops/cleaning-up-puppet-code-4da2">Cleaning up Puppet Code&lt;/a> using puppet-lint, the PDK and unused code detection using their puppet-ghostbuster project.
+Check it out for a breath of fresh air in your control repo.&lt;/p>
+&lt;h2 id="devx-templates-and-rspec-puppet">DevX: Templates and rspec-puppet&lt;/h2>
+&lt;p>We&amp;rsquo;re making good progress on the limited availability release of the new templating feature for PDK and are still on track to have this available at the end of the month.
+Alongside that, we released version &lt;code>v2.9.0&lt;/code> of &lt;code>rspec-puppet&lt;/code>.
+Many thanks to &lt;a href="https://github.com/DavidS">David Schmitt&lt;/a> for his help in getting this over the line!&lt;/p>
+&lt;h2 id="kubernetes-120-and-sonobuoy-conformance-testing">Kubernetes 1.20 and Sonobuoy Conformance Testing&lt;/h2>
+&lt;p>We are very close to finish the certification for our k8s module with 1.20 version.
+First we added support for the new version and now we&amp;rsquo;re working with AWS for Sonobuoy k8s conformance testing, if you&amp;rsquo;re interested in how we&amp;rsquo;re doing check out &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/512">the PR&lt;/a>!&lt;/p>
+&lt;h2 id="dropsonde-transition-to-the-iac-team">Dropsonde transition to the IAC Team&lt;/h2>
+&lt;p>This week was really interesting.
+&lt;a href="https://dev.to/binford2k/telemetry-that-doesn-t-suck-na2">Dropsonde&lt;/a> is a flexible framework for collecting metrics from puppet installations.
+Deploying this will provide insight into how modules are used for the community.
+We have just finished the Level of Effort and have broken down the work into &lt;a href="https://tickets.puppetlabs.com/browse/IAC-1608">small tasks&lt;/a> to enable a successful transition.
+We have now started a deep dive and 2 PRs have been submitted to the &lt;a href="https://github.com/puppetlabs/dropsonde">dropsonde repo&lt;/a>.
+Will will continue to provide weekly updates on the hottest tool currently on our plate!&lt;/p>
+&lt;h2 id="dsc-going-live">DSC: Going Live&lt;/h2>
+&lt;p>We have some exciting news for you about Puppet&amp;rsquo;s support for the PowerShell DSC configuration framework for Windows.
+In short, content from the PowerShell Gallery will simply appear on the Puppet Forge and can be added to your Puppetfile and used just like any other Puppet module.
+This makes it by far the most flexible and maintainable iteration of DSC integration we&amp;rsquo;ve ever had.
+Pick and choose whatever DSC Resources you want and get all the VSCode IntelliSense magic you&amp;rsquo;ve come to expect.
+Read more on &lt;a href="https://puppet.com/blog/powershell-dsc-the-next-generation/">the puppet blog&lt;/a>&lt;/p>
+&lt;h2 id="windows-long-paths-in-ruby">Windows Long Paths in Ruby&lt;/h2>
+&lt;p>During our ongoing work for integrating with DSC, we stubbed our toes hard against an old, familiar frenemy in ruby: long path support on Windows.
+Windows has supported paths longer than 260 characters for &lt;em>years&lt;/em> now, but Ruby couldn&amp;rsquo;t ever take advantage of that.
+If you needed long file paths in your code, you had to specify the LFN NTFS syntax (prepending&lt;code>\\?\&lt;/code>) which was&amp;hellip; not very friendly or memorable.
+Luckily however, &lt;a href="https://github.com/GabrielNagy">Gabriel Nagy&lt;/a> submitted a &lt;a href="https://github.com/ruby/ruby/pull/4505">patch to core ruby&lt;/a> which was merged this week which just solves this problem for everyone (who uses a release of ruby which includes the patch)!
+As long as your modern Windows systems are configured for long path support, Ruby will now happily work with 300+ character paths, no sweat!
+This is &lt;em>huge&lt;/em> for Windows users and developers on Ruby, which also means Windows users and developers of Puppet!
+We really can&amp;rsquo;t overstate what a thorn in our foot this has been how grateful we are to Gabi for resolving it.&lt;/p></description></item><item><title>Blog: 2021-05-14: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-05-14-status-update/</link><pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-05-14-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/516">&lt;code>puppetlabs-kubernetes#516&lt;/code>&lt;/a>: &amp;ldquo;Add config.toml for containerd installed with &amp;lsquo;archive&amp;rsquo;&amp;rdquo;, thanks to &lt;a href="https://github.com/danifr">danifr&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/510">&lt;code>puppetlabs-kubernetes#510&lt;/code>&lt;/a>: &amp;ldquo;Improvements to containerd configs when using a package&amp;rdquo;, thanks to &lt;a href="https://github.com/treydock">treydock&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1272">&lt;code>puppetlabs-postgresql#1272&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-11069) add default version for fedora 34&amp;rdquo;, thanks to &lt;a href="https://github.com/lweller">lweller&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat/pull/446">&lt;code>puppetlabs-tomcat#446&lt;/code>&lt;/a>: &amp;ldquo;Add service_name parameter to tomcat::instance&amp;rdquo;, thanks to &lt;a href="https://github.com/treydock">treydock&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/432">&lt;code>pdk-templates#432&lt;/code>&lt;/a>: &amp;ldquo;Fix Bug in .rubocop.yml.erb&amp;rdquo;, thanks to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/428">&lt;code>pdk-templates#428&lt;/code>&lt;/a>: &amp;ldquo;Add EditorConfig&amp;rdquo;, thanks to &lt;a href="https://github.com/jeffbyrnes">jeffbyrnes&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-module-gems/pull/163">&lt;code>puppet-module-gems#163&lt;/code>&lt;/a>: &amp;ldquo;Pin docile on ruby 2.4&amp;rdquo;, thanks to &lt;a href="https://github.com/alexjfisher">alexjfisher&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">&lt;code>puppetlabs-apache&lt;/code>&lt;/a> (&lt;code>6.0.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd">&lt;code>puppetlabs-motd&lt;/code>&lt;/a> (&lt;code>6.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">&lt;code>puppetlabs-kubernetes&lt;/code>&lt;/a> (&lt;code>6.1.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-iis">&lt;code>puppetlabs-iis&lt;/code>&lt;/a> (&lt;code>8.0.2&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="developer-experience">Developer Experience&lt;/h2>
+&lt;p>The team has planned out the work for the next three weeks to complete a limited availability release of a new approach to templating with PDK. At the end of this we&amp;rsquo;ll have an alpha release for people to try out and provide early feedback.
+We worked closely with the Puppet core team on some speed improvements over the last several months. Recent work has been merged into our Ruby distribution and into Puppet core to speed up all of our applications.
+Puppet VS Code extension work is coming along nicely, with all open PRs merged. We&amp;rsquo;re planning on releasing 1.3.0 May 31st&lt;/p>
+&lt;h2 id="content-support-team">Content Support Team&lt;/h2>
+&lt;p>A massive shout out to &lt;a href="https://github.com/binford2k">Ben Ford&lt;/a> for holding a group session this week and giving the team an overview of the &lt;a href="https://github.com/puppetlabs/dropsonde">dropsonde&lt;/a> tool. We were given plenty of opportunities to ask questions and further preparation for the handover of it to the IAC Team. This is now on &lt;a href="https://github.com/adrianiurca">Adrian&lt;/a>&amp;rsquo;s radar and initial scoping of work continues. For more information on exactly how this can be used check out &lt;a href="https://dev.to/binford2k/telemetry-that-doesn-t-suck-na2">Bens blog post&lt;/a>.
+The team is also working on finishing up a few complex tickets therefore this week has been a great opportunity to spend time pairing with other team members to get new ideas and unblock progress.&lt;/p>
+&lt;h2 id="everyonecancontribute-café">EveryoneCanContribute Café&lt;/h2>
+&lt;p>Many thanks to &lt;a href="https://github.com/DavidS">David Schmitt&lt;/a> for his talk on &lt;a href="https://github.com/puppetlabs/opv">OPV&lt;/a> at the &lt;a href="https://twitter.com/dnsmichi/status/1392511069030060033">#EveryoneCanContribute café&lt;/a>. Also we want to thank &lt;a href="https://twitter.com/dnsmichi">Michael Friedrich&lt;/a> and gitlab for hosting, if you curious about it, &lt;a href="https://twitter.com/dnsmichi/status/1392511069030060033">here&lt;/a> you can find an intersting conversation about OPV and its purpose.&lt;/p>
+&lt;h2 id="see-you-next-week">See you next week&lt;/h2>
+&lt;p>Thank you guys for all the hard work, enjoy the weekend and the free time!&lt;/p>
+&lt;!-- check https://tickets.puppetlabs.com/secure/RapidBoard.jspa?rapidView=1176&amp;quickFilter=8745 for other tickets closed out this week that should be mentioned here --></description></item><item><title>Blog: 2021-04-30: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-04-30-status-update/</link><pubDate>Fri, 30 Apr 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-04-30-status-update/</guid><description>
+&lt;h2 id="community-day-triage-stats">Community Day Triage Stats&lt;/h2>
+&lt;p>New this week is the Developer Experience team joining Community Day to triage new and existing tickets in the tooling repositories.&lt;/p>
+&lt;p>The teams spring cleaning activities continues with 341 backlog issues being closed.&lt;/p>
+&lt;p>Next Monday, May 3rd we will have a reduced team covering community day due to Public holidays in our EMEA region.&lt;/p>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/473">&lt;code>puppetlabs-java#473&lt;/code>&lt;/a>: &amp;ldquo;add url parameter for adoptopenjdk&amp;rdquo;, thanks to &lt;a href="https://github.com/cbobinec">cbobinec&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/507">&lt;code>puppetlabs-kubernetes#507&lt;/code>&lt;/a>: &amp;ldquo;Add kubeadm skip-phases option&amp;rdquo;, thanks to &lt;a href="https://github.com/BaronMsk">BaronMsk&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/500">&lt;code>puppetlabs-kubernetes#500&lt;/code>&lt;/a>: &amp;ldquo;Configure image registry settings for containerd when installed via package&amp;rdquo;, thanks to &lt;a href="https://github.com/andeman">andeman&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-java">&lt;code>puppetlabs-java&lt;/code>&lt;/a> (&lt;code>7.0.2&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-iis">&lt;code>puppetlabs-iis&lt;/code>&lt;/a> (&lt;code>8.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="iac-content-support-team">IAC Content Support Team&lt;/h2>
+&lt;p>This week &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> has been working on CNCF certification with Kubernetes 1.2.0, alongside this she has continued to work on additional tickets that have landed on her plate. &lt;a href="https://github.com/adrianiurca">Adrian&lt;/a> has been working on auditing a new codebase that the team plan on taking ownership of. This will be a gem/module that will help us make the most of analytics and provide us with real feedback. Last but not least [David][David Swan] has been working on porting the last of our modules to run acceptance testing using Github Actions and GCP. As these are the last few they are most definitely more complex to migrate, none the less this is a job well suited to &lt;a href="https://github.com/david22swan">David&lt;/a>.&lt;/p>
+&lt;h2 id="cloud-ci">Cloud CI&lt;/h2>
+&lt;p>We are currently working on the training and education material for porting Puppetlabs modules to use the Cloud CI and a blog post about our multi-node testing. Next week we will try to prepare a troubleshooting/debug demo and a walkthrough the simplified module release process we have currently set up.
+After the training and education milestone we will start focusing on improving the Puppet Developer Experience when using the Cloud CI. This will allow developers to easily provision dev environments in the cloud and use them in their development process. More news about this feature will follow in the next couple of weeks.&lt;/p>
+&lt;h2 id="developer-experience">Developer Experience&lt;/h2>
+&lt;p>The team is heads down on the first set of tasks to improve templates and package size identified from the PDK survey and existing tickets. As part of this work, we&amp;rsquo;re working to increase documentation on how the tool works. &lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> has done some wonderful work describing how the &lt;a href="https://github.com/puppetlabs/pdk/blob/main/reference/validate/REFERENCE.md">validation&lt;/a> system works inside the the PDK.&lt;/p>
+&lt;p>There is an upcoming Puppet VS Code Extension release with improved Puppet code tokenization implemented by &lt;a href="https://github.com/glennsarti">Glenn&lt;/a>. This enables code folding based on the language, not just the indent level, and improved code formatting speed. Look for the status in this &lt;a href="https://github.com/puppetlabs/puppet-editor-services/pull/302">PR&lt;/a>&lt;/p></description></item><item><title>Blog: 2021-04-09: IAC &amp; DevX Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-04-09-status-update/</link><pubDate>Fri, 09 Apr 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-04-09-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>Although this week we did not have any contributions merged, we would like to say a special thank you to &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> and &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a>. Between them 39 PRs were processed for tooling and supported modules as other team members were on PTO.&lt;/p>
+&lt;p>On top of that we are really happy to announce that &lt;a href="https://github.com/puppetlabs/puppetlabs-ibm_installation_manager">puppetlabs-ibm_installation_manager&lt;/a> is now &lt;a href="https://tickets.puppetlabs.com/browse/PF-2343">supported&lt;/a> by the team.&lt;/p>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="pdk-21-release">PDK 2.1 Release&lt;/h2>
+&lt;p>We&amp;rsquo;re delighted to announce the release of PDK 2.1!
+This is the first release that the DevX team have performed but it certainly won&amp;rsquo;t be the last!
+Exciting things in store for the PDK and more regular releases planned for 2021.
+Check out the release notes for 2.1 &lt;a href="https://puppet.com/docs/pdk/2.x/release_notes_pdk.html">here&lt;/a>&lt;/p>
+&lt;h3 id="cloud-ci-update">Cloud CI Update&lt;/h3>
+&lt;p>This week we are closing a new milestone for the Cloud CI. We finally decided to close the multi-node testing milestone as we currently have a couple of modules already using this feature (puppetlabs-kubernetes, puppetlabs-ibm_installation_manager and soon puppetlabs-websphere_application_server).
+More good news is that this week, the support team managed to port their first module to use the Cloud CI provisioning for their PR/Nightly tests on the &lt;a href="https://github.com/puppetlabs/support-tasks">support-tasks&lt;/a> module. We are hopeful this will make testing and releasing a lot easier in the future for them.
+We are now mainly focusing on training and educational materials so a couple of demo videos will soon follow.&lt;/p>
+&lt;h3 id="other-work">Other work&lt;/h3>
+&lt;p>&lt;strong>Important&lt;/strong>: We are preparing to clean up our supported module repositories and the previous &lt;em>master&lt;/em> branch will be removed from all repositories by the end of next week.&lt;/p>
+&lt;p>The IAC Team is currently evaluating &lt;a href="https://www.zenhub.com/">ZenHub&lt;/a> and &lt;a href="https://zube.io">Zube&lt;/a> for managing issues across our repositories. The team would really appreciate any feedback from the Puppet Community, so please feel free to reach out to us if you any suggestions/recommendations ?&lt;/p>
+&lt;!-- check https://tickets.puppetlabs.com/secure/RapidBoard.jspa?rapidView=1176&amp;quickFilter=8745 for other tickets closed out this week that should be mentioned here --></description></item><item><title>Blog: 2020-10-02: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-10-02-status-update/</link><pubDate>Fri, 02 Oct 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-10-02-status-update/</guid><description>
+&lt;p>Hello everyone!&lt;/p>
+&lt;p>The IAC Team had a lot of activity this past week.&lt;/p>
+&lt;p>Here&amp;rsquo;s a brief summary:&lt;/p>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2070">&lt;code>puppetlabs-apache#2070&lt;/code>&lt;/a>: Thanks &lt;a href="https://github.com/DLeich">DLeich&lt;/a> for fixing up some non-ASCII characters in the codebase that was causing issues in Onceover.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2069">&lt;code>puppetlabs-apache#2069&lt;/code>&lt;/a>: Thanks &lt;a href="https://github.com/altmas5">altmas5&lt;/a> for the typo fixes!&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy/pull/442">&lt;code>puppetlabs-haproxy#442&lt;/code>&lt;/a>: &lt;a href="https://github.com/pkaroluk">pkaroluk&lt;/a> put up a fix ensuring that the &lt;code>haproxy.cfg&lt;/code> is correctly structured when using the option &lt;code>httpchk&lt;/code> in conjunction with the &lt;code>http-check&lt;/code> directive. Many thanks!&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/443">&lt;code>puppetlabs-kubernetes#443&lt;/code>&lt;/a>: We can now specifically set the advertise address for &lt;code>etcd&lt;/code> now thanks to &lt;a href="https://github.com/faxm0dem">faxm0dem&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1195">&lt;code>puppetlabs-postgresql#1195&lt;/code>&lt;/a>: Thank you &lt;a href="https://github.com/osijan">osijan&lt;/a> for adding &lt;code>hostgssenc&lt;/code> as an additional option in the &lt;code>$type&lt;/code> parameter within &lt;code>postgresql::server::pg_hba_rule&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1130">&lt;code>puppetlabs-stdlib#1130&lt;/code>&lt;/a>: A very useful additional function for parsing HOCON files from &lt;a href="https://github.com/reidmv">reidmv&lt;/a> - thanks for the new function!&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1129">&lt;code>puppetlabs-stdlib#1129&lt;/code>&lt;/a>: Thank you &lt;a href="https://github.com/b4ldr">b4ldr&lt;/a> for the new types added to &lt;code>Stdlib::Ensure::File&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1128">&lt;code>puppetlabs-stdlib#1128&lt;/code>&lt;/a>: &amp;hellip;and again from &lt;a href="https://github.com/b4ldr">b4ldr&lt;/a> - this is a great addition: we now have types aligned with the IANA port category definitions, for easier comprehension.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2071">&lt;code>puppetlabs-apache#2071&lt;/code>&lt;/a>: Thanks to &lt;a href="https://github.com/creativefre">creativefre&lt;/a> for the fix in &lt;code>apache::mod::fcgid&lt;/code> to make it compatible on RHEL 8.&lt;/li>
+&lt;/ul>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib">&lt;code>puppetlabs-stdlib&lt;/code>&lt;/a> (&lt;code>6.5.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker">&lt;code>puppetlabs-docker&lt;/code>&lt;/a> (&lt;code>3.12.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">&lt;code>puppetlabs-postgresql&lt;/code>&lt;/a> (&lt;code>6.8.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="http://github.com/puppetlabs/puppetlabs-mysql">&lt;code>puppetlabs-mysql&lt;/code>&lt;/a> (&lt;code>10.7.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="http://github.com/puppetlabs/puppetlabs-package">&lt;code>puppetlabs-package&lt;/code>&lt;/a> (&lt;code>1.3.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="ci-improvements">CI Improvements&lt;/h2>
+&lt;p>As mentioned in the last week&amp;rsquo;s status update, we are currently under development of a solution that would improve the CI experience both for us as the maintainers of the modules and for everyone else in the community. One of the goals of this activity is to allow you, as the contributors, to see if any code changes affect module functionality across the supported platforms.
+At the moment we depend on Travis and Docker containers to offer you a part of this experience. The solution we are working on will harness the power of different cloud providers to allow acceptance test runs on more platforms with Puppet Litmus.&lt;/p>
+&lt;h2 id="life-of-an-intern-at-puppet">Life of an intern at Puppet&lt;/h2>
+&lt;p>As you all know already, we have our lovely new intern, &lt;a href="https://github.com/disha-maker">Disha&lt;/a> who is sharing her experience with the team on the [Life of an intern at Puppet]({% link _docs/life_of_intern.md) page. Please follow her blog to keep up to date with her activity here.&lt;/p>
+&lt;h2 id="everyonecancontribute-podcast">#everyonecancontribute podcast&lt;/h2>
+&lt;p>&lt;a href="https://github.com/DavidS">DavidS&lt;/a> participated in the &lt;a href="https://everyonecancontribute.com/">#everyonecancontribute&lt;/a> podcast (&lt;a href="https://www.youtube.com/watch?v=6c0Vfn8BIM4">recording&lt;/a> on Wednesday where we (amongst other things) tried out the &lt;a href="https://about.gitlab.com/">gitlab&lt;/a> integration of &lt;a href="https://www.gitpod.io/">gitpod.io&lt;/a>, which provides a fully online hosted VSCode instance to code in any browser.
+A lot of things just work out of the box, and we even got some of the &lt;a href="https://puppet-vscode.github.io/">Puppet VSCode extension&lt;/a> to work.
+Find the full writeup by &lt;a href="https://github.com/dnsmichi">@dnsmichi&lt;/a>&amp;rsquo;s writeup &lt;a href="https://everyonecancontribute.com/post/2020-09-30-kaeffchen-20-gitpod/">online&lt;/a>.&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That&amp;rsquo;s it for this weeks update, have a great weekend everyone!&lt;/p>
+&lt;p>Thank you for all your contributions and support!&lt;/p></description></item><item><title>Blog: 2020-09-25: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-09-25-status-update/</link><pubDate>Fri, 25 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-09-25-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>Thanks to &lt;a href="https://github.com/jcpunk">jcpunk&lt;/a> for the tidy up effort to resolve &lt;code>puppet-lint&lt;/code> and &lt;code>yamllint&lt;/code> warnings across the following repos:
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-concat/pull/660">&lt;code>puppetlabs-concat#660&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/438">&lt;code>puppetlabs-kubernetes#438&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1127">&lt;code>puppetlabs-stdlib#1127&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-translate/pull/93">&lt;code>puppetlabs-translate#93&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1187">&lt;code>puppetlabs-postgresql#1187&lt;/code>&lt;/a>: Thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a> for the enhancement that allows you to remove config entries by setting them to &lt;code>undef&lt;/code> - a very useful addition!&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-strings/pull/252">&lt;code>puppetlabs-strings#252&lt;/code>&lt;/a>: Thanks to &lt;a href="https://github.com/kozl">kozl&lt;/a> for the various enhancements and fixes in this. Check out &lt;a href="https://github.com/puppetlabs/puppet-strings/pull/252#issue-487952635">the description&lt;/a> for more details.&lt;/li>
+&lt;/ul>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">&lt;code>puppetlabs-accounts&lt;/code>&lt;/a> (&lt;code>6.3.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="semi-automated-blog-writing">Semi-Automated Blog Writing&lt;/h2>
+&lt;p>Well, the way the world is going, everything will be automated soon, won&amp;rsquo;t it?
+This week&amp;rsquo;s blog post was partially written by a new script that will compile:&lt;/p>
+&lt;ul>
+&lt;li>The modules released since last week&amp;rsquo;s update&lt;/li>
+&lt;li>The awesome contributions from you, in the Community, that have landed in to &lt;code>puppetlabs:main&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>These are sections that are there every week and the previous process to compiling everything in to Markdown, was a becoming a tedious, manual one.
+So like all repetitive, manual stuff, we automated it! :smiley:&lt;/p>
+&lt;p>If you&amp;rsquo;re interested in how it all works, check out &lt;a href="https://github.com/puppetlabs/iac/pull/114">&lt;code>iac#114&lt;/code>&lt;/a> and/or the &lt;a href="https://github.com/puppetlabs/iac/tree/master/bin/blog_tools">README&lt;/a>.&lt;/p>
+&lt;p>And before I continue I would just like to give a personal thanks to our very own &lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> for getting this up and working, cutting at least an hour of work from the writing of this post.&lt;/p>
+&lt;h2 id="ci-improvements">CI Improvements&lt;/h2>
+&lt;p>Over the last few months or so work has been put in to improve our CI coverage with this short message from our very own &lt;a href="https://github.com/carabasdaniel">Daniel Carabas&lt;/a> explaining more:&lt;/p>
+&lt;pre>&lt;code>The IAC Team is currently working on a CI improvement that will increase the testing coverage across all our supported modules and allow contributors to check and run unit and acceptance tests on more platforms. Please look forward to more details about our improved CI in the upcoming weeks.
+&lt;/code>&lt;/pre>&lt;h2 id="new-blogs">New Blogs&lt;/h2>
+&lt;p>We&amp;rsquo;ve got several new blog posts out for your viewing pleasure:&lt;/p>
+&lt;ul>
+&lt;li>First from &lt;a href="https://github.com/michaeltlombardi">Michael Lombardi&lt;/a> we have an excellent blog which (spoiler alert!) announces the official release of our brand new module &lt;a href="https://github.com/puppetlabs/Puppet.Dsc">Puppet.Dsc&lt;/a>! Please check it out &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-09-21-dsc-release.md">here&lt;/a>.&lt;/li>
+&lt;li>Next from &lt;a href="https://github.com/adrianiurca">Adrian Iurca&lt;/a> we have a lovely blog post detailing some important changes that were recently made to the &lt;a href="https://github.com/puppetlabs/puppetlabs-docker">docker&lt;/a> module. Just click the following link to take a &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-09-23-docker-params-change-detection.md">look&lt;/a>.&lt;/li>
+&lt;li>Finally from this week onwards, Disha&amp;rsquo;s blog posts are in a new, dedicated section of our site called &lt;a href="https://puppetlabs.github.io/iac/docs/life_of_intern">Life as an Intern at Puppet&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Blog: 4th September 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-09-04-status-update/</link><pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-09-04-status-update/</guid><description>
+&lt;p>The IAC team has been active over the past week.
+We worked on releasing modules and also reviewing contributions from the community.
+Here’s a resume of the most cool things:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>We&amp;rsquo;ve had a few modules released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs/kubernetes&lt;/a> (v5.3.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the fantastic Puppet Community for the following contributions over the past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs/puppetlabs-kubernetes&lt;/a>: Thanks to &lt;a href="https://github.com/JasonWhall">Jason Whall&lt;/a> for this &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/436">change&lt;/a> which updates docker yumrepo default .&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">puppetlabs/puppetlabs-accounts&lt;/a>: Thanks to &lt;a href="https://github.com/jarretlavallee">Jarret Lavallee&lt;/a> for this &lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/333">change&lt;/a> which allow for Sensitive type passwords in accounts::user .&lt;/li>
+&lt;/ul>
+&lt;h3 id="dsc-user-testing">DSC User Testing&lt;/h3>
+&lt;p>With the last of the major technical hurdles out of the way, the PowerShell DSC Puppetizer is ready for another wave of user testing.
+&lt;a href="https://github.com/joeypiccola">Joey Piccola&lt;/a> reached out to offer some help with testing (thanks, Joey!) and we were quickly able to Puppetize and send over both ActiveDirectoryDsc and xFailOverCluster - putting almost 30 puppetized DSC resources into his hands in mere minutes!
+Not only have the build times slimmed dramatically, but the packaged size of these modules is &lt;em>tiny&lt;/em>, under 150kB each!
+If you&amp;rsquo;re interested in participating in our beta testing program, you can reach out to us at &lt;a href="mailto:dsc@puppet.com">dsc@puppet.com&lt;/a>!&lt;/p>
+&lt;h3 id="welcome-to-the-team">Welcome to the Team&lt;/h3>
+&lt;p>We want to announce to you that &lt;a href="https://github.com/disha-maker">Disha Kareer&lt;/a> is the newest member of the IAC Team.
+&lt;a href="https://github.com/disha-maker">Disha&lt;/a> is Undergraduate student studying BSc Computing and Information Technology including Professional Experience.
+She enjoys volunteering and meeting new people.
+She will help us to fulfill the IAC Team noble mission.&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That’s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item><item><title>Blog: 14th August 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-08-14-status-update/</link><pubDate>Fri, 14 Aug 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-08-14-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of things over the past week.
+We want to share with our community some of the most interesting things.
+Here’s a brief overview of what we’ve been up to:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>We have been busy this week with releasing the following modules:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/docker">puppetlabs/docker&lt;/a> (v3.11.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/apt">puppetlabs/apt&lt;/a> (v7.5.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/registry">puppetlabs/registry&lt;/a> (v3.1.1)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/mysql">puppetlabs/mysql&lt;/a> (v10.7.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>A massive thanks to &lt;a href="https://github.com/scoopex">scoopex&lt;/a> for a number of enhancements and fixes to &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs-kubernetes&lt;/a>. There are a lot of fixes and improvements incorporated in each of these PRs - for more details, take a look at the commits outlining each fix:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/418">&lt;code>puppetlabs-kubernetes#418&lt;/code>&lt;/a> resolves issues &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/issues/365">#365&lt;/a> and &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/issues/415">#415&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/420">&lt;code>puppetlabs-kubernetes#420&lt;/code>&lt;/a> resolves issues &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/issues/190">#190&lt;/a> and &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/issues/417">#417&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Thanks to &lt;a href="https://github.com/tphoney">tphoney&lt;/a> for &lt;a href="https://github.com/puppetlabs/provision/pull/126">this enhancement&lt;/a> to the ABS provision module!&lt;/p>
+&lt;p>Shout out to Jason Stewart from our Customer Support team for liasing with &lt;a href="https://github.com/adrianiurca">Adrian&lt;/a>, &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10734">MODULES-10734&lt;/a> has now been resolved and released.&lt;/p>
+&lt;h2 id="using-puppet-with-private-cloudsmith-repositories">Using Puppet with Private Cloudsmith Repositories&lt;/h2>
+&lt;p>&lt;a href="https://www.linkedin.com/in/dan-mckinney/">Dan McKinney&lt;/a> from &lt;a href="https://cloudsmith.com/">Cloudsmith&lt;/a> has uploaded a &lt;a href="https://www.youtube.com/watch?v=lCmS3omimEM">cool video&lt;/a> which demonstrates how to use Puppet to deploy a package from a private &lt;a href="https://cloudsmith.com/">Cloudsmith&lt;/a> repository.
+It&amp;rsquo;s great to see how Puppet can help automate ALL THE THINGS!
+Great &lt;a href="https://www.youtube.com/watch?v=lCmS3omimEM">video&lt;/a>, &lt;a href="https://www.linkedin.com/in/dan-mckinney/">Dan&lt;/a>!&lt;/p>
+&lt;h2 id="puppet-7">Puppet 7&lt;/h2>
+&lt;p>Puppet 7 testing is ongoing. &lt;a href="https://github.com/sanfrancisko">Ciaran&lt;/a> is kicking Puppet 7 testing off when the nightly builds are published.&lt;/p>
+&lt;h2 id="terminology-changes">Terminology changes&lt;/h2>
+&lt;p>Last week in our blog we introduced this effort and the team is continuing to work on this. With the amount of modules and tools the team looks after this is quite a large piece of work that we are dedicated to completing in a timely matter. Currently &lt;a href="https://github.com/davidswan22">David Swan&lt;/a> is continuing to work on this to get it over the line.&lt;/p>
+&lt;p>Here is an example of one of our modules that have been revamped with the new terminology:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">accounts&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-management-tool">Community Management Tool&lt;/h2>
+&lt;p>Our very own &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> is working on our Community Management Tool and making it more mobile friendly. This means that soon everyone will be able to review our community reports from a mobile phone whilst on the go!&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That concludes this weeks summary. As always we want to thank you all for your continuous support and understanding.&lt;/p></description></item><item><title>Blog: 7th August 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-08-07-status-update/</link><pubDate>Fri, 07 Aug 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-08-07-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of things over the past week.
+We want to share with our community some of the most interesting things.
+Here’s a brief overview of what we’ve been up to:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>We&amp;rsquo;ve had a few modules released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/cisco_ios">puppetlabs/cisco_ios&lt;/a> (v1.3.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;ve had plenty of great community contributions this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/416">a bit boost to improve the initial installation&lt;/a> on the puppetlabs-kubernetes module has been finally tested and merged. The next two related PRs are being tested now and hopefully we can get these merged soon. A big thank you goes out to &lt;a href="https://github.com/scoopex">Marc Schöchlin&lt;/a> for these great contributions.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/942">documentation update&lt;/a> on the puppetlabs-apt module has been merged. Thank you &lt;a href="https://github.com/gguillotte">Garrett Guillotte&lt;/a> for correction and clarification of the module README&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/624">refactor RSpec tests&lt;/a> on the puppetlabs-docker module has been merged. Thanks to &lt;a href="https://github.com/crazymind1337">crazymind1337&lt;/a> for significantly improving the readability of the tests and code coverage&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppet-7">Puppet 7&lt;/h2>
+&lt;p>Puppet 7 testing has been making good progress.
+We&amp;rsquo;re now in a position where we can rapidly generate configurations to test modules on our internal infrastructure or TravisCI, using &lt;a href="https://github.com/puppetlabs/pdksync">pdksync&lt;/a>.
+Thanks to &lt;a href="https://github.com/joshcooper">joshcooper&lt;/a> for the very rapid turnaround on &lt;a href="https://github.com/puppetlabs/puppetlabs-registry/pull/216">this fix&lt;/a> for &lt;a href="https://github.com/puppetlabs/puppetlabs-registry">puppetlabs-registry&lt;/a>.
+Also, a big shout out to the Night&amp;rsquo;s Watch team for their continued help in addressing issues we&amp;rsquo;ve discovered.&lt;/p>
+&lt;h2 id="terminology-changes">Terminology changes&lt;/h2>
+&lt;p>Recent anti-racial movements across the globe have prompted much-needed global change, Puppet is committed to reevaluate our terminology and uses of words and phrases that evoke unintended associations making a concerted effort to provide a non-biased, user-friendly experience through every aspect of our software and documentation. Language matters. As an initial step in this regard, we would like to ask the community, that&amp;rsquo;s always shown great support, to try and avoid using any references to our repository master branches in the future as we are starting to lay down the foundations of these changes by renaming the default branch.&lt;/p>
+&lt;p>&lt;a href="https://github.com/david22swan">David Swan&lt;/a> has already started work in this regard with these PRs:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/318">https://github.com/puppetlabs/puppetlabs-accounts/pull/318&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-acl/pull/199">https://github.com/puppetlabs/puppetlabs-acl/pull/199&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2054">https://github.com/puppetlabs/puppetlabs-apache/pull/2054&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/940">https://github.com/puppetlabs/puppetlabs-apt/pull/940&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-bootstrap/pull/147">https://github.com/puppetlabs/puppetlabs-bootstrap/pull/147&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-chocolatey/pull/218">https://github.com/puppetlabs/puppetlabs-chocolatey/pull/218&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-concat/pull/654">https://github.com/puppetlabs/puppetlabs-concat/pull/654&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/643">https://github.com/puppetlabs/puppetlabs-docker/pull/643&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-dsc/pull/461">https://github.com/puppetlabs/puppetlabs-dsc/pull/461&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-dsc_lite/pull/159">https://github.com/puppetlabs/puppetlabs-dsc_lite/pull/159&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-exec/pull/129">https://github.com/puppetlabs/puppetlabs-exec/pull/129&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-facter_task/pull/127">https://github.com/puppetlabs/puppetlabs-facter_task/pull/127&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-firewall/pull/933">https://github.com/puppetlabs/puppetlabs-firewall/pull/933&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy/pull/437">https://github.com/puppetlabs/puppetlabs-haproxy/pull/437&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd/pull/320">https://github.com/puppetlabs/puppetlabs-motd/pull/320&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That concludes this weeks summary. As always we want to thank you all for your continuous support and understanding.&lt;/p></description></item><item><title>Blog: 29th May 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-05-29-status-update/</link><pubDate>Fri, 29 May 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-05-29-status-update/</guid><description>
+&lt;p>Greetings from the IAC Team - here&amp;rsquo;s our status update for this week!&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>Here&amp;rsquo;s the new releases in the modules this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd">puppetlabs/docker&lt;/a> (3.10.1)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java">puppetlabs/java&lt;/a> (6.3.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="module-releases-from-puppet">Module Releases from Puppet&lt;/h2>
+&lt;p>Here&amp;rsquo;s some module releases from other teams in Puppet you may be interested in:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/python_task_helper">puppetlabs/python_task_helper&lt;/a> (v0.4.3)&lt;/li>
+&lt;/ul>
+&lt;h2 id="gem-releases">Gem Releases&lt;/h2>
+&lt;p>We&amp;rsquo;re happy to announce a new version of &lt;a href="https://github.com/puppetlabs/puppet_litmus">Litmus&lt;/a> has been released:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet_litmus/blob/master/CHANGELOG.md#0182-2020-05-28">v0.18.2&lt;/a> contains a number of fixes from &lt;a href="https://github.com/pmcmaw">Paula&lt;/a>, &lt;a href="https://github.com/DavidS">DavidS&lt;/a> and &lt;a href="https://github.com/mmarod">mmarod&lt;/a>. Full details in the &lt;a href="https://github.com/puppetlabs/puppet_litmus/blob/master/CHANGELOG.md#0182-2020-05-28">CHANGELOG&lt;/a>!&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>The wonderful community members that continue to contribute to our modules have provided us with the following enhancements:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/938">&lt;code>puppetlabs-apt#938&lt;/code>&lt;/a>:&lt;/strong> &lt;a href="https://github.com/mdklapwijk">mdklapwijk&lt;/a> added support for https repositories by making use of the &lt;a href="https://www.unix-ag.uni-kl.de/~bloch/acng/html/howtos.html#ssluse">&lt;code>tell-me-what-you-need&lt;/code>&lt;/a> method in &lt;a href="https://wiki.debian.org/AptCacherNg">&lt;code>apt-cacher-ng&lt;/code>&lt;/a>.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/412">&lt;code>puppetlabs-kubernetes#412&lt;/code>&lt;/a>:&lt;/strong> A HUGE number of improvements from &lt;a href="https://github.com/Wiston999">Wiston999&lt;/a>. Check out &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/412">the PR&lt;/a> for all the details.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2033">&lt;code>puppetlabs-apache#2033&lt;/code>&lt;/a>:&lt;/strong> &lt;a href="https://github.com/thechristschn">thechristschn&lt;/a> enhanced the &lt;code>proxy_protocol_exceptions&lt;/code> param in &lt;code>mod_remoteip&lt;/code> to accept IPv6 addresses in CIDR notation.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/429">&lt;code>puppetlabs-java#429&lt;/code>&lt;/a>:&lt;/strong> &lt;a href="https://github.com/fraenki">fraenki&lt;/a> made an enhacement to allow management of symlinks in the &lt;code>java::adopt&lt;/code> defined type.&lt;/li>
+&lt;/ul>
+&lt;p>Many thanks to &lt;a href="https://github.com/mdklapwijk">mdklapwijk&lt;/a>, &lt;a href="https://github.com/Wiston999">Wiston999&lt;/a>, &lt;a href="https://github.com/thechristschn">thechristschn&lt;/a> and &lt;a href="https://github.com/fraenki">fraenki&lt;/a> for your excellent contributions!&lt;/p>
+&lt;h2 id="iac-team-demos">IAC Team Demos&lt;/h2>
+&lt;p>We frequently demo some of the the enhancements to the [tools]({% link tools.html %}) under our management to ourselves or the wider company.
+Check out the videos on our new [demos]({% link _docs/demos.md) page where you can see:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/carabasdaniel">Danny&lt;/a> taking you through the steps for adding a new provisioner to &lt;a href="https://github.com/puppetlabs/puppet_litmus">Litmus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/sheenaajay">Sheena&lt;/a> demonstrating how we use the invaluable &lt;a href="https://github.com/puppetlabs/pdksync">pdksync&lt;/a> for deploying and testing the same change to multiple repos&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppetdscbuilder-beta-testing">PuppetDSCBuilder Beta Testing&lt;/h2>
+&lt;p>It has been greatly encouraging to see a number of people signed up to be early adopters of the &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder">&lt;code>PuppetDSCBuilder&lt;/code>&lt;/a> project.
+We just had another sign up this week!
+If you&amp;rsquo;re heavily involved in Windows admin, Powershell and DSC, check out the &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-03-30-dsc-announcement.md">previous blog post&lt;/a> from &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a> which outlines the functionality and how to get in touch with us to participate!&lt;/p>
+&lt;p>That&amp;rsquo;s a wrap for this week!
+To our Romanian IAC team members (&lt;a href="https://github.com/carabasdaniel">Danny&lt;/a>, &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a>, &lt;a href="https://github.com/adrianiurca">Adrian&lt;/a>) and any Romanian readers out there - enjoy the long weekend!&lt;/p></description></item><item><title>Blog: 22nd May 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-05-22-status-update/</link><pubDate>Fri, 22 May 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-05-22-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of new things over the past week. We want to share with our community some pretty interesting things. Here&amp;rsquo;s a brief overview of what we&amp;rsquo;ve been up to:&lt;/p>
+&lt;h2 id="daiana-has-been-made-permanent">Daiana has been made permanent!&lt;/h2>
+&lt;p>We are absolutely delighted to announce our current intern, &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a>, has recently been offered a permanent job role. Daiana has been a major influence on our community reporting tool for when we are triaging PRs and releasing modules. Some of the work Daiana has been carrying out can be viewed &lt;a href="https://github.com/puppetlabs/community_management/pull/22/">here&lt;/a>. We are so excited that she will be hanging around! We are all looking forward to have a celebratory beverage together at some point in the future.&lt;/p>
+&lt;h2 id="module-releases">Module Releases&lt;/h2>
+&lt;p>Modules released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy">puppetlabs/haproxy&lt;/a> (4.2.1)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd">puppetlabs/motd&lt;/a> (4.1.1)&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We absolutely love our community contributors, they are always ready to help and they have excellent ideas. Here are some highlights of this week:&lt;/p>
+&lt;p>Thank you to Trey Dockendorf for raising an issue on the latest release of the PDK, and to &lt;a href="https://github.com/scotje">Jesse Scott&lt;/a> for providing a &lt;a href="https://github.com/puppetlabs/pdk/pull/883">fix&lt;/a>. &lt;a href="https://github.com/DavidS">DavidS&lt;/a> has now merged this and this fix will make it out in the next release.&lt;/p>
+&lt;p>Thank you to &lt;a href="https://github.com/Wiston999">Victor Cabezas&lt;/a> for a fantastic PR for &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs/kubernetes&lt;/a>. Its great to see such attention to detail in a PR from a community member.&lt;/p>
+&lt;p>Thank you to &lt;a href="https://github.com/andeman">andeman&lt;/a> for contributing to our &lt;a href="https://github.com/puppetlabs/puppetlabs-mysql">puppetlabs/mysql&lt;/a> module and providing us with such a great feature.&lt;/p>
+&lt;p>Thank you to [https://github.com/vchepkov](Vadym Chepkov) for your &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/613">Docker PR&lt;/a>. Housekeeping on our modules is always beneficial and we really appreciate you taking the time to contribute.&lt;/p>
+&lt;h2 id="community-management-tool">Community Management Tool&lt;/h2>
+&lt;p>We wanted to have all the information about our supported modules in one place. We decided to change the data source of the &lt;a href="https://puppetlabs.github.io/community_management/">Community Tool&lt;/a> from a local file called &lt;code>modules.json&lt;/code> to the online available &lt;code>https://puppetlabs.github.io/iac/modules.json&lt;/code> which is generated from the same information that is powering the &lt;a href="https://puppetlabs.github.io/iac/modules/">team&amp;rsquo;s modules page&lt;/a>. You can check the new updates &lt;a href="https://github.com/puppetlabs/community_management/pull/22">here&lt;/a>.&lt;/p>
+&lt;p>The report for our tooling has been using the &lt;a href="https://github.com/puppetlabs/community_management/pull/12">same mechanism&lt;/a> since March. We will continue to build all our future automation tooling based on this data set, so that we can update-once-run-everywhere.&lt;/p>
+&lt;h2 id="pdksync-runs">PDKSync Runs&lt;/h2>
+&lt;p>&lt;a href="https://github.com/david22swan">David Swan&lt;/a> has performed 2 PDKSync runs this week to include generic template updates in our modules and to add Ubuntu 20.04 support. &lt;a href="https://github.com/carabasdaniel">Danny&lt;/a> has been running one to switch our default provisioner from VMPooler to ABS for our weekly and pre-release CI runs. Travis was busy! &lt;code>:D&lt;/code>&lt;/p>
+&lt;h2 id="making-it-possible-to-visualize-data">Making it Possible to Visualize Data&lt;/h2>
+&lt;p>&lt;a href="https://github.com/DavidS">DavidS&lt;/a> has &lt;del>been working hard&lt;/del> spent a few more minutes on making use of &lt;a href="https://honeycomb.io/">honeycomb&lt;/a>. This week&amp;rsquo;s new query will track our migration from VMPooler to ABS. It is super exciting that we can now see dashboards and drill down rather than scrolling through large log files.&lt;/p>
+&lt;p>You can see when we started rolling out the first changes:
+&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-05-22-status-update/vmpooler-abs-migration-tracker.png" alt="A graph comparing 1073 vmpooler calls with 502 ABS calls, which started around the 18th">&lt;/p>
+&lt;h2 id="litmus-image-creation">Litmus Image Creation&lt;/h2>
+&lt;p>Since the end of 2019 we&amp;rsquo;re using custom-built &lt;a href="https://github.com/puppetlabs/litmusimage">images&lt;/a> to test modules with &lt;a href="https://github.com/puppetlabs/puppet_litmus">litmus&lt;/a>. Litmus image creation is now part of the IAC team OS certification process. As part of our work on validating all modules for Ubuntu 20.04, &lt;a href="https://github.com/david22swan">David Swan&lt;/a> put in &lt;a href="https://github.com/puppetlabs/litmusimage/pull/23/files">a quick PR&lt;/a> to add it to our list of images. Being able to easily create a new Litmus image enables the IAC to team run OS certification test across multiple modules quickly. Great Job &lt;a href="https://github.com/florindragos">Florin&lt;/a> on the Litmus image creation scripting.&lt;/p>
+&lt;h2 id="the-iac-team-adapting-to-the-new-norm">The IAC Team Adapting to the New &amp;lsquo;Norm&amp;rsquo;&lt;/h2>
+&lt;p>Everyone in the team seems to have started adapting to the new ‘norm’ of working from home every day. It seems everyone has started trying out new things. Here are some of the things we have been getting up to:&lt;/p>
+&lt;p>&lt;a href="https://github.com/DavidS">DavidS&lt;/a> has been taking Oscar and Miku out walking almost daily, soaking up the lovely views around Belfast and of course playing &lt;a href="https://factorio.com/">factorio&lt;/a> for way too long. Can we blame him when confined to the house, lets just refer to it mastering skills online.&lt;/p>
+&lt;p>Norman over the past year has had a lot of landscaping carried out in his garden therefore he finds himself spending more time in his garden than before. With the weather we have been having in Belfast recently he would be crazy to miss the opportunity.&lt;/p>
+&lt;p>&lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> now knows his neighborhood by the back of his hand, has taken up more cooking opportunities at home (he currently has enough Bolognese in his freezer to feed the whole IAC team), is getting a big nostalgia hit playing Streets of Rage 4 online with his mate and has big plans on getting back into playing guitar, it just hasn’t happened yet. Sounds like Ciaran has been doing great at keeping busy!&lt;/p>
+&lt;p>&lt;a href="https://github.com/carabasdaniel">Danny&lt;/a> has found himself spending more time chilling out and reading books and when he is not doing that he is ‘fine tuning’ his video gaming skills.&lt;/p>
+&lt;p>&lt;a href="https://github.com/david22swan">David Swan&lt;/a> carries out a vigorous home workout regime on Tuesday, Wednesday and Thursdays. Way to go David, serious commitment there!&lt;/p>
+&lt;p>&lt;a href="https://github.com/sheenaajay">Sheena&lt;/a> is currently home schooling 2 lovely girls. Although when they have some down time she is exploring new recipes with them.&lt;/p>
+&lt;p>&lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> has started to do some home workouts and has started eating healthy. I wonder if this is a result of mastering how to bake a perfect lava cake? I also wonder how shipping a lava cake would work!?&lt;/p>
+&lt;p>&lt;a href="https://github.com/adrianiurca">Adrian&lt;/a> has started spending more time soaking up the surrounding views and has taken up some gardening. There is nothing more therapeutic than admiring blooming flowers at this time of the year.&lt;/p>
+&lt;p>Finally &lt;a href="https://github.com/pmcmaw">me&lt;/a>, In my down time I have been enjoying walks, for a while I collected wild flowers, pressed them and put them into a frame to remind me of this strange time. I also spend most of my time playing with my 11 month old baby. This ranges from getting paint EVERYWHERE to letting her play in multi colored spaghetti or creating strange toys such as a rain cloud made out of cotton wool, tin foil and plastic bags.&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That&amp;rsquo;s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item><item><title>Blog: 7th Feb 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-07-status-update/</link><pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-07-status-update/</guid><description>
+&lt;p>The IAC team have been working on a lot of interesting things these past two weeks. Here&amp;rsquo;s a brief overview of what we&amp;rsquo;ve been up to:&lt;/p>
+&lt;h2 id="team-blog">Team Blog&lt;/h2>
+&lt;p>If you&amp;rsquo;re here, you&amp;rsquo;re already aware of it - the IAC team will now be giving status updates as to what we&amp;rsquo;ve been working on, any insights we&amp;rsquo;ve made and cool new tech we&amp;rsquo;ve been playing with. We&amp;rsquo;re also hoping to share more of the tools that we use internally with the community.&lt;/p>
+&lt;h2 id="updates-to-puppet-modules">Updates to Puppet Modules&lt;/h2>
+&lt;p>We&amp;rsquo;ve released a number of new modules as part of our Content Triage Process.
+Check out the CHANGELOG in each of the modules for more details as to what has been added:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/accounts">puppetlabs/accounts&lt;/a> (v6.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs/apache&lt;/a> (v5.4.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/java">puppetlabs/java&lt;/a> (v6.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">puppetlabs/kubernetes&lt;/a> (v5.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/puppet_agent">puppetlabs/puppet_agent&lt;/a> (v3.0.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/puppet_agent">puppetlabs/puppet_agent&lt;/a> (v3.0.1)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/reboot">puppetlabs/reboot&lt;/a> (v2.4.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/websphere_application_server">puppetlabs/websphere_application_server&lt;/a> (v2.0.1)&lt;/li>
+&lt;/ul>
+&lt;h2 id="kubernetes-v510">Kubernetes v5.1.0&lt;/h2>
+&lt;p>The &lt;a href="https://www.cncf.io/">CNCF&lt;/a> have certified the latest version (v5.1.0) of the &lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">puppetlabs/kubernetes&lt;/a> module with &lt;a href="https://kubernetes.io/">Kubernetes&lt;/a> v1.16.6.
+Check out the &lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">module on The Forge&lt;/a> to see how to bootstrap K8 clusters and save yourself time and effort.
+You may also be interested in Kubetool (bundled with the module and as a &lt;a href="https://hub.docker.com/r/puppet/kubetool">Docker image&lt;/a>) which auto-generates the Hiera security parameters, the discovery token hash, and other configurations for your Kubernetes cluster.&lt;/p>
+&lt;h2 id="theres-a-buzz-about-honeycombio">There&amp;rsquo;s a buzz about Honeycomb.io&lt;/h2>
+&lt;p>We&amp;rsquo;re very excited to be in the POC stage rolling out &lt;a href="https://www.honeycomb.io/">Honeycomb&lt;/a> to collect data from our CI / Test infrastructure.
+This is going to give us much more visibility in to a number of important metrics and allow us to make the test process for modules a lot slicker.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/iac/assets/2020-02-07-status-update/honeycomb_travis_appveyor.png" alt="Execution time of pdksync run on AppVeyor &amp; Travis">
+&lt;strong>Execution Time of PDK Sync run on Travis and AppVeyor CI platforms&lt;/strong>&lt;/p>
+&lt;p>We were very excited to be working with this very cool solution and we&amp;rsquo;re already starting to get some interesting insights.
+A more in depth blog post about this in the near future - don&amp;rsquo;t fly too far away!&lt;/p>
+&lt;h2 id="module-statistics-dashboards">Module Statistics Dashboards&lt;/h2>
+&lt;p>A vital part of the Content Triage Process is visibility in to the status of the modules:&lt;/p>
+&lt;ul>
+&lt;li>How many PRs are open?&lt;/li>
+&lt;li>What is the status of the last &lt;code>N&lt;/code> test results?&lt;/li>
+&lt;li>When was the last comment from a contributor?&lt;/li>
+&lt;/ul>
+&lt;p>There are a lot of modules on &lt;a href="https://forge.puppet.com/supported/">The Forge&lt;/a>, so we need a way to quickly view all this data.
+We have made some great improvements to our &lt;a href="https://puppetlabs.github.io/community_management/">Community Management&lt;/a> dashboards recently:&lt;/p>
+&lt;ul>
+&lt;li>More accurate reporting on module metrics&lt;/li>
+&lt;li>Integration with &lt;a href="https://github.com/features/actions">Github Actions&lt;/a> reports / artifact to provide quicker feedback of the results from our release checks and our future nightly CI runs&lt;/li>
+&lt;/ul></description></item></channel></rss>

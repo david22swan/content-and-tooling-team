@@ -1,0 +1,293 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – tooling</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/tooling/</link><description>Recent content in tooling on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/tooling/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Converting to use Puppetized DSC Modules</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-26-converting-puppetized-dsc-modules/</link><pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-26-converting-puppetized-dsc-modules/</guid><description>
+&lt;h2 id="whats-new-with-dsc-and-puppet">What&amp;rsquo;s new with DSC and Puppet?&lt;/h2>
+&lt;p>To check out our reasons on why we think converting your module is a good idea, check out these blog posts written by &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/03/30/dsc-announcement.html">DSC accouncement post&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/09/21/dsc-release.html">DSC release post&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>The blog posts cover information including:&lt;/p>
+&lt;ul>
+&lt;li>Why we are doing this&lt;/li>
+&lt;li>Details about the builder&lt;/li>
+&lt;li>How to Pupperize your Powershell module&lt;/li>
+&lt;li>How to use your Puppetized module&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Seriously though what is there to not love?&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Minimal module maintainence costs&lt;/li>
+&lt;li>Automated module building&lt;/li>
+&lt;li>Property by property reporting&lt;/li>
+&lt;li>VSCode Extension with intellisense&lt;/li>
+&lt;li>We have 68 modules on the Forge in the &lt;a href="https://forge.puppet.com/dsc">DSC namespace&lt;/a>&lt;/li>
+&lt;li>Converting is relatively straight forward&lt;/li>
+&lt;/ul>
+&lt;h2 id="so-how-can-i-do-this">So how can I do this?&lt;/h2>
+&lt;p>&lt;em>Old method:&lt;/em>&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#50fa7b">mod&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;puppetlabs-dsc&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;1.9.4&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;em>New method:&lt;/em>&lt;/p>
+&lt;p>Add entries for &lt;code>puppetlabs-pwshlib&lt;/code> and the &lt;code>dsc-*&lt;/code> modules whose resources you want to use to your puppetfile.
+The entries on the list below are the &lt;em>closest&lt;/em> match for the resources found in the old &lt;code>puppetlabs-dsc&lt;/code> module; while we specified versions here, remember: there have been releases to the DSC modules since the &lt;code>puppetlabs-dsc&lt;/code> last had its resources updated, so there are newer versions you may want to take advantage of (just be sure to test thoroughly when upgrading)!&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Note:&lt;/strong> You want to &lt;em>very specifically&lt;/em> only add the necessary &lt;code>dsc-*&lt;/code> module pins to your puppetfile; if you&amp;rsquo;re not using any of the resources contained in a module, there&amp;rsquo;s no need to specify it and take on the overhead of shipping the code around.&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'puppetlabs-pwshlib', '0.7.1'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-activedirectorycsdsc', '3.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-auditpolicydsc', '1.4.0-0-1'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-certificatedsc', '4.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-computermanagementdsc', '6.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-dfsdsc', '4.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-networkingdsc', '7.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-officeonlineserverdsc', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-securitypolicydsc', '2.7.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-sharepointdsc', '3.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-sqlserverdsc', '12.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-storagedsc', '4.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-systemlocaledsc', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xactivedirectory', '2.24.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xazure', '0.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xazurepack', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xbitlocker', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xcredssp', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdatabase', '1.9.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdefender', '0.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdhcpserver', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdisk', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdismfeature', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xdnsserver', '1.11.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xexchange', '1.27.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xfailovercluster', '1.12.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'ddsc-xhyper_v', '3.16.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xinternetexplorerhomepage', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xjea', '0.2.16-6-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xmysql', '2.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpendingreboot', '0.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xphp', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpowershellexecutionpolicy', '3.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xpsdesiredstateconfiguration', '8.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xremotedesktopadmin', '1.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xremotedesktopsessionhost', '1.8.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xrobocopy', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscdpm', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscom', '1.3.3-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscsma', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscspf', '1.3.1-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscsr', '1.3.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xscvmm', '1.2.4-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xsmbshare', '2.1.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xsqlps', '1.4.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xtimezone', '1.8.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwebadministration', '2.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwebdeploy', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowseventforwarding', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowsrestore', '1.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwindowsupdate', '2.7.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwineventlog', '1.2.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-xwordpress', '1.1.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>Note that the versions for the &lt;code>dsc-*&lt;/code> modules are all 5-digits long.
+The first four digits are a match for the puppetized PowerShell module&amp;rsquo;s own version - so &lt;code>1.4.0-0-0&lt;/code> represents a PowerShell module at version &lt;code>1.4.0.0&lt;/code> on the PowerShell Gallery.
+The fifth digit is the &lt;em>Puppetized Build Increment&lt;/em> for that version; that goes up whenever we rebuild the module to fix a bug or add a feature to the Puppet interface to the DSC Resource.
+In general, you&amp;rsquo;ll &lt;em>almost always&lt;/em> want the latest build of a module.
+So even though we specify Puppet Build Increments of &lt;code>0&lt;/code> in the list above, make sure to choose the latest build for the PowerShell module version you want to use.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="a-few-caveats">A few caveats&lt;/h2>
+&lt;p>The following modules cannot be automatically puppetized at the same version because they referenced commit SHAs instead of versions discoverable on the &lt;a href="https://www.powershellgallery.com">gallery;&lt;/a>
+instead, we recommend using the next released stable version after those SHA&amp;rsquo;s, as listed below:&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong> These are close but not precise replacements:&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'dsc-fsrmdsc', '2.5.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-iscsidsc', '2.0.0-0-0'&lt;/code>&lt;/li>
+&lt;li>&lt;code>mod 'dsc-wsmandsc', '2.4.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Here are links to the specific commit SHAs that have been referenced:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/FSRMDsc/commit/8945f610fa9a6f7f920260abf4e50d91db25bac0">FSRMDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/iSCSIDsc/commit/2208ad24a0cc0a85ce19fb377e72fbc21d366587">iSCSIDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/dsccommunity/wsmandsc/commit/1aa6400e7ffa1932505bf9904a7ce9e147af9c45">WSManDsc&lt;/a>&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>&lt;em>&lt;strong>Note:&lt;/strong> puppetized as &lt;code>dsc/wminamespacesecurity&lt;/code> due to the name of the module changing when pushed to the &lt;a href="https://www.powershellgallery.com">PowerShell Gallery&lt;/a> vs the old code repository.&lt;/em>&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>&lt;code>mod 'dsc-wminamespacesecuritydsc', '0.3.0-0-0'&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>Again here is a link to the specific commit SHA that has been referenced:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/PowerShell/WmiNamespaceSecurityDsc/commit/d49daa4c18f12aabf32fd60631d927c6d276a453">WmiNamespaceSecurityDsc&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="guidance-on-troubleshooting">Guidance on troubleshooting&lt;/h2>
+&lt;p>Coincidentally, &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a> has just published a blog post on how to troubleshoot for DSC.&lt;/p>
+&lt;p>Check it out on our &lt;a href="https://puppetlabs.github.io/iac/">blog page&lt;/a>!&lt;/p>
+&lt;h2 id="some-things-come-for-free">Some things come for free!&lt;/h2>
+&lt;p>We suggest using the Puppet VSCode extension as it comes built in with an auto-completer. This will help you keep your pins up to date with the puppetfile resolver.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-26-converting-dsc-modules/puppetfile-resolver.gif" alt="Showing validation errors in your Puppetfile">&lt;/p>
+&lt;h2 id="what-else-is-coming">What else is coming&lt;/h2>
+&lt;p>As part of our next phase we plan to flesh out and update our testing infrastructure for this module on our road to the &lt;code>1.0.0&lt;/code> release of &lt;code>Puppet.Dsc&lt;/code>.
+In the pipeline, we still plan on getting nightly builds into place to ensure that there is never more than a 24 hour lag between published Powershell modules with DSC Resources and our Puppetized modules on the Forge.&lt;/p>
+&lt;p>As always if you have any questions don&amp;rsquo;t hesistate to reach out to us via &lt;a href="https://slack.puppet.com/">Slack&lt;/a> or &lt;a href="mailto:dsc@puppet.com">emailing&lt;/a> and we will be as accomodating as we can be!&lt;/p></description></item><item><title>Blog: 14th Feb 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-14-status-update/</link><pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-14-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of interesting things over the past week. Here&amp;rsquo;s a brief overview of what we&amp;rsquo;ve been up to:&lt;/p>
+&lt;h2 id="updates-to-puppet-modules">Updates to Puppet Modules&lt;/h2>
+&lt;p>We&amp;rsquo;ve released an update to two modules since last week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/pwshlib">puppetlabs/pwshlib&lt;/a> (v0.4.1)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/scheduled_task">puppetlabs/scheduled_task&lt;/a> (v2.0.1)&lt;/li>
+&lt;/ul>
+&lt;p>This update to &lt;a href="https://forge.puppet.com/puppetlabs/scheduled_task">puppetlabs/scheduled_task&lt;/a> resolves an issue reported in &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10101">MODULES-10101&lt;/a>.&lt;/p>
+&lt;p>A fix went in to &lt;a href="https://forge.puppet.com/puppetlabs/pwshlib">puppetlabs/pwshlib&lt;/a> to resolve a bug that was causing runtime errors on older versions of Ruby. See &lt;a href="https://github.com/puppetlabs/ruby-pwsh/pull/30">here&lt;/a> for more details.&lt;/p>
+&lt;p>We&amp;rsquo;ll have more module releases next week, but a few interesting updates to come:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://forge.puppet.com/puppetlabs/java">puppetlabs-java&lt;/a>:&lt;/strong> Thanks to &lt;a href="https://github.com/timdeluxe">timdeluxe&lt;/a> for &lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/370">the PR&lt;/a> to add support for &lt;a href="https://adoptopenjdk.net/">AdoptOpen JDK&lt;/a> to the module. &lt;a href="https://github.com/fraenki">fraenki&lt;/a> was also a great help in getting this PR over the line. We&amp;rsquo;ll releasing an update to the module soon!&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://forge.puppet.com/puppetlabs/mysql">puppetlabs-mysql&lt;/a>:&lt;/strong> &lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1192">This is a nice PR&lt;/a> from &lt;a href="https://github.com/mauricemeyer">mauricemeyer&lt;/a> that now allows a user to override the default configuration for mysql, if you wish. Thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a> for the help during the review stages.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://forge.puppet.com/puppetlabs/apt">puppetlabs-apt&lt;/a>:&lt;/strong> &lt;a href="https://github.com/anarcat">anarcat&lt;/a> submitted &lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/904">this fix&lt;/a> which also highlighted an issue with our tests. Two for the price of one! Thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a> and &lt;a href="https://github.com/baldurmen">baldurmen&lt;/a> for the reviews, too.&lt;/li>
+&lt;/ul>
+&lt;h2 id="were-still-buzzing-about-honeycomb">We&amp;rsquo;re still buzzing about Honeycomb&lt;/h2>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/iac/assets/2020-02-14-status-update/honeycomb_rspec_formatter.png" alt="Module RSpec trace">&lt;/p>
+&lt;p>We&amp;rsquo;re continuing to see the benefits of &lt;a href="https://www.honeycomb.io/">Honeycomb&lt;/a>. To make life easier, we now have the &lt;a href="https://github.com/puppetlabs/rspec_honeycomb_formatter">rspec_honeycomb_formatter&lt;/a>.
+When you add this gem to a project&amp;rsquo;s Gemfile, it will create a &lt;a href="https://relishapp.com/rspec/rspec-core/docs/formatters/custom-formatters">Custom formatter in RSpec&lt;/a> that will capture the metrics we&amp;rsquo;re interested in, then send it to the configured Honeycomb endpoint for processing!&lt;/p>
+&lt;h2 id="supported-modules-litmus-conversion">Supported Modules Litmus Conversion&lt;/h2>
+&lt;p>We&amp;rsquo;re starting to get to the bottom of the list of modules still to be converted to &lt;a href="https://github.com/puppetlabs/puppet_litmus">Litmus&lt;/a>. We&amp;rsquo;re wrapping up on &lt;a href="https://github.com/puppetlabs/puppetlabs-powershell/">puppetlabs-powershell&lt;/a>, &lt;a href="https://github.com/puppetlabs/puppetlabs-sqlserver/">puppetlabs-sqlserver&lt;/a> and &lt;a href="https://github.com/puppetlabs/puppetlabs-vsphere/">puppetlabs-vsphere&lt;/a>.
+Converting to Litmus makes testing of the modules for both ourselves at Puppet and contributors from the Community, a much easier experience.
+If you&amp;rsquo;re interested in porting a module to Litmus, feel free to reach out to us during &lt;a href="https://puppet.com/community/office-hours/">Office Hours&lt;/a> - we&amp;rsquo;ll be glad to help!&lt;/p></description></item><item><title>Blog: 7th Feb 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-07-status-update/</link><pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-07-status-update/</guid><description>
+&lt;p>The IAC team have been working on a lot of interesting things these past two weeks. Here&amp;rsquo;s a brief overview of what we&amp;rsquo;ve been up to:&lt;/p>
+&lt;h2 id="team-blog">Team Blog&lt;/h2>
+&lt;p>If you&amp;rsquo;re here, you&amp;rsquo;re already aware of it - the IAC team will now be giving status updates as to what we&amp;rsquo;ve been working on, any insights we&amp;rsquo;ve made and cool new tech we&amp;rsquo;ve been playing with. We&amp;rsquo;re also hoping to share more of the tools that we use internally with the community.&lt;/p>
+&lt;h2 id="updates-to-puppet-modules">Updates to Puppet Modules&lt;/h2>
+&lt;p>We&amp;rsquo;ve released a number of new modules as part of our Content Triage Process.
+Check out the CHANGELOG in each of the modules for more details as to what has been added:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/accounts">puppetlabs/accounts&lt;/a> (v6.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs/apache&lt;/a> (v5.4.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/java">puppetlabs/java&lt;/a> (v6.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">puppetlabs/kubernetes&lt;/a> (v5.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/puppet_agent">puppetlabs/puppet_agent&lt;/a> (v3.0.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/puppet_agent">puppetlabs/puppet_agent&lt;/a> (v3.0.1)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/reboot">puppetlabs/reboot&lt;/a> (v2.4.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/websphere_application_server">puppetlabs/websphere_application_server&lt;/a> (v2.0.1)&lt;/li>
+&lt;/ul>
+&lt;h2 id="kubernetes-v510">Kubernetes v5.1.0&lt;/h2>
+&lt;p>The &lt;a href="https://www.cncf.io/">CNCF&lt;/a> have certified the latest version (v5.1.0) of the &lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">puppetlabs/kubernetes&lt;/a> module with &lt;a href="https://kubernetes.io/">Kubernetes&lt;/a> v1.16.6.
+Check out the &lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">module on The Forge&lt;/a> to see how to bootstrap K8 clusters and save yourself time and effort.
+You may also be interested in Kubetool (bundled with the module and as a &lt;a href="https://hub.docker.com/r/puppet/kubetool">Docker image&lt;/a>) which auto-generates the Hiera security parameters, the discovery token hash, and other configurations for your Kubernetes cluster.&lt;/p>
+&lt;h2 id="theres-a-buzz-about-honeycombio">There&amp;rsquo;s a buzz about Honeycomb.io&lt;/h2>
+&lt;p>We&amp;rsquo;re very excited to be in the POC stage rolling out &lt;a href="https://www.honeycomb.io/">Honeycomb&lt;/a> to collect data from our CI / Test infrastructure.
+This is going to give us much more visibility in to a number of important metrics and allow us to make the test process for modules a lot slicker.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/iac/assets/2020-02-07-status-update/honeycomb_travis_appveyor.png" alt="Execution time of pdksync run on AppVeyor &amp; Travis">
+&lt;strong>Execution Time of PDK Sync run on Travis and AppVeyor CI platforms&lt;/strong>&lt;/p>
+&lt;p>We were very excited to be working with this very cool solution and we&amp;rsquo;re already starting to get some interesting insights.
+A more in depth blog post about this in the near future - don&amp;rsquo;t fly too far away!&lt;/p>
+&lt;h2 id="module-statistics-dashboards">Module Statistics Dashboards&lt;/h2>
+&lt;p>A vital part of the Content Triage Process is visibility in to the status of the modules:&lt;/p>
+&lt;ul>
+&lt;li>How many PRs are open?&lt;/li>
+&lt;li>What is the status of the last &lt;code>N&lt;/code> test results?&lt;/li>
+&lt;li>When was the last comment from a contributor?&lt;/li>
+&lt;/ul>
+&lt;p>There are a lot of modules on &lt;a href="https://forge.puppet.com/supported/">The Forge&lt;/a>, so we need a way to quickly view all this data.
+We have made some great improvements to our &lt;a href="https://puppetlabs.github.io/community_management/">Community Management&lt;/a> dashboards recently:&lt;/p>
+&lt;ul>
+&lt;li>More accurate reporting on module metrics&lt;/li>
+&lt;li>Integration with &lt;a href="https://github.com/features/actions">Github Actions&lt;/a> reports / artifact to provide quicker feedback of the results from our release checks and our future nightly CI runs&lt;/li>
+&lt;/ul></description></item><item><title>Blog: Introduction to the IAC Team</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-01-29-infrastructure-automation-content-team/</link><pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-01-29-infrastructure-automation-content-team/</guid><description>
+&lt;h2 id="workflow-of-the-puppet-iac-team">Workflow of the Puppet IAC Team&lt;/h2>
+&lt;p>During a recent &lt;a href="https://puppet.com/community/office-hours/">Office Hours&lt;/a> event (more about that later!) a question was asked by one of the Puppet Community&amp;rsquo;s many talented and inquisitive folk.
+Usually, in &lt;a href="https://puppet.com/community/office-hours/">Office Hours&lt;/a>, we are used to fielding questions from folks who are trying to enhance functionality in a module, determine the best way to test or maybe they want to know how to get started to write a new module from scratch.
+This one was a little bit different, ragnarkon asked, &amp;ldquo;What is the module development lifecycle like in Puppet?&amp;rdquo;, along with other questions about our tech stack, work priorization processes and my favourite, &amp;ldquo;Who names the conference rooms @ Puppet? ’cause they’re awesome&amp;rdquo;.
+I hope I answered that particular community member&amp;rsquo;s questions, but it prompted a discussion amongst the team about whether the people within the Puppet Community know who we are, what we do, how we can help you, and how to reach us if you need that help.&lt;/p>
+&lt;h2 id="who-are-we">Who are we?&lt;/h2>
+&lt;p>Firstly, an introduction - the Infrastructure Automation Content (IAC) team spans across 3 time zones: from East to West we have three members in Timișoara, Romania, six members in Belfast, Northern Ireland (including our Engineering Manager) and finally, one man and his dog holding the fort in St. Louis, Missouri, USA.
+We also work closely with Product Management teams both in our Portland, Oregon HQ and Belfast.&lt;/p>
+&lt;h2 id="what-do-we-do">What do we do?&lt;/h2>
+&lt;p>The IAC team is responsible for developing and maintaining tooling that contributors to Puppet can use to enhance existing or add new modules to Puppet.
+We are also responsible for reviewing the submissions from the community, assisting in development and testing efforts (if required), and releasing new versions of modules to the Forge.&lt;/p>
+&lt;h2 id="workflow-and-processes">Workflow and Processes&lt;/h2>
+&lt;h3 id="work-prioritization-ticketing-and-development">Work Prioritization, Ticketing and Development&lt;/h3>
+&lt;p>We follow the KanBan model of work prioritization and categorisation.
+We have chosen &lt;a href="https://tickets.puppetlabs.com/projects/IAC/summary">JIRA&lt;/a> as our ticketing system. Within JIRA, the IAC team has a number of epics which we categorise work under.
+A few examples of day-to-day epics we interact with a lot:&lt;/p>
+&lt;ul>
+&lt;li>Customer Escalations&lt;/li>
+&lt;li>&lt;a href="https://tickets.puppetlabs.com/browse/IAC-5">Triage&lt;/a> Tasks (more about Triage later!)&lt;/li>
+&lt;/ul>
+&lt;p>We also have Epics for larger pieces of work, for example:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://tickets.puppetlabs.com/browse/IAC-42">Cloud Platform Provisioning in Litmus&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://tickets.puppetlabs.com/browse/IAC-158">Automated Gem &amp;amp; Testing Release&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>We also follow the AGILE methodology of having a stand-up meeting daily, where all members describe what they have been working on since the last meeting, and what they will work on until the next meeting.
+It&amp;rsquo;s also during this meeting that we can attempt to unblock individuals who are stuck - either during the stand-up or by assigning time at some stage after. We&amp;rsquo;re in constant communication throughout the day, either face-to-face or over Slack.
+We can also jump into meeting rooms / booths and chat to our colleagues in other time zones and screen share.
+So it&amp;rsquo;s never the case that we&amp;rsquo;re stuck for very long - we all like to have each other&amp;rsquo;s backs and help at short notice.&lt;/p>
+&lt;p>As mentioned above, there is constant interaction with our fellow team members throughout the process.
+We&amp;rsquo;re constantly asking for or providing feedback, assisting in testing efforts, or pairing up for more tricky issues.
+We tend to use Confluence as a first port of call for our documentation.
+If the note or document is to become public facing, it will be ported somewhere visible by all.
+Github PRs are where we do most of our code reviews from other team members or Puppet Community contributors.&lt;/p>
+&lt;h3 id="testing-and-ci-process">Testing and CI Process&lt;/h3>
+&lt;p>For testing effort, we like to have as much automated coverage as possible and have mechanisms in place to display the CI test results for each PR.
+Sometimes, as part of the planning documentation we may need to outline a test plan more formally; but this should ultimately be translated in to &lt;a href="https://relishapp.com/rspec">RSpec&lt;/a> unit and acceptance tests.
+This means that on every code change and PR, we are quickly be alerted to breaking changes.&lt;/p>
+&lt;h3 id="prioritization-of-work">Prioritization of Work&lt;/h3>
+&lt;p>Work is prioritised by a number of factors.
+Product Management will have an influence over a lot of the work we undertake and they have many factors to consider.
+One key component that drives work prioritization is feedback from the IAC team itself.
+We like to be very interactive with the Puppet Community contributors and understand what they require.
+We will often bring feedback from the community to our stand-ups and more global meetings with Engineering and Product Management.
+Through this feedback we&amp;rsquo;re trying to ensure that the user experience is as close to the requirements of the people using and contributing to the product.&lt;/p>
+&lt;p>One valuable feedback vector is through the weekly &lt;a href="https://puppet.com/community/office-hours/">Office Hours&lt;/a> sessions.
+Once a week, members from the IAC team will down tools and be available to any queries coming in via Slack or the video conferencing session from Puppet Community contributors.
+If you need help with module development or testing, or you want to determine the best way to do something with a module on the Forge, then this is the place to get that help and send that feedback.
+Quite often, if a limitation or issue in a module has been highlighted here, we will bring this up in our next stand-up meeting, raise a JIRA ticket and ensure that it gets prioritization for resources.
+There&amp;rsquo;s no better feedback than the people using actively participating in the module ecosystem and we like to make the most of this valuable resource.&lt;/p>
+&lt;h3 id="types-of-work">Types of Work&lt;/h3>
+&lt;p>Our number one remit and focus is to ensure that those who want to contribute to the Forge have as frictionless an experience as possible.
+That spans everything from a module&amp;rsquo;s lifespan, through initial design / prototyping, to version 1.0.0, right up to the point where it&amp;rsquo;s a veteran module with 100,000s of downloads and a wide and active contributor base.
+Our goal is to develop the tools and processes to ensure that is possible.&lt;/p>
+&lt;p>One very important aspect of our job is the Content Triage rotation.
+Two members of the IAC team will take it in turns to review community contributors to Puppet Forge modules.
+We&amp;rsquo;re there to ensure that the change meets the quality standard required but more important, we&amp;rsquo;re there to help contributors understand how to do that.
+We&amp;rsquo;re very fortunate to receive lots of high quality contributions or those willing to act upon feedback.
+The goal is to ensure that the quality of the Puppet modules remains high, whilst constantly being enhanced and reactive to the needs of the community.&lt;/p>
+&lt;h3 id="tech-stack">Tech Stack&lt;/h3>
+&lt;p>Some folks may be curious as to what we use day-to-day to get the job done.
+There is quite a large amount of software, platforms and tools we use, some you&amp;rsquo;ll likely have heard of and some internal proprietary tools.
+For internal tooling, we&amp;rsquo;re in a constant effort to evolve them and make them available for use by the Puppet Community.
+We have started a collection on the &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/tools/index.html">tools&lt;/a> page.&lt;/p>
+&lt;h4 id="development-and-debugging">Development and Debugging&lt;/h4>
+&lt;h5 id="ides">IDEs&lt;/h5>
+&lt;p>For the most part, the IDE of choice for us is VSCode.
+It has support for Puppet manifests and more via &lt;a href="https://marketplace.visualstudio.com/items?itemName=puppet.puppet-vscode">the Puppet Extension&lt;/a>.
+Some of the team also use RubyMine and Sublime Text can also be found on a lot of laptops.
+The &lt;a href="https://rubygems.org/gems/pry/">Ruby gem pry&lt;/a> is a heavily utilised one.
+This has proven an invaluable tool for debugging during development or investigation when reproducing issues reported to us.&lt;/p>
+&lt;h5 id="pdk">PDK&lt;/h5>
+&lt;p>Some of you in the Puppet Community will be aware of the Puppet Development Kit (PDK) already.
+From the IAC team&amp;rsquo;s use cases it is a very useful tool that allows us to keep modules on the Forge up-to-date with the necessary configuration / metadata changes.
+It also allows us to rapidly prototype or develop new modules should someone from the Puppet Community require help.&lt;/p>
+&lt;h5 id="pdksync">PDKSync&lt;/h5>
+&lt;p>PDKSync is an excellent tool we use to perform and test bulk changes to many modules.
+It also allows us to push PRs to Github so we can quickly deploy these changes.&lt;/p>
+&lt;h4 id="testing-and-ci-tools">Testing and CI Tools&lt;/h4>
+&lt;h5 id="litmus">Litmus&lt;/h5>
+&lt;p>Litmus! Litmus is a fantastic resource and probably the most valuable productivity tools that we use day-to-day.
+I encourage you to check out the &lt;a href="https://puppetlabs.github.io/litmus/">Docs for Litmus&lt;/a> if you&amp;rsquo;re thinking of becoming a module contributor.
+Litmus is a tool that allows us to quickly set up, execute and tear down a test environment for our modules.
+You can provision your test environment using Docker or Vagrant.
+For the IAC team, we have access to vmpooler, a proprietary tool/API that spins up and tears down virtual machines in our vSphere infrastructure.
+In as little as a few seconds, I can have an environment ready to run acceptance tests on all compatible OSs for a given module, or I can have an environment to replicate a specific customer environment (e.g. on Windows Server 2012 R2, with the Scheduled Task module, I was seeing an issue with&amp;hellip;).&lt;/p>
+&lt;h5 id="rspec-and-puppet-rspec">RSpec and Puppet RSpec&lt;/h5>
+&lt;p>&lt;a href="https://relishapp.com/rspec">RSpec&lt;/a> is the test framework we use to write and execute our unit and acceptance tests.
+However, we also have the &lt;a href="https://rspec-puppet.com/">RSpec-Puppet gem&lt;/a> which provides a lot of helper methods to make life easier when testing modules.&lt;/p>
+&lt;h5 id="ci-tools">CI Tools&lt;/h5>
+&lt;p>We use a number of CI automation servers: Jenkins, Travis, AppVeyor, and most recently Github Actions.
+There are different requirements for the variety of modules we have either authored, support, or both, and we are constantly evaluating the best tools / platform for our use cases and those of the Puppet Community.
+CI executed test runs from PRs are available from the PR itself - this allows us to quickly determine if there is an issue and drill down in to more specific test log output if we need to, regardless of the platform.&lt;/p></description></item></channel></rss>

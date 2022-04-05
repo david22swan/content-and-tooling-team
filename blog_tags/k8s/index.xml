@@ -1,0 +1,53 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – k8s</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/k8s/</link><description>Recent content in k8s on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 02 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/k8s/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-07-02: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-07-02-status-update/</link><pubDate>Fri, 02 Jul 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-07-02-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/740">&lt;code>puppetlabs-docker#740&lt;/code>&lt;/a>: &amp;ldquo;Allow management of the docker-ce-cli package&amp;rdquo;, thanks to &lt;a href="https://github.com/kenyon">kenyon&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-iis/pull/325">&lt;code>puppetlabs-iis#325&lt;/code>&lt;/a>: &amp;ldquo;Correct error handling in require ruby-pwsh&amp;rdquo;, thanks to &lt;a href="https://github.com/benningm">benningm&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-inifile/pull/454">&lt;code>puppetlabs-inifile#454&lt;/code>&lt;/a>: &amp;ldquo;Accept Datatype Sensitive&amp;rdquo;, thanks to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks/pull/373">&lt;code>puppetlabs-java_ks#373&lt;/code>&lt;/a>: &amp;ldquo;Accept Datatype Sensitive for Secrets&amp;rdquo;, thanks to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks/pull/372">&lt;code>puppetlabs-java_ks#372&lt;/code>&lt;/a>: &amp;ldquo;Fix fingerprint comparison&amp;rdquo;, thanks to &lt;a href="https://github.com/kdehairy">kdehairy&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/creativefre">creativefre&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker">&lt;code>puppetlabs-docker&lt;/code>&lt;/a> (&lt;code>4.1.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-inifile">&lt;code>puppetlabs-inifile&lt;/code>&lt;/a> (&lt;code>5.1.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks">&lt;code>puppetlabs-java_ks&lt;/code>&lt;/a> (&lt;code>4.1.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-iis">&lt;code>puppetlabs-iis&lt;/code>&lt;/a> (&lt;code>8.0.3&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-helm">&lt;code>puppetlabs-helm&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/ruby-pwsh">&lt;code>ruby-pwsh&lt;/code>&lt;/a> (&lt;code>0.9.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/Puppet.Dsc">&lt;code>Puppet.Dsc&lt;/code>&lt;/a> (&lt;code>0.6.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-day">Community Day&lt;/h2>
+&lt;p>We had a great community day this week and processed 28 issues and PRs across our supported modules and tooling.
+And a shout out again to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a> for their continued engagement in adding &lt;code>Sensitive&lt;/code> Datatype support to more modules.&lt;/p>
+&lt;h2 id="kubernetes-conformance">Kubernetes Conformance&lt;/h2>
+&lt;p>We&amp;rsquo;re very happy to announce that we finished running the conformance tests for v1.20 on our kubernetes module. Its official, our supported Kubernetes Puppet module is a certified installer for Kubernetes v1.20.
+It was a long journey with a lot of lessons, first about k8s components and workflow, but also about how to approach each situation and invest the time.
+If you&amp;rsquo;re curious about the process, you can find &lt;a href="https://github.com/cncf/k8s-conformance/pull/1514">our PR on the &lt;code>cncf&lt;/code> repository&lt;/a>.&lt;/p>
+&lt;h2 id="devx-team">DevX Team&lt;/h2>
+&lt;p>&lt;a href="https://github.com/jpogran">James&lt;/a> is currently working on a much requested feature for &lt;code>pdk validate&lt;/code> that will allow exclusions to be specified for files / file paths.
+If this is something you&amp;rsquo;ve been interested in, jump over to &lt;a href="https://github.com/puppetlabs/pdk/pull/1114">pdk#1114&lt;/a> and share your thoughts / suggestions.&lt;/p>
+&lt;h2 id="porting-modules-to-cloud-ci">Porting modules to Cloud CI&lt;/h2>
+&lt;p>Puppet&amp;rsquo;s Partner Integrations (PIE) Team have successfully &lt;a href="https://github.com/puppetlabs/puppetlabs-splunk_hec/pull/124">ported&lt;/a> the tests to run on Cloud CI and configured the repository to use our Automated Release Workflow.
+Thanks to &lt;a href="https://github.com/RandomNoun7">Bill Hurt&lt;/a> and &lt;a href="https://github.com/nam054">Sharon Nam&lt;/a> for the collaboration opportunity.&lt;/p>
+&lt;h2 id="dsc-builder">DSC Builder&lt;/h2>
+&lt;p>The new DSC module builder is inching ever closer to the finish line and the 1.0 release with an automated publishing pipeline is in sight.
+This required coordinated efforts all across our teams, involving everything from &lt;a href="https://github.com/michaeltlombardi">Michael&amp;rsquo;s&lt;/a> relentless persistence to &lt;a href="https://github.com/joshcooper">Josh&amp;rsquo;s&lt;/a> assistance with some core Puppet updates to support imprecise DSC Resources, all the way to &lt;a href="https://github.com/GabrielNagy">Gabi&amp;rsquo;s&lt;/a> journey to &lt;a href="https://dev.to/puppet/windows-ruby-and-long-paths-3jag">add Windows long path support to upstream Ruby&lt;/a> itself.
+This has been a marathon, with all sorts of new challenges discovered along the way, but thanks to everyone&amp;rsquo;s hard work we&amp;rsquo;re nearly there.&lt;/p></description></item></channel></rss>

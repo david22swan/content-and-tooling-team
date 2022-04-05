@@ -1,0 +1,79 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – puppet5-support-drop</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/puppet5-support-drop/</link><description>Recent content in puppet5-support-drop on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/puppet5-support-drop/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-03-05: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-03-05-status-update/</link><pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-03-05-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-acl/pull/231">&lt;code>puppetlabs-acl#231&lt;/code>&lt;/a>: &amp;ldquo;(maint) Update limitations in README.md&amp;rdquo;, thanks to &lt;a href="https://github.com/luchihoratiu">luchihoratiu&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/725">&lt;code>puppetlabs-docker#725&lt;/code>&lt;/a>: &amp;ldquo;Make it possible to use pod&amp;rsquo;s network&amp;rdquo;, thanks to &lt;a href="https://github.com/seriv">seriv&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/494">&lt;code>puppetlabs-kubernetes#494&lt;/code>&lt;/a>: &amp;ldquo;Added information about Hiera YAML Lookup; installing a updated version.&amp;rdquo;, thanks to &lt;a href="https://github.com/bitvijays">bitvijays&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/488">&lt;code>puppetlabs-kubernetes#488&lt;/code>&lt;/a>: &amp;ldquo;Add note about the kubernetes version format&amp;rdquo;, thanks to &lt;a href="https://github.com/danifr">danifr&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1239">&lt;code>puppetlabs-postgresql#1239&lt;/code>&lt;/a>: &amp;ldquo;Add DNF module management&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-reboot/pull/280">&lt;code>puppetlabs-reboot#280&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-10955) More robust handling of reboot-task output&amp;rdquo;, thanks to &lt;a href="https://github.com/fetzerms">fetzerms&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/954">&lt;code>pdk#954&lt;/code>&lt;/a>: &amp;ldquo;Docs: Install on macOS with brew&amp;rdquo;, thanks to &lt;a href="https://github.com/rwaffen">rwaffen&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/27">&lt;code>pdk-docker#27&lt;/code>&lt;/a>: &amp;ldquo;(PF-2333) Remove Anubis content from pdk-docker repo&amp;rdquo;, thanks to &lt;a href="https://github.com/nkanderson">nkanderson&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/26">&lt;code>pdk-docker#26&lt;/code>&lt;/a>: &amp;ldquo;(PF-2333) Remove Anubis image from workflow&amp;rdquo;, thanks to &lt;a href="https://github.com/nkanderson">nkanderson&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/411">&lt;code>pdk-templates#411&lt;/code>&lt;/a>: &amp;ldquo;Add Puppet 7 tests to .gitlab-ci.yml&amp;rdquo;, thanks to &lt;a href="https://github.com/silug">silug&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-vanagon/pull/277">&lt;code>pdk-vanagon#277&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Bump &lt;code>packaging&lt;/code> dep to at least 0.99.76 to fix MSI signing&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-vanagon/pull/276">&lt;code>pdk-vanagon#276&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Refactor &lt;code>puppet-forge-api&lt;/code> component into &lt;code>puppet-versions&lt;/code>&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="supported-module-major-releases">Supported Module Major Releases&lt;/h2>
+&lt;p>The whole team has been super busy this week working on prepping our modules for major releases.
+We have done &lt;strong>34+&lt;/strong> major releases on our supported modules with only a few outstanding.
+The release includes the removal of Puppet 5, RHEL 5 family and SLES 11 support.
+If you are running Puppet 5 please note it is no longer supported and we advise you to upgrade to Puppet 7 as soon as you can.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib">&lt;code>puppetlabs-stdlib&lt;/code>&lt;/a> (&lt;code>7.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-concat">&lt;code>puppetlabs-concat&lt;/code>&lt;/a> (&lt;code>7.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-ntp">&lt;code>puppetlabs-ntp&lt;/code>&lt;/a> (&lt;code>9.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt">&lt;code>puppetlabs-apt&lt;/code>&lt;/a> (&lt;code>8.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-vcsrepo">&lt;code>puppetlabs-vcsrepo&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker">&lt;code>puppetlabs-docker&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java">&lt;code>puppetlabs-java&lt;/code>&lt;/a> (&lt;code>7.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-powershell">&lt;code>puppetlabs-powershell&lt;/code>&lt;/a> (&lt;code>5.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-inifile">&lt;code>puppetlabs-inifile&lt;/code>&lt;/a> (&lt;code>5.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">&lt;code>puppetlabs-apache&lt;/code>&lt;/a> (&lt;code>6.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="http://github.com/puppetlabs/puppetlabs-firewall">&lt;code>puppetlabs-firewall&lt;/code>&lt;/a> (&lt;code>3.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">&lt;code>puppetlabs-postgresql&lt;/code>&lt;/a> (&lt;code>7.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy">&lt;code>puppetlabs-haproxy&lt;/code>&lt;/a> (&lt;code>5.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="http://github.com/puppetlabs/puppetlabs-mysql">&lt;code>puppetlabs-mysql&lt;/code>&lt;/a> (&lt;code>11.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks">&lt;code>puppetlabs-java_ks&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd">&lt;code>puppetlabs-motd&lt;/code>&lt;/a> (&lt;code>5.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat">&lt;code>puppetlabs-tomcat&lt;/code>&lt;/a> (&lt;code>5.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-reboot">&lt;code>puppetlabs-reboot&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-registry">&lt;code>puppetlabs-registry&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-chocolatey">&lt;code>puppetlabs-chocolatey&lt;/code>&lt;/a> (&lt;code>6.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-acl">&lt;code>puppetlabs-acl&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">&lt;code>puppetlabs-accounts&lt;/code>&lt;/a> (&lt;code>7.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-wsus_client">&lt;code>puppetlabs-wsus_client&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">&lt;code>puppetlabs-kubernetes&lt;/code>&lt;/a> (&lt;code>6.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-scheduled_task">&lt;code>puppetlabs-scheduled_task&lt;/code>&lt;/a> (&lt;code>3.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-iis">&lt;code>puppetlabs-iis&lt;/code>&lt;/a> (&lt;code>8.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-sqlserver">&lt;code>puppetlabs-sqlserver&lt;/code>&lt;/a> (&lt;code>3.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-service">&lt;code>puppetlabs-service&lt;/code>&lt;/a> (&lt;code>2.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tagmail/">&lt;code>puppetlabs-tagmail&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-puppet_conf">&lt;code>puppetlabs-puppet_conf&lt;/code>&lt;/a> (&lt;code>1.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-package">&lt;code>puppetlabs-package&lt;/code>&lt;/a> (&lt;code>2.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-ibm_installation_manager">&lt;code>puppetlabs-ibm_installation_manager&lt;/code>&lt;/a> (&lt;code>3.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-exec">&lt;code>puppetlabs-exec&lt;/code>&lt;/a> (&lt;code>1.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-satellite_pe_tools">&lt;code>puppetlabs-satellite_pe_tools&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-facter_task">&lt;code>puppetlabs-facter_task &lt;/code>&lt;/a> (&lt;code>1.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-rook">&lt;code>puppetlabs-rook&lt;/code>&lt;/a> (&lt;code>1.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/ruby-pwsh/">&lt;code>pwshlib&lt;/code>&lt;/a> (&lt;code>0.8.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="docker-bug-fix">Docker bug fix&lt;/h2>
+&lt;p>We did a minor release (&lt;code>3.14.0&lt;/code>) with a specific bug fix for RedHat 7 and the default docker package (version 1.13.1) that fixes an issue in &lt;a href="https://github.com/puppetlabs/puppetlabs-docker">puppetlabs-docker&lt;/a> module with a force rewrite of the /etc/sysconfig/docker-storage file.
+The fix disables management of this file and uses the default /etc/sysconfig/docker-storage-setup preventing the conflict described in the &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/issues/518">issue&lt;/a>.
+More details available here &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10898">MODULES-10898&lt;/a>.&lt;/p>
+&lt;h2 id="cloud-ci">Cloud CI&lt;/h2>
+&lt;p>This week we had the first test use of the automated release workflow and we found a couple of issues that we are currently working on (the pdk nightly image).
+We are also preparing a workflow to do the tag and push to forge. Link to the &lt;a href="https://github.com/puppetlabs/pdk-templates/pull/408">PR&lt;/a>.
+K8s module &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/481">PR&lt;/a> is now merged which ports the module to cloud ci.&lt;/p>
+&lt;h2 id="update-from-our-intern">Update from our intern&lt;/h2>
+&lt;p>&lt;a href="https://github.com/Disha-maker">Disha&lt;/a> completed her first community reporting PR which excludes the draft PR from modules report generated for the community day.
+Link to the &lt;a href="https://github.com/puppetlabs/community_management/pull/54">PR&lt;/a>.
+Disha also completed the ticket &lt;a href="https://tickets.puppetlabs.com/browse/IAC-1197">IAC-1197&lt;/a> after finishing &lt;a href="https://tickets.puppetlabs.com/browse/IAC-1196">IAC-1196&lt;/a>, this second ticket was looking into the same principles as the first one, except the drafts were to be excluded from the tools report on the community management tool.
+Link to the &lt;a href="https://github.com/puppetlabs/community_management/pull/62">PR&lt;/a>.&lt;/p>
+&lt;h2 id="see-you-next-week">See you next week!&lt;/h2>
+&lt;p>This is all for this week, have a great weekend and be ready for the next week updates!&lt;/p></description></item></channel></rss>

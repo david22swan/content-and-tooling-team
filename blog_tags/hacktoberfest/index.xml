@@ -1,0 +1,39 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – Hacktoberfest</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/hacktoberfest/</link><description>Recent content in Hacktoberfest on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 23 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/hacktoberfest/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2020-10-23: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-10-23-status-update/</link><pubDate>Fri, 23 Oct 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-10-23-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/671">&lt;code>puppetlabs-docker#671&lt;/code>&lt;/a>: &amp;ldquo;Fix array of additional flags&amp;rdquo;, thanks to &lt;a href="https://github.com/CAPSLOCK2000">CAPSLOCK2000&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/669">&lt;code>puppetlabs-docker#669&lt;/code>&lt;/a>: &amp;ldquo;Support multiple mirrors #659&amp;rdquo;, thanks to &lt;a href="https://github.com/TheLocehiliosan">TheLocehiliosan&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/667">&lt;code>puppetlabs-docker#667&lt;/code>&lt;/a>: &amp;ldquo;Test against OS family rather than name&amp;rdquo;, thanks to &lt;a href="https://github.com/bodgit">bodgit&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks/pull/333">&lt;code>puppetlabs-java_ks#333&lt;/code>&lt;/a>: &amp;ldquo;add storetype parameter comparison to &amp;lsquo;destroy&amp;rsquo; method&amp;rdquo;, thanks to &lt;a href="https://github.com/mwpower">mwpower&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks/pull/332">&lt;code>puppetlabs-java_ks#332&lt;/code>&lt;/a>: &amp;ldquo;Correct jceks symbol comparison&amp;rdquo;, thanks to &lt;a href="https://github.com/mwpower">mwpower&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1132">&lt;code>puppetlabs-stdlib#1132&lt;/code>&lt;/a>: &amp;ldquo;Stdlib::HttpStatus: add type for HTTP status codes as per rfc2616&amp;rdquo;, thanks to &lt;a href="https://github.com/b4ldr">b4ldr&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/355">&lt;code>pdk-templates#355&lt;/code>&lt;/a>: &amp;ldquo;(#352) Add .puppet-lint.rc and .sync.yml to .pdkignore&amp;rdquo;, thanks to &lt;a href="https://github.com/silug">silug&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-module-gems/pull/143">&lt;code>puppet-module-gems#143&lt;/code>&lt;/a>: &amp;ldquo;Add initial setup of gitpod config files&amp;rdquo;, thanks to &lt;a href="https://github.com/logicminds">logicminds&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-resource_api/pull/279">&lt;code>puppet-resource_api#279&lt;/code>&lt;/a>: &amp;ldquo;Improve type validation error messages to show expected types&amp;rdquo;, thanks to &lt;a href="https://github.com/timidri">timidri&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-resource_api/pull/278">&lt;code>puppet-resource_api#278&lt;/code>&lt;/a>: &amp;ldquo;Support &lt;code>puppet device --resource ... --to_yaml&lt;/code> invocation; drop puppet4 and jruby 1.7 testing&amp;rdquo;, thanks to &lt;a href="https://github.com/timidri">timidri&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-strings/pull/255">&lt;code>puppet-strings#255&lt;/code>&lt;/a>: &amp;ldquo;Fix ERB failure - parameters without descriptions&amp;rdquo;, thanks to &lt;a href="https://github.com/trevor-vaughan">trevor-vaughan&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/rodjek/puppet-lint/pull/931">&lt;code>puppet-lint#931&lt;/code>&lt;/a>: &amp;ldquo;Disallow empty lines between docs and class/define&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ehelms">ehelms&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="customer-issues">Customer Issues&lt;/h2>
+&lt;p>Team is actively working on resolving following new issues on &lt;a href="https://github.com/puppetlabs/puppetlabs-package">puppetlabs-package&lt;/a> module.&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10842">MODULES-10842&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10844">MODULES-10844&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Fix for &lt;a href="https://github.com/puppetlabs/puppetlabs-package">puppetlabs-tagmail&lt;/a> module for the following issue &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10814">MODULES-10814&lt;/a> is in review stage.&lt;/p>
+&lt;h2 id="life-of-an-intern-at-puppet">Life of an intern at Puppet&lt;/h2>
+&lt;p>&lt;a href="https://github.com/disha-maker">Disha&lt;/a> continues her journey at Puppet and &lt;a href="https://puppetlabs.github.io/iac/docs/life_of_intern">here&lt;/a> you can find the last updates of ** Life of an intern at Puppet ** .&lt;/p>
+&lt;h2 id="puppet-7-nightly-testing">Puppet 7 Nightly Testing&lt;/h2>
+&lt;p>A big thank you to the Nights Watch team, specifically, &lt;a href="https://github.com/florin">Florin&lt;/a> and &lt;a href="https://github.com/IrimieBogdan">Bogdan&lt;/a> for the help to test and fix &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10833">MODULES-10833&lt;/a> in &lt;a href="https://github.com/puppetlabs/puppetlabs-facter_task/pull/134">puppetlabs-facter_task&lt;/a> module.&lt;/p>
+&lt;h2 id="ci-improvements">CI Improvements&lt;/h2>
+&lt;p>Hacktoberfest is an annual event hosted by DigitalOcean and DEV.to in order to promote Open Source collaboration. More details can be found &lt;a href="https://puppet.com/blog/hacktoberfest-2020/">here&lt;/a>.
+It was held on 20-Oct-2020 and we did a demo on Trusted Contributor CI project where public (test-)pull request run unit and acceptance tests on entirely public infrastructure and report the &lt;a href="https://github.com/puppetlabs/puppetlabs-testing/pull/306/checks">results in public&lt;/a>.
+Thanks to &lt;a href="https://github.com/DavidS">David&lt;/a>, &lt;a href="https://github.com/carabasdaniel/">Dany&lt;/a> and &lt;a href="https://github.com/michaeltlombardi">Michael&lt;/a> for the demo.&lt;/p>
+&lt;p>As part of that work, we submitted some work and bug report to upstream repos:&lt;/p>
+&lt;ul>
+&lt;li>Fix fallback filename when using a subdirectory: &lt;a href="https://github.com/GoogleCloudPlatform/cloud-builders-community/pull/456">GoogleCloudPlatform/cloud-builders-community#456&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Expect more detailed blog posts and announcements as we continue to progress towards a production-ready stable service.&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That&amp;rsquo;s it for this weeks update, have a great weekend everyone!&lt;/p></description></item></channel></rss>

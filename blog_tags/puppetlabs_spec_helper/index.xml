@@ -1,0 +1,30 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – puppetlabs_spec_helper</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/puppetlabs_spec_helper/</link><description>Recent content in puppetlabs_spec_helper on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 19 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/puppetlabs_spec_helper/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 19th June 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-06-19-status-update/</link><pubDate>Fri, 19 Jun 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-06-19-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of things over the past week.
+We want to share with our community some of the most interesting things.
+Here’s a brief overview of what we’ve been up to:&lt;/p>
+&lt;h2 id="the-return-of-michael">The Return of Michael&lt;/h2>
+&lt;p>To start things off on a high note I&amp;rsquo;d like to announce the return of &lt;a href="https://github.com/michaeltlombardi">Michael T Lombardi&lt;/a> to the modules team.&lt;/p>
+&lt;p>Michael had spent the last couple of months on paternity leave but has returned to the team, he could not stay away and is now once again ready to take part in the vital work that we accomplish throughout the year.&lt;/p>
+&lt;p>But enough from me, time to hear from himself:&lt;/p>
+&lt;blockquote>
+&lt;p>It felt incredibly good to write and commit code again for the first time in weeks, to grab a problem and resolve it.
+A lot of early parenting so far has been the equivalent of firefighting (babies, it seems, don&amp;rsquo;t care about schedules, plans, or intentions; they need what they need when they need it!) so having a discrete concrete problem to work on was refreshing.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>The release process for the following modules has been started and these will be finished as soon as we manage to resolve our testing infrastructure issues:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">puppetlabs/postgresql&lt;/a> (6.6.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-ibm_installation_manager">puppetlabs/ibm_installation_manager&lt;/a> (2.2.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-shout-outs-for-iac">Community Shout outs for IAC&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/danmanners">Dan Manners&lt;/a> shared a nice write up of his &lt;a href="https://github.com/danmanners/homelab-deployment">homelab deployment&lt;/a> over on github.&lt;/li>
+&lt;li>&lt;a href="https://github.com/chadh">Chad Huneycutt&lt;/a> ported the &lt;a href="https://github.com/chadh/puppetlabs-git/pull/2">git_config type&amp;amp;provider&lt;/a> over to the &lt;a href="https://puppet.com/docs/puppet/latest/custom_resources.html">Resource API&lt;/a>, making it a nice example of multiple namevars and a local command-based provider.&lt;/li>
+&lt;li>One of our customer is very happy about &lt;a href="https://github.com/puppetlabs/puppet_litmus">litmus&lt;/a> as they were able to ramp up with litmus in a couple of days, compared to beaker which took weeks.&lt;/li>
+&lt;/ul>
+&lt;h2 id="ubuntu-2004-certification">Ubuntu 20.04 Certification&lt;/h2>
+&lt;p>We have added Ubuntu 20.04 support to all of our supported modules. Thanks &lt;a href="https://github.com/david22swan">David Swan&lt;/a> for all the great work.&lt;/p>
+&lt;h2 id="puppetlabs_spec_helper-gem-2150-release">puppetlabs_spec_helper Gem 2.15.0 Release&lt;/h2>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs_spec_helper">puppetlabs_spec_helper&lt;/a> gem, which has now &lt;a href="https://rubygems.org/gems/puppetlabs_spec_helper/versions/2.15.0">been released&lt;/a> with a couple of fixes and enhancements (&lt;a href="https://github.com/puppetlabs/puppetlabs_spec_helper/blob/v2.15.0/CHANGELOG.md#v2150-2020-06-11">CHANGELOG&lt;/a>).&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That’s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item></channel></rss>

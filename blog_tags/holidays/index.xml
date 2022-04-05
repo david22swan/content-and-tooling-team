@@ -1,0 +1,63 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – holidays</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/holidays/</link><description>Recent content in holidays on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 19 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/holidays/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-03-19: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-03-19-status-update/</link><pubDate>Fri, 19 Mar 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-03-19-status-update/</guid><description>
+&lt;h2 id="happy-st-patricks-day">Happy St Patricks Day&lt;/h2>
+&lt;p>All of the team located in Belfast were off on Wednesday this week for St Patricks day. For everyone it was pretty quiet due to local restrictions in place but nice to get a break in the middle of the week! :-)&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-03-19-status-update/stp_day.png" alt="st_patricks_day">{:align=&amp;ldquo;center&amp;rdquo;}&lt;/p>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/369">&lt;code>puppetlabs-accounts#369&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-10960) Selector needs multiple checks in brackets.&amp;rdquo;, thanks to &lt;a href="https://github.com/tuxmea">tuxmea&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/353">&lt;code>puppetlabs-accounts#353&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-10892) Update name.pp&amp;rdquo;, thanks to &lt;a href="https://github.com/LooOOooM">LooOOooM&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2135">&lt;code>puppetlabs-apache#2135&lt;/code>&lt;/a>: &amp;ldquo;Fix dav_svn for Debian 10&amp;rdquo;, thanks to &lt;a href="https://github.com/martijndegouw">martijndegouw&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2129">&lt;code>puppetlabs-apache#2129&lt;/code>&lt;/a>: &amp;ldquo;Drop Ubuntu 10.04 compatibility code&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2110">&lt;code>puppetlabs-apache#2110&lt;/code>&lt;/a>: &amp;ldquo;Compare with major release version&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/973">&lt;code>puppetlabs-apt#973&lt;/code>&lt;/a>: &amp;ldquo;MODULES-10956 remove redundant code in provider apt_key&amp;rdquo;, thanks to &lt;a href="https://github.com/moritz-makandra">moritz-makandra&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/494">&lt;code>puppetlabs-kubernetes#494&lt;/code>&lt;/a>: &amp;ldquo;Added information about Hiera YAML Lookup; installing a updated version.&amp;rdquo;, thanks to &lt;a href="https://github.com/bitvijays">bitvijays&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1373">&lt;code>puppetlabs-mysql#1373&lt;/code>&lt;/a>: &amp;ldquo;Fix Java binding package for Ubuntu 20.04&amp;rdquo;, thanks to &lt;a href="https://github.com/treydock">treydock&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1253">&lt;code>puppetlabs-postgresql#1253&lt;/code>&lt;/a>: &amp;ldquo;Ensure port is a string in psql command&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-puppet_conf/pull/140">&lt;code>puppetlabs-puppet_conf#140&lt;/code>&lt;/a>: &amp;ldquo;Add delete action&amp;rdquo;, thanks to &lt;a href="https://github.com/fetzerms">fetzerms&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-reboot/pull/284">&lt;code>puppetlabs-reboot#284&lt;/code>&lt;/a>: &amp;ldquo;Cleanup: Changed to ctrl::sleep() and removed redundant reboot::sleep() function&amp;rdquo;, thanks to &lt;a href="https://github.com/fetzerms">fetzerms&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/961">&lt;code>pdk#961&lt;/code>&lt;/a>: &amp;ldquo;(Docs)Updating docs metadata&amp;rdquo;, thanks to &lt;a href="https://github.com/hestonhoffman">hestonhoffman&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/957">&lt;code>pdk#957&lt;/code>&lt;/a>: &amp;ldquo;(PF-2332) Add &lt;code>pdk env&lt;/code> subcommand&amp;rdquo;, thanks to &lt;a href="https://github.com/nkanderson">nkanderson&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/scotje">scotje&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/29">&lt;code>pdk-docker#29&lt;/code>&lt;/a>: &amp;ldquo;(FIXUP) Clean up image push workflow output&amp;rdquo;, thanks to &lt;a href="https://github.com/nkanderson">nkanderson&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/28">&lt;code>pdk-docker#28&lt;/code>&lt;/a>: &amp;ldquo;(maint) Add usage instructions to Readme&amp;rdquo;, thanks to &lt;a href="https://github.com/da-ar">da-ar&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/23">&lt;code>pdk-docker#23&lt;/code>&lt;/a>: &amp;ldquo;Fix onceover install issue&amp;rdquo;, thanks to &lt;a href="https://github.com/cdenneen">cdenneen&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/413">&lt;code>pdk-templates#413&lt;/code>&lt;/a>: &amp;ldquo;(#412) Add .devcontainer to .pdkignore&amp;rdquo;, thanks to &lt;a href="https://github.com/silug">silug&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-vanagon/pull/280">&lt;code>pdk-vanagon#280&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Update RHEL platform configs to use RedHat pooler images&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-vanagon/pull/278">&lt;code>pdk-vanagon#278&lt;/code>&lt;/a>: &amp;ldquo;(maint) Disable ansicon in VS Code&amp;rdquo;, thanks to &lt;a href="https://github.com/jpogran">jpogran&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/scotje">scotje&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt">&lt;code>puppetlabs-apt&lt;/code>&lt;/a> (&lt;code>8.0.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-vcsrepo">&lt;code>puppetlabs-vcsrepo&lt;/code>&lt;/a> (&lt;code>4.0.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">&lt;code>puppetlabs-postgresql&lt;/code>&lt;/a> (&lt;code>7.0.2&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-reboot">&lt;code>puppetlabs-reboot&lt;/code>&lt;/a> (&lt;code>4.0.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">&lt;code>puppetlabs-accounts&lt;/code>&lt;/a> (&lt;code>7.0.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-puppet_conf">&lt;code>puppetlabs-puppet_conf&lt;/code>&lt;/a> (&lt;code>1.1.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="monday-22nd-march">Monday 22nd March&lt;/h2>
+&lt;p>There has been a &amp;lsquo;one off&amp;rsquo; whole company holiday granted for Monday therefore our Community Day will be pretty quiet. If there is anything specific you need, don&amp;rsquo;t hesitate to reach out to us via one of our &lt;a href="https://puppetlabs.github.io/iac/team/2021/01/20/reaching-out.html">channels&lt;/a>. We are all looking forward to the long weekend and spending some extra time recharging our batteries.&lt;/p>
+&lt;h2 id="team-holidays">Team Holidays&lt;/h2>
+&lt;p>With St Patricks Day, a company holiday and Easter approaching, some of the team are making use of holidays to extend their breaks.
+The team will be working hard in the background as always however some things may slow down, this is expected with less headcount.&lt;/p>
+&lt;h2 id="cloud-ci-update">Cloud CI Update&lt;/h2>
+&lt;p>This week we rolled out the pdk update that moves spec testing to Github Actions and removes Travis and Appveyor configurations. With this update we&amp;rsquo;ll also add in the publishing workflow to tag the repository and push to the Puppet Forge, so module releases will be even easier than before. &lt;strong>Once all the pdksync PRs are merged, we will manage to close out another important milestone for Cloud CI.&lt;/strong>&lt;/p>
+&lt;p>During the work for the multi-node testing supported we have uncovered a small issue that was related to the created firewall rule persistence in debugging sessions and we&amp;rsquo;ll have a fix for this as soon as possible. Work is still &lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server/pull/223">in progress&lt;/a> on the &lt;a href="https://github.com/puppetlabs/puppetlabs-websphere_application_server">puppetlabs-websphere_application_server&lt;/a> module and we are hopeful to find a solution soon.&lt;/p>
+&lt;h2 id="terminology-changes">Terminology Changes&lt;/h2>
+&lt;p>All of our terminology work is coming to a close. What this means is once it is completely finished we will start &lt;strong>deleting &amp;lsquo;master&amp;rsquo; branches in our repos&lt;/strong>. If you are pinning to this, I advise you to switch over to &lt;code>main&lt;/code> as soon as you possibly can. This work effort has been carried out on both our modules and tools. Shout out to &lt;a href="https://github.com/david22swan">David Swan&lt;/a> for heading up this work.&lt;/p>
+&lt;h2 id="removal-of-translate-module-dependencies">Removal of translate module dependencies&lt;/h2>
+&lt;p>The translate module has been deprecated for some time but we have never had the time to remove it from our modules. &lt;a href="https://github.com/david22swan">David Swan&lt;/a> has been working on removing all dependencies and code related to this. An example of a PR he has been working on can be found &lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/373/files">here&lt;/a>. This particular change will be rolled out to all of our supported modules over the next few weeks.&lt;/p>
+&lt;h2 id="dsc">DSC&lt;/h2>
+&lt;p>Things have been quiet for the last few weeks on this front as we did a bunch of backend work to transition our test framework from Pester v4 to v5 and set up the tests to be more idiomatic.
+Now that the test framework is updated we&amp;rsquo;re ready to expand the test suite and boost our coverage to increase stability for future releases. &lt;strong>Our 1.0.0 stable release approaches!&lt;/strong>&lt;/p>
+&lt;h2 id="litmus-relocation-of-inventoryyaml-file">Litmus relocation of inventory.yaml file&lt;/h2>
+&lt;p>We have now started to roll the first part of the changes out to our supported modules. This change was made to the &lt;a href="https://github.com/puppetlabs/pdk-templates/pull/414">pdk-templates#414&lt;/a>.
+A massive shout out to &lt;a href="https://github.com/carabasdaniel">Danny&lt;/a> who kicked off the roll out using a &lt;a href="https://github.com/puppetlabs/pdksync/">pdksync&lt;/a>.&lt;/p>
+&lt;p>The remaining changes will be rolled out when all the modules recieve their template changes. The additional updates include:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/provision/pull/161">&lt;code>provision#161&lt;/code>&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet_litmus/pull/396">&lt;code>puppet_litmus#396&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="and-thats-a-wrap">And thats a wrap!&lt;/h2>
+&lt;p>That is all for this week, have a great weekend!&lt;/p></description></item></channel></rss>

@@ -1,0 +1,49 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – status</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/status/</link><description>Recent content in status on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 27 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/status/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2020-11-27: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-11-27-status-update/</link><pubDate>Fri, 27 Nov 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-11-27-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/338">&lt;code>puppetlabs-accounts#338&lt;/code>&lt;/a>: &amp;ldquo;MODULES-10862 add support for authorized_keys file mode&amp;rdquo;, thanks to &lt;a href="https://github.com/simondeziel">simondeziel&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2089">&lt;code>puppetlabs-apache#2089&lt;/code>&lt;/a>: &amp;ldquo;Add cas_cookie_path in vhosts&amp;rdquo;, thanks to &lt;a href="https://github.com/yakatz">yakatz&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2081">&lt;code>puppetlabs-apache#2081&lt;/code>&lt;/a>: &amp;ldquo;Improve SSLVerify options&amp;rdquo;, thanks to &lt;a href="https://github.com/bovy89">bovy89&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/953">&lt;code>puppetlabs-apt#953&lt;/code>&lt;/a>: &amp;ldquo;Make auth.conf contents Sensitive&amp;rdquo;, thanks to &lt;a href="https://github.com/suchpuppet">suchpuppet&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy/pull/449">&lt;code>puppetlabs-haproxy#449&lt;/code>&lt;/a>: &amp;ldquo;(bugfix) backend: dont log warnings if not necessary&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/447">&lt;code>puppetlabs-kubernetes#447&lt;/code>&lt;/a>: &amp;ldquo;Add configuration options for conntrack settings in v1beta1 and v1beta2&amp;rdquo;, thanks to &lt;a href="https://github.com/Wiston999">Wiston999&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-ntp/pull/590">&lt;code>puppetlabs-ntp#590&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Make mode for logfile configurable&amp;rdquo;, thanks to &lt;a href="https://github.com/tmanninger">tmanninger&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1199">&lt;code>puppetlabs-postgresql#1199&lt;/code>&lt;/a>: &amp;ldquo;Manage postgresql_conf_path file permissions&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-satellite_pe_tools/pull/139">&lt;code>puppetlabs-satellite_pe_tools#139&lt;/code>&lt;/a>: &amp;ldquo;Update satellite.rb&amp;rdquo;, thanks to &lt;a href="https://github.com/eppini">eppini&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ekohl">ekohl&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1139">&lt;code>puppetlabs-stdlib#1139&lt;/code>&lt;/a>: &amp;ldquo;seeded_rand: update funtion to ensure it returns an int not String&amp;rdquo;, thanks to &lt;a href="https://github.com/b4ldr">b4ldr&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat/pull/415">&lt;code>puppetlabs-tomcat#415&lt;/code>&lt;/a>: &amp;ldquo;Refactor valve types&amp;rdquo;, thanks to &lt;a href="https://github.com/h-haaks">h-haaks&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/926">&lt;code>pdk#926&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Adjust how expected Gemfile.lock is calculated in package tests&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-vanagon/pull/268">&lt;code>pdk-vanagon#268&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Drop Ruby 2.1.9/puppet 4.x from packaging&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/metadata-json-lint/pull/113">&lt;code>metadata-json-lint#113&lt;/code>&lt;/a>: &amp;ldquo;release 3.0.0&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules and gem were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">&lt;code>puppetlabs-apache&lt;/code>&lt;/a> (&lt;code>5.7.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy">&lt;code>puppetlabs-haproxy&lt;/code>&lt;/a> (&lt;code>4.4.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-ibm_installation_manager">&lt;code>puppetlabs-ibm_installation_manager&lt;/code>&lt;/a> (&lt;code>2.2.1&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://rubygems.org/gems/puppet_litmus">&lt;code>puppet_litmus&lt;/code>&lt;/a> (&lt;code>0.20.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;h2 id="triage-day">Triage day&lt;/h2>
+&lt;p>This week we had another very productive Triage day:&lt;/p>
+&lt;ul>
+&lt;li>27 community PR processed by the team (2 tooling, 24 modules)&lt;/li>
+&lt;li>released two modules and Puppet Litmus&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppet-litmus">Puppet Litmus&lt;/h2>
+&lt;p>This week we have done two releases of the Puppet Litmus gem we generally use for our acceptance testing. The first release we finished on Monday included a couple of nice fixes:&lt;/p>
+&lt;ul>
+&lt;li>Added the possibility to generate a job matrix from the metadata.json of a module for the Github Action workflows we will use with the Cloud CI&lt;/li>
+&lt;li>Added a write_file helper&lt;/li>
+&lt;li>Added the option to fileter testcase execution based on blog_tags&lt;/li>
+&lt;li>Allowing the acceptance tests to be run as a sudo user&lt;/li>
+&lt;/ul>
+&lt;p>The second release was a bug fix that allows litmus to check connectivity after provisioning and remove some of the debugging output.&lt;/p>
+&lt;p>For more information on the changes &lt;a href="https://github.com/puppetlabs/puppet_litmus/blob/main/CHANGELOG.md">see the CHANGELOG.md&lt;/a>&lt;/p>
+&lt;h2 id="cloud-ci">Cloud CI&lt;/h2>
+&lt;p>This week we managed to fix a couple of stability issues with the Cloud CI provisioning and finish a successful run with 100 Windows machines. You can see the results &lt;a href="https://github.com/puppetlabs/puppetlabs-testing/actions/runs/383528880">here&lt;/a>.&lt;/p>
+&lt;p>We have ported accross a couple more modules this week: &lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib">&lt;code>puppetlabs-stdlib&lt;/code>&lt;/a>, &lt;a href="https://github.com/puppetlabs/puppetlabs-registry">&lt;code>puppetlabs-registry&lt;/code>&lt;/a> and &lt;a href="https://github.com/puppetlabs/puppetlabs-package">&lt;code>puppetlabs-package&lt;/code>&lt;/a> but we also encountered another interesting issue with puppetlabs-postgresql that we are currently investigating.&lt;/p>
+&lt;p>Next week, we will focus a bit on hardening the provision service and start porting over more of the supported modules.&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That&amp;rsquo;s it for this week, have a great week-end and stay safe !&lt;/p></description></item></channel></rss>

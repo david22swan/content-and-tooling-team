@@ -1,0 +1,71 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – reporting</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/reporting/</link><description>Recent content in reporting on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 12 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/reporting/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-03-12: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-03-12-status-update/</link><pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-03-12-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/369">&lt;code>puppetlabs-accounts#369&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-10960) Selector needs multiple checks in brackets.&amp;rdquo;, thanks to &lt;a href="https://github.com/tuxmea">tuxmea&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/973">&lt;code>puppetlabs-apt#973&lt;/code>&lt;/a>: &amp;ldquo;MODULES-10956 remove redundant code in provider apt_key&amp;rdquo;, thanks to &lt;a href="https://github.com/moritz-makandra">moritz-makandra&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/494">&lt;code>puppetlabs-kubernetes#494&lt;/code>&lt;/a>: &amp;ldquo;Added information about Hiera YAML Lookup; installing a updated version.&amp;rdquo;, thanks to &lt;a href="https://github.com/bitvijays">bitvijays&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1373">&lt;code>puppetlabs-mysql#1373&lt;/code>&lt;/a>: &amp;ldquo;Fix Java binding package for Ubuntu 20.04&amp;rdquo;, thanks to &lt;a href="https://github.com/treydock">treydock&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1253">&lt;code>puppetlabs-postgresql#1253&lt;/code>&lt;/a>: &amp;ldquo;Ensure port is a string in psql command&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-puppet_conf/pull/140">&lt;code>puppetlabs-puppet_conf#140&lt;/code>&lt;/a>: &amp;ldquo;Add delete action&amp;rdquo;, thanks to &lt;a href="https://github.com/fetzerms">fetzerms&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-reboot/pull/284">&lt;code>puppetlabs-reboot#284&lt;/code>&lt;/a>: &amp;ldquo;Cleanup: Changed to ctrl::sleep() and removed redundant reboot::sleep() function&amp;rdquo;, thanks to &lt;a href="https://github.com/fetzerms">fetzerms&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/23">&lt;code>pdk-docker#23&lt;/code>&lt;/a>: &amp;ldquo;Fix onceover install issue&amp;rdquo;, thanks to &lt;a href="https://github.com/cdenneen">cdenneen&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/413">&lt;code>pdk-templates#413&lt;/code>&lt;/a>: &amp;ldquo;(#412) Add .devcontainer to .pdkignore&amp;rdquo;, thanks to &lt;a href="https://github.com/silug">silug&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-vanagon/pull/278">&lt;code>pdk-vanagon#278&lt;/code>&lt;/a>: &amp;ldquo;(maint) Disable ansicon in VS Code&amp;rdquo;, thanks to &lt;a href="https://github.com/jpogran">jpogran&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/scotje">scotje&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>After the release bonanza of last week, this week was very quiet in that regard:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">&lt;code>puppetlabs-postgresql&lt;/code>&lt;/a> (&lt;code>7.0.1&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;p>We would like to thank &lt;a href="https://github.com/joshcooper">Josh Cooper&lt;/a> for the help in fixing the &lt;code>Sensitive&lt;/code> issue on postgresql module. The relevant &lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1258">PR&lt;/a> and the &lt;a href="https://tickets.puppetlabs.com/browse/PUP-10950">ticket&lt;/a>.&lt;/p>
+&lt;h2 id="community-day">Community Day&lt;/h2>
+&lt;p>With few releases, this week we could focus on spring cleaning tickets.
+Overall we processed 85 github PRs and JIRA issues.
+Now, for the first time in several years, we are able to dig into the community backlog.
+If we continue this rate we would burn through all currently open tickets by the end of the year.
+While a fun thought experiment, the reality is that we&amp;rsquo;re focusing on the easy bits first.
+Weeding out reports for removed and unmaintained tickets, assigning components where necessary and removing layers of previous generations of project management will allow us a clearer view of next steps.&lt;/p>
+&lt;h2 id="cisco-backuprestore-tasks">Cisco backup/restore tasks&lt;/h2>
+&lt;p>&lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> implemented config backup and restore tasks for Cisco devices in &lt;a href="https://github.com/puppetlabs/cisco_ios/pull/427">this PR&lt;/a>.
+If you have the cisco_ios module in use, please give the new capabilities a spin and &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">tell us about it&lt;/a>!
+Ciaran has been testing them against the Cisco Modelling Lab, and that is a pretty nifty thing to play around with.&lt;/p>
+&lt;h2 id="litmus-inventoryyaml-files-are-on-the-move">Litmus inventory.yaml files are on the move&lt;/h2>
+&lt;p>This week we have been working on &lt;a href="https://github.com/puppetlabs/puppet_litmus/issues/380">GH-380&lt;/a>.
+We realised that it might be surprising to people and dangerous when running bolt and litmus from the same repo.
+If you currently use puppet-litmus please be prepared for an inventory.yaml file relocation in the next few weeks.
+The new location will be spec/fixtures/litmus_inventory.yaml.
+This is to keep all our litmus configuration separate and to avoid mishaps in production.
+This will include changes in:&lt;/p>
+&lt;ul>
+&lt;li>puppet-litmus&lt;/li>
+&lt;li>provision module&lt;/li>
+&lt;li>pdk-templates&lt;/li>
+&lt;/ul>
+&lt;p>The work is still ongoing and being tested, however expect to see this in the next few weeks!
+When you upgrade to the new version, make sure to also upgrade/redownload your &lt;code>puppetlabs/provision&lt;/code> fixture module with the updated tasks.&lt;/p>
+&lt;h2 id="cloud-ci-update-multi-node">Cloud CI Update: multi-node&lt;/h2>
+&lt;p>This week we have started the work on porting the puppetlabs-websphere_application_server module to use the Cloud CI for testing.
+Thanks to &lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> we&amp;rsquo;ll now be able to set up spec testing using Github Action workflow for all our supported modules &lt;a href="https://github.com/puppetlabs/pdk-templates/pull/372/files">PR&lt;/a>.
+With the release of puppet_litmus 0.26.0, the spec tests workflows and the &lt;a href="https://github.com/puppetlabs/pdk-templates/pull/408">publishing workflow&lt;/a> merged into the pdk-templates we&amp;rsquo;ll follow up with a pdksync accross all our supported modules.
+On the multi-node testing both the puppetlabs-helm and puppetlabs-kubernetes modules now run an integration suite testing for each pull request on a multi-node environment using the Cloud CI provisioning service.&lt;/p>
+&lt;h3 id="updating-community-reports">Updating Community Reports&lt;/h3>
+&lt;p>As part of the new CI we started tracking the health of CI in the &lt;a href="https://puppetlabs.github.io/community_management/GithubActionsReport.html">Github Actions Report&lt;/a>.
+While functional, the initial implementation was rather &amp;hellip; drab.
+&lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> is working on an &lt;a href="https://github.com/puppetlabs/community_management/pull/57">overhaul&lt;/a> and it is already looking a lot better!&lt;/p>
+&lt;p>&lt;strong>Before:&lt;/strong>&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-03-12-status-update/actions-report-before.png" alt="screenshot of the old report, with lots of black lines and wasteful vertical layout.">&lt;/p>
+&lt;p>&lt;strong>After:&lt;/strong>&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-03-12-status-update/actions-report-after.png" alt="screenshot of the new report, with a donut chart of overall success and compact horizontal arrangement.">&lt;/p>
+&lt;h2 id="other-work">Other Work&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/david22swan">David Swan&lt;/a> fixed a locale issue when using litmus with RHEL7-based targets (&lt;a href="https://tickets.puppetlabs.com/browse/IAC-1420">IAC-1420&lt;/a>) and has turned his attention now to the removal of inappropriate terminology from our tooling repos.&lt;/li>
+&lt;li>&lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> updated the kubetool images on dockerhub: &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10964">MODULES-10964&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/Disha-maker">Disha&lt;/a> fixed handling of draft PRs in our reports: &lt;a href="https://tickets.puppetlabs.com/browse/IAC-1197">IAC-1197&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> started on transitioning spec testing from travis and appveyor to github actions: &lt;a href="https://tickets.puppetlabs.com/browse/IAC-1307">IAC-1307&lt;/a> captures part of the work.&lt;/li>
+&lt;/ul>
+&lt;h2 id="epilogue">Epilogue&lt;/h2>
+&lt;p>Regular dev work slowed down a bit as were shifting into new patterns based on gearing up for executing on this year&amp;rsquo;s planning cycle.
+I, for one, am very chuffed about the progress we made as a team and against our goals and I&amp;rsquo;m even more excited about the plans we&amp;rsquo;re setting in motion now.
+We&amp;rsquo;ll make sure to keep you updated here.&lt;/p></description></item></channel></rss>

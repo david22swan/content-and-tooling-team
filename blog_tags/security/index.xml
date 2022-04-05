@@ -1,0 +1,42 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – security</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/security/</link><description>Recent content in security on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 17 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/security/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 17th July 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-07-17-status-update/</link><pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-07-17-status-update/</guid><description>
+&lt;p>It&amp;rsquo;s Friday - time for another status update from the IAC Team!
+Here&amp;rsquo;s an overview of some of the work we and the community have been up to recently:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>We&amp;rsquo;ve just one module released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/docker">puppetlabs/docker&lt;/a>&lt;a href="https://forge.puppet.com/puppetlabs/docker/changelog#v3102-2020-07-16">&lt;code>3.10.2&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;ve had plenty of great community contributions this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/631">&lt;code>puppetlabs-docker#631&lt;/code>&lt;/a>: &lt;a href="https://github.com/awegmann">awegmann&lt;/a> has spotted a few missing fixes for incorrect parameter positions in docker_compose from an earlier effort and tidied them up for us.
+Many thanks &lt;a href="https://github.com/awegmann">awegmann&lt;/a> for spotting and fixing!&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-inifile/pull/405">&lt;code>puppetlabs-inifile#405&lt;/code>&lt;/a>: Thanks to &lt;a href="https://github.com/mmarod">mmarod&lt;/a> for this enhancement - with the &lt;code>delete_if_empty&lt;/code> parameter now available, we can remove keys from an inifile, should there be no value assigned to it.
+This keeps things a lot neater! :)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/433">&lt;code>puppetlabs-java#433&lt;/code>&lt;/a>: A big thank you to &lt;a href="https://github.com/timdeluxe">timdeluxe&lt;/a> for your first contribution to Puppet!
+This is a great enhancement as a first contribution - the ability to install SAP&amp;rsquo;s implementation of JVM/JDK.&lt;/li>
+&lt;/ul>
+&lt;h2 id="new-releases-of-rspec-puppet-and-pdk">New releases of rspec-puppet and PDK&lt;/h2>
+&lt;p>The &lt;code>default_env&lt;/code> method was removed in the release of Puppet Agent versions &lt;a href="https://puppet.com/docs/puppet/6.17/release_notes_puppet.html#release_notes_puppet_x-17-0">&lt;code>6.17.0&lt;/code>&lt;/a> and &lt;a href="https://puppet.com/docs/puppet/5.5/release_notes.html#puppet-5521">&lt;code>5.5.21&lt;/code>&lt;/a>.
+This has had a knock-on effect in &lt;a href="https://github.com/rodjek/rspec-puppet">&lt;code>rspec-puppet&lt;/code>&lt;/a> and the &lt;a href="https://github.com/puppetlabs/pdk">&lt;code>pdk&lt;/code>&lt;/a>, so there have been two new releases we want to draw your attention to:&lt;/p>
+&lt;h3 id="rspec-puppet-2710">rspec-puppet 2.7.10&lt;/h3>
+&lt;p>Many thanks to &lt;a href="https://github.com/sgnn7">sgnn7&lt;/a> for the quick turnaround and fix provided in &lt;a href="https://github.com/rodjek/rspec-puppet/pull/797">rspec-puppet#796&lt;/a>.
+Also, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a> for getting the fix reviewed, merged and version &lt;code>2.7.10&lt;/code> of &lt;a href="https://github.com/rodjek/rspec-puppet">&lt;code>rspec-puppet&lt;/code>&lt;/a> released so quickly.&lt;/p>
+&lt;h3 id="pdk-11810">PDK 1.18.1.0&lt;/h3>
+&lt;p>Again, many thanks to &lt;a href="https://github.com/natemccurdy">natemccurdy&lt;/a> for getting a fix available to the &lt;a href="https://github.com/puppetlabs/pdk">pdk&lt;/a> in &lt;a href="https://github.com/puppetlabs/pdk/pull/891">pdk#891&lt;/a> so quickly.
+Thanks to &lt;a href="https://github.com/joshcooper">joshcooper&lt;/a> for his help during the review process and &lt;a href="https://github.com/scotje">scotje&lt;/a> for merging and kicking off the PDK release.&lt;/p>
+&lt;h2 id="red-or-blue-team">Red or Blue Team?&lt;/h2>
+&lt;p>We&amp;rsquo;d like to congratulate &lt;a href="https://github.com/daianamezdrea">daianamezdrea&lt;/a> for being accepted to study an MSc in Cyber Security next term!
+&lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> recently graduated with flying colours and became a fully fledged member of the IAC Team - it&amp;rsquo;s been quite a year of accomplishments!
+Given her track record on the team, this past year, and her excellent graduation results, we&amp;rsquo;ve no doubt she&amp;rsquo;ll be incredibly successful with her MSc too.
+We look forward to increasing the awareness of security on the team even further - an ever increasing skill requirement in modern software development.
+Just take a look at two of the major security issues landing this week to prove this point: &lt;a href="https://blog.rapid7.com/2020/07/14/windows-dns-server-remote-code-execution-vulnerability-cve-2020-1350-what-you-need-to-know/">CVE-2020-1350&lt;/a> and &lt;a href="https://blog.rapid7.com/2020/07/14/pay-attention-to-your-sap-security/">CVE-2020-6287&lt;/a>.&lt;/p>
+&lt;h2 id="best-wishes-to-davids">Best wishes to DavidS&lt;/h2>
+&lt;p>I&amp;rsquo;m sure many of you reading this will know &lt;a href="https://github.com/DavidS">David&lt;/a> as he is such an integral part of the Puppet Community.
+Similarly, he is a critical member of the IAC Team and the Puppet organisation, as a whole.
+The amount of people he helps on a daily basis is quite phenomenal, not least, all of us on the IAC Team.
+We are incredibly privileged to be able to learn from and work with &lt;a href="https://github.com/DavidS">David&lt;/a> on a daily basis, but recently, we have been made even more acutely aware of the privilege we hold.&lt;/p>
+&lt;p>David has had to take up the fight against health issues in the past and is once again, entering that fight.
+We know that he is going to get through this with the similar courage and determination he did previously and we want to wish him the very best as he recovers from his surgery in London.
+We&amp;rsquo;re all here for you during your recovery and are very much looking forward to having you back with us in the near future, David.&lt;/p>
+&lt;p>Alles Gute and much love from the IAC Team, Puppet and the wider Community!&lt;/p></description></item></channel></rss>

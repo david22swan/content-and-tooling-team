@@ -1,0 +1,112 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – team work</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/team-work/</link><description>Recent content in team work on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 04 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/team-work/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 4th September 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-09-04-status-update/</link><pubDate>Fri, 04 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-09-04-status-update/</guid><description>
+&lt;p>The IAC team has been active over the past week.
+We worked on releasing modules and also reviewing contributions from the community.
+Here’s a resume of the most cool things:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>We&amp;rsquo;ve had a few modules released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs/kubernetes&lt;/a> (v5.3.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the fantastic Puppet Community for the following contributions over the past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">puppetlabs/puppetlabs-kubernetes&lt;/a>: Thanks to &lt;a href="https://github.com/JasonWhall">Jason Whall&lt;/a> for this &lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/436">change&lt;/a> which updates docker yumrepo default .&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">puppetlabs/puppetlabs-accounts&lt;/a>: Thanks to &lt;a href="https://github.com/jarretlavallee">Jarret Lavallee&lt;/a> for this &lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/333">change&lt;/a> which allow for Sensitive type passwords in accounts::user .&lt;/li>
+&lt;/ul>
+&lt;h3 id="dsc-user-testing">DSC User Testing&lt;/h3>
+&lt;p>With the last of the major technical hurdles out of the way, the PowerShell DSC Puppetizer is ready for another wave of user testing.
+&lt;a href="https://github.com/joeypiccola">Joey Piccola&lt;/a> reached out to offer some help with testing (thanks, Joey!) and we were quickly able to Puppetize and send over both ActiveDirectoryDsc and xFailOverCluster - putting almost 30 puppetized DSC resources into his hands in mere minutes!
+Not only have the build times slimmed dramatically, but the packaged size of these modules is &lt;em>tiny&lt;/em>, under 150kB each!
+If you&amp;rsquo;re interested in participating in our beta testing program, you can reach out to us at &lt;a href="mailto:dsc@puppet.com">dsc@puppet.com&lt;/a>!&lt;/p>
+&lt;h3 id="welcome-to-the-team">Welcome to the Team&lt;/h3>
+&lt;p>We want to announce to you that &lt;a href="https://github.com/disha-maker">Disha Kareer&lt;/a> is the newest member of the IAC Team.
+&lt;a href="https://github.com/disha-maker">Disha&lt;/a> is Undergraduate student studying BSc Computing and Information Technology including Professional Experience.
+She enjoys volunteering and meeting new people.
+She will help us to fulfill the IAC Team noble mission.&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That’s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item><item><title>Blog: 28th August 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-08-28-status-update/</link><pubDate>Fri, 28 Aug 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-08-28-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of things over the past week.
+We want to share with our community some of the most interesting things.
+Here’s a brief overview of what we’ve been up to:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>We&amp;rsquo;ve had a few modules released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-chocolatey">puppetlabs/chocolatey&lt;/a> (v5.1.1)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-scheduled_task">puppetlabs/scheduled_task&lt;/a> (v2.2.1)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat">puppetlabs/tomcat&lt;/a> (v4.2.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">puppetlabs/postgresql&lt;/a> (v6.7.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppet-module-gems">puppet-module-gems&lt;/h2>
+&lt;p>&lt;code>v0.5.1&lt;/code> of &lt;code>puppet-module-gems&lt;/code> for Ruby 2.7 on Windows has been uploaded to &lt;a href="https://rubygems.org/">RubyGems&lt;/a>&lt;/p>
+&lt;h2 id="litmus">Litmus&lt;/h2>
+&lt;p>Litmus was broken due to the following &lt;a href="https://github.com/puppetlabs/bolt/issues/2117">issue&lt;/a>.
+Thanks alot to the bolt team for the quick turn around and release of &lt;a href="https://rubygems.org/gems/bolt">2.25.0&lt;/a>.&lt;/p>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the fantastic Puppet Community for the following contributions over the past week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">puppetlabs/puppetlabs-accounts&lt;/a>: Thanks to &lt;a href="https://github.com/jarretlavallee">Jarret Lavallee&lt;/a> for this &lt;a href="https://github.com/puppetlabs/puppetlabs-accounts/pull/333">change&lt;/a> which allows for sensitive type passwords in accounts::user .&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/provision">puppetlabs/provision&lt;/a>: &lt;a href="https://github.com/dylanratcliffe">Dylan&lt;/a> for this &lt;a href="https://github.com/puppetlabs/provision/pull/94">fix&lt;/a> to ensure that conflict detection works as anticipated when boxes have a slash in their name.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker">puppetlabs/puppetlabs-docker&lt;/a>: &lt;a href="https://github.com/quentins">Quentin&lt;/a> for this &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/653">fix&lt;/a> which fix syntax for puppet 4 support.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker">puppetlabs/puppetlabs-docker&lt;/a>: &lt;a href="https://github.com/koubas">Jakub Husák&lt;/a> for this &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/653">change&lt;/a> which add prepare_service_only param to ::run resource.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Shout out to &lt;a href="https://github.com/kreeuwijk">Kevin Reeuwijk&lt;/a> for reporting the ticket, &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10783">MODULES-10783&lt;/a> has now been resolved and released also thanks for your cooperation and help when working through the module self service process.&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Shout out to &lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> and &lt;a href="https://github.com/david22swan">David&lt;/a> for the quick turn around on the fixes for &lt;a href="https://github.com/puppetlabs/puppetlabs-scheduled_task">puppetlabs/puppetlabs-scheduled_task&lt;/a>. Both the bugs are fixed and released.&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-scheduled_task/pull/161">fix1&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-scheduled_task/pull/158">fix2&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppet-7">Puppet 7&lt;/h2>
+&lt;p>Puppet 7 testing is ongoing. Platforms currently tested for the nightly builds are CentOS7, Debian10, RHEL8, SLES15, Ubuntu20.04, WinServ2012R2, WinServ2016, Win Serv2019. Subset of acceptance tests, tagged with the &amp;ldquo;integration&amp;rdquo; label against the latest Puppet 7 nightly build.&lt;/p>
+&lt;h2 id="dsc-builder-nearing-testing">DSC Builder Nearing Testing&lt;/h2>
+&lt;p>The tickets closed out this week represent the last technical implementation blockers for this phase of the project, everything else is documentation, testing, and user feedback! We&amp;rsquo;re nearing a launch of the PowerShell module to the &lt;a href="https://powershellgallery.com">public Gallery&lt;/a>!&lt;/p>
+&lt;h2 id="time-for-holiday">Time for holiday&lt;/h2>
+&lt;p>As no summer can end without a holiday, our team member &lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> will have a short PTO for recharging the batteries and prepare for a new season of fixing bugs!&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That’s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item><item><title>Blog: 21th August 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-08-21-status-update/</link><pubDate>Fri, 21 Aug 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-08-21-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of things over the past week.
+We want to share with our community some of the most interesting things.
+Here’s a brief overview of what we’ve been up to:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;p>We&amp;rsquo;ve had a few modules released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-acl">puppetlabs/acl&lt;/a> (v3.2.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">puppetlabs/accounts&lt;/a> (v6.2.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/ruby-pwsh">puppetlabs/pwshlib&lt;/a> (v0.5.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib">puppetlabs/stdlib&lt;/a> (v6.4.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-motd">puppetlabs/motd&lt;/a> (v4.2.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="team-work-dream-work">Team work, dream work&lt;/h2>
+&lt;p>We&amp;rsquo;ve noticed that &lt;code>simplecov&lt;/code> dropped support for Ruby 2.4 from v0.19.0 and in order to solve this problem which was first highlighted &lt;a href="https://github.com/puppetlabs/pdk-templates/issues/345">here&lt;/a>, all the team put their resources in one debug session. Step by step, we were able to understand what is happening and shortly after that, &lt;a href="https://github.com/puppetlabs/puppet-module-gems">puppet-module-gems&lt;/a>(v0.5.1) was released.
+Thank you &lt;a href="https://github.com/pmcmaw">Paula&lt;/a>, &lt;a href="https://github.com/sanfrancisko">Ciaran&lt;/a> and &lt;a href="https://github.com/carabasdaniel">Dani&lt;/a> for the demonstration!&lt;/p>
+&lt;p>&lt;strong>PLEASE NOTE:&lt;/strong> &lt;code>v0.5.1&lt;/code> of &lt;code>puppet-module-gems&lt;/code> for Ruby 2.7 on Windows has not yet been uploaded to &lt;a href="https://rubygems.org/">RubyGems&lt;/a> - we are working to get this resolved a.s.a.p.&lt;/p>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the fantastic Puppet Community for the following contributions over the past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">puppetlabs/puppetlabs-apache&lt;/a>: Thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a> for this &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2060">fix&lt;/a> which ensures that the bool2httpd function is compatible in Ruby 2.7.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-strings">puppetlabs/puppet-strings&lt;/a>: &lt;a href="https://github.com/ekohl">ekohl&lt;/a> also provided this &lt;a href="https://github.com/puppetlabs/puppet-strings/pull/246">fix&lt;/a> to ensure that we handle missing descriptions more gracefully in puppet-strings, thanks again &lt;a href="https://github.com/ekohl">ekohl&lt;/a>!&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/action-litmus_spec">puppetlabs/action-litmus-spec&lt;/a>: This update to the README should hopefully make things a bit clearer for anyone else wishing to leverage the action-litmus-spec Github Action, thanks for the &lt;a href="https://github.com/puppetlabs/action-litmus_spec/pull/38">fix&lt;/a> &lt;a href="https://github.com/choffee">choffee&lt;/a>!&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker">puppetlabs/pdk-docker&lt;/a>: Thank you &lt;a href="https://github.com/alanraison">alanraison&lt;/a> for the &lt;a href="https://github.com/puppetlabs/pdk-docker/pull/10">fix&lt;/a> to pdk-docker which ensures openssh is now installed during container initialisation.&lt;/li>
+&lt;/ul>
+&lt;p>A BIG applause for this week and the community:
+&lt;a href="https://github.com/ekohl">ekohl&lt;/a>: &lt;a href="https://github.com/ekohl">https://github.com/ekohl&lt;/a>
+&lt;a href="https://github.com/choffee">choffee&lt;/a>: &lt;a href="https://github.com/choffee">https://github.com/choffee&lt;/a>
+&lt;a href="https://github.com/alanraison">alanraison&lt;/a>: &lt;a href="https://github.com/alanraison">https://github.com/alanraison&lt;/a>&lt;/p>
+&lt;h2 id="dsc-builder-nearing-testing">DSC Builder Nearing Testing&lt;/h2>
+&lt;p>Lots of small issues have been closed out recently for the DSC work - paths and non enum values are now case-insensitive, DscRunAsCredential now works as expected, and the base provider lives in the &lt;code>pwshlib&lt;/code> (check the latest release) meaning you don&amp;rsquo;t have to rebuild your modules every time the base provider gets updated or improved!&lt;/p>
+&lt;p>The tickets closed out this week represent the last technical implementation blockers for this phase of the project, everything else is documentation, testing, and user feedback! We&amp;rsquo;re nearing a launch of the PowerShell module to the &lt;a href="https://powershellgallery.com">public Gallery&lt;/a>!&lt;/p>
+&lt;h2 id="time-for-holiday">Time for holiday&lt;/h2>
+&lt;p>As no summer can end without a holiday, our team members Daiana and Dani will have a short PTO for recharging their batteries and prepare for a new season of fixing bugs!&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That’s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item></channel></rss>

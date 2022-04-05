@@ -1,0 +1,157 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – deferred</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/deferred/</link><description>Recent content in deferred on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 18 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/deferred/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: How to use agent-side information on the puppetserver</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-18-how-to-use-agent-information-on-puppetserver/</link><pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-18-how-to-use-agent-information-on-puppetserver/</guid><description>
+&lt;p>This question was posted on the &lt;a href="https://slack.puppet.com/">Puppet Community Slack&lt;/a> yesterday:&lt;/p>
+&lt;blockquote>
+&lt;p>Is there any way like the below in puppet code we can use:&lt;/p>
+&lt;pre>&lt;code>$var=‘run command locally on agent, if $?=0 echo “present”, else echo “absent”’
+if $var == present {
+# my code
+} else {
+# something else
+}
+&lt;/code>&lt;/pre>&lt;/blockquote>
+&lt;p>(by user &lt;a href="https://app.slack.com/team/URGFPBS0N">IlovPuppet&lt;/a>, edited for presentation)&lt;/p>
+&lt;p>There are a number of reasons why this question comes up.
+First is likely that folks are not aware of the options available at all.
+Then, sometimes, the common options (like custom facts) just don&amp;rsquo;t cut it for security or performance reasons.
+Last but not least, organisational and technical circumstances can make one option more appealing than others.&lt;/p>
+&lt;p>From my answer there, I wrote up a more detailed exposition here.
+Based on the specifics of your situation,
+there are several different options to solve this,
+described in detail below:&lt;/p>
+&lt;ul>
+&lt;li>make the decision explicit&lt;/li>
+&lt;li>a &lt;code>Deferred&lt;/code> function call&lt;/li>
+&lt;li>using &lt;code>onlyif&lt;/code> or &lt;code>unless&lt;/code> on an &lt;code>exec&lt;/code> resource&lt;/li>
+&lt;li>a custom fact&lt;/li>
+&lt;li>a custom resource&lt;/li>
+&lt;/ul>
+&lt;h2 id="explicit-decisions">Explicit Decisions&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>Puppet shines when we can make our configuration decisions explicit.
+Make the dynamic decision a static configuration and ensure that whatever is producing the different states is also managed by puppet.
+Having a hard look at what the command is trying to decide and whether this couldn&amp;rsquo;t be enforced instead of queried can save complexity.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>A simple example from my past as a technical consultant is a client who wanted to base a configuration decision off whether or not a particular package was installed on a workstation. In this particular case it turned out that installing that additional package was not very expensive (compared to coding up a dynamic solution), so we just rolled out the package to everyone and removed another thing that was different across the fleet.&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>if you can take control of the source of your question.&lt;/li>
+&lt;li>if you can key off another configuration instead of querying active system state.&lt;/li>
+&lt;li>if you can make your general configuration easier by removing a source of variation.&lt;/li>
+&lt;li>if the query code is difficult and/or unreliable.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>the input is truly dynamic.&lt;/li>
+&lt;li>the configuration is outside of your organisational scope (but try talking to the other team first!).&lt;/li>
+&lt;li>the computed value is sensitive and should not be transmitted or stored outside the node.&lt;/li>
+&lt;/ul>
+&lt;h2 id="deferred">&lt;code>Deferred&lt;/code>&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>The &lt;code>Deferred&lt;/code> function computes a value on the agent everytime the catalog is executed and uses the value immediately in the catalog.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppet/vault_lookup">puppet/vault_lookup&lt;/a> module shows how to use &lt;code>Deferred&lt;/code> with its &lt;code>vault_lookup::lookup&lt;/code> function:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#8be9fd;font-style:italic">$d&lt;/span> &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#50fa7b">Deferred&lt;/span>(&lt;span style="color:#f1fa8c">&amp;#39;vault_lookup::lookup&amp;#39;&lt;/span>, [&lt;span style="color:#f1fa8c">&amp;#34;secret/test&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;https://vault.hostname:8200&amp;#39;&lt;/span>])
+&lt;span style="color:#ff79c6">node&lt;/span> &lt;span style="color:#ff79c6">default&lt;/span> {
+&lt;span style="color:#ff79c6">notify&lt;/span> { &lt;span style="color:#50fa7b">example&lt;/span> :
+&lt;span style="color:#50fa7b">message&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$d&lt;/span>
+}
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(from &lt;a href="https://github.com/voxpupuli/puppet-vault_lookup#usage">voxpupuli/puppet-vault_lookup&lt;/a>)&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>for values specific to one or a few agents, for which managing via Hiera would be cumbersome.&lt;/li>
+&lt;li>for sensitive values that should not be exposed outside the individual agent.&lt;/li>
+&lt;li>for setting properties on resources.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>you need to change &lt;strong>which&lt;/strong> resources are managed.&lt;/li>
+&lt;li>you need the value in PE Console for classification or reporting.&lt;/li>
+&lt;li>the computed value depends on resources managed earlier in the catalog.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/write_a_puppet_function_to_store_secrets.html">Write a Puppet function to store secrets&lt;/a>: the original use-case for &lt;code>Deferred&lt;/code>&lt;/li>
+&lt;li>&lt;a href="http://puppet-on-the-edge.blogspot.com/2018/10/the-topic-is-deferred.html">The Topic is Deferred&lt;/a>: blogpost with hints and tricks how to use &lt;code>Deferred&lt;/code>&lt;/li>
+&lt;li>&lt;a href="https://binford2k.com/2019/11/12/deferred-functions/">Agent Side Functions in Puppet 6&lt;/a>: technical deep-dive on how &lt;code>Deferred&lt;/code> works&lt;/li>
+&lt;li>&lt;a href="https://www.hashicorp.com/resources/agent-side-lookups-with-hashicorp-vault-puppet-6">HashiCorp Vault 🧡 Puppet6 webinar&lt;/a>: deferred functions in Puppet 6, which unlocks new authentication methods and workflows for HashiCorp Vault + Puppet setups.&lt;/li>
+&lt;/ul>
+&lt;h2 id="exec-resources">&lt;code>exec&lt;/code> resources&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>The &lt;code>exec&lt;/code> resource has attributes to dynamically decide to run the managed command or not.
+By passing a command to &lt;code>onlyif&lt;/code> or &lt;code>unless&lt;/code> the command is executed &lt;em>only if&lt;/em> or &lt;em>unless&lt;/em> the condition successfully executes.
+Use &lt;code>refreshonly&lt;/code> to react to another resource being changed.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppetlabs/mysql">mysql module&lt;/a> has this &lt;code>exec&lt;/code> resource to clean up after installation. This should never run after &lt;code>${secret_file}&lt;/code> has been dealt with.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">exec&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;remove install pass&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">command&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$rm_pass_cmd,&lt;/span>
+&lt;span style="color:#50fa7b">onlyif&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#34;test -f ${secret_file}&amp;#34;&lt;/span>,
+&lt;span style="color:#50fa7b">path&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin&amp;#39;&lt;/span>
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>(from &lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/blob/312aca80ba7699ab37f9051d871aac2e05b217b3/manifests/server/root_password.pp#L20-L24">root_password.pp&lt;/a>)&lt;/p>
+&lt;p>&lt;strong>Use it for &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>running one-off commands on a condition.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>an exec is not a good fit for your problem.&lt;/li>
+&lt;li>the condition is very complex or timeconsuming.&lt;/li>
+&lt;li>the condition has to be repeated often.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/types/exec.html">Resource Type: &lt;code>exec&lt;/code>&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="custom-facts">Custom Facts&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>Custom facts are distributed to Puppet clients and are available for use in manifests and templates,
+just like any other fact is.
+They can be used to write conditional expressions based on site-specific data that isn’t available via Facter.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The apt module has a few &lt;a href="https://github.com/puppetlabs/puppetlabs-apt#facts">custom facts&lt;/a>. The &lt;code>apt_update_last_success&lt;/code> fact is used in &lt;a href="https://github.com/puppetlabs/puppetlabs-apt/blob/master/manifests/update.pp">update.pp&lt;/a> to decide whether or not it is necessary to update apt caches depending on the various configurations specified.&lt;/p>
+&lt;p>&lt;strong>Use it &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>when you need to centrally collect and evaluate the values.&lt;/li>
+&lt;li>when you want to get the value from all your nodes.&lt;/li>
+&lt;li>to change the set of resources and classes included for each node.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>the computed value is sensitive and should not be transmitted or stored outside the node.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/fact_overview.html">Custom facts&lt;/a>: the current puppet documentation&lt;/li>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/custom_facts.html">Custom facts walkthrough&lt;/a>: how to write your own facts&lt;/li>
+&lt;li>&lt;a href="https://glennsarti.github.io/blog/puppet-ruby-facts/">Starting out with Puppet custom facts&lt;/a>: a quick start to converting external facts to ruby custom facts on Windows&lt;/li>
+&lt;/ul>
+&lt;h2 id="custom-resources">Custom Resources&lt;/h2>
+&lt;p>&lt;strong>What is it?&lt;/strong>&lt;/p>
+&lt;p>With a native ruby plugin you can fully take control of how puppet manages a resource. Through this you get fine-grained control over reporting and enforcing system state through puppet.&lt;/p>
+&lt;p>&lt;strong>Example&lt;/strong>&lt;/p>
+&lt;p>The &lt;a href="https://forge.puppet.com/puppetlabs/mysql">mysql module&lt;/a> contains custom types and providers to control databases, users and grants.&lt;/p>
+&lt;blockquote>
+&lt;p>Note that the mysql module is still using the low-level API. Using the PDK and the Resource API, programming types and providers has become a lot easier as of late. Check out the &amp;ldquo;Further Reading&amp;rdquo; section below.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Use it for &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>things that can be modeled as a puppet resource.&lt;/li>
+&lt;li>fine-grained control.&lt;/li>
+&lt;li>full integration into the puppet tooling.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Don&amp;rsquo;t use it if &amp;hellip;&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>you do not want to code ruby.&lt;/li>
+&lt;li>a simpler solution (see above) works.&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>Further Reading&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://puppet.com/docs/puppet/latest/custom_resources.html">Custom Resources&lt;/a>: main documentation on writing custom resources.&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-resource_api/tree/master/docs">HUE hands on lab&lt;/a>: hands-on lab for a custom remote resource interacting with a API.&lt;/li>
+&lt;/ul>
+&lt;h2 id="final-words">Final Words&lt;/h2>
+&lt;p>To summarize, Puppet provides you with a number of alternatives to make your configuration smarter.
+Thanks to IluvPuppet for the great question, and &lt;a href="https://github.com/hpcprofessional">Paul Anderson&lt;/a> and Paul Reed for reviewing and feedback.&lt;/p></description></item></channel></rss>

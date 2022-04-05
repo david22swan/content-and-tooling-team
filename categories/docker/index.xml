@@ -1,0 +1,46 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – docker</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/docker/</link><description>Recent content in docker on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 23 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Docker params change detection</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-23-docker-params-change-detection/</link><pubDate>Wed, 23 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-23-docker-params-change-detection/</guid><description>
+&lt;h2 id="docker-params-change-detection">Docker params change detection&lt;/h2>
+&lt;p>The problem was reported by a client with the ticket &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10734">MODULES-10734&lt;/a>. After analysis, we discovered that we don&amp;rsquo;t have parameter change detection mechanisms. In this blog post, we try to explain the problem in detail with examples.&lt;/p>
+&lt;p>An interesting behaviour was present in docker::run component. The problem was that if any parameter was added/modified/removed puppet agent would only apply the change only if you stopped, removed the container manually and reapplied the manifest, forcing a new container creation.&lt;/p>
+&lt;p>The solution was to create a new function that detects if at least one parameter is changed. The detection mechanism is based on the check between parameter values from the manifest file and correspondent field from the docker inspect object of the currently running container. The solution is present in the 3.11.0 version.&lt;/p>
+&lt;p>So now let&amp;rsquo;s see how the problem can be reproduced by using version &lt;code>&amp;lt;= 3.10.2&lt;/code>:&lt;/p>
+&lt;h3 id="1-install-puppetlabsdocker-module">1. install puppetlabs/docker module&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: puppet module install puppetlabs/docker --version 3.10.2
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-apply-this-manifest">2. apply this manifest:&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">class&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;docker&amp;#39;&lt;/span>: }
+&lt;span style="color:#50fa7b">docker&lt;/span>::&lt;span style="color:#50fa7b">run&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;servercore&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">image&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;hello-world:linux&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">restart&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;always&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">net&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$facts[&amp;#39;os&amp;#39;]&lt;/span>[&lt;span style="color:#f1fa8c">&amp;#39;name&amp;#39;&lt;/span>] &lt;span style="color:#ff79c6">?&lt;/span> {
+&lt;span style="color:#f1fa8c">&amp;#39;windows&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;nat&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">default&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;bridge&amp;#39;&lt;/span>,
+},
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-check-the-image-tag-by-running-this-command">3. check the image tag by running this command:&lt;/h3>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: docker inspect --format&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;{{ .Config.Image }}&amp;#34;&lt;/span> servercore
+$: hello-world:linux
+&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="4-change-the-image-tag-from-hello-worldlinux-to-hello-worldlatest-and-reapply-the-manifest">4. change the image tag from &lt;code>hello-world:linux&lt;/code> to &lt;code>hello-world:latest&lt;/code> and reapply the manifest.&lt;/h3>
+&lt;p>The manifest should look like this:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#ff79c6">class&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;docker&amp;#39;&lt;/span>: }
+&lt;span style="color:#50fa7b">docker&lt;/span>::&lt;span style="color:#50fa7b">run&lt;/span> { &lt;span style="color:#f1fa8c">&amp;#39;servercore&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">image&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;hello-world:latest&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">restart&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;always&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">net&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#8be9fd;font-style:italic">$facts[&amp;#39;os&amp;#39;]&lt;/span>[&lt;span style="color:#f1fa8c">&amp;#39;name&amp;#39;&lt;/span>] &lt;span style="color:#ff79c6">?&lt;/span> {
+&lt;span style="color:#f1fa8c">&amp;#39;windows&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;nat&amp;#39;&lt;/span>,
+&lt;span style="color:#ff79c6">default&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;bridge&amp;#39;&lt;/span>,
+},
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>&amp;hellip; and now check if the change was applied&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">$: docker inspect --format&lt;span style="color:#ff79c6">=&lt;/span>&lt;span style="color:#f1fa8c">&amp;#34;{{ .Config.Image }}&amp;#34;&lt;/span> servercore
+$: hello-world:linux
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>so&amp;hellip; something is wrong, the tag was not changed to &lt;code>hello-world:latest&lt;/code>. If we want to apply this change we need to do a few more steps:&lt;/p>
+&lt;ul>
+&lt;li>stop the container: &lt;code>docker stop servercore&lt;/code>&lt;/li>
+&lt;li>remove the container: &lt;code>docker rm servercore&lt;/code>&lt;/li>
+&lt;li>reapply the manifest detailed above: &lt;code>puppet apply &amp;lt;manifest_file_name&amp;gt;&lt;/code>&lt;/li>
+&lt;/ul>
+&lt;p>In conclusion in the puppetlabs/docker module versions &lt;code>&amp;lt;= 3.10.2 &lt;/code>the parameter change is not detected. If we want to change some parameters for the same container, the puppet agent will not apply these changes for us until we delete the container manually.
+Using the latest versions(&lt;code>&amp;gt;=3.11.0&lt;/code>) this problem is resolved by having the parameter detection mechanism implemented for the most important parameters such as image, volumes and ports.
+Also please take a look at the &lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/648">solution&lt;/a>.&lt;/p>
+&lt;p>Kind regards,
+&lt;a href="https://github.com/adrianiurca">Adrian Iurca&lt;/a>&lt;/p></description></item></channel></rss>

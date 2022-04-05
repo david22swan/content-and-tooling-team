@@ -1,0 +1,39 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – ibm_installation_manager</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/ibm_installation_manager/</link><description>Recent content in ibm_installation_manager on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/ibm_installation_manager/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 3th July 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-07-03-status-update/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-07-03-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of things over the past week.
+We want to share with our community some of the most interesting things.
+Here’s a brief overview of what we’ve been up to:&lt;/p>
+&lt;h2 id="module-releases-from-iac-team">Module Releases from IAC Team&lt;/h2>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">puppetlabs/apache&lt;/a>(5.5.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks">puppetlabs/java_ks&lt;/a>(3.2.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tagmail">puppetlabs/tagmail&lt;/a>(3.3.0)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-ibm_installation_manager">puppetlabs/ibm_installation_manager&lt;/a>(2.2.0)&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppet_litmus-0184-was-released">puppet_litmus 0.18.4 was released&lt;/h2>
+&lt;p>We have released v0.18.4 of the [puppet_litmus gem][https://github.com/puppetlabs/puppet_litmus].
+There were quite a number of fixes but a few highlights worth mentioning:&lt;/p>
+&lt;p>&lt;a href="https://github.com/DavidS">DavidS&lt;/a> - Protect version reporting from undefined-ness: &lt;a href="https://github.com/puppetlabs/puppet_litmus/pull/312">312&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://github.com/lswith">lswith&lt;/a> - Ignore stderr of serverspec commands by setting request pty to false &lt;a href="https://github.com/puppetlabs/puppet_litmus/pull/309">309&lt;/a>&lt;/p>
+&lt;h2 id="community-shout-outs-for-iac">Community Shout outs for IAC&lt;/h2>
+&lt;p>We appreciate our community contributors as they are always ready to help and they have excellent ideas. Here are some highlights of this week:&lt;/p>
+&lt;p>Thanks to &lt;a href="https://github.com/leroyguillaume">Guillaume Leroy&lt;/a> for the bug &lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat/pull/400">fix&lt;/a> on tomcat module.&lt;/p>
+&lt;p>Thanks to &lt;a href="https://github.com/scoopex">Marc Schöchlin&lt;/a> for the kubernetes PRs which bring a lot of new changes.
+We&amp;rsquo;d also like to call out two fixes in the &lt;code>puppetlabs-apache&lt;/code> module: &lt;a href="https://github.com/h-haaks">h-haaks&lt;/a> for &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2041">2041&lt;/a> and &lt;a href="https://github.com/farebers">farebers&lt;/a> for &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2021">2021&lt;/a>.&lt;/p>
+&lt;h2 id="customer-tickets-closed-this-week">Customer tickets closed this week&lt;/h2>
+&lt;p>The team have closed out the following customer tickets: MySQL issue (&lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10597">MODULES-10597&lt;/a>) and a vcsrepo issue (&lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10659">MODULES-10659&lt;/a>).&lt;/p>
+&lt;p>Big thanks to &lt;a href="https://github.com/adrianiurca">Adrian&lt;/a> and &lt;a href="https://github.com/sheenaajay">Sheena&lt;/a>.&lt;/p>
+&lt;h2 id="contributors-acknowledgements-its-always-nice-to-hear-back-from-the-community">Contributors Acknowledgements (it&amp;rsquo;s always nice to hear back from the community)&lt;/h2>
+&lt;p>&lt;em>FYI my contribution has been released. It&amp;rsquo;s fantastic! Faster than I ever thought!&lt;/em> - &lt;a href="https://github.com/fhrbek">Filip Hrebek&lt;/a>&lt;/p>
+&lt;p>&lt;em>I&amp;rsquo;m happy that my (little) contribution to @puppetize #tomcat module was merged&lt;/em> - &lt;a href="https://github.com/leroyguillaume">Francis&lt;/a>&lt;/p>
+&lt;p>Thank you, folks! Thank you for your contributions and your positive feedback!&lt;/p>
+&lt;h2 id="final-exam-for-daiana">Final exam for Daiana&lt;/h2>
+&lt;p>Tuesday, Daiana had her last exam from college, now she is officially an engineer and she started the work on the docker and kubernetes modules.&lt;/p>
+&lt;h2 id="happy-news">Happy news&lt;/h2>
+&lt;p>We regret to announce that Michael Lombardi is leaving the software engineering position from the IAC Team, but we are pleased to announce that he is immediately rejoining the team as a senior software engineer!
+Well done, Michael, the promotion was long overdue and truly deserved. Thank you Michael for the hard work! Congratulations!&lt;/p>
+&lt;h2 id="apache-module-work-in-progress">Apache module work in progress&lt;/h2>
+&lt;p>This week sees a lot of excellent community contributions in &lt;code>v5.5.0&lt;/code> of the &lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs-apache&lt;/a> module.
+We have also been working on improving our test strategy around &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a> to ensure we can turn around updates to the module in a faster manner.
+Check out &lt;a href="https://github.com/sanfrancrisko">sanfrancrisko’s&lt;/a> &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-07-03-apache-mod-test-improvements.md">blog post&lt;/a> which outlines what we’ve done and how we’re handling test coverage for &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a>, going forward.&lt;/p>
+&lt;h2 id="wrap-up">Wrap-up&lt;/h2>
+&lt;p>That’s it for this weeks update, a big THANK YOU for all your contributions and support.&lt;/p></description></item></channel></rss>

@@ -1,0 +1,184 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – roadmap</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/roadmap/</link><description>Recent content in roadmap on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 21 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/roadmap/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: DSC + Puppet: Arrived!</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-21-dsc-release/</link><pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-21-dsc-release/</guid><description>
+&lt;p>Earlier this year, we &lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/03/30/dsc-announcement.html">announced an upcoming project&lt;/a> to drastically improve the story for using DSC Resources with Puppet.
+Today, we&amp;rsquo;re announcing the general availability of that project!&lt;/p>
+&lt;p>The &lt;a href="https://github.com/puppetlabs/Puppet.Dsc">&lt;code>Puppet.Dsc&lt;/code> PowerShell module&lt;/a> is now available on the &lt;a href="https://www.powershellgallery.com/packages/Puppet.Dsc">PowerShell Gallery&lt;/a>;
+furthermore, an initial batch of &lt;strong>twenty-six&lt;/strong> PowerShell modules with DSC Resources have been Puppetized and &lt;a href="https://forge.puppet.com/dsc">published to the Forge&lt;/a>!&lt;/p>
+&lt;p>We picked several of the most-downloaded modules with DSC Resources released in the last year to start with, but in the coming weeks you should find &lt;em>everything&lt;/em> available on the PowerShell Gallery up on the Forge!&lt;/p>
+&lt;p>But today, in addition to sharing this news, I want to go into a bit more detail, both with what&amp;rsquo;s going on under the hood and with how you can use these auto-generated modules.&lt;/p>
+&lt;h3 id="installing-the-modules">Installing the Modules&lt;/h3>
+&lt;p>If you just want to get your hands on the PowerShell module to read the help and experiment on your own, you can install it like any other PowerShell module:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#8be9fd;font-style:italic">Install-Module&lt;/span> -Name Puppet.Dsc
+&lt;span style="color:#8be9fd;font-style:italic">Import-Module&lt;/span> -Name Puppet.Dsc
+&lt;span style="color:#8be9fd;font-style:italic">Get-Command&lt;/span> -Module Puppet.Dsc
+&lt;span style="color:#8be9fd;font-style:italic">Get-Help&lt;/span> -Name &lt;span style="color:#8be9fd;font-style:italic">New-PuppetDscModule&lt;/span> -ShowWindow
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Some of the functions from the PowerShell module rely on the &lt;a href="https://puppet.com/docs/pdk/1.x/pdk.html">Puppet Development Kit (PDK)&lt;/a> being installed;
+we suggest using &lt;a href="https://chocolatey.org/">Chocolatey&lt;/a> to do so, but you can also &lt;a href="https://puppet.com/try-puppet/puppet-development-kit/">manually download and install&lt;/a> if you prefer.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">choco install pdk
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>If you want to do the same sort of thing with one of the Puppetized modules from the forge, you can install them and treat them just like any other Puppet module:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">&lt;span style="color:#6272a4"># For example, installing the Puppetized ComputerManagementDsc module manually:&lt;/span>
+puppet module install dsc-computermanagementdsc --Version 8.4.0-0-0
+&lt;span style="color:#6272a4"># Or via r10k / Code Manager / Bolt:&lt;/span>
+mod &lt;span style="color:#f1fa8c">&amp;#39;dsc-computermanagementdsc&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;8.4.0-0-0&amp;#39;&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="puppetizing-a-powershell-module">Puppetizing a PowerShell module&lt;/h2>
+&lt;p>So, you want to turn a PowerShell module with DSC Resources into a Puppet module?
+You can do this with a single command:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-powershell" data-lang="powershell">&lt;span style="color:#6272a4"># If you run this command without the PassThru flag it returns nothing to the output stream.&lt;/span>
+&lt;span style="color:#6272a4"># Any conversion errors will be in the error stream, as usual.&lt;/span>
+&lt;span style="color:#6272a4"># If you&amp;#39;d like a deeper look at what it&amp;#39;s doing, try running it with the Verbose flag.&lt;/span>
+&lt;span style="color:#8be9fd;font-style:italic">New-PuppetDscModule&lt;/span> -PowerShellModuleName ComputerManagementDsc -PassThru
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Unfortunately, the output from running it isn&amp;rsquo;t all that exciting:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/new-puppetdscmodule.png" alt="Output from a PowerShell console showing the running of the command above as well as the return output, which is the folder object representing the new Puppet module on disk">&lt;/p>
+&lt;p>Behind the scenes, the command:&lt;/p>
+&lt;ol>
+&lt;li>Uses the &lt;a href="https://puppet.com/docs/pdk/1.x/pdk.html">PDK&lt;/a> to create a new Puppet module&lt;/li>
+&lt;li>Searches the &lt;a href="https://www.powershellgallery.com">PowerShell Gallery&lt;/a> for the ComputerManagementDsc module and vendor it into the new Puppet module&lt;/li>
+&lt;li>Converts each of the DSC Resources from the vendored PowerShell module into a Puppet Resource API type and provider&lt;/li>
+&lt;li>Updates the Puppet module&amp;rsquo;s metadata and documentation based on the PowerShell module.&lt;/li>
+&lt;/ol>
+&lt;blockquote>
+&lt;p>At this time, for best results we strongly recommend you run the command with administrator privileges in a Windows PowerShell 5.1 session.
+While it &lt;em>does&lt;/em> work without administrator privileges, the function cannot fully map nested CIM instances without administrator privileges.
+For more information on this process, check out the &lt;a href="https://github.com/puppetlabs/Puppet.Dsc/blob/main/docs/about_Puppetization.md">&lt;code>about_Puppetization&lt;/code> HelpFile&lt;/a> via &lt;code>Get-Help&lt;/code> for a more in-depth documentation of this process.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="using-puppetized-modules">Using puppetized modules&lt;/h2>
+&lt;p>On the one hand, there&amp;rsquo;s not much to say about using the Puppetized modules with DSC Resources;
+you use them &lt;em>precisely&lt;/em> like any other Puppet module, after all.
+On the other hand, there&amp;rsquo;s some strong utility worth going over in more detail you may or may not be aware of!&lt;/p>
+&lt;p>To get the most value from your workflow, we &lt;strong>strongly&lt;/strong> recommend you author your manifests that include Puppetized DSC Resources in &lt;a href="https://code.visualstudio.com/">VSCode&lt;/a> with the &lt;a href="https://puppet-vscode.github.io/">Puppet extension&lt;/a> enabled.&lt;/p>
+&lt;p>When we open a file named &lt;code>example.pp&lt;/code> to edit, the Puppet extension automatically begins to load;
+once this is finished, we have access to a ton of useful authoring support, including intellisense.&lt;/p>
+&lt;p>For example, if we&amp;rsquo;ve installed the &lt;code>computermanagementdsc&lt;/code> Puppet module, we need only type &lt;code>dsc_execution&lt;/code> before IntelliSense kicks in and helps us out:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/intellisense-resource.png" alt="A VSCode window showing the text &amp;lsquo;dsc_execution&amp;rsquo; has raised a tooltip which lists multiple possible matches, including dsc_powershellexecutionpolicy, and to the right it shows the help information for this resource.">&lt;/p>
+&lt;p>Note that it tells us not just what available resources might match, it also displays the available documentation for each resource.&lt;/p>
+&lt;p>We also get IntelliSense for each property we want to pass, too;
+again, this doesn&amp;rsquo;t just show the available options but also includes any available documentation for each property.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/intellisense-property.png" alt="A VSCode window showing the text &amp;lsquo;dsc&amp;rsquo; inside a Puppet resource declaration for dsc_powershellexecutionpolicy, with a tooltip listing the possible properties, including dsc_executionpolicy and dsc_executionpolicyscope; as before, the help information (now including valid values) is to the right.">&lt;/p>
+&lt;p>You can also review the documentation for a property by hovering over it:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/docs-property.png" alt="A VSCode window showing an empty declaration for &amp;lsquo;dsc_executionpolicy&amp;rsquo; with the mouse hovering over that key, displaying a tooltip which includes the documentation and valid values for the property.">&lt;/p>
+&lt;p>Where this combination really begins to sing is when you&amp;rsquo;ve begun authoring a manifest and something goes wrong.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/problems.png" alt="A VSCode window showing a fully defined manifest with markings to highlight issues.">&lt;/p>
+&lt;p>The image above shows that the file name in the left-hand pane has changed colors and is now red.
+It also underscores two entries in the manifest that VSCode has highlighted - one with orange underlining, indicating a warning, and one with red underlining, indicating an error.
+Finally, down in the bottom left corner it highlights the problem symbols for errors and warnings, both of which display a count of one.&lt;/p>
+&lt;p>VSCode (via the extension) knows &lt;em>something&lt;/em> is wrong with our manifest;
+we can click on those symbols to bring up the Problems Pane and investigate:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/problems-pane.png" alt="A VSCode window displaying the Problems Pane with two entries">&lt;/p>
+&lt;p>This tells us there&amp;rsquo;s a warning about the indentation of a hash rocket and some sort of syntax error preventing the extension from parsing line 3.&lt;/p>
+&lt;p>A quick look at the code tells us that we&amp;rsquo;re missing a comma in the resource declaration on line 2, and as soon as we add that comma in we get confirmation:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/problems-added-comma.png" alt="A VSCode window displaying the Problems Pane with only one warning">&lt;/p>
+&lt;p>All that remains now is the formatting issue.
+Luckily, VSCode is able to automatically handle this for us via the &lt;em>Format Document&lt;/em> command:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/format-document-option.png" alt="A VSCode window displaying the right-click menu over the manifest, highlighting the &amp;lsquo;Format Document&amp;rsquo; command with a hotkey combination of &amp;lsquo;Shift+Alt+F&amp;rsquo;">&lt;/p>
+&lt;p>Which we can see does in fact move the hash rocket and resolve our last problem:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-09-21-dsc-release/manifest-fixed.png" alt="A VSCode window displaying the manifest with no issues or warnings, the hash rocket moved appropriately to ensure preferred formatting for the manifest.">&lt;/p>
+&lt;p>We&amp;rsquo;re ready to apply this manifest!&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-bash" data-lang="bash">puppet apply ./example.pp
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Only&amp;hellip; there was a problem;
+without reading the documentation for &lt;code>dsc_executionpolicyscope&lt;/code> thoroughly enough, we specified &lt;code>Machine&lt;/code> instead of &lt;code>MachinePolicy&lt;/code>!&lt;/p>
+&lt;p>Puppet gives us back a pretty good error message though:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">Error: Parameter dsc_executionpolicyscope failed on Dsc_powershellexecutionpolicy[[OPS-213]]: dsc_powershellexecutionpolicy.dsc_executionpolicyscope expects a match for Enum[&amp;#39;CurrentUser&amp;#39;, &amp;#39;LocalMachine&amp;#39;, &amp;#39;MachinePolicy&amp;#39;, &amp;#39;Process&amp;#39;, &amp;#39;UserPolicy&amp;#39;], got &amp;#39;Machine&amp;#39;
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>We get an explicit list of the allowed values &lt;em>before&lt;/em> it tries to invoke DSC with the &lt;code>Set&lt;/code> action.
+This is unlike our prior implementation in &lt;code>puppetlabs-dsc_lite&lt;/code>, which has no way of knowing whether the values you&amp;rsquo;ve provided are correct.&lt;/p>
+&lt;p>Once we correct our manifest to specify &lt;code>LocalMachine&lt;/code> and re-run the command, we get something else:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-text" data-lang="text">Notice: Compiled catalog for michael.lombardi-pf12aa84 in environment workstation_production in 1.04 seconds
+Notice: /Stage[main]/Main/Dsc_powershellexecutionpolicy[[OPS-213]]/dsc_executionpolicy: dsc_executionpolicy changed &amp;#39;Unrestricted&amp;#39; to &amp;#39;RemoteSigned&amp;#39;
+Notice: dsc_powershellexecutionpolicy[{:name=&amp;gt;&amp;#34;[OPS-213]&amp;#34;, :dsc_executionpolicyscope=&amp;gt;&amp;#34;LocalMachine&amp;#34;}]: Updating: Finished in 0.809555 seconds
+Notice: Applied catalog in 1.68 seconds
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>This highlights a change from both of our prior implementations:
+you now get &lt;em>property-by-property&lt;/em> reporting for DSC Resources when using Puppet!
+This implementation knows not just &lt;em>that&lt;/em> a DSC Resource was out of sync and therefore applied, but it can tell you exactly which properties were out of sync, what their value was, and what it has been set to in this run.&lt;/p>
+&lt;p>This brings DSC Resources in line with all of the rest of the resources you manage with Puppet and drastically improves the usefulness of your run reports!&lt;/p>
+&lt;h2 id="coming-up">Coming Up&lt;/h2>
+&lt;p>This wave of converted DSC Resources and the release of the &lt;code>Puppet.Dsc&lt;/code> module to the PowerShell Gallery is not the &lt;em>last&lt;/em> step of our support for using DSC with Puppet, just the initial step.&lt;/p>
+&lt;p>Over the coming weeks we&amp;rsquo;re going to be looking to you for feedback and incorporating it as fast as we can manage.&lt;/p>
+&lt;p>We&amp;rsquo;re also moving towards automatically Puppetizing &lt;em>every&lt;/em> PowerShell module with DSC Resources on the Gallery.
+If there&amp;rsquo;s a module you want to use that isn&amp;rsquo;t yet published under our &lt;a href="https://forge.puppet.com/dsc">&lt;strong>dsc&lt;/strong> namespace on the Forge&lt;/a>, let us know in &lt;a href="https://slack.puppet.com/">Slack&lt;/a> or by &lt;a href="mailto:dsc@puppet.com">emailing us&lt;/a> and we&amp;rsquo;ll publish it as soon as we can!&lt;/p>
+&lt;p>In the long run, we plan to get some nightly builds in place to ensure that there&amp;rsquo;s never more than a 24 hour lag between when a PowerShell module with DSC Resources is published (new or merely updated) to the Gallery and when that same module is Puppetized and published to the Forge.&lt;/p>
+&lt;p>We hope to hear from you soon!&lt;/p></description></item><item><title>Blog: DSC + Puppet: Incoming!</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-30-dsc-announcement/</link><pubDate>Mon, 30 Mar 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-03-30-dsc-announcement/</guid><description>
+&lt;p>As &lt;a href="https://github.com/glennsarti">Glenn&lt;/a> and I alluded to on the &lt;a href="https://player.fm/series/powerscripting-podcast/episode-334-powerscripting-podcast-glenn-sarti-michael-lombardi">PowerScripting Podcast&lt;/a>, our team has been hard at work re-envisioning how we want to present the DSC + Puppet story for our users.&lt;/p>
+&lt;p>&lt;a href="https://tickets.puppetlabs.com/browse/IAC-41">Long story short&lt;/a>, for lots of reasons, our &lt;a href="https://forge.puppet.com/puppetlabs/dsc">original implementation&lt;/a> for calling DSC resources from inside Puppet (shoutout to &lt;a href="https://github.com/msutter">Marc Sutter&lt;/a>, the initial implementer!) was getting fragile, stale, and maintenance costs kept rising.&lt;/p>
+&lt;p>As a stop gap, we put together the &lt;a href="https://forge.puppet.com/puppetlabs/dsc_lite">dsc_lite&lt;/a> module for people to use which dropped the guardrails and help in exchange for letting you just get to work if you needed to use it.
+Essentially the thinnest of wrappers over &lt;a href="https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/invoke-dscresource?view=powershell-7">&lt;code>Invoke-DscResource&lt;/code>&lt;/a>, requiring you to get those resources onto the target and to pass an arbitrary hash of &lt;em>hopefully&lt;/em> correct properties to the DSC resource;
+no way to tell if you goofed til run time.&lt;/p>
+&lt;p>We made &lt;a href="https://forge.puppet.com/puppetlabs/dsc_lite">dsc_lite&lt;/a> for the DSC expert, &lt;a href="https://github.com/puppetlabs/puppetlabs-dsc_lite/blob/master/README_Tradeoffs.md">basically&lt;/a>.
+But as time went on and we could no longer use our old builder to update our original module&amp;hellip;
+we were leaving a &lt;strong>lot&lt;/strong> of people in the cold with a less than stellar UX.&lt;/p>
+&lt;p>So my team decided to change that story.&lt;/p>
+&lt;p>We talked it out, &lt;a href="https://tickets.puppetlabs.com/browse/IAC-41">planned some stuff&lt;/a> and adopted &lt;a href="https://github.com/jpogran">James Pogran&lt;/a>&amp;rsquo;s INCREDIBLE &lt;a href="https://github.com/jpogran/PuppetDscBuilder">prototype work&lt;/a>—he did 80% of the initial work for this, basically all the hardest bits. 💜&lt;/p>
+&lt;h2 id="so-about-this-builder">So, About This Builder&lt;/h2>
+&lt;p>The &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder">whole thing&lt;/a> is written in and relies on PowerShell, not Ruby.
+The only non-PowerShell dependency is the &lt;a href="https://puppet.com/docs/pdk/1.x/pdk.html">Puppet Development Kit&lt;/a> for scaffolding the Puppet module out (no reason to re-implement that!)&lt;/p>
+&lt;p>It builds on two important technologies:&lt;/p>
+&lt;ol>
+&lt;li>The &lt;a href="https://puppet.com/docs/puppet/latest/about_the_resource_api.html">resource_api&lt;/a> (largely developed by &lt;a href="https://github.com/DavidS">David Schmitt&lt;/a>), makes writing Puppet types and providers &lt;em>actually&lt;/em> doable for people like me—the type file is just data, the provider adheres to a simple schema.&lt;/li>
+&lt;li>The &lt;a href="https://github.com/puppetlabs/ruby-pwsh/">ruby-pwsh&lt;/a> gem, based on work by numerous members of the former Windows team at Puppet:
+&lt;a href="https://github.com/glennsarti">Glenn Sarti&lt;/a>, &lt;a href="https://github.com/jpogran">James Pogran&lt;/a>, &lt;a href="https://github.com/Iristyle">Ethan Brown&lt;/a>, &lt;a href="https://github.com/RandomNoun7">Bill Hurt&lt;/a>, &lt;a href="https://github.com/ThoughtCrhyme">Erick Banks&lt;/a>, &lt;a href="https://github.com/ferventcoder">Rob Reynolds&lt;/a>, and me.
+This gem is a library that gives you a &lt;a href="https://github.com/puppetlabs/ruby-pwsh/blob/master/DESIGN.md">PowerShell manager&lt;/a>, enabling you to interop between PowerShell &amp;amp; Ruby.
+That lets us take advantage of having a PowerShell host process and not shell out for every command.
+It&amp;rsquo;s &lt;em>much&lt;/em> faster and paves the way for some really cool improvements.
+It&amp;rsquo;s also what powers all of our Puppet modules which rely heavily on PowerShell calls!&lt;/li>
+&lt;/ol>
+&lt;p>This builder scaffolds a new Puppet module, vendors a PowerShell module from the Gallery (&lt;em>with&lt;/em> dependencies), introspects that module for DSC resources, then generates a Puppet resource_api type and provider for each DSC resource.&lt;/p>
+&lt;p>It has a &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/blob/c5d349f51883abcca926a0dc6be465a037dfe957/Get-DscResourceTypeInformation.ps1">helper function&lt;/a> which desperately needs refactoring but which parses the &lt;a href="https://mikefrobbins.com/2018/09/28/learning-about-the-powershell-abstract-syntax-tree-ast/">AST&lt;/a> for the DSC resource&amp;rsquo;s source file (if it can) to retrieve the reference docs, default values, and whether the parameter is mandatory for get/set operations.
+If it &lt;em>can&amp;rsquo;t&lt;/em> parse the AST (as with binary/class-based DSC resources in this iteration) it still works&amp;ndash;
+it just won&amp;rsquo;t have the reference docs and will rely on the best info it can find in the output from &lt;a href="https://docs.microsoft.com/en-us/powershell/module/psdesiredstateconfiguration/get-dscresource?view=powershell-7">&lt;code>Get-DscResource&lt;/code>&lt;/a>.&lt;/p>
+&lt;p>Okay, &lt;em>fine&lt;/em>, &lt;em>&lt;strong>weeeee&lt;/strong>&lt;/em>, it &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/files/4395886/michaeltlombardi-powershellget-0.1.0.tar.gz">builds a module&lt;/a>, great.
+But what does using it look like?
+I&amp;rsquo;m glad you asked.
+First of all, here&amp;rsquo;s what a very basic manifest using a &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/files/4395886/michaeltlombardi-powershellget-0.1.0.tar.gz">puppetized module&lt;/a> looks like&amp;ndash;in this case, &lt;a href="https://www.powershellgallery.com/packages/PowerShellGet/2.2.3">PowerShellGet&lt;/a>.&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-puppet" data-lang="puppet">&lt;span style="color:#50fa7b">dsc_psrepository&lt;/span> {&lt;span style="color:#f1fa8c">&amp;#39;Add team shared module folder as a repository&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">dsc_name&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;foo&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,&lt;span style="color:#6272a4">
+&lt;/span>&lt;span style="color:#6272a4"> # This location is nonsense, can be any valid folder on your
+&lt;/span>&lt;span style="color:#6272a4"> # machine or in a share, any location the SourceLocation param
+&lt;/span>&lt;span style="color:#6272a4"> # for the DSC resource will accept.&lt;/span>
+&lt;span style="color:#50fa7b">dsc_sourcelocation&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;C:\Program Files&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_installationpolicy&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#50fa7b">untrusted&lt;/span>,
+}
+&lt;span style="color:#50fa7b">dsc_psrepository&lt;/span> {&lt;span style="color:#f1fa8c">&amp;#39;Trust the PowerShell Gallery&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">dsc_name&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;PSGallery&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">present&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_installationpolicy&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#50fa7b">trusted&lt;/span>,
+}
+&lt;span style="color:#50fa7b">dsc_psmodule&lt;/span> {&lt;span style="color:#f1fa8c">&amp;#39;Ensure Ruby is Manageable via uru&amp;#39;&lt;/span>:
+&lt;span style="color:#50fa7b">dsc_name&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;RubyInstaller&amp;#39;&lt;/span>,
+&lt;span style="color:#50fa7b">dsc_ensure&lt;/span> &lt;span style="color:#ff79c6">=&amp;gt;&lt;/span> &lt;span style="color:#ff79c6">absent&lt;/span>,
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>And, well? It works! It&amp;rsquo;s idempotent! And, much more interestingly from my perspective, it gives you property-by-property reporting for your DSC resources&amp;ndash;it knows what the state of the resource is on your node before it calls the Set method for Invoke-DscResource&amp;hellip;&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-03-30-dsc-announcement/property-rep.png" alt="Puppet run output reading &amp;ldquo;dsc_sourcelocation changed &amp;lsquo;C:\code\temp&amp;rsquo; to &amp;lsquo;C:\Program Files&amp;rsquo;"">&lt;/p>
+&lt;p>So it can actually tell you &lt;em>what changed&lt;/em> during the run and when.
+In other words, DSC resources in this implementation now report &lt;strong>just&lt;/strong> like any other Puppet resource.&lt;/p>
+&lt;p>That&amp;rsquo;s pretty neat!!&lt;/p>
+&lt;p>What else do you get?
+Intellisense and some other awesome magic!
+Thanks to the &lt;a href="https://puppet-vscode.github.io/">VSCode extension&lt;/a> maintained by &lt;a href="https://github.com/jpogran">James Pogran&lt;/a> and &lt;a href="https://github.com/glennsarti">Glenn Sarti&lt;/a>—in this screenshot, the editor is aware of all the parameters you might select, what their type is, and the valid values!&lt;/p>
+&lt;p>![Image displaying intellisense capabilities of the VSCode extension where it is predicting which parameters to use and displaying their help information inline in the editor.](/content-and-tooling-team/assets/2020-03-30-dsc-announcement/intellisense.jfif %})&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>Aside:&lt;/strong>
+You &lt;em>are&lt;/em> writing your Puppet code in VSCode with the &lt;a href="https://puppet-vscode.github.io/">Puppet extension&lt;/a> installed, aren&amp;rsquo;t you?
+You&amp;rsquo;re taking advantage of the &lt;a href="https://puppet-vscode.github.io/docs/features/intellisense">intellisense&lt;/a>, &lt;a href="https://puppet-vscode.github.io/docs/features/code-navigation">code navigation&lt;/a>, &lt;a href="https://puppet-vscode.github.io/docs/features/linting">auto linting&lt;/a>, &lt;a href="https://puppet-vscode.github.io/docs/features/debugging-puppet-code">debugging&lt;/a>, and the &lt;a href="https://puppet-vscode.github.io/docs/features/puppet-development-kit">PDK&lt;/a>, &lt;a href="https://puppet-vscode.github.io/docs/features/puppet-bolt">Bolt&lt;/a>, &amp;amp; &lt;a href="https://puppet-vscode.github.io/docs/features/control-repository">Control Repo&lt;/a> integrations&amp;hellip; right??&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="so-it-works-what-next">So It Works. What Next?&lt;/h2>
+&lt;p>We still have some testing and a host of improvements to make (including probably swapping our template engine out, shout out to &lt;a href="https://github.com/FriedrichWeinmann">Fred Weinmann&lt;/a> for the &lt;a href="https://psframework.org/documentation/documents/psmoduledevelopment/templates.html">templating engine&lt;/a> in the &lt;a href="https://github.com/PowershellFrameworkCollective/PSModuleDevelopment">PSModuleDevelopment&lt;/a> module), but the next big step—and likely the last I&amp;rsquo;ll be involved with before my paternity leave hits—is &lt;a href="https://tickets.puppetlabs.com/browse/IAC-648">turning this build script into a PowerShell module and adding testing to it&lt;/a>.
+It &lt;em>works&lt;/em> as a build script, but it can definitely be improved.
+And, okay, a module on the Gallery is great and all&amp;hellip;&lt;/p>
+&lt;p>But the &lt;strong>really cool&lt;/strong> end-user magic will arrive in the &lt;a href="https://tickets.puppetlabs.com/browse/IAC-649">third phase&lt;/a>, where we hope to be able to automatically build and publish Puppet modules that 1:1 wrap PowerShell modules with DSC resources and expose them as Puppet types and providers!&lt;/p>
+&lt;p>We&amp;rsquo;re envisioning a future where not only can you Puppetize any DSC-Resource-having-module you want for yourself, but you can just find all of the modules publicly available on the Gallery already wrapped up and ready for you on the Puppet Forge!&lt;/p>
+&lt;h2 id="caveats-and-warnings">Caveats and Warnings&lt;/h2>
+&lt;p>We&amp;rsquo;re &lt;em>just&lt;/em> wrapping the underlying DSC resources and making them available to you.
+If there&amp;rsquo;s a problem &lt;em>calling&lt;/em> the DSC resources from Puppet, we&amp;rsquo;ll work on it, but if there&amp;rsquo;s a problem with &lt;em>how&lt;/em> those resources behave, that&amp;rsquo;s upstream.&lt;/p>
+&lt;p>Our team is full of lovely humans who do incredible amounts of work (seven people for &lt;a href="https://puppetlabs.github.io/community_management/">&amp;gt;250 PRs/month, ~50 supported modules&lt;/a>, &lt;a href="https://puppetlabs.github.io/iac/tools/">over a dozen open source tools&lt;/a>, contributing to dozens more) but we can&amp;rsquo;t adopt &amp;gt; 300 DSC modules too. 💔&lt;/p>
+&lt;p>We&amp;rsquo;ll also continue to improve the underlying provider and build system, of course, and are excited to get the output modules fully functional for PowerShell 7+ - meaning they&amp;rsquo;ll be cross-platform compatible if the underlying resources are!
+This first prototype is just 5.1 though.&lt;/p>
+&lt;h2 id="wrapping-up-call-to-action">Wrapping Up, Call to Action&lt;/h2>
+&lt;p>So! If you&amp;rsquo;re interested in the work so far, you can &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder">check it out on GitHub&lt;/a>&amp;ndash;
+the &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/pull/1">latest PR&lt;/a> includes functional instructions for testing the new builder or just &lt;a href="https://github.com/puppetlabs/PuppetDscBuilder/files/4395886/michaeltlombardi-powershellget-0.1.0.tar.gz">grabbing the test module&lt;/a> and playing with it in your own lab!&lt;/p>
+&lt;p>We wanna tighten the loop and ensure we&amp;rsquo;re solving your problems with this rework because the &lt;em>whole point&lt;/em> is to make your lives easier if you&amp;rsquo;re using Puppet and DSC.
+We&amp;rsquo;re here to help you get your configuration under control and free you up to do all the other hard work you have on your backlog.&lt;/p>
+&lt;p>With that in mind, we would love your feedback, so if this tickles your interest at all, please &lt;a href="mailto:dsc@puppet.com">email us&lt;/a> (&lt;a href="mailto:dsc@puppet.com">dsc@puppet.com&lt;/a>) or comment below and let us know:&lt;/p>
+&lt;ol>
+&lt;li>What are the top three PowerShell modules with DSC resources you&amp;rsquo;d like to see Puppetized?&lt;/li>
+&lt;li>Are you interested in joining our beta test group for this ongoing project?&lt;/li>
+&lt;/ol>
+&lt;p>If you just wanna keep an eye on things, you can follow the repository on GitHub and the &lt;a href="https://tickets.puppetlabs.com/browse/IAC-41">parent epic in JIRA&lt;/a>!&lt;/p>
+&lt;p>Thanks, folx!&lt;/p></description></item></channel></rss>

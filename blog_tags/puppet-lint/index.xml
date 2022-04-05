@@ -1,0 +1,110 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – puppet-lint</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/puppet-lint/</link><description>Recent content in puppet-lint on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 20 Sep 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/puppet-lint/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-09-20: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-09-20-status-update/</link><pubDate>Mon, 20 Sep 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-09-20-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2193">&lt;code>puppetlabs-apache#2193&lt;/code>&lt;/a>: &amp;ldquo;Restore Ubuntu 14.04 support in suphp&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2191">&lt;code>puppetlabs-apache#2191&lt;/code>&lt;/a>: &amp;ldquo;add double quote on scope parameter&amp;rdquo;, thanks to &lt;a href="https://github.com/aba-rechsteiner">aba-rechsteiner&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2189">&lt;code>puppetlabs-apache#2189&lt;/code>&lt;/a>: &amp;ldquo;Drop Debian &amp;lt; 8 and Ubuntu &amp;lt; 14.04 code&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/1007">&lt;code>puppetlabs-apt#1007&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-11173) Add per-host overrides for apt::proxy&amp;rdquo;, thanks to &lt;a href="https://github.com/maturnbull">maturnbull&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/999">&lt;code>puppetlabs-apt#999&lt;/code>&lt;/a>: &amp;ldquo;(maint) Set DEBIAN_FRONTEND=noninteractive on upgrade&amp;rdquo;, thanks to &lt;a href="https://github.com/smortex">smortex&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/774">&lt;code>puppetlabs-docker#774&lt;/code>&lt;/a>: &amp;ldquo;Prefer timeout to time_limit for Facter::Core::Execution&amp;rdquo;, thanks to &lt;a href="https://github.com/smortex">smortex&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy/pull/498">&lt;code>puppetlabs-haproxy#498&lt;/code>&lt;/a>: &amp;ldquo;Adding chroot_dir_manage parameter.&amp;rdquo;, thanks to &lt;a href="https://github.com/Tamerz">Tamerz&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/488">&lt;code>puppetlabs-java#488&lt;/code>&lt;/a>: &amp;ldquo;Enabling Rocky Linux for Install&amp;rdquo;, thanks to &lt;a href="https://github.com/pmjensen">pmjensen&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1299">&lt;code>puppetlabs-postgresql#1299&lt;/code>&lt;/a>: &amp;ldquo;Inline file contents in the catalog&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1296">&lt;code>puppetlabs-postgresql#1296&lt;/code>&lt;/a>: &amp;ldquo;Fix changing default encoding&amp;rdquo;, thanks to &lt;a href="https://github.com/smortex">smortex&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1279">&lt;code>puppetlabs-postgresql#1279&lt;/code>&lt;/a>: &amp;ldquo;Use Puppet-Datatype Sensitive for Passwords&amp;rdquo;, thanks to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1209">&lt;code>puppetlabs-stdlib#1209&lt;/code>&lt;/a>: &amp;ldquo;Added to_toml function&amp;rdquo;, thanks to &lt;a href="https://github.com/nmaludy">nmaludy&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-java">&lt;code>puppetlabs-java&lt;/code>&lt;/a> (&lt;code>7.2.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppet-lint">&lt;code>puppet-lint&lt;/code>&lt;/a> (&lt;code>2.5.2&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="the-dropping-of-support">The dropping of support&lt;/h3>
+&lt;p>Due to the large amount of major releases that where made during the last time we removed support for an OS from our supported modules and following discussion within the team, it has been decided that going forward metadata changes, i.e. a drop in support, will no longer result in a major release.
+In cases where code necesary for said OS to function is removed, i.e. a drop in compatibility, this will still result in a major release, however we will attempt to pair this type of change with other similar major changes in order to keep the amount of major releases down.
+This may be subject to change however so please keep in touch and come forward with any questions that you may have.&lt;/p>
+&lt;h2 id="devx-team-updates">DevX Team Updates&lt;/h2>
+&lt;p>As some of you are probably aware of, the PCT tool has been the main focus of the DevX team for the past few months.
+It is the first part of a suite of tools that will replace the PDK.
+To help clarify our strategy and vision, &lt;a href="https://github.com/da-ar">Dave&lt;/a> wrote a blog post that was published to &lt;a href="https://puppet.com">puppet.com&lt;/a>, last week - &lt;a href="https://puppet.com/blog/the-future-of-the-puppet-developer-kit-pdk/">check it out here&lt;/a>.&lt;/p>
+&lt;h3 id="pct-040">PCT 0.4.0&lt;/h3>
+&lt;p>We released version &lt;code>0.4.0&lt;/code> of the PCT tool on Friday, which brings a number of significant new features:&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>pct install&lt;/code> can now install remote &lt;code>tar.gz&lt;/code> templates via HTTP/S&lt;/li>
+&lt;li>&lt;code>pct new&lt;/code> now handles templates in the new &lt;code>0.4.0&lt;/code> format&lt;/li>
+&lt;/ul>
+&lt;p>As highlighted, PCT templates are now in a new format that is &lt;strong>not backwards compatible&lt;/strong> with earlier formats.&lt;/p>
+&lt;p>Check out the &lt;a href="https://github.com/puppetlabs/pdkgo/blob/main/CHANGELOG.md#040">&lt;code>0.4.0&lt;/code> README entry&lt;/a> for full details.&lt;/p>
+&lt;h3 id="puppet-lint-252">&lt;code>puppet-lint 2.5.2&lt;/code>&lt;/h3>
+&lt;p>There is also a new release of the &lt;code>puppet-lint&lt;/code> gem which resolves &lt;a href="https://github.com/puppetlabs/puppet-lint/issues/16">an issue&lt;/a> with a F+ in the &lt;code>double_quoted_strings&lt;/code> check when the string literal &lt;code>\s&lt;/code> was used in a manfest.
+Thanks to [optiz0r][https://github.com/optiz0r] for highlighting.&lt;/p>
+&lt;!-- check https://tickets.puppetlabs.com/secure/RapidBoard.jspa?rapidView=1176&amp;quickFilter=8745 for other tickets closed out this week that should be mentioned here --></description></item><item><title>Blog: 2021-08-02: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-08-02-status-update/</link><pubDate>Mon, 02 Aug 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-08-02-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2174">&lt;code>puppetlabs-apache#2174&lt;/code>&lt;/a>: &amp;ldquo;(MODULES-11075) Improve future version handling for RHEL&amp;rdquo;, thanks to &lt;a href="https://github.com/mwhahaha">mwhahaha&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ekohl">ekohl&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2165">&lt;code>puppetlabs-apache#2165&lt;/code>&lt;/a>: &amp;ldquo;(maint) Fix puppet-strings docs on apache::vhost&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2164">&lt;code>puppetlabs-apache#2164&lt;/code>&lt;/a>: &amp;ldquo;Allow custom userdir directives&amp;rdquo;, thanks to &lt;a href="https://github.com/hunner">hunner&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ekohl">ekohl&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2157">&lt;code>puppetlabs-apache#2157&lt;/code>&lt;/a>: &amp;ldquo;Add feature to reload apache service when content of ssl files has changed&amp;rdquo;, thanks to &lt;a href="https://github.com/timdeluxe">timdeluxe&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ekohl">ekohl&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/993">&lt;code>puppetlabs-apt#993&lt;/code>&lt;/a>: &amp;ldquo;apt::source: pass the weak_ssl param to apt::key&amp;rdquo;, thanks to &lt;a href="https://github.com/kenyon">kenyon&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/991">&lt;code>puppetlabs-apt#991&lt;/code>&lt;/a>: &amp;ldquo;[MODULES-9695] - Add support for signed-by in source entries&amp;rdquo;, thanks to &lt;a href="https://github.com/johanfleury">johanfleury&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-firewall/pull/998">&lt;code>puppetlabs-firewall#998&lt;/code>&lt;/a>: &amp;ldquo;add compatibility with Rocky Linux&amp;rdquo;, thanks to &lt;a href="https://github.com/vchepkov">vchepkov&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/528">&lt;code>puppetlabs-kubernetes#528&lt;/code>&lt;/a>: &amp;ldquo;Support for kubernetes dashboard version 2.0.0 and onwards&amp;rdquo;, thanks to &lt;a href="https://github.com/danifr">danifr&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1282">&lt;code>puppetlabs-postgresql#1282&lt;/code>&lt;/a>: &amp;ldquo;Do not add version component to repo definition&amp;rdquo;, thanks to &lt;a href="https://github.com/weastur">weastur&lt;/a> and &lt;a href="https://github.com/x1e">x1e&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat/pull/454">&lt;code>puppetlabs-tomcat#454&lt;/code>&lt;/a>: &amp;ldquo;Accept Datatype Sensitive for Secrets&amp;rdquo;, thanks to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/facterdb/pull/175">&lt;code>facterdb#175&lt;/code>&lt;/a>: &amp;ldquo;Release 1.7.0&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ekohl">ekohl&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/facterdb/pull/174">&lt;code>facterdb#174&lt;/code>&lt;/a>: &amp;ldquo;Fixes #173 - Add AlmaLinux&amp;rdquo;, thanks to &lt;a href="https://github.com/maccelf">maccelf&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/facterdb/pull/171">&lt;code>facterdb#171&lt;/code>&lt;/a>: &amp;ldquo;Introduce cache to speed things up and cleanup method&amp;rdquo;, thanks to &lt;a href="https://github.com/lzap">lzap&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ekohl">ekohl&lt;/a>, &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/rspec-puppet-facts/pull/131">&lt;code>rspec-puppet-facts#131&lt;/code>&lt;/a>: &amp;ldquo;Move facterversion_obj declaration out of the loop&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/rspec-puppet-facts/pull/130">&lt;code>rspec-puppet-facts#130&lt;/code>&lt;/a>: &amp;ldquo;release 2.0.2&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/rspec-puppet-facts/pull/129">&lt;code>rspec-puppet-facts#129&lt;/code>&lt;/a>: &amp;ldquo;Implement github action testing and codecov coverage reporting&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/iac/pull/286">&lt;code>iac#286&lt;/code>&lt;/a>: &amp;ldquo;Bump addressable from 2.7.0 to 2.8.0&amp;rdquo;, thanks to [dependabot[bot]][dependabot[bot]]&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/litmus/pull/24">&lt;code>litmus#24&lt;/code>&lt;/a>: &amp;ldquo;Bump addressable from 2.7.0 to 2.8.0&amp;rdquo;, thanks to [dependabot[bot]][dependabot[bot]]&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/litmusimage/pull/33">&lt;code>litmusimage#33&lt;/code>&lt;/a>: &amp;ldquo;Adds Rocky Linux &amp;amp; Alma Linux&amp;rdquo;, thanks to &lt;a href="https://github.com/fuero">fuero&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/441">&lt;code>pdk-templates#441&lt;/code>&lt;/a>: &amp;ldquo;Run validation steps prior to the matrix build&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-strings/pull/285">&lt;code>puppet-strings#285&lt;/code>&lt;/a>: &amp;ldquo;(FIXUP) Check for nil before injecting provider param into Types&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs_spec_helper/pull/340">&lt;code>puppetlabs_spec_helper#340&lt;/code>&lt;/a>: &amp;ldquo;Use Rubocop&amp;rsquo;s Github Actions formatter if possible&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>)&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt">&lt;code>puppetlabs-apt&lt;/code>&lt;/a> (&lt;code>8.1.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">&lt;code>puppetlabs-apache&lt;/code>&lt;/a> (&lt;code>6.4.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="http://github.com/puppetlabs/puppetlabs-firewall">&lt;code>puppetlabs-firewall&lt;/code>&lt;/a> (&lt;code>3.1.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="http://github.com/puppetlabs/puppetlabs-mysql">&lt;code>puppetlabs-mysql&lt;/code>&lt;/a> (&lt;code>12.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-tomcat">&lt;code>puppetlabs-tomcat&lt;/code>&lt;/a> (&lt;code>6.0.0&lt;/code>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes">&lt;code>puppetlabs-kubernetes&lt;/code>&lt;/a> (&lt;code>6.2.0&lt;/code>)&lt;/li>
+&lt;/ul>
+&lt;p>The following gems were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppet-lint">&lt;code>puppet-lint&lt;/code>&lt;/a> (&lt;code>2.5.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/rspec-puppet">&lt;code>rspec-puppet&lt;/code>&lt;/a> (&lt;code>2.10.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs_spec_helper">&lt;code>puppetlabs_spec_helper&lt;/code>&lt;/a> (&lt;code>4.0.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppetdsc-stable-release">Puppet.Dsc Stable Release!&lt;/h2>
+&lt;p>This week we pushed our &lt;a href="https://github.com/puppetlabs/Puppet.Dsc">Puppet.Dsc PowerShell module&lt;/a> to the &lt;a href="https://www.powershellgallery.com/packages/Puppet.Dsc/1.0.0">PowerShell Gallery at version &lt;code>1.0.0&lt;/code>&lt;/a>!
+This represents more than a year of work bringing us confidence and stability in the auto-generated modules which Puppetize PowerShell DSC Resources.
+That done, not much &lt;em>actually&lt;/em> changed in this release - a &lt;em>ton&lt;/em> of added testing and validation, but the features were already very solid.
+As always we&amp;rsquo;ll continue to take bug reports and address them but our attention turns now to the long-promised automation;
+We&amp;rsquo;re working through the auto-publishing of PowerShell modules with DSC Resources to the Puppet Forge!
+Very soon, there will be less than a 24 delay between when a new module (or new version of an existing module) with DSC Resources lands on the PowerShell Gallery and when it arrives, Puppetized, on the Forge!&lt;/p>
+&lt;h2 id="rpsec-puppet-puppet-lint-moved-to-puppetlabs-namespace">&lt;code>rpsec-puppet&lt;/code>, &lt;code>puppet-lint&lt;/code> moved to &lt;code>puppetlabs&lt;/code> namespace&lt;/h2>
+&lt;p>We have moved &lt;code>puppet-lint&lt;/code>, &lt;code>rspec-puppet&lt;/code> to the namespace and released &lt;code>puppet-lint&lt;/code> &lt;code>2.5.0&lt;/code> and &lt;code>rspec-puppet&lt;/code> &lt;code>2.10.0&lt;/code>.
+This will help facilitate more frequent releases of these gems in the future.&lt;/p>
+&lt;h2 id="dropsonde-update">Dropsonde update&lt;/h2>
+&lt;p>The IAC team have completed all development tasks on both the Dropsonde module and Gem.
+Next, the team will be working on getting both module and gem package up as part of Puppet server.&lt;/p></description></item></channel></rss>

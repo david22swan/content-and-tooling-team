@@ -1,0 +1,118 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – metrics</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/metrics/</link><description>Recent content in metrics on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 05 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/metrics/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Collecting GCP info and system metrics for Honeycomb</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-10-05-honeycomb-gcp-metrics/</link><pubDate>Mon, 05 Oct 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-10-05-honeycomb-gcp-metrics/</guid><description>
+&lt;p>For a new and exciting project, the team is currently onboarding on &lt;a href="https://en.wikipedia.org/wiki/Google_Cloud_Platform">Google Cloud Platform (GCP)&lt;/a> development.&lt;/p>
+&lt;!-- This is part of a series of posts describing our journey. -->
+&lt;p>I can&amp;rsquo;t wait until I&amp;rsquo;m able to share more, but for now I can only say we&amp;rsquo;re looking at a &lt;a href="http://sinatrarb.com/intro.html">Sinatra&lt;/a>-hosted Ruby API server.
+To gain a better understanding how the service is performing, we want to collect some &amp;ldquo;traditional&amp;rdquo; metrics.
+Since we&amp;rsquo;re already using honeycomb for tracing &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-teamblog/updates/2020-03-30-debugging-unit-tests-with-honeycomb.md">tests&lt;/a> and &lt;a href="https://docs.honeycomb.io/getting-data-in/ruby/beeline/#sinatra">API calls&lt;/a>, looking into honeycomb for more was my first choice.
+Most of the content here is based off the &amp;ldquo;Getting Started With Honeycomb Metrics&amp;rdquo; whitepaper at [https://www.honeycomb.io/white-papers/], made specific to Ruby and GCP.&lt;/p>
+&lt;h2 id="static-runtime-information">Static runtime information&lt;/h2>
+&lt;p>The first thing to collect is some static information about the container runtime hosting the current process.
+We&amp;rsquo;re using &lt;a href="https://cloud.google.com/run/docs">Cloud Run&lt;/a> as our primary deployment infrastructure for the API services, so this is our first stop.
+The &lt;a href="https://cloud.google.com/compute/docs/storing-retrieving-metadata">metadata server&lt;/a> provides details about the container instance as described in &amp;ldquo;&lt;a href="https://cloud.google.com/run/docs/reference/container-contract#metadata-server">Container instance metadata server&lt;/a>&amp;rdquo;.&lt;/p>
+&lt;p>The GCP ruby gems provide &lt;code>Google::Cloud.env&lt;/code> to access the metadata server.
+Here is a pruned example of how to add metadata to all spans for easy filtering:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#8be9fd;font-style:italic">require&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;honeycomb-beeline&amp;#39;&lt;/span>
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>configure &lt;span style="color:#ff79c6">do&lt;/span> &lt;span style="color:#ff79c6">|&lt;/span>config&lt;span style="color:#ff79c6">|&lt;/span>
+config&lt;span style="color:#ff79c6">.&lt;/span>service_name &lt;span style="color:#ff79c6">=&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;backend&amp;#39;&lt;/span>
+&lt;span style="color:#ff79c6">end&lt;/span>
+env &lt;span style="color:#ff79c6">=&lt;/span> Google&lt;span style="color:#ff79c6">::&lt;/span>Cloud&lt;span style="color:#ff79c6">.&lt;/span>env
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.project_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>project_id)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>lookup_metadata(&lt;span style="color:#f1fa8c">&amp;#39;instance&amp;#39;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#39;id&amp;#39;&lt;/span>))
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_name&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_name)
+region_result &lt;span style="color:#ff79c6">=&lt;/span> env&lt;span style="color:#ff79c6">.&lt;/span>lookup_metadata &lt;span style="color:#f1fa8c">&amp;#34;instance&amp;#34;&lt;/span>, &lt;span style="color:#f1fa8c">&amp;#34;region&amp;#34;&lt;/span>
+region &lt;span style="color:#ff79c6">=&lt;/span> region_result&lt;span style="color:#ff79c6">&amp;amp;.&lt;/span>split(&lt;span style="color:#f1fa8c">&amp;#39;/&amp;#39;&lt;/span>)&lt;span style="color:#ff79c6">&amp;amp;.&lt;/span>last
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_region&amp;#39;&lt;/span>, region)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_zone&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_zone)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_machine_type&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_machine_type)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.instance_blog_tags&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>instance_blog_tags)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.knative_service_id&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>knative_service_id)
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;gcp.knative_service_revision&amp;#39;&lt;/span>, env&lt;span style="color:#ff79c6">.&lt;/span>knative_service_revision)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Put this code somewhere that is loaded on app start up.
+For rack-based frameworks like sinatra this is the &lt;code>config.ru&lt;/code>, where we include this code through &lt;code>require&lt;/code>.&lt;/p>
+&lt;p>At the same time, we can also add private configuration flags from our service, to track their influence.
+For example, to capture whether &lt;code>FLAG_ENABLED&lt;/code> has been set in the container&amp;rsquo;s variables:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_field(&lt;span style="color:#f1fa8c">&amp;#39;flag_enabled&amp;#39;&lt;/span>, ENV&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">&amp;#39;FLAG_ENABLED&amp;#39;&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;true&amp;#39;&lt;/span>)
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The attributes show up in the trace/span sidebar and can be used in any query:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-10-05-honeycomb-gcp-metrics/gcp_attributes.png" alt="">&lt;/p>
+&lt;h2 id="dynamic-data">Dynamic Data&lt;/h2>
+&lt;p>For the actual system metrics, like CPU and memory usage, &lt;a href="https://github.com/honeycombio/libhoney-rb">libhoney&lt;/a> offers builders and &lt;a href="https://docs.honeycomb.io/getting-data-in/ruby/sdk/#advanced-usage-dynamic-fields">dynamic fields&lt;/a> (&lt;a href="https://www.rubydoc.info/gems/libhoney/Libhoney%2FClient:add_dynamic_field">API docs&lt;/a>).
+Dynamic fields get evaluated at the start of each span[&lt;a href="https://github.com/honeycombio/beeline-ruby/blob/15341f01740001acbc1f2748e68cbe380bfc3f7f/lib/honeycomb/span.rb#L31">1&lt;/a>] and added to the fields sent to Honeycomb.&lt;/p>
+&lt;p>To access the current &lt;a href="http://en.wikipedia.org/wiki/Resident_set_size">Resident Set Size&lt;/a> (RSS, &amp;ldquo;memory in use&amp;rdquo;) we use the &lt;a href="https://github.com/schneems/get_process_mem">get_process_mem gem&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#8be9fd;font-style:italic">require&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;get_process_mem&amp;#39;&lt;/span>
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_dynamic_field(&lt;span style="color:#f1fa8c">&amp;#39;global.memory_inuse_bytes&amp;#39;&lt;/span>, &lt;span style="color:#8be9fd;font-style:italic">proc&lt;/span> { GetProcessMem&lt;span style="color:#ff79c6">.&lt;/span>new&lt;span style="color:#ff79c6">.&lt;/span>bytes&lt;span style="color:#ff79c6">.&lt;/span>to_i })
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>The total lifetime of the process can be calculated as the difference from the start time to now:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">start &lt;span style="color:#ff79c6">=&lt;/span> Time&lt;span style="color:#ff79c6">.&lt;/span>now
+Honeycomb&lt;span style="color:#ff79c6">.&lt;/span>client&lt;span style="color:#ff79c6">.&lt;/span>libhoney&lt;span style="color:#ff79c6">.&lt;/span>add_dynamic_field(&lt;span style="color:#f1fa8c">&amp;#39;global.process_uptime_seconds&amp;#39;&lt;/span>, &lt;span style="color:#8be9fd;font-style:italic">proc&lt;/span> { Time&lt;span style="color:#ff79c6">.&lt;/span>now &lt;span style="color:#ff79c6">-&lt;/span> start }
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>After a few minutes of the heartbeat API call:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2020-10-05-honeycomb-gcp-metrics/first_results.png" alt="">&lt;/p>
+&lt;h2 id="closing-notes">Closing Notes&lt;/h2>
+&lt;p>This post was written while implementing the first stab at collecting metrics.
+As we continue to improve our understanding of the capabilities and limitations of GCP, I expect we will have to revisit the exact metrics collected.
+For example, data written to disk in Cloud Run is stored in RAM and also counted against the service&amp;rsquo;s quota.
+This sounds like something to keep an eye on eventually.&lt;/p>
+&lt;p>Honeycomb recommends keeping system metrics in a separate dataset from application events.
+During development we currently have very little traffic on the service, so for simplicities sake, we keep everything global and attached to all events.
+We&amp;rsquo;ll have to revisit this once we get more traffic on the service.&lt;/p></description></item><item><title>Blog: 14th Feb 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-14-status-update/</link><pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-14-status-update/</guid><description>
+&lt;p>The IAC team has been working on a lot of interesting things over the past week. Here&amp;rsquo;s a brief overview of what we&amp;rsquo;ve been up to:&lt;/p>
+&lt;h2 id="updates-to-puppet-modules">Updates to Puppet Modules&lt;/h2>
+&lt;p>We&amp;rsquo;ve released an update to two modules since last week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/pwshlib">puppetlabs/pwshlib&lt;/a> (v0.4.1)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/scheduled_task">puppetlabs/scheduled_task&lt;/a> (v2.0.1)&lt;/li>
+&lt;/ul>
+&lt;p>This update to &lt;a href="https://forge.puppet.com/puppetlabs/scheduled_task">puppetlabs/scheduled_task&lt;/a> resolves an issue reported in &lt;a href="https://tickets.puppetlabs.com/browse/MODULES-10101">MODULES-10101&lt;/a>.&lt;/p>
+&lt;p>A fix went in to &lt;a href="https://forge.puppet.com/puppetlabs/pwshlib">puppetlabs/pwshlib&lt;/a> to resolve a bug that was causing runtime errors on older versions of Ruby. See &lt;a href="https://github.com/puppetlabs/ruby-pwsh/pull/30">here&lt;/a> for more details.&lt;/p>
+&lt;p>We&amp;rsquo;ll have more module releases next week, but a few interesting updates to come:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>&lt;a href="https://forge.puppet.com/puppetlabs/java">puppetlabs-java&lt;/a>:&lt;/strong> Thanks to &lt;a href="https://github.com/timdeluxe">timdeluxe&lt;/a> for &lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/370">the PR&lt;/a> to add support for &lt;a href="https://adoptopenjdk.net/">AdoptOpen JDK&lt;/a> to the module. &lt;a href="https://github.com/fraenki">fraenki&lt;/a> was also a great help in getting this PR over the line. We&amp;rsquo;ll releasing an update to the module soon!&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://forge.puppet.com/puppetlabs/mysql">puppetlabs-mysql&lt;/a>:&lt;/strong> &lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1192">This is a nice PR&lt;/a> from &lt;a href="https://github.com/mauricemeyer">mauricemeyer&lt;/a> that now allows a user to override the default configuration for mysql, if you wish. Thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a> for the help during the review stages.&lt;/li>
+&lt;li>&lt;strong>&lt;a href="https://forge.puppet.com/puppetlabs/apt">puppetlabs-apt&lt;/a>:&lt;/strong> &lt;a href="https://github.com/anarcat">anarcat&lt;/a> submitted &lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/904">this fix&lt;/a> which also highlighted an issue with our tests. Two for the price of one! Thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a> and &lt;a href="https://github.com/baldurmen">baldurmen&lt;/a> for the reviews, too.&lt;/li>
+&lt;/ul>
+&lt;h2 id="were-still-buzzing-about-honeycomb">We&amp;rsquo;re still buzzing about Honeycomb&lt;/h2>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/iac/assets/2020-02-14-status-update/honeycomb_rspec_formatter.png" alt="Module RSpec trace">&lt;/p>
+&lt;p>We&amp;rsquo;re continuing to see the benefits of &lt;a href="https://www.honeycomb.io/">Honeycomb&lt;/a>. To make life easier, we now have the &lt;a href="https://github.com/puppetlabs/rspec_honeycomb_formatter">rspec_honeycomb_formatter&lt;/a>.
+When you add this gem to a project&amp;rsquo;s Gemfile, it will create a &lt;a href="https://relishapp.com/rspec/rspec-core/docs/formatters/custom-formatters">Custom formatter in RSpec&lt;/a> that will capture the metrics we&amp;rsquo;re interested in, then send it to the configured Honeycomb endpoint for processing!&lt;/p>
+&lt;h2 id="supported-modules-litmus-conversion">Supported Modules Litmus Conversion&lt;/h2>
+&lt;p>We&amp;rsquo;re starting to get to the bottom of the list of modules still to be converted to &lt;a href="https://github.com/puppetlabs/puppet_litmus">Litmus&lt;/a>. We&amp;rsquo;re wrapping up on &lt;a href="https://github.com/puppetlabs/puppetlabs-powershell/">puppetlabs-powershell&lt;/a>, &lt;a href="https://github.com/puppetlabs/puppetlabs-sqlserver/">puppetlabs-sqlserver&lt;/a> and &lt;a href="https://github.com/puppetlabs/puppetlabs-vsphere/">puppetlabs-vsphere&lt;/a>.
+Converting to Litmus makes testing of the modules for both ourselves at Puppet and contributors from the Community, a much easier experience.
+If you&amp;rsquo;re interested in porting a module to Litmus, feel free to reach out to us during &lt;a href="https://puppet.com/community/office-hours/">Office Hours&lt;/a> - we&amp;rsquo;ll be glad to help!&lt;/p></description></item><item><title>Blog: 7th Feb 2020: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-07-status-update/</link><pubDate>Fri, 07 Feb 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-02-07-status-update/</guid><description>
+&lt;p>The IAC team have been working on a lot of interesting things these past two weeks. Here&amp;rsquo;s a brief overview of what we&amp;rsquo;ve been up to:&lt;/p>
+&lt;h2 id="team-blog">Team Blog&lt;/h2>
+&lt;p>If you&amp;rsquo;re here, you&amp;rsquo;re already aware of it - the IAC team will now be giving status updates as to what we&amp;rsquo;ve been working on, any insights we&amp;rsquo;ve made and cool new tech we&amp;rsquo;ve been playing with. We&amp;rsquo;re also hoping to share more of the tools that we use internally with the community.&lt;/p>
+&lt;h2 id="updates-to-puppet-modules">Updates to Puppet Modules&lt;/h2>
+&lt;p>We&amp;rsquo;ve released a number of new modules as part of our Content Triage Process.
+Check out the CHANGELOG in each of the modules for more details as to what has been added:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/accounts">puppetlabs/accounts&lt;/a> (v6.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs/apache&lt;/a> (v5.4.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/java">puppetlabs/java&lt;/a> (v6.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">puppetlabs/kubernetes&lt;/a> (v5.1.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/puppet_agent">puppetlabs/puppet_agent&lt;/a> (v3.0.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/puppet_agent">puppetlabs/puppet_agent&lt;/a> (v3.0.1)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/reboot">puppetlabs/reboot&lt;/a> (v2.4.0)&lt;/li>
+&lt;li>&lt;a href="https://forge.puppet.com/puppetlabs/websphere_application_server">puppetlabs/websphere_application_server&lt;/a> (v2.0.1)&lt;/li>
+&lt;/ul>
+&lt;h2 id="kubernetes-v510">Kubernetes v5.1.0&lt;/h2>
+&lt;p>The &lt;a href="https://www.cncf.io/">CNCF&lt;/a> have certified the latest version (v5.1.0) of the &lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">puppetlabs/kubernetes&lt;/a> module with &lt;a href="https://kubernetes.io/">Kubernetes&lt;/a> v1.16.6.
+Check out the &lt;a href="https://forge.puppet.com/puppetlabs/kubernetes">module on The Forge&lt;/a> to see how to bootstrap K8 clusters and save yourself time and effort.
+You may also be interested in Kubetool (bundled with the module and as a &lt;a href="https://hub.docker.com/r/puppet/kubetool">Docker image&lt;/a>) which auto-generates the Hiera security parameters, the discovery token hash, and other configurations for your Kubernetes cluster.&lt;/p>
+&lt;h2 id="theres-a-buzz-about-honeycombio">There&amp;rsquo;s a buzz about Honeycomb.io&lt;/h2>
+&lt;p>We&amp;rsquo;re very excited to be in the POC stage rolling out &lt;a href="https://www.honeycomb.io/">Honeycomb&lt;/a> to collect data from our CI / Test infrastructure.
+This is going to give us much more visibility in to a number of important metrics and allow us to make the test process for modules a lot slicker.&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/iac/assets/2020-02-07-status-update/honeycomb_travis_appveyor.png" alt="Execution time of pdksync run on AppVeyor &amp; Travis">
+&lt;strong>Execution Time of PDK Sync run on Travis and AppVeyor CI platforms&lt;/strong>&lt;/p>
+&lt;p>We were very excited to be working with this very cool solution and we&amp;rsquo;re already starting to get some interesting insights.
+A more in depth blog post about this in the near future - don&amp;rsquo;t fly too far away!&lt;/p>
+&lt;h2 id="module-statistics-dashboards">Module Statistics Dashboards&lt;/h2>
+&lt;p>A vital part of the Content Triage Process is visibility in to the status of the modules:&lt;/p>
+&lt;ul>
+&lt;li>How many PRs are open?&lt;/li>
+&lt;li>What is the status of the last &lt;code>N&lt;/code> test results?&lt;/li>
+&lt;li>When was the last comment from a contributor?&lt;/li>
+&lt;/ul>
+&lt;p>There are a lot of modules on &lt;a href="https://forge.puppet.com/supported/">The Forge&lt;/a>, so we need a way to quickly view all this data.
+We have made some great improvements to our &lt;a href="https://puppetlabs.github.io/community_management/">Community Management&lt;/a> dashboards recently:&lt;/p>
+&lt;ul>
+&lt;li>More accurate reporting on module metrics&lt;/li>
+&lt;li>Integration with &lt;a href="https://github.com/features/actions">Github Actions&lt;/a> reports / artifact to provide quicker feedback of the results from our release checks and our future nightly CI runs&lt;/li>
+&lt;/ul></description></item></channel></rss>

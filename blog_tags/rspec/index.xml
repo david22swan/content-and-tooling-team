@@ -1,0 +1,102 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – rspec</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/rspec/</link><description>Recent content in rspec on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 03 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/rspec/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Apache MOD Test Maintenance</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-07-03-apache-mod-test-improvements/</link><pubDate>Fri, 03 Jul 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-07-03-apache-mod-test-improvements/</guid><description>
+&lt;p>This week sees version &lt;code>v5.5.0&lt;/code> of the &lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs-apache&lt;/a> module released.
+There are a lot of new features within this release - check out the &lt;a href="https://forge.puppet.com/puppetlabs/apache/changelog#v550-2020-07-01">CHANGELOG entry for this version&lt;/a> to see what&amp;rsquo;s included.&lt;/p>
+&lt;p>The last release of this module was &lt;code>v5.4.0&lt;/code> on &lt;code>2020-01-23&lt;/code>, over 5 months ago.
+Currently the IAC Team is responsible for [these supported modules]({% link modules.html %}) and [tools]({% link tools.html %}).
+As a small team we always continue to improve our processes to ensure we&amp;rsquo;re maximising our time and efforts.
+Still, the gap in time between the release of &lt;code>v5.4.0&lt;/code> and &lt;code>v5.5.0&lt;/code> of the &lt;a href="https://forge.puppet.com/puppetlabs/apache">puppetlabs-apache&lt;/a> module was a concern for us.
+What happened and how did we address this issue?&lt;/p>
+&lt;h2 id="why-the-delay">Why the delay?&lt;/h2>
+&lt;p>There was no shortage of excellent community contributions to the &lt;a href="https://github.com/puppetlabs/puppetlabs-apache">puppetlabs-apache&lt;/a> module in the period between these two releases.
+The team were keen to get a new release of the module out sooner than this, so the community could take advantage of these contributions.
+Part of the process of releasing a module involves us running our release check suite on our internal VM infrastructure.
+We were finding that there were cases where tests for &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a> were failing on certain platforms after someone in the community put forward a fix.&lt;/p>
+&lt;h2 id="what-was-the-issue">What was the issue?&lt;/h2>
+&lt;p>There are multiple reasons we ended up in this scenario, which ultimately had the same root cause, namely, a lack of test coverage.
+Some examples are:&lt;/p>
+&lt;ul>
+&lt;li>New platforms changing MOD package names (e.g. &lt;a href="https://github.com/farebers">farebers&amp;rsquo;s&lt;/a> fix in &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2021">#2021&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/1913">Fixes for one environment&lt;/a> having a knock-on effect for a &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2041">different environment&lt;/a> (thanks to &lt;a href="https://github.com/h-haaks">h-haaks&lt;/a> for the fix!)&lt;/li>
+&lt;/ul>
+&lt;p>When a new version of an OS comes out, it is quite common for issues to manifest when trying to configure some of the less mainstream &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a>:&lt;/p>
+&lt;ul>
+&lt;li>A simple change in it&amp;rsquo;s package name (&lt;em>thankfully a relatively quick fix!&lt;/em>)&lt;/li>
+&lt;li>The package is no longer available from the core &amp;ldquo;out-of-the-box&amp;rdquo; repositories (e.g. a 3rd party repos or edge/experimental/extra package streams need to be configured)&lt;/li>
+&lt;li>Package dependencies are unavailable in non-standard repositories&lt;/li>
+&lt;li>Support is dropped altogether - there is no way to locate the package or dependencies for a newer OS version&lt;/li>
+&lt;/ul>
+&lt;p>This led us to a conversation about how we continue to support all the various prerequisites and configurations required when presented with a matrix of &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a> and &lt;a href="https://forge.puppet.com/puppetlabs/apache/compatibility">compatible OSs&lt;/a>.
+We could, if time permitted, ensure that we have the steps to install every version&amp;hellip;of every MOD&amp;hellip;on every OS&amp;hellip;documented and implemented.&lt;/p>
+&lt;p>Time permitting&amp;hellip;&lt;/p>
+&lt;h2 id="solution">Solution&lt;/h2>
+&lt;h3 id="test-support-policy">Test Support Policy&lt;/h3>
+&lt;p>Straight away, we realised that, in the future, we need to strictly time box the amount of time we spend attempting to configure the OS with the correct repositories and/or dependencies for any given MOD.
+A rule of thumb was that if it&amp;rsquo;s not available in the default repositories of the OS, or a common, well supported auxiliary repository (e.g. EPEL), then we are not going to pin down the very unique snowflake configuration required for that MOD.
+There is always the concept of &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/master/manifests/default_mods.pp">default MODs&lt;/a> in Apache and these will &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/master/spec/acceptance/default_mods_spec.rb">remain supported&lt;/a> with the module, however, in future, we are going to evaluate how we proceed with a test failure with a much stricter time limit.&lt;/p>
+&lt;h3 id="mods-arent-supported-anymore">MODs aren&amp;rsquo;t supported anymore!?&lt;/h3>
+&lt;p>Absolutely not! They are still supported! If you want to add support for a new MOD, we do ask that you also write an acceptance test too.
+The IAC Team are always happy to help you with this process.&lt;/p>
+&lt;h3 id="i-cant-get-the-test-to-pass-on-all-platforms">I can&amp;rsquo;t get the test to pass on all platforms!&lt;/h3>
+&lt;p>Yes - this is likely an issue you&amp;rsquo;re going to run in to.
+Kudos to those who chase down ALL the package, package dependencies and configurations required for ALL of the &lt;a href="https://forge.puppet.com/puppetlabs/apache/compatibility">compatible platforms&lt;/a> of the Apache module.
+Realistically, you will likely encounter a few OSs where it is beyond reasonable to try and get this MOD working.
+In these scenarios, we&amp;rsquo;ll start a conversation on the PR about what the acceptable minimum is for the change being proposed - there&amp;rsquo;s no hard/fast rule here.&lt;/p>
+&lt;h3 id="weve-agreed-were-not-supporting-this-mod-on-this-os-version---what-now">We&amp;rsquo;ve agreed we&amp;rsquo;re not supporting this MOD on this OS version - what now?&lt;/h3>
+&lt;p>You may be familiar with &lt;a href="https://relishapp.com/rspec/rspec-core/v/3-8/docs/filtering/conditional-filters">RSpec&amp;rsquo;s conditional filtering&lt;/a>?
+If not, &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/51ce2adcfc231c6a78dda5cc59c2aaf4028bb5bd/spec/acceptance/mod_ldap_spec.rb#L4">here is an example&lt;/a>:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">describe &lt;span style="color:#f1fa8c">&amp;#39;apache::mod::ldap&amp;#39;&lt;/span>, &lt;span style="color:#ff79c6">unless&lt;/span>: os&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:family&lt;/span>&lt;span style="color:#ff79c6">]&lt;/span> &lt;span style="color:#ff79c6">==&lt;/span> &lt;span style="color:#f1fa8c">&amp;#39;redhat&amp;#39;&lt;/span> &lt;span style="color:#ff79c6">&amp;amp;&amp;amp;&lt;/span> os&lt;span style="color:#ff79c6">[&lt;/span>&lt;span style="color:#f1fa8c">:release&lt;/span>&lt;span style="color:#ff79c6">].&lt;/span>to_i &lt;span style="color:#ff79c6">&amp;gt;=&lt;/span> &lt;span style="color:#bd93f9">8&lt;/span> &lt;span style="color:#ff79c6">do&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will mean that this test will &lt;strong>not&lt;/strong> run if the OS family is &lt;code>RedHat&lt;/code> and the version is &lt;code>8&lt;/code> or higher.
+These work well, but, things can start to get messy when there is quite a narrow band of compatible OSs for a MOD.
+Consider &lt;a href="https://github.com/zmartzone/mod_auth_openidc/releases/tag/v2.4.3">&lt;code>v2.4.3&lt;/code> of &lt;code>mod_auth_openidc&lt;/code>&lt;/a> - we can see from the build artifacts' names that we &amp;ldquo;officially&amp;rdquo; have support for:&lt;/p>
+&lt;ul>
+&lt;li>Ubuntu 16.04&lt;/li>
+&lt;li>Ubuntu 18.04&lt;/li>
+&lt;li>Debian 10&lt;/li>
+&lt;li>RHEL 7&lt;/li>
+&lt;/ul>
+&lt;p>This does not consider the fact that there are many other OSs derived from RHEL and other distro vendors / maintainers can port packages to their OS.
+For example, after a bit more digging, I can see that the &lt;code>mod_auth_openidc&lt;/code> package is available for the following OSs too:&lt;/p>
+&lt;ul>
+&lt;li>CentOS 7&lt;/li>
+&lt;li>CentOS 8 (via AppStream)&lt;/li>
+&lt;li>RHEL 8 (via AppStream)&lt;/li>
+&lt;li>Fedora 30&lt;/li>
+&lt;li>Fedora 31&lt;/li>
+&lt;li>Fedora 32&lt;/li>
+&lt;/ul>
+&lt;p>This search was not exhaustive, and to make it so would require a lot more effort, which is part of the issue we find ourselves up against.
+Still, we now have a list of platforms that we want to include/exclude from being tested - depending on how we look at it.
+I&amp;rsquo;m sure you can envisage that the filtering rule for this test is going to become pretty gnarly?
+What if I were to also throw in some of the challenges the IAC team face, on top:&lt;/p>
+&lt;ul>
+&lt;li>Expanding test coverage uncovering more MOD / OS incompatibility&lt;/li>
+&lt;li>Some tests invoking a MOD load/configure indirectly whist testing other functionality&lt;/li>
+&lt;li>New OS support requirements&lt;/li>
+&lt;/ul>
+&lt;h3 id="tagging-and-helper-methods">Tagging and Helper Methods&lt;/h3>
+&lt;p>We had to come up with some better solution than ridiculously complex filtering rules.
+After some conversations and design reviews, we settled on an idea of using &lt;a href="https://www.rubydoc.info/gems/yard/file/docs/blog_tags.md#note">YARD&amp;rsquo;s note blog_tags&lt;/a>.
+This gives us the benefit of:&lt;/p>
+&lt;ul>
+&lt;li>Keeping within the conventions already in use&lt;/li>
+&lt;li>Easy syntax to understand&lt;/li>
+&lt;li>Free documentation whilst we&amp;rsquo;re at it&lt;/li>
+&lt;/ul>
+&lt;p>All the class definitions for &lt;a href="https://httpd.apache.org/docs/2.4/mod">Apache MODs&lt;/a> live under &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/tree/983b1fd3ff178d46145f4b8c0a88bae36dfad12b/manifests/mod">&lt;code>manifest/mod&lt;/code>&lt;/a>.
+This seemed like the most logical place for our blog_tags to live.
+Next, we wanted to decide whether this was an &amp;ldquo;opt-in&amp;rdquo; or &amp;ldquo;opt-out&amp;rdquo; affair.
+In the end, we determined that it would be best to &amp;ldquo;opt-out&amp;rdquo; and so, the tag became &lt;code>Unsupported platforms&lt;/code>.
+You can now define what platforms a given MOD will &lt;em>not&lt;/em> be expected to run on:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">&lt;span style="color:#6272a4"># @note Unsupported platforms: RedHat: 5, 6; Ubuntu: 14.04; SLES: all; Scientific: 11 SP1&lt;/span>
+&lt;span style="color:#ff79c6">class&lt;/span> apache&lt;span style="color:#ff79c6">::&lt;/span>mod&lt;span style="color:#ff79c6">::&lt;/span>actions {
+apache&lt;span style="color:#ff79c6">::&lt;/span>mod { &lt;span style="color:#f1fa8c">&amp;#39;actions&amp;#39;&lt;/span>: }
+}
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>For a full overview of the tag syntax rules, see &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/blob/c726313dad64683d05465d2f978965ad14690f35/README.md#apache-mod-test--support-lifecycle">this section of the README&lt;/a> in the module.&lt;/p>
+&lt;p>When RSpec tests are kicked off in the module, we will parse the &lt;code>Unsupported platform&lt;/code> blog_tags under &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/tree/983b1fd3ff178d46145f4b8c0a88bae36dfad12b/manifests/mod">&lt;code>manifest/mod&lt;/code>&lt;/a> as part of the &lt;code>Rspec.before&lt;/code> hooks and generate a mapping of MOD -&amp;gt; Unsupported Platforms.
+Now, from within the tests, you can make use of the &lt;code>mod_supported_on_platform&lt;/code> helper method to determine whether the test should run on a given platform or be filtered out:&lt;/p>
+&lt;div class="highlight">&lt;pre style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">&lt;code class="language-ruby" data-lang="ruby">describe &lt;span style="color:#f1fa8c">&amp;#39;auth_oidc&amp;#39;&lt;/span>, &lt;span style="color:#ff79c6">if&lt;/span>: mod_supported_on_platform(&lt;span style="color:#f1fa8c">&amp;#39;apache::mod::auth_openidc&amp;#39;&lt;/span>) &lt;span style="color:#ff79c6">do&lt;/span>
+&lt;/code>&lt;/pre>&lt;/div>&lt;p>Hopefully you&amp;rsquo;ll agree that this is a much cleaner solution that a complex filtering rule?
+For the IAC Team, it makes our life a lot easier, and hopefully means more frequent updates released for the Apache module for the community.&lt;/p>
+&lt;h4 id="want-more-details">Want more details?&lt;/h4>
+&lt;p>You can see the implementation on &lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2036">#2036&lt;/a>, which has a detailed description outlining the functionality.
+JIRA tickets &lt;a href="https://tickets.puppetlabs.com/browse/IAC-801">IAC-801&lt;/a> and &lt;a href="https://tickets.puppetlabs.com/browse/IAC-824">IAC-824&lt;/a> outline the design and implementation, respectively, should you wish to take a look.&lt;/p></description></item></channel></rss>

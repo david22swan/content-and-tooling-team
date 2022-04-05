@@ -1,0 +1,142 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – rsapi</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/rsapi/</link><description>Recent content in rsapi on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 11 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/rsapi/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-06-11: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-11-status-update/</link><pubDate>Fri, 11 Jun 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-11-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2142">&lt;code>puppetlabs-apache#2142&lt;/code>&lt;/a>: &amp;ldquo;The default disk_cache.conf.erb caches everything. &amp;ldquo;, thanks to &lt;a href="https://github.com/Pawa2NR">Pawa2NR&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-concat/pull/708">&lt;code>puppetlabs-concat#708&lt;/code>&lt;/a>: &amp;ldquo;fix merge nil hashes&amp;rdquo;, thanks to &lt;a href="https://github.com/thde">thde&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-concat/pull/705">&lt;code>puppetlabs-concat#705&lt;/code>&lt;/a>: &amp;ldquo;Do not modify metaparams in place&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/752">&lt;code>puppetlabs-docker#752&lt;/code>&lt;/a>: &amp;ldquo;Allow force update non-latest tagged image&amp;rdquo;, thanks to &lt;a href="https://github.com/yanjunding">yanjunding&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1396">&lt;code>puppetlabs-mysql#1396&lt;/code>&lt;/a>: &amp;ldquo;(bugfix) - Pull python3-mysqldb in Debian Bullseye&amp;rdquo;, thanks to &lt;a href="https://github.com/thomasgoirand">thomasgoirand&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="http://github.com/puppetlabs/puppetlabs-mysql">&lt;code>puppetlabs-mysql&lt;/code>&lt;/a> (&lt;code>11.0.2&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="devx-team">DevX Team&lt;/h2>
+&lt;p>With version &lt;code>0.1.0&lt;/code> of the experimental PCT release out for a week, we&amp;rsquo;ve been delighted by the positive and constructive feedback coming our way.
+If you&amp;rsquo;re wondering what all this is about, check out &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-04-pct-early-release.md">this blog post&lt;/a> from last week - the more feedback we can garner, the better!
+On that topic, &lt;a href="https://github.com/jpogran">James&lt;/a> took part in the most recent episode of &lt;a href="https://www.twitch.tv/videos/1050922724">Pulling the Strings - LIVE&lt;/a> on the &lt;a href="https://www.twitch.tv/puppetize">Puppetize Twitch Channel&lt;/a> with &lt;a href="https://twitter.com/LoLoCoding">Lauren&lt;/a>, Puppet&amp;rsquo;s Community Director.
+Braving the ire of the demo gods is always a risky venture, but, &lt;a href="https://github.com/jpogran">James&lt;/a> showcased the speed, flexibility, speed, potential and speed of the PCT tool, excellently! You can &lt;a href="https://www.twitch.tv/videos/1050922724">watch the video at your own leisure&lt;/a> if you missed the live stream - well worth checking out!
+We&amp;rsquo;re now working on the next release &lt;code>0.2.0&lt;/code>, with some enhancements shaped by the feedback we&amp;rsquo;ve been getting from the early adopters.
+Also on our radar is some fixes and enhancements to PDK, which should be landing in a release soon&lt;/p>
+&lt;h2 id="resource-api-custom_insync-now-available">Resource API custom_insync now available&lt;/h2>
+&lt;p>You can now provide custom &lt;code>insync?&lt;/code> logic to the Resource API, making adding new native Puppet resources much more flexible. Changes are now available in both the Puppet 6 and Puppet 7 nightly builds, and you can find a documentation preview &lt;a href="https://github.com/puppetlabs/puppet-specifications/pull/153">here&lt;/a>.&lt;/p>
+&lt;h2 id="pdk-updates">PDK updates&lt;/h2>
+&lt;p>All spec unit tests across the supported modules workflows are now running using the latest Facter code!
+This will allow us to catch any potential compatibility problems earlier with Facter / Puppet / Modules.&lt;/p>
+&lt;h2 id="trusted-contributors-assemble">Trusted Contributors Assemble!&lt;/h2>
+&lt;p>We&amp;rsquo;re thrilled to have several Trusted Contributors onboarded into the TC program (find out more in our previous blog post, or on the &lt;a href="https://puppet.com/ecosystem/trusted-contributors/">Puppet website&lt;/a>), with five sign ups in one week! The team wanted to give a big shout out to &lt;a href="https://github.com/ekohl">ekohl&lt;/a> on their first PR review.&lt;/p>
+&lt;!-- check https://tickets.puppetlabs.com/secure/RapidBoard.jspa?rapidView=1176&amp;quickFilter=8745 for other tickets closed out this week that should be mentioned here --></description></item><item><title>Blog: 2021-04-23: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-04-23-status-update/</link><pubDate>Fri, 23 Apr 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-04-23-status-update/</guid><description>
+&lt;h2 id="now-in-technicolor">Now in technicolor&lt;/h2>
+&lt;p>Puppet Camp &amp;ldquo;Become a better developer&amp;rdquo; took place last week, and in case you missed it you can &lt;a href="https://www.youtube.com/playlist?list=PLV86BgbREluWevcAomxGS2Uq3GOIvm9Pl">watch all the talks on YouTube&lt;/a>;
+IAC Team members &lt;a href="https://github.com/DavidS">David Schmitt&lt;/a> and &lt;a href="https://github.com/jpogran">James Pogran&lt;/a> providing 2 of the 6 talks.
+Learn about &lt;a href="https://www.youtube.com/watch?v=QBZhLxj_i3Y&amp;amp;list=PLV86BgbREluWevcAomxGS2Uq3GOIvm9Pl&amp;amp;index=3">&amp;ldquo;Operational Verification&amp;rdquo; from David&lt;/a> or ramp up your skills using &lt;a href="https://www.youtube.com/watch?v=RT_e7kCyCH8&amp;amp;list=PLV86BgbREluWevcAomxGS2Uq3GOIvm9Pl&amp;amp;index=5">Puppet VS Code from James&lt;/a>&lt;/p>
+&lt;h2 id="community-day-triage-stats">Community Day Triage Stats&lt;/h2>
+&lt;p>A few members of the team were unwell this week but the rest managed to process a total of 32 issues and PRs across our modules and tools repos.&lt;/p>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2138">&lt;code>puppetlabs-apache#2138&lt;/code>&lt;/a>: &amp;ldquo;Fix HEADER* and README* wildcards in IndexIgnore&amp;rdquo;, thanks to &lt;a href="https://github.com/keto">keto&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt/pull/985">&lt;code>puppetlabs-apt#985&lt;/code>&lt;/a>: &amp;ldquo;apt::mark: fix docs&amp;rdquo;, thanks to &lt;a href="https://github.com/kenyon">kenyon&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-firewall/pull/986">&lt;code>puppetlabs-firewall#986&lt;/code>&lt;/a>: &amp;ldquo;Update README.md&amp;rdquo;, thanks to &lt;a href="https://github.com/arjenz">arjenz&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy/pull/477">&lt;code>puppetlabs-haproxy#477&lt;/code>&lt;/a>: &amp;ldquo;Fix &amp;lsquo;option&amp;rsquo; entry name in option_order hash&amp;rdquo;, thanks to &lt;a href="https://github.com/antaflos">antaflos&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java/pull/476">&lt;code>puppetlabs-java#476&lt;/code>&lt;/a>: &amp;ldquo;allow v5.x of puppet/archive&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1378">&lt;code>puppetlabs-mysql#1378&lt;/code>&lt;/a>: &amp;ldquo;Fix: Puppet Unknown variable: &amp;lsquo;mysql::params::exec_path&amp;rsquo;&amp;rdquo;, thanks to &lt;a href="https://github.com/JvGinkel">JvGinkel&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-ntp/pull/615">&lt;code>puppetlabs-ntp#615&lt;/code>&lt;/a>: &amp;ldquo;Allow setting user and group permissions of the NTP logfile&amp;rdquo;, thanks to &lt;a href="https://github.com/Kristijan">Kristijan&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1176">&lt;code>puppetlabs-stdlib#1176&lt;/code>&lt;/a>: &amp;ldquo;Fix typo in validate_ipv6_address function&amp;rdquo;, thanks to &lt;a href="https://github.com/nbarrientos">nbarrientos&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1173">&lt;code>puppetlabs-stdlib#1173&lt;/code>&lt;/a>: &amp;ldquo;pw_hash: add support for bcrypt variants&amp;rdquo;, thanks to &lt;a href="https://github.com/kjetilho">kjetilho&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/community_management/pull/68">&lt;code>community_management#68&lt;/code>&lt;/a>: &amp;ldquo;Added back the ability to manage labels on multiple repos&amp;rdquo;, thanks to &lt;a href="https://github.com/yachub">yachub&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/dependency_checker/pull/25">&lt;code>dependency_checker#25&lt;/code>&lt;/a>: &amp;ldquo;Report status with exit-code&amp;rdquo;, thanks to &lt;a href="https://github.com/smortex">smortex&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/litmusimage/pull/30">&lt;code>litmusimage#30&lt;/code>&lt;/a>: &amp;ldquo;Add BASE_IMAGE_TAG=${TAG} instruction&amp;rdquo;, thanks to &lt;a href="https://github.com/gavindidrichsen">gavindidrichsen&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/1028">&lt;code>pdk#1028&lt;/code>&lt;/a>: &amp;ldquo;(maint) Mark stale issues&amp;rdquo;, thanks to &lt;a href="https://github.com/jpogran">jpogran&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/24">&lt;code>pdk-docker#24&lt;/code>&lt;/a>: &amp;ldquo;Restrict image to non-root user&amp;rdquo;, thanks to &lt;a href="https://github.com/cdenneen">cdenneen&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/nkanderson">nkanderson&lt;/a>)&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/429">&lt;code>pdk-templates#429&lt;/code>&lt;/a>: &amp;ldquo;Misc cleanup&amp;rdquo;, thanks to &lt;a href="https://github.com/jeffbyrnes">jeffbyrnes&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/423">&lt;code>pdk-templates#423&lt;/code>&lt;/a>: &amp;ldquo;(maint) Update Gitpod to Puppet VSCode Extension to 1.2.0&amp;rdquo;, thanks to &lt;a href="https://github.com/jpogran">jpogran&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-vanagon/pull/283">&lt;code>pdk-vanagon#283&lt;/code>&lt;/a>: &amp;ldquo;(VANAGON-85) Move platform definitions into core vanagon. Inherit def…&amp;rdquo;, thanks to &lt;a href="https://github.com/jackie-kinsler">jackie-kinsler&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet-strings/pull/272">&lt;code>puppet-strings#272&lt;/code>&lt;/a>: &amp;ldquo;Update CODEOWNERS&amp;rdquo;, thanks to &lt;a href="https://github.com/binford2k">binford2k&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppet_litmus/pull/407">&lt;code>puppet_litmus#407&lt;/code>&lt;/a>: &amp;ldquo;(maint) Update bolt requirement to include 3.x&amp;rdquo;, thanks to &lt;a href="https://github.com/beechtom">beechtom&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/ruby-pwsh/pull/122">&lt;code>ruby-pwsh#122&lt;/code>&lt;/a>: &amp;ldquo;feat: adding in paths for PowerShell 7 install&amp;rdquo;, thanks to &lt;a href="https://github.com/n3snah">n3snah&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/ruby-pwsh/pull/118">&lt;code>ruby-pwsh#118&lt;/code>&lt;/a>: &amp;ldquo;(Maint) Ensure canonicalize correctly compares sorted hashes&amp;rdquo;, thanks to &lt;a href="https://github.com/Hvid">Hvid&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/rodjek/rspec-puppet/pull/823">&lt;code>rspec-puppet#823&lt;/code>&lt;/a>: &amp;ldquo;Added support for regexp arguments to Sensitive&amp;rdquo;, thanks to &lt;a href="https://github.com/tiandrey">tiandrey&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/rodjek/rspec-puppet/pull/819">&lt;code>rspec-puppet#819&lt;/code>&lt;/a>: &amp;ldquo;Handle all auto*, not just autorequire&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib">&lt;code>puppetlabs-stdlib&lt;/code>&lt;/a> (&lt;code>7.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-concat">&lt;code>puppetlabs-concat&lt;/code>&lt;/a> (&lt;code>7.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-ntp">&lt;code>puppetlabs-ntp&lt;/code>&lt;/a> (&lt;code>9.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-apt">&lt;code>puppetlabs-apt&lt;/code>&lt;/a> (&lt;code>8.0.2&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-java">&lt;code>puppetlabs-java&lt;/code>&lt;/a> (&lt;code>7.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-inifile">&lt;code>puppetlabs-inifile&lt;/code>&lt;/a> (&lt;code>5.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">&lt;code>puppetlabs-postgresql&lt;/code>&lt;/a> (&lt;code>7.1.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy">&lt;code>puppetlabs-haproxy&lt;/code>&lt;/a> (&lt;code>6.0.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="http://github.com/puppetlabs/puppetlabs-mysql">&lt;code>puppetlabs-mysql&lt;/code>&lt;/a> (&lt;code>11.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-reboot">&lt;code>puppetlabs-reboot&lt;/code>&lt;/a> (&lt;code>4.0.2&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-chocolatey">&lt;code>puppetlabs-chocolatey&lt;/code>&lt;/a> (&lt;code>6.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-accounts">&lt;code>puppetlabs-accounts&lt;/code>&lt;/a> (&lt;code>7.0.2&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-ibm_installation_manager">&lt;code>puppetlabs-ibm_installation_manager&lt;/code>&lt;/a> (&lt;code>3.0.1&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="puppet_litmus-is-now-compatible-with-bolt-3x">puppet_litmus is now compatible with Bolt 3.x&lt;/h2>
+&lt;p>A massive shout out to &lt;a href="https://github.com/beechtom">Tom Beech&lt;/a> and the Bolt team for working on testing puppet_litmus for Bolt 3.x support. It has now been released and is compatible with Bolt 3.x&lt;/p>
+&lt;h2 id="facter-411-release-from-nights-watch-team">Facter 4.1.1 Release from Nights Watch team&lt;/h2>
+&lt;p>A big thank you to the Nights Watch team, specifically, &lt;a href="https://github.com/gimmyxd">Gheorghe Popescu&lt;/a> and &lt;a href="https://github.com/GabrielNagy">Gabriel Nagy&lt;/a> for the quick turn around on the fix and release of &lt;code>facter 4.1.1&lt;/code> which fixes the failures in &lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy">puppetlabs-haproxy&lt;/a> and &lt;a href="https://github.com/puppetlabs/puppetlabs-docker">puppetlabs-docker&lt;/a> modules.
+Additional details are available in the following tickets &lt;a href="https://tickets.puppetlabs.com/browse/IAC-1582">IAC-1582&lt;/a> and &lt;a href="https://tickets.puppetlabs.com/browse/FACT-3024">FACT-3024&lt;/a>&lt;/p>
+&lt;h2 id="cloud-ci-update">Cloud CI Update&lt;/h2>
+&lt;p>We have ported &lt;a href="https://github.com/puppetlabs/puppetlabs-dsc_lite/pull/178">puppetlabs-dsc_lite&lt;/a> module successfully to run on cloud CI. Porting the &lt;a href="https://github.com/puppetlabs/puppetlabs-dsc_lite">puppetlabs-dsc_lite&lt;/a> module to cloud CI will allow us to continue the support and maintenance for it by running the tests at PR level and nightly level until the new improved DSC modules is available.
+We have also started the investigation for the porting of &lt;a href="https://github.com/puppetlabs/puppetlabs-sqlserver">puppetlabs-sqlserver&lt;/a> module.
+We have updated all our multi node modules to use the new default litmus inventory file location, wrt the latest changes in the litmus &lt;a href="https://github.com/puppetlabs/puppet_litmus/issues/380">GH-380&lt;/a>.
+From this week we started to work on preparing training and educational materials for cloud CI.&lt;/p>
+&lt;h2 id="resource-api-custom-insync">Resource API: Custom Insync&lt;/h2>
+&lt;p>We&amp;rsquo;ve been doing some work over the last couple of weeks to make it possible to &lt;a href="https://github.com/puppetlabs/puppet-resource_api/issues/225">add custom insync handling to Resource API resources&lt;/a>.
+In short, this is to help with cases where the default property comparison logic in Puppet doesn&amp;rsquo;t work for a use case - when you want to compare case insensitive strings or only ensure that &lt;em>some&lt;/em> members of a group exist (without having to specify &lt;em>all&lt;/em> members of that group) for example.
+We&amp;rsquo;re nearing completion of that work, which you can see in this &lt;a href="https://github.com/puppetlabs/puppet-resource_api/pull/285">draft PR&lt;/a>.
+If this is something you think you might find useful or have some feedback on (either the implementation or the problem we&amp;rsquo;re seeking to solve), &lt;a href="https://github.com/puppetlabs/puppet-resource_api/issues/225">comment on the issue&lt;/a> or drop us a line in the &lt;code>#puppet-dev&lt;/code> channel in the community slack!&lt;/p>
+&lt;h2 id="dsc-validation-mode-incoming">DSC: Validation Mode Incoming&lt;/h2>
+&lt;p>Related to the work we&amp;rsquo;re doing to &lt;a href="https://github.com/puppetlabs/puppet-resource_api/issues/225">enable support for custom insync in the Resource API&lt;/a>, we plan to &lt;a href="https://github.com/puppetlabs/Puppet.Dsc/issues/145">add a new parameter to the Puppetized DSC modules&lt;/a> (all the modules in the &lt;a href="https://forge.puppet.com/dsc">&lt;code>dsc-*&lt;/code> namespace on the forge&lt;/a>).
+This new parameter, &lt;code>validation_mode&lt;/code>, will default to &lt;code>property&lt;/code> - the existing behavior you&amp;rsquo;re familiar with that relies on Puppet for property-by-property state validation and gives you coherent and useful change reporting.
+It will &lt;em>also&lt;/em> have a new mode, &lt;code>resource&lt;/code>, which can be used to fall back to the DSC Resource&amp;rsquo;s built-in state comparison, using the &lt;code>Test&lt;/code> method for that Resource.
+This should resolve numerous problems where DSC Resources don&amp;rsquo;t work as expected because of a mismatch in the Resource&amp;rsquo;s API spec and what is actually returned or where Puppet can&amp;rsquo;t actually do a meaningful state comparison (as in the case of subset group membership).
+This new functionality is blocked on the implementation of custom insync in the Resource API and its subsequent release with upcoming versions of Puppet, but we&amp;rsquo;re confident that this will provide a much-improved user experience for folks leveraging DSC Resources which are not currently as functional as we&amp;rsquo;d like.
+Speaking of DSC, we&amp;rsquo;re up to &lt;code>71&lt;/code> PowerShell modules with DSC Resources which have been puppetized and &lt;a href="https://forge.puppet.com/dsc">published to the forge&lt;/a>!&lt;/p>
+&lt;h2 id="developer-experience">Developer Experience&lt;/h2>
+&lt;p>​
+The team has reviewed the existing PDK validate tickets and identified which ones to address first. &lt;a href="https://github.com/sanfrancrisko">Ciaran&lt;/a> wrote an excellent document on how PDK validate works as a result of his investigations.
+&lt;a href="https://github.com/da-ar">David&lt;/a> is continuing his work into improving the PDK packaging process and release workflow, and has some promising results.
+&lt;a href="https://github.com/jpogran">James&lt;/a> has closed the PDK survey and is collating the data for use in planning the next major version of the PDK.
+​&lt;/p>
+&lt;p>Community member &lt;a href="https://github.com/glennsarti">Glenn Sarti&lt;/a> contibuted PR &lt;a href="https://github.com/puppetlabs/puppet-editor-services/pull/301">https://github.com/puppetlabs/puppet-editor-services/pull/301&lt;/a> and is working on PR &lt;a href="https://github.com/puppetlabs/puppet-editor-services/pull/302,">https://github.com/puppetlabs/puppet-editor-services/pull/302,&lt;/a> which will be released in the next Puppet Extension release.
+​&lt;/p>
+&lt;p>In case you missed it, last month we started publishing the Puppet Extension to the OpenVSX marketplace, which means you can get official releases inside VSCodium or with Gitpod.&lt;/p>
+&lt;!-- check https://tickets.puppetlabs.com/secure/RapidBoard.jspa?rapidView=1176&amp;quickFilter=8745 for other tickets closed out this week that should be mentioned here --></description></item></channel></rss>

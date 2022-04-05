@@ -1,0 +1,49 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – pdk-docker</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/pdk-docker/</link><description>Recent content in pdk-docker on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 26 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/pdk-docker/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-03-26: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-03-26-status-update/</link><pubDate>Fri, 26 Mar 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-03-26-status-update/</guid><description>
+&lt;p>Hello and welcome to another weekly update from the IAC Team.
+As mentioned last week, we were all off on Monday so we didn&amp;rsquo;t have the regularly scheduled Community Day at the start of the week so only one module released and one PR merged to report on this week.&lt;/p>
+&lt;p>Normal service resumes on Monday 29th!&lt;/p>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/ruby-pwsh/pull/118">&lt;code>ruby-pwsh#118&lt;/code>&lt;/a>: &amp;ldquo;(Maint) Ensure canonicalize correctly compares sorted hashes&amp;rdquo;, thanks to &lt;a href="https://github.com/Hvid">Hvid&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-reboot">&lt;code>puppetlabs-reboot&lt;/code>&lt;/a> (&lt;code>4.0.2&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="cloud-ci-update">Cloud CI Update&lt;/h2>
+&lt;p>This week we mainly focused on the &lt;code>puppetlabs-websphere_application_server&lt;/code> port and preparing the resources needed for the &lt;code>puppetlabs-satellite_pe_tools&lt;/code> module.
+We&amp;rsquo;ll soon begin the work for porting the &lt;code>puppetlabs-satellite_pe_tools&lt;/code> module integration testing on a multi-node GCP environment.&lt;/p>
+&lt;p>We also managed to fix the persistent firewall issue this week that was causing a couple of issues after long sessions of debugging and added a couple of other minor bug fixes.&lt;/p>
+&lt;p>In the near future we&amp;rsquo;ll start to change our focus towards more training and education on debugging and using the new workflows with the supported Puppet modules.&lt;/p>
+&lt;h2 id="community-management-revamp">Community Management Revamp&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> for the wonderful work she did to update the Github Actions nightly report on the &lt;a href="https://puppetlabs.github.io/community_management/">community_management&lt;/a> website:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-03-26-status-update/comm_mgmt_revamp.png" alt="comm_mgmt_revamp">&lt;/p>
+&lt;p>I hope you&amp;rsquo;ll agree that this clean new look makes it easy to quickly get an overview of the state of our modules' CI runs.&lt;/p>
+&lt;p>Here&amp;rsquo;s a few words from &lt;a href="https://github.com/daianamezdrea">Daiana&lt;/a> about this great work:&lt;/p>
+&lt;blockquote>
+&lt;p>As we promised last week, the Github Actions report from our tool ( CM) is finally up.
+Also, we added more surprises and we&amp;rsquo;re ready for the phase 2 of re-vamping the report.
+&lt;a href="https://github.com/puppetlabs/community_management/pull/64">Here&lt;/a> you can find a big PR which contains the new changes.&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="meet-the-devx-team">Meet the DevX Team&lt;/h2>
+&lt;p>A full blog post outlining our remit will be coming soon, but we&amp;rsquo;re excited to announce the start of the newly reformed Developer Experience Team (DevX)!
+This is made up of &lt;a href="https://github.com/jpogran">James Pogran&lt;/a>, &lt;a href="https://github.com/da-ar">David Armstrong&lt;/a> and &lt;a href="https://github.com/sanfrancrisko">Ciaran McCrisken&lt;/a>.&lt;/p>
+&lt;p>The DevX team is focused on improving the developer experience across Puppet Products.
+One of the first areas of focus that is going to get significant time investment is the &lt;a href="https://github.com/puppetlabs/pdk">PDK&lt;/a>&lt;/p>
+&lt;p>It&amp;rsquo;s no secret that the PDK has not had the care and attention that it warrants over the past year and we&amp;rsquo;re looking to rectify that.&lt;/p>
+&lt;p>To discuss future feature work for the PDK, we are trying out the new Github Discussion board &lt;a href="https://github.com/puppetlabs/pdk/discussions">here&lt;/a>.
+This replaces the previous RFC workflow of the pdk-planning repo.
+If you see an open discussion for a feature you would like implemented, please upvote or comment on the discussion.&lt;/p>
+&lt;p>One of the first discussions we want to invite you to participate in is the future of the &lt;a href="https://github.com/puppetlabs/pdk-docker">PDK Docker&lt;/a> project.
+Come join the discussion here: &lt;a href="https://github.com/puppetlabs/pdk/discussions/1038">&lt;strong>pdk/discussions#1038&lt;/strong>&lt;/a>&lt;/p>
+&lt;h2 id="translate-module-deprecation">Translate Module Deprecation&lt;/h2>
+&lt;p>We have now officially marked the &lt;code>puppetlabs-translate&lt;/code> module as deprecated.
+&lt;a href="https://github.com/david22swan">David Swan&lt;/a> has removed it as a dependency from our supported modules.&lt;/p>
+&lt;h2 id="jira-spring-cleaning">JIRA Spring Cleaning&lt;/h2>
+&lt;p>As part of this ongoing effort, the team is spending a bit of downtime to go through and close out old, already addressed and/or now-irrelevant tickets:&lt;/p>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-03-26-status-update/jira_burndown.png" alt="jira_burndown">&lt;/p></description></item></channel></rss>

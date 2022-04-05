@@ -1,0 +1,43 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – james</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/james/</link><description>Recent content in james on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 09 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/james/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: 2021-08-09: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-08-09-status-update/</link><pubDate>Mon, 09 Aug 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-08-09-status-update/</guid><description>
+&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
+&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/764">&lt;code>puppetlabs-docker#764&lt;/code>&lt;/a>: &amp;ldquo;Remove stderr empty check to avoid docker_params_changed failures when warnings appear&amp;rdquo;, thanks to &lt;a href="https://github.com/cedws">cedws&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/763">&lt;code>puppetlabs-docker#763&lt;/code>&lt;/a>: &amp;ldquo;Duplicate declaration statement: docker_params_changed is already declared&amp;rdquo;, thanks to &lt;a href="https://github.com/basti-nis">basti-nis&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1420">&lt;code>puppetlabs-mysql#1420&lt;/code>&lt;/a>: &amp;ldquo;Set ordering of acceptance tests&amp;rdquo;, thanks to &lt;a href="https://github.com/ghoneycutt">ghoneycutt&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1196">&lt;code>puppetlabs-stdlib#1196&lt;/code>&lt;/a>: &amp;ldquo;Fix ensure_packages&amp;rdquo;, thanks to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/facterdb/pull/180">&lt;code>facterdb#180&lt;/code>&lt;/a>: &amp;ldquo;release 1.8.0&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/34">&lt;code>pdk-docker#34&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Update bionic image tag to use date-based tag&amp;rdquo;, thanks to &lt;a href="https://github.com/nkanderson">nkanderson&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/puppetlabs/rspec-puppet/pull/11">&lt;code>rspec-puppet#11&lt;/code>&lt;/a>: &amp;ldquo;Add Ruby 3 support&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://github.com/voxpupuli/metadata-json-lint/pull/116">&lt;code>metadata-json-lint#116&lt;/code>&lt;/a>: &amp;ldquo;Add GitHub actions + badges&amp;rdquo;, thanks to &lt;a href="https://github.com/bastelfreak">bastelfreak&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;p>Check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-01-20-reaching-out.md">all the ways to reach us&lt;/a> if you want to directly contact us about anything module related.&lt;/p>
+&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
+&lt;p>The following modules were released this week:&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache">&lt;code>puppetlabs-apache&lt;/code>&lt;/a> (&lt;code>6.4.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql">&lt;code>puppetlabs-postgresql&lt;/code>&lt;/a> (&lt;code>7.3.0&lt;/code>)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h2 id="devx-team-update">DevX Team Update&lt;/h2>
+&lt;h3 id="pdk-220">PDK 2.2.0&lt;/h3>
+&lt;p>PDK 2.2.0 was released earlier in the week.
+This update brings two significant new features:&lt;/p>
+&lt;ul>
+&lt;li>Support for OSX 11, Debian 11, Fedora 32 &amp;amp; 34&lt;/li>
+&lt;li>Ability to configure skipping validation on certain files within a project&lt;/li>
+&lt;/ul>
+&lt;p>We have also bumped the version of Ruby the PDK is running on from 2.4 -&amp;gt; 2.5.
+Please note, Ruby 2.4 is still available for testing against Puppet 5 environments.&lt;/p>
+&lt;p>There are also a number of bug fixes and improvements.
+Full details can be found &lt;a href="https://puppet.com/docs/pdk/2.x/pdk.html">here&lt;/a>.&lt;/p>
+&lt;h3 id="goodbye-james">Goodbye James&lt;/h3>
+&lt;p>Unfortunately we have to say goodbye to &lt;a href="https://github.com/jpogran">James&lt;/a> who is leaving Puppet next Tuesday.
+No doubt, many of you will be aware of the huge amount of contributions &lt;a href="https://github.com/jpogran">James&lt;/a> has made to the Puppet ecosystem: James was the architect behind our IIS and DSC modules as well as the new autogenerated DSC modules; he touched nearly every part of Puppet that interacted with Windows across modules, Bolt, Puppet, and tooling; he co-designed and implemented the VSCode extension and language server, vastly improving the lives of everyone writing Puppet code; for the last four months he&amp;rsquo;s led this team, providing guidance and unifying our vision around what developing and maintaining Puppet content can be. Whether it be Windows content, improving the functionality and experience of Puppet&amp;rsquo;s products on Windows, the &lt;a href="https://github.com/puppetlabs/puppet-vscode">Puppet VSCode Plugin&lt;/a>, - it&amp;rsquo;s no exaggeration to say that his contributions have been many and significant.&lt;/p>
+&lt;p>We&amp;rsquo;d like to thank &lt;a href="https://github.com/jpogran">James&lt;/a> for his contributions, support and leadership and wish him the very best of luck in the next chapter of his career!&lt;/p>
+&lt;h2 id="github-changelog-generator-moved-to-puppetlabs-namespace">github-changelog-generator moved to puppetlabs namespace&lt;/h2>
+&lt;p>We have forked &lt;code>github-changelog-generator&lt;/code> to &lt;code>puppetlabs&lt;/code> namespace .&lt;/p>
+&lt;p>This will give more control on adding features and bug fixes which will help us with the supported module release process in the future.&lt;/p></description></item></channel></rss>

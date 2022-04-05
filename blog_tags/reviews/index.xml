@@ -1,0 +1,55 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – reviews</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog_tags/reviews/</link><description>Recent content in reviews on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Wed, 20 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/blog_tags/reviews/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Reaching the IAC Team</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-20-reaching-out/</link><pubDate>Wed, 20 Jan 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2021-01-20-reaching-out/</guid><description>
+&lt;p>&lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/hello.png" alt="hello">{:height=&amp;ldquo;170px&amp;rdquo; width=&amp;ldquo;170px&amp;rdquo;}&lt;/p>
+&lt;p>To improve collaboration and avoid issues falling through the cracks, we have collected information on all the ways to get in contact with us. Whether this be to review a PR, highlight a nasty bug or really for any other reason, let us know what we did well, and what we need to do better.&lt;/p>
+&lt;h2 :height="30px" width="30px" id="monday-is-community-day-slackcontent-and-tooling-teamassets2021-01-20-reaching-outcalendarpng">Monday is Community Day &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/calendar.png" alt="slack">&lt;/h2>
+&lt;p>Yes, that&amp;rsquo;s right! The whole team dedicates a full day to you every week. Every Monday we go over pull requests, releases, new issues and anything else module related.&lt;/p>
+&lt;h2 :height="45px" width="45px" id="reaching-out-via-slack-slackcontent-and-tooling-teamassets2021-01-20-reaching-outslackpng">Reaching out via Slack &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/slack.png" alt="slack">&lt;/h2>
+&lt;p>As part of Community Monday, we have weekly office hours on Monday 1.00pm and 5.00pm GMT alternating each week. Check the &lt;a href="https://puppet.com/community/office-hours">calendar&lt;/a> for the events in your timezone. Join #office-hours on our &lt;a href="https://puppetcommunity.slack.com">community-slack&lt;/a>. Between these hours the IAC team will be online and can chat about anything module related and much more!&lt;/p>
+&lt;p>Outside the office hours, some of us hang out in #forge-modules and #testing on our &lt;a href="https://puppetcommunity.slack.com">community-slack&lt;/a>. Even if nobody from the team is around, other community members might be able to help.&lt;/p>
+&lt;p>&lt;strong>Use the &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/sos.gif" alt="sos">{:height=&amp;ldquo;50px&amp;rdquo; width=&amp;ldquo;50px&amp;rdquo;}
+emoji on urgent issues that require the attention of a puppet employee.&lt;/strong>&lt;/p>
+&lt;h2 :height="40px" width="40px" id="reaching-out-via-jirahttpsticketspuppetlabscombrowsemodules-bugcontent-and-tooling-teamassets2021-01-20-reaching-outbugpng">Reaching out via &lt;a href="https://tickets.puppetlabs.com/browse/MODULES">Jira&lt;/a> &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/bug.png" alt="bug">&lt;/h2>
+&lt;p>A link to raising an issue using Jira can be found &lt;a href="https://tickets.puppetlabs.com/browse/MODULES">here&lt;/a>.&lt;/p>
+&lt;p>When you come across an issue with one of our supported modules and want to raise an issue, in order for to it to come directly to us there are a few things we would doing first.&lt;/p>
+&lt;ol>
+&lt;li>
+&lt;p>Confirm this issue hasn&amp;rsquo;t already been raised by using the JIRA search function&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>If the repository has issues enabled, use this instead of JIRA&lt;/p>
+&lt;/li>
+&lt;/ol>
+&lt;p>Once the above has been confirmed, it is recommended that you complete the following settings in the ticket. This will ensure that our team sees the ticket pretty quick.&lt;/p>
+&lt;p>The values we would recommend setting are:&lt;/p>
+&lt;p>&lt;code>Project:&lt;/code> This will always need set to &lt;strong>&amp;lsquo;Modules&amp;rsquo;&lt;/strong> if you want it to land with our team.&lt;/p>
+&lt;p>&lt;code>Issue Type:&lt;/code> In most cases you will be raising bugs against our supported modules however you can choose the description that best suits your problem.&lt;/p>
+&lt;p>&lt;code>Summary:&lt;/code> Just a quick simple summary of the topic you are looking to highlight to us.&lt;/p>
+&lt;p>&lt;code>Component:&lt;/code> This is used to tag the module affected and ensure the correct person sees your issue.&lt;/p>
+&lt;p>&lt;code>Description:&lt;/code> This is one of the most important sections, add in here as much details as you possibly can, this should include:&lt;/p>
+&lt;pre>&lt;code>1) Description of the issue you are seeing
+2) Steps to Reproduce
+3) Expected Results
+4) Actual Results
+5) Logs/Screenshots/Sample Manifests - in particular, logs generated with the --trace and --debug flags
+&lt;/code>&lt;/pre>
+&lt;p>For more information on writing a good bug report check out this page on &lt;a href="https://rubygarage.org/blog/how-to-write-a-quality-bug-report">RubyGarage&lt;/a>.&lt;/p>
+&lt;p>&lt;code>Environment:&lt;/code> What OS did did you see it on? Which puppet version is affected? What is the module version? You can even include more information like the Ruby version. Again the more information you include here, the higher likelihood of us being able to reproduce and speed up our turnaround.&lt;/p>
+&lt;p>&lt;code>Acceptance Criteria:&lt;/code> What exactly do you want to be able to achieve with the issue being resolved?&lt;/p>
+&lt;h2 :height="40px" width="40px" id="some-things-just-cant-wait-clockcontent-and-tooling-teamassets2021-01-20-reaching-outclockpng">Some things just can&amp;rsquo;t wait &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/clock.png" alt="clock">&lt;/h2>
+&lt;p>If you ever find yourself in this position please don&amp;rsquo;t hesitate to reach out to our team using email and we will do our best to help you out. Our team alias is: &lt;a href="mailto:ia_content@puppet.com">ia_content@puppet.com&lt;/a>.&lt;/p>
+&lt;h2 :height="40px" width="40px" id="useful-tips-magiccontent-and-tooling-teamassets2021-01-20-reaching-outmagicpng">Useful Tips &lt;img src="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/assets/2021-01-20-reaching-out/magic.png" alt="magic">&lt;/h2>
+&lt;ul>
+&lt;li>All supported modules have an examples directory with example manifests&lt;/li>
+&lt;li>If your struggling to write a manifest check out our tests in &lt;code>spec/acceptance&lt;/code>&lt;/li>
+&lt;li>We have a some demos uploaded on &lt;a href="https://www.youtube.com/user/PuppetLabsInc">youtube&lt;/a>!&lt;/li>
+&lt;/ul>
+&lt;h2 id="other-team-contacts">Other team contacts&lt;/h2>
+&lt;h3 id="security-team">Security Team&lt;/h3>
+&lt;p>For security critical information use &lt;a href="mailto:security@puppet.com">security@puppet.com&lt;/a>.&lt;/p>
+&lt;p>&lt;em>Your alert will be handled by our security specialists and routed to the right team. See also the &lt;a href="https://puppet.com/security/">security page&lt;/a> on puppet.com.&lt;/em>&lt;/p>
+&lt;h3 id="bolt-team">Bolt Team&lt;/h3>
+&lt;p>Use the issues tab &lt;a href="https://github.com/puppetlabs/bolt/issues">on the repo&lt;/a>.&lt;/p>
+&lt;h3 id="puppet-agent-team">Puppet Agent Team&lt;/h3>
+&lt;p>&lt;a href="mailto:team-nw@puppet.com">team-nw@puppet.com&lt;/a>&lt;/p>
+&lt;h3 id="forge-team">Forge Team&lt;/h3>
+&lt;p>&lt;a href="mailto:forge@puppet.com">forge@puppet.com&lt;/a>&lt;/p></description></item></channel></rss>
