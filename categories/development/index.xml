@@ -2,9 +2,9 @@
 &lt;h1 id="pdk-puppet-content-templates-010-released-">PDK Puppet Content Templates 0.1.0 released ✨&lt;/h1>
 &lt;p>We are proud to announce the first release for the new PDK templating system: &lt;strong>Puppet Content Templates (PCT)&lt;/strong>.&lt;/p>
 &lt;p>&lt;strong>Puppet Content Templates&lt;/strong> codify a structure to produce content for any Puppet Product that can be authored without direct oversight of the Puppet PDK team.&lt;/p>
-&lt;p>To get started download the release from the &lt;a href="https://github.com/puppetlabs/pdkgo/">pdkgo repo&lt;/a>. A step by step guide is included in the README.&lt;/p>
+&lt;p>To get started download the release from the &lt;a href="https://github.com/puppetlabs/pct/">pct repo&lt;/a>. A step by step guide is included in the README.&lt;/p>
 &lt;blockquote>
-&lt;p>PCT is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">pdkgo/discussions&lt;/a>. ⚠️&lt;/p>
+&lt;p>PCT is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pct/discussions">pct/discussions&lt;/a>. ⚠️&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="create-all-types-of-content-">Create all types of content 🎨&lt;/h2>
 &lt;p>A &lt;strong>PCT&lt;/strong> can create any type of a Puppet Product project. You can create Puppet &lt;a href="https://github.com/puppetlabs/control-repo">control repos&lt;/a>, Puppet &lt;a href="https://puppet.com/docs/puppet/7/modules_fundamentals.html">modules&lt;/a>, Bolt &lt;a href="https://puppet.com/docs/bolt/latest/projects.html">projects&lt;/a>, and more!&lt;/p>

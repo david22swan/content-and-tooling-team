@@ -78,7 +78,7 @@ To help clarify our strategy and vision, &lt;a href="https://github.com/da-ar">D
 &lt;li>&lt;code>pct new&lt;/code> now handles templates in the new &lt;code>0.4.0&lt;/code> format&lt;/li>
 &lt;/ul>
 &lt;p>As highlighted, PCT templates are now in a new format that is &lt;strong>not backwards compatible&lt;/strong> with earlier formats.&lt;/p>
-&lt;p>Check out the &lt;a href="https://github.com/puppetlabs/pdkgo/blob/main/CHANGELOG.md#040">&lt;code>0.4.0&lt;/code> README entry&lt;/a> for full details.&lt;/p>
+&lt;p>Check out the &lt;a href="https://github.com/puppetlabs/pct/blob/main/CHANGELOG.md#040">&lt;code>0.4.0&lt;/code> README entry&lt;/a> for full details.&lt;/p>
 &lt;h3 id="puppet-lint-252">&lt;code>puppet-lint 2.5.2&lt;/code>&lt;/h3>
 &lt;p>There is also a new release of the &lt;code>puppet-lint&lt;/code> gem which resolves &lt;a href="https://github.com/puppetlabs/puppet-lint/issues/16">an issue&lt;/a> with a F+ in the &lt;code>double_quoted_strings&lt;/code> check when the string literal &lt;code>\s&lt;/code> was used in a manfest.
 Thanks to [optiz0r][https://github.com/optiz0r] for highlighting.&lt;/p>

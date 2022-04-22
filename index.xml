@@ -24,7 +24,7 @@ id="tabs-0-1" role="tabpanel" aria-labelled-by="tabs-0-1-tab">&lt;div class="hig
 &lt;p>This will install the latest release of PRM to &lt;code>~/.puppetlabs/prm&lt;/code>.&lt;/p>
 &lt;div class="alert alert-warning" role="alert">
 &lt;h4 class="alert-heading">PRM is Experimental!&lt;/h4>
-PRM is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">our Discussions page on GitHub&lt;/a>.
+PRM is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pct/discussions">our Discussions page on GitHub&lt;/a>.
 &lt;/div>
 &lt;h3 id="telemetry--prm">Telemetry &amp;amp; PRM&lt;/h3>
 &lt;p>By default, PRM collects some telemetry during each run.
@@ -54,7 +54,7 @@ id="tabs-3-1" role="tabpanel" aria-labelled-by="tabs-3-1-tab">&lt;div class="hig
 You will need to be able to use Docker locally to pull, build, and run container images for this release (though PRM handles all those steps for you).&lt;/p>
 &lt;p>Right now, only Linux containers in Docker are supported, but the Docker backend is functional on Windows, Linux, and MacOS systems.&lt;/p>
 &lt;p>A future release will add a local execution backend, enabling you to just use your locally installed Puppet Agent for the runtime.&lt;/p>
-&lt;p>If there are other backends you&amp;rsquo;d like to see supported, please &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">raise a discussion with us!&lt;/a>&lt;/p>
+&lt;p>If there are other backends you&amp;rsquo;d like to see supported, please &lt;a href="https://github.com/puppetlabs/pct/discussions">raise a discussion with us!&lt;/a>&lt;/p>
 &lt;h2 id="docs-in-the-terminal-">Docs in the Terminal 📃&lt;/h2>
 &lt;p>PRM has a pair of robust help systems built in for reviewing reference, concept, and narrative documentation.&lt;/p>
 &lt;p>To see the help for any command or subcommand:&lt;/p>
@@ -421,7 +421,7 @@ To help clarify our strategy and vision, &lt;a href="https://github.com/da-ar">D
 &lt;li>&lt;code>pct new&lt;/code> now handles templates in the new &lt;code>0.4.0&lt;/code> format&lt;/li>
 &lt;/ul>
 &lt;p>As highlighted, PCT templates are now in a new format that is &lt;strong>not backwards compatible&lt;/strong> with earlier formats.&lt;/p>
-&lt;p>Check out the &lt;a href="https://github.com/puppetlabs/pdkgo/blob/main/CHANGELOG.md#040">&lt;code>0.4.0&lt;/code> README entry&lt;/a> for full details.&lt;/p>
+&lt;p>Check out the &lt;a href="https://github.com/puppetlabs/pct/blob/main/CHANGELOG.md#040">&lt;code>0.4.0&lt;/code> README entry&lt;/a> for full details.&lt;/p>
 &lt;h3 id="puppet-lint-252">&lt;code>puppet-lint 2.5.2&lt;/code>&lt;/h3>
 &lt;p>There is also a new release of the &lt;code>puppet-lint&lt;/code> gem which resolves &lt;a href="https://github.com/puppetlabs/puppet-lint/issues/16">an issue&lt;/a> with a F+ in the &lt;code>double_quoted_strings&lt;/code> check when the string literal &lt;code>\s&lt;/code> was used in a manfest.
 Thanks to [optiz0r][https://github.com/optiz0r] for highlighting.&lt;/p>
@@ -480,7 +480,7 @@ PCT is in active development and is pre-release; therefore it is not recommended
 &lt;h2 id="feedback">Feedback&lt;/h2>
 &lt;p>Feedback is so important to us at this early stage of design and development. The DevX team would love to engage with our community about our roadmap and we hope that you can see yourself using these tools in the future. Your feedback can have a real impact on what we build.&lt;/p>
 &lt;p>To get in touch, you can find us on the #office-hours channel within Puppet Community Slack every Monday, alternating weekly between about 1pm and 5pm GMT.&lt;/p>
-&lt;p>Out of those hours, please get involved in our discussions at Discussions · puppetlabs/pdkgo · GitHub.&lt;/p></description></item><item><title>Blog: 2021-09-13: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-09-13-status-update/</link><pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-09-13-status-update/</guid><description>
+&lt;p>Out of those hours, please get involved in our discussions at Discussions · puppetlabs/pct · GitHub.&lt;/p></description></item><item><title>Blog: 2021-09-13: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-09-13-status-update/</link><pubDate>Mon, 13 Sep 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-09-13-status-update/</guid><description>
 &lt;h2 id="community-contributions">Community Contributions&lt;/h2>
 &lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
 &lt;ul>
@@ -609,9 +609,9 @@ PCT is in active development and is pre-release; therefore it is not recommended
 &lt;/li>
 &lt;/ul>
 &lt;h2 id="devx-updates">DevX Updates&lt;/h2>
-&lt;p>We released &lt;a href="https://github.com/puppetlabs/pdkgo/releases/tag/0.3.0">version &lt;code>0.3.0&lt;/code> of the PCT tool&lt;/a> last Friday.
-This introduces the ability to package up and &lt;a href="https://github.com/puppetlabs/pdkgo#sharing-templates">share content templates&lt;/a>.&lt;/p>
-&lt;p>Instructions on how to install the PCT tool can be &lt;a href="https://github.com/puppetlabs/pdkgo#installing">found here&lt;/a>.&lt;/p>
+&lt;p>We released &lt;a href="https://github.com/puppetlabs/pct/releases/tag/0.3.0">version &lt;code>0.3.0&lt;/code> of the PCT tool&lt;/a> last Friday.
+This introduces the ability to package up and &lt;a href="https://github.com/puppetlabs/pct#sharing-templates">share content templates&lt;/a>.&lt;/p>
+&lt;p>Instructions on how to install the PCT tool can be &lt;a href="https://github.com/puppetlabs/pct#installing">found here&lt;/a>.&lt;/p>
 &lt;h2 id="community-day">Community Day&lt;/h2>
 &lt;p>As no summer can end without a holiday, some of our our team members are on a short PTO .
 Next Monday is a bank holiday in EMEA, therefore community day will be quieter.&lt;/p>
@@ -882,8 +882,8 @@ This has been a marathon, with all sorts of new challenges discovered along the 
 We&amp;rsquo;re delighted to announce the release of PDK version &lt;code>2.1.1&lt;/code>.
 This release resolves an issue in which &lt;a href="https://puppet.com/docs/pdk/2.x/release_notes_pdk.html#resolved-issue-with-access-denied-error-on-win-github-actions">child processes were unable to spawn&lt;/a> on some Windows systems.
 Check out the &lt;a href="https://puppet.com/docs/pdk/2.x/release_notes_pdk.html">release notes&lt;/a> for a full list of enhancements and fixes that have gone in to &lt;code>2.1.1&lt;/code>.
-We also have a new release of the &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-04-pct-early-release.md">PCT tool&lt;/a>. Version &lt;code>0.2.0&lt;/code> can be installed over the top of &lt;code>0.1.0&lt;/code> using these &lt;a href="https://github.com/puppetlabs/pdkgo#installing">installation instructions&lt;/a>.
-Check out the &lt;a href="https://github.com/puppetlabs/pdkgo/releases/tag/0.2.0">the &lt;code>0.2.0&lt;/code> release page&lt;/a> for full details of what&amp;rsquo;s included.&lt;/p>
+We also have a new release of the &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-04-pct-early-release.md">PCT tool&lt;/a>. Version &lt;code>0.2.0&lt;/code> can be installed over the top of &lt;code>0.1.0&lt;/code> using these &lt;a href="https://github.com/puppetlabs/pct#installing">installation instructions&lt;/a>.
+Check out the &lt;a href="https://github.com/puppetlabs/pct/releases/tag/0.2.0">the &lt;code>0.2.0&lt;/code> release page&lt;/a> for full details of what&amp;rsquo;s included.&lt;/p>
 &lt;h2 id="community-shout-out">Community shout out&lt;/h2>
 &lt;p>The team wanted to give a big shoutout to &lt;a href="https://github.com/cocker-cc">cocker-cc&lt;/a> and their work on implementing the Puppet &lt;code>Sensitive Datatype&lt;/code> across some of our supported modules like &lt;a href="https://github.com/puppetlabs/puppetlabs-haproxy/pull/487">puppetlabs-haproxy&lt;/a>, &lt;a href="https://github.com/puppetlabs/puppetlabs-mysql/pull/1400">puppetlabs-mysql&lt;/a> and &lt;a href="https://github.com/puppetlabs/puppetlabs-postgresql/pull/1279">puppetlabs-postgresql&lt;/a>.&lt;/p>
 &lt;!-- check https://tickets.puppetlabs.com/secure/RapidBoard.jspa?rapidView=1176&amp;quickFilter=8745 for other tickets closed out this week that should be mentioned here --></description></item><item><title>Blog: 2021-06-18: IAC &amp; DevX Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-18-status-update/</link><pubDate>Fri, 18 Jun 2021 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-18-status-update/</guid><description>
@@ -914,7 +914,7 @@ There&amp;rsquo;s a number of other folks awaiting this fix, so thanks to you bo
 Also, thanks to &lt;a href="https://github.com/glennsarti">Glenn&lt;/a> for his help in the early stages of RCA&amp;rsquo;ing it too.
 In other news, we&amp;rsquo;ve been planning and discussing some of the next big pieces of functionality we want to get in to next release of the PCT EA programme (&lt;code>0.2.0&lt;/code>).
 The sort of things you can expect is template installation and formalized template structure.
-Another area is addition of telemetry data that will help us determine how the app is being used and provide us with another feedback vector on top of the great &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">Github Discussions&lt;/a> we&amp;rsquo;ve had so far.
+Another area is addition of telemetry data that will help us determine how the app is being used and provide us with another feedback vector on top of the great &lt;a href="https://github.com/puppetlabs/pct/discussions">Github Discussions&lt;/a> we&amp;rsquo;ve had so far.
 If you want to get involved in the PCT Early Access programme, check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-04-pct-early-release.md">this blog post out&lt;/a>&lt;/p>
 &lt;h2 id="community-day">Community Day&lt;/h2>
 &lt;p>We had a very busy community day this week with the team processing &lt;strong>45&lt;/strong> tickets across our supported modules and tooling. It was also great to see our Trusted Contributor helping support the community alongside the IAC team.&lt;/p>
@@ -980,9 +980,9 @@ The domain experts are those who use our modules and the technology stacks those
 &lt;h1 id="pdk-puppet-content-templates-010-released-">PDK Puppet Content Templates 0.1.0 released ✨&lt;/h1>
 &lt;p>We are proud to announce the first release for the new PDK templating system: &lt;strong>Puppet Content Templates (PCT)&lt;/strong>.&lt;/p>
 &lt;p>&lt;strong>Puppet Content Templates&lt;/strong> codify a structure to produce content for any Puppet Product that can be authored without direct oversight of the Puppet PDK team.&lt;/p>
-&lt;p>To get started download the release from the &lt;a href="https://github.com/puppetlabs/pdkgo/">pdkgo repo&lt;/a>. A step by step guide is included in the README.&lt;/p>
+&lt;p>To get started download the release from the &lt;a href="https://github.com/puppetlabs/pct/">pct repo&lt;/a>. A step by step guide is included in the README.&lt;/p>
 &lt;blockquote>
-&lt;p>PCT is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">pdkgo/discussions&lt;/a>. ⚠️&lt;/p>
+&lt;p>PCT is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pct/discussions">pct/discussions&lt;/a>. ⚠️&lt;/p>
 &lt;/blockquote>
 &lt;h2 id="create-all-types-of-content-">Create all types of content 🎨&lt;/h2>
 &lt;p>A &lt;strong>PCT&lt;/strong> can create any type of a Puppet Product project. You can create Puppet &lt;a href="https://github.com/puppetlabs/control-repo">control repos&lt;/a>, Puppet &lt;a href="https://puppet.com/docs/puppet/7/modules_fundamentals.html">modules&lt;/a>, Bolt &lt;a href="https://puppet.com/docs/bolt/latest/projects.html">projects&lt;/a>, and more!&lt;/p>
@@ -1032,7 +1032,7 @@ The domain experts are those who use our modules and the technology stacks those
 &lt;p>Instead of a single repository which you&amp;rsquo;d need to fork and maintain to keep up to date, we built out a modular system that would allow you pick and choose the components you&amp;rsquo;d like to include.&lt;/p>
 &lt;p>We&amp;rsquo;re happy to report that we are making great progress and will have a limited availability release out very soon for you to experiment with, so watch this space for updates!&lt;/p>
 &lt;h3 id="dsc-and-the-pdk-go-prototype">DSC And the PDK Go Prototype&lt;/h3>
-&lt;p>The &lt;a href="https://github.com/puppetlabs/pdkgo">new PDK approach&lt;/a> that the DevX team is working on is implemented in Go and screamingly fast. Since their LA release is imminent, this week felt like a good time to see what it will be like to use the new templating in a real project.&lt;/p>
+&lt;p>The &lt;a href="https://github.com/puppetlabs/pct">new PDK approach&lt;/a> that the DevX team is working on is implemented in Go and screamingly fast. Since their LA release is imminent, this week felt like a good time to see what it will be like to use the new templating in a real project.&lt;/p>
 &lt;p>We put up a &lt;a href="https://github.com/puppetlabs/Puppet.Dsc/pull/154">prototype PR&lt;/a> for switching to the new templating (when it becomes available) in our &lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/09/21/dsc-release.html">&lt;code>Puppet.Dsc&lt;/code>&lt;/a> module.&lt;/p>
 &lt;p>How well did it work?&lt;/p>
 &lt;p>Well, it decreased the time to scaffold a minimal Puppet module from thirty seconds to &lt;strong>less than one second&lt;/strong>.&lt;/p>

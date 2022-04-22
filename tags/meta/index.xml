@@ -35,12 +35,12 @@ This binary is identical to the standard binary save that it does not have any m
 &lt;p>These are meant to be ready-to-run, which means they put everything needed for a user to run the project from the moment after creation. This solves the &amp;lsquo;blank page&amp;rsquo; problem, where a few files are in place but the user does not know what the next steps are.&lt;/p>
 &lt;blockquote>
 &lt;p>&lt;strong>Note:&lt;/strong>
-PCT is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">pdkgo/discussions&lt;/a> and starting a &lt;code>feedback&lt;/code> post.&lt;/p>
+PCT is currently in an EXPERIMENTAL phase and feedback is encouraged via &lt;a href="https://github.com/puppetlabs/pct/discussions">pct/discussions&lt;/a> and starting a &lt;code>feedback&lt;/code> post.&lt;/p>
 &lt;/blockquote></description></item><item><title>Docs: Contact DevX about PCT</title><link>https://puppetlabs.github.io/content-and-tooling-team/docs/pct/contact/contact/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/docs/pct/contact/contact/</guid><description>
 &lt;h2 id="requesting-a-feature">Requesting a feature&lt;/h2>
-&lt;p>Open a new feature request in our &lt;a href="https://github.com/puppetlabs/pdkgo/issues/new">Github discussion&lt;/a> page.&lt;/p>
+&lt;p>Open a new feature request in our &lt;a href="https://github.com/puppetlabs/pct/issues/new">Github discussion&lt;/a> page.&lt;/p>
 &lt;h2 id="reporting-problems">Reporting Problems&lt;/h2>
 &lt;p>If you&amp;rsquo;re having trouble with the experimental PCT tool, please follow these instructions
-to file an issue on our GitHub repository: &lt;a href="https://github.com/puppetlabs/pdkgo/issues/new">https://github.com/puppetlabs/pdkgo/issues/new&lt;/a>&lt;/p>
+to file an issue on our GitHub repository: &lt;a href="https://github.com/puppetlabs/pct/issues/new">https://github.com/puppetlabs/pct/issues/new&lt;/a>&lt;/p>
 &lt;p>Make sure to fill in the information that is requested in the issue template as it
 will help us investigate the problem more quickly.&lt;/p></description></item></channel></rss>

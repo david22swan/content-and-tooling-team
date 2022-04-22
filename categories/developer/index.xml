@@ -35,7 +35,7 @@
 &lt;p>Instead of a single repository which you&amp;rsquo;d need to fork and maintain to keep up to date, we built out a modular system that would allow you pick and choose the components you&amp;rsquo;d like to include.&lt;/p>
 &lt;p>We&amp;rsquo;re happy to report that we are making great progress and will have a limited availability release out very soon for you to experiment with, so watch this space for updates!&lt;/p>
 &lt;h3 id="dsc-and-the-pdk-go-prototype">DSC And the PDK Go Prototype&lt;/h3>
-&lt;p>The &lt;a href="https://github.com/puppetlabs/pdkgo">new PDK approach&lt;/a> that the DevX team is working on is implemented in Go and screamingly fast. Since their LA release is imminent, this week felt like a good time to see what it will be like to use the new templating in a real project.&lt;/p>
+&lt;p>The &lt;a href="https://github.com/puppetlabs/pct">new PDK approach&lt;/a> that the DevX team is working on is implemented in Go and screamingly fast. Since their LA release is imminent, this week felt like a good time to see what it will be like to use the new templating in a real project.&lt;/p>
 &lt;p>We put up a &lt;a href="https://github.com/puppetlabs/Puppet.Dsc/pull/154">prototype PR&lt;/a> for switching to the new templating (when it becomes available) in our &lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/09/21/dsc-release.html">&lt;code>Puppet.Dsc&lt;/code>&lt;/a> module.&lt;/p>
 &lt;p>How well did it work?&lt;/p>
 &lt;p>Well, it decreased the time to scaffold a minimal Puppet module from thirty seconds to &lt;strong>less than one second&lt;/strong>.&lt;/p>

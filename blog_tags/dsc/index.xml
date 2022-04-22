@@ -140,7 +140,7 @@ There&amp;rsquo;s a number of other folks awaiting this fix, so thanks to you bo
 Also, thanks to &lt;a href="https://github.com/glennsarti">Glenn&lt;/a> for his help in the early stages of RCA&amp;rsquo;ing it too.
 In other news, we&amp;rsquo;ve been planning and discussing some of the next big pieces of functionality we want to get in to next release of the PCT EA programme (&lt;code>0.2.0&lt;/code>).
 The sort of things you can expect is template installation and formalized template structure.
-Another area is addition of telemetry data that will help us determine how the app is being used and provide us with another feedback vector on top of the great &lt;a href="https://github.com/puppetlabs/pdkgo/discussions">Github Discussions&lt;/a> we&amp;rsquo;ve had so far.
+Another area is addition of telemetry data that will help us determine how the app is being used and provide us with another feedback vector on top of the great &lt;a href="https://github.com/puppetlabs/pct/discussions">Github Discussions&lt;/a> we&amp;rsquo;ve had so far.
 If you want to get involved in the PCT Early Access programme, check &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2021-06-04-pct-early-release.md">this blog post out&lt;/a>&lt;/p>
 &lt;h2 id="community-day">Community Day&lt;/h2>
 &lt;p>We had a very busy community day this week with the team processing &lt;strong>45&lt;/strong> tickets across our supported modules and tooling. It was also great to see our Trusted Contributor helping support the community alongside the IAC team.&lt;/p>

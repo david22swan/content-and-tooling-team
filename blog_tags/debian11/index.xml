@@ -92,9 +92,9 @@
 &lt;/li>
 &lt;/ul>
 &lt;h2 id="devx-updates">DevX Updates&lt;/h2>
-&lt;p>We released &lt;a href="https://github.com/puppetlabs/pdkgo/releases/tag/0.3.0">version &lt;code>0.3.0&lt;/code> of the PCT tool&lt;/a> last Friday.
-This introduces the ability to package up and &lt;a href="https://github.com/puppetlabs/pdkgo#sharing-templates">share content templates&lt;/a>.&lt;/p>
-&lt;p>Instructions on how to install the PCT tool can be &lt;a href="https://github.com/puppetlabs/pdkgo#installing">found here&lt;/a>.&lt;/p>
+&lt;p>We released &lt;a href="https://github.com/puppetlabs/pct/releases/tag/0.3.0">version &lt;code>0.3.0&lt;/code> of the PCT tool&lt;/a> last Friday.
+This introduces the ability to package up and &lt;a href="https://github.com/puppetlabs/pct#sharing-templates">share content templates&lt;/a>.&lt;/p>
+&lt;p>Instructions on how to install the PCT tool can be &lt;a href="https://github.com/puppetlabs/pct#installing">found here&lt;/a>.&lt;/p>
 &lt;h2 id="community-day">Community Day&lt;/h2>
 &lt;p>As no summer can end without a holiday, some of our our team members are on a short PTO .
 Next Monday is a bank holiday in EMEA, therefore community day will be quieter.&lt;/p>
