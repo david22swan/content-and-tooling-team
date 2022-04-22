@@ -1,4 +1,80 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – news</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/news/</link><description>Recent content in news on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Mon, 21 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/news/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: DSC + Puppet: Arrived!</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-21-dsc-release/</link><pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-21-dsc-release/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – news</title><link>https://puppetlabs.github.io/content-and-tooling-team/categories/news/</link><description>Recent content in news on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><lastBuildDate>Fri, 22 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/categories/news/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hello From The CAT Team 👋</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/team-rebrand/</link><pubDate>Fri, 22 Apr 2022 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/team-rebrand/</guid><description>
+&lt;p>Hey Everyone,&lt;/p>
+&lt;p>Firstly let me introduce myself, I am Aaron Robinson, the Engineering Manager for the newly rebranded Content and Tooling Team (CAT).
+You may have known us under previous guises such as DevX and IAC, but following on from some organizational changes we have merged these two teams together and rebranded as the Content and Tooling Team.&lt;/p>
+&lt;h3 id="what-do-we-do">&lt;strong>What do we do?&lt;/strong>&lt;/h3>
+&lt;p>The CAT team are responsible for maintaining and developing a number of supported modules and tools in the Puppet ecosystem.
+It is our mission to empower partners, contributors and users to create and consume high quality content.&lt;/p>
+&lt;h3 id="who-are-we">&lt;strong>Who are we?&lt;/strong>&lt;/h3>
+&lt;p>The Content and Tooling team is based in the UK, with the majority of our engineers in the Belfast office and one remote engineer in mainland UK.
+Our Product team is based out of our Portland HQ and we regularly collaborate with them to ensure our strategic direction is aligned.&lt;/p>
+&lt;p>Check out below for some quick intros to the team!&lt;/p>
+&lt;p>&lt;strong>Aaron Robinson - Engineering Manager&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>I joined Puppet in January this year, moving from an Infrastructure Management role(Network Engineering to be specific) and have over 10 years experience in the tech industry.
+I am a sports fanatic and I can usually be found in the stands supporting my local football(soccer if you are in the US) team or the Ulster Rugby team.
+If not there, you will find me on the golf course or the squash court.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/Aaron-Rob">GitHub&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Craig Gumbley - Principal Software Engineer&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hello! I’m Craig, I ❤️ open source &amp;amp; automation.
+I’m excited to be starting a new journey with the Content and Tooling team.
+Outside of work, I enjoy listening to and making music, coding and just about anything that is technology related.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/chelnak">GitHub&lt;/a> and &lt;a href="https://twitter.com/_chelnak">Twitter&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Paula Muir - Senior Software Engineer&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hey! I’m Paula and I have been with many different variations of this team over the past 6 years.
+I have 2 small children that keep me super busy.
+Any downtime I have I like to try to get creative and attempt baking, sewing, and some gardening.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/pmcmaw">Github&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>David Swan - Software Engineer&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hey, you all should hopefully know me by now, but in case you don&amp;rsquo;t I&amp;rsquo;m David Swan, a software engineer within the CAT team.
+I&amp;rsquo;ve been a member of the main team and its spin offs for a few years now, back when it was simply called Modules.
+Anyway, I&amp;rsquo;ll be continuing to work on the team for the foreseeable future, so please don&amp;rsquo;t hesitate to reach out to me whenever you need.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/david22swan">GitHub&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Lukas Audzevicius - Associate Software Engineer&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hello, I&amp;rsquo;m Lukas Audzevicius, an associate level software engineer who joined Puppet in January.
+I graduated last year (2021) and although my journey in the IT industry has been short so far, I hope I will be able to learn and grow more working in Puppet.
+Outside of work, some of my most common pastimes are gaming and listening to music.
+I look forward to having the opportunity to work with Puppet and the community to build great things!&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/LukasAud">GitHub&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Peter Murphy - Software Engineer Intern&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hi, my name is Peter Murphy.
+I am a Software Engineering student at Queen&amp;rsquo;s University Belfast and I’m working for Puppet on a year-long internship.
+I’ve always had an interest in computers and software, so I’m very happy to be working in a field I enjoy.
+Outside of work, I have many hobbies including scuba diving, badminton and hiking.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/petergmurphy">GitHub&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Micah Wilson - CAT Product Manager&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hi, I’m Micah Wilson.
+I’m the PM for the CAT team, the Forge team, and the PIE team.
+I live in Portland, OR, more specifically way out in the suburb of Damascus.
+Outside of work I enjoy playing volleyball, doing OrangeTheory, and playing with my adorable French Bulldog, Toulouse.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="the-future">&lt;strong>The Future&lt;/strong>&lt;/h3>
+&lt;p>Now with those intros out of the way we can get on with the good stuff.&lt;/p>
+&lt;p>With the relaunch of our team, we are currently detailing our strategy moving forward and will be continuing work on &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/docs/prm">PRM&lt;/a> which, alongside &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/docs/pct">PCT&lt;/a>, promises to provide a cleaner and lighter &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/blog/posts/future-of-pdk/">future for our development tools&lt;/a>.&lt;/p>
+&lt;p>On the modules side we have been focusing on stability and reviewing the supported modules on the forge.
+Over the coming weeks will be reducing the number of supported modules to reflect recommendations proposed in the review.
+This will allow us to focus on the modules that we feel have true value and are aligned with our customers and support teams.&lt;/p>
+&lt;p>We are hoping to bring forward some new partnerships with a number of providers to look to establish partner modules and further evolve those we have so keep an eye out for some details on these as we progress through 2022.&lt;/p>
+&lt;p>Finally, with our rebrand and now our relaunch complete, we will be reinstating Community Day on Monday 16th May.
+For those of you unfamiliar with Community Day, it occurs each Monday.
+During this time we will triage and address new issues and pull requests from the community and not from our internal workslate.
+These are then prioritized and either actioned or put into the backlog for further discussion.&lt;/p>
+&lt;p>As the team gets up to speed you will see a lot more community engagement from the team and we will look to build on this and work with the community to build a brighter future for content at Puppet.&lt;/p>
+&lt;p>Thank you for taking the time to read this blog, we look forward to working alongside our community again and rebuilding that relationship.&lt;/p>
+&lt;p>Feel free to reach out and say hello via the community slack channel and I anticipate many great ideas coming forward to us on how we enhance and build the experience with our modules and tools.&lt;/p>
+&lt;p>Aaron.&lt;/p></description></item><item><title>Blog: DSC + Puppet: Arrived!</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-21-dsc-release/</link><pubDate>Mon, 21 Sep 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2020-09-21-dsc-release/</guid><description>
 &lt;p>Earlier this year, we &lt;a href="https://puppetlabs.github.io/iac/news/roadmap/2020/03/30/dsc-announcement.html">announced an upcoming project&lt;/a> to drastically improve the story for using DSC Resources with Puppet.
 Today, we&amp;rsquo;re announcing the general availability of that project!&lt;/p>
 &lt;p>The &lt;a href="https://github.com/puppetlabs/Puppet.Dsc">&lt;code>Puppet.Dsc&lt;/code> PowerShell module&lt;/a> is now available on the &lt;a href="https://www.powershellgallery.com/packages/Puppet.Dsc">PowerShell Gallery&lt;/a>;

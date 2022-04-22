@@ -1,4 +1,80 @@
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – Content and Tooling</title><link>https://puppetlabs.github.io/content-and-tooling-team/</link><description>Recent content on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Puppet Runtime Manager 0.1.0 Release 🚀</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/prm-initial-release/</link><pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/prm-initial-release/</guid><description>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Content and Tooling – Content and Tooling</title><link>https://puppetlabs.github.io/content-and-tooling-team/</link><description>Recent content on Content and Tooling</description><generator>Hugo -- gohugo.io</generator><atom:link href="https://puppetlabs.github.io/content-and-tooling-team/index.xml" rel="self" type="application/rss+xml"/><item><title>Blog: Hello From The CAT Team 👋</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/team-rebrand/</link><pubDate>Fri, 22 Apr 2022 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/team-rebrand/</guid><description>
+&lt;p>Hey Everyone,&lt;/p>
+&lt;p>Firstly let me introduce myself, I am Aaron Robinson, the Engineering Manager for the newly rebranded Content and Tooling Team (CAT).
+You may have known us under previous guises such as DevX and IAC, but following on from some organizational changes we have merged these two teams together and rebranded as the Content and Tooling Team.&lt;/p>
+&lt;h3 id="what-do-we-do">&lt;strong>What do we do?&lt;/strong>&lt;/h3>
+&lt;p>The CAT team are responsible for maintaining and developing a number of supported modules and tools in the Puppet ecosystem.
+It is our mission to empower partners, contributors and users to create and consume high quality content.&lt;/p>
+&lt;h3 id="who-are-we">&lt;strong>Who are we?&lt;/strong>&lt;/h3>
+&lt;p>The Content and Tooling team is based in the UK, with the majority of our engineers in the Belfast office and one remote engineer in mainland UK.
+Our Product team is based out of our Portland HQ and we regularly collaborate with them to ensure our strategic direction is aligned.&lt;/p>
+&lt;p>Check out below for some quick intros to the team!&lt;/p>
+&lt;p>&lt;strong>Aaron Robinson - Engineering Manager&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>I joined Puppet in January this year, moving from an Infrastructure Management role(Network Engineering to be specific) and have over 10 years experience in the tech industry.
+I am a sports fanatic and I can usually be found in the stands supporting my local football(soccer if you are in the US) team or the Ulster Rugby team.
+If not there, you will find me on the golf course or the squash court.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/Aaron-Rob">GitHub&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Craig Gumbley - Principal Software Engineer&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hello! I’m Craig, I ❤️ open source &amp;amp; automation.
+I’m excited to be starting a new journey with the Content and Tooling team.
+Outside of work, I enjoy listening to and making music, coding and just about anything that is technology related.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/chelnak">GitHub&lt;/a> and &lt;a href="https://twitter.com/_chelnak">Twitter&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Paula Muir - Senior Software Engineer&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hey! I’m Paula and I have been with many different variations of this team over the past 6 years.
+I have 2 small children that keep me super busy.
+Any downtime I have I like to try to get creative and attempt baking, sewing, and some gardening.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/pmcmaw">Github&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>David Swan - Software Engineer&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hey, you all should hopefully know me by now, but in case you don&amp;rsquo;t I&amp;rsquo;m David Swan, a software engineer within the CAT team.
+I&amp;rsquo;ve been a member of the main team and its spin offs for a few years now, back when it was simply called Modules.
+Anyway, I&amp;rsquo;ll be continuing to work on the team for the foreseeable future, so please don&amp;rsquo;t hesitate to reach out to me whenever you need.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/david22swan">GitHub&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Lukas Audzevicius - Associate Software Engineer&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hello, I&amp;rsquo;m Lukas Audzevicius, an associate level software engineer who joined Puppet in January.
+I graduated last year (2021) and although my journey in the IT industry has been short so far, I hope I will be able to learn and grow more working in Puppet.
+Outside of work, some of my most common pastimes are gaming and listening to music.
+I look forward to having the opportunity to work with Puppet and the community to build great things!&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/LukasAud">GitHub&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Peter Murphy - Software Engineer Intern&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hi, my name is Peter Murphy.
+I am a Software Engineering student at Queen&amp;rsquo;s University Belfast and I’m working for Puppet on a year-long internship.
+I’ve always had an interest in computers and software, so I’m very happy to be working in a field I enjoy.
+Outside of work, I have many hobbies including scuba diving, badminton and hiking.&lt;/p>
+&lt;p>You can find me on &lt;a href="https://github.com/petergmurphy">GitHub&lt;/a>.&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Micah Wilson - CAT Product Manager&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>Hi, I’m Micah Wilson.
+I’m the PM for the CAT team, the Forge team, and the PIE team.
+I live in Portland, OR, more specifically way out in the suburb of Damascus.
+Outside of work I enjoy playing volleyball, doing OrangeTheory, and playing with my adorable French Bulldog, Toulouse.&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="the-future">&lt;strong>The Future&lt;/strong>&lt;/h3>
+&lt;p>Now with those intros out of the way we can get on with the good stuff.&lt;/p>
+&lt;p>With the relaunch of our team, we are currently detailing our strategy moving forward and will be continuing work on &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/docs/prm">PRM&lt;/a> which, alongside &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/docs/pct">PCT&lt;/a>, promises to provide a cleaner and lighter &lt;a href="https://puppetlabs.github.io/content-and-tooling-team/content-and-tooling-team/blog/posts/future-of-pdk/">future for our development tools&lt;/a>.&lt;/p>
+&lt;p>On the modules side we have been focusing on stability and reviewing the supported modules on the forge.
+Over the coming weeks will be reducing the number of supported modules to reflect recommendations proposed in the review.
+This will allow us to focus on the modules that we feel have true value and are aligned with our customers and support teams.&lt;/p>
+&lt;p>We are hoping to bring forward some new partnerships with a number of providers to look to establish partner modules and further evolve those we have so keep an eye out for some details on these as we progress through 2022.&lt;/p>
+&lt;p>Finally, with our rebrand and now our relaunch complete, we will be reinstating Community Day on Monday 16th May.
+For those of you unfamiliar with Community Day, it occurs each Monday.
+During this time we will triage and address new issues and pull requests from the community and not from our internal workslate.
+These are then prioritized and either actioned or put into the backlog for further discussion.&lt;/p>
+&lt;p>As the team gets up to speed you will see a lot more community engagement from the team and we will look to build on this and work with the community to build a brighter future for content at Puppet.&lt;/p>
+&lt;p>Thank you for taking the time to read this blog, we look forward to working alongside our community again and rebuilding that relationship.&lt;/p>
+&lt;p>Feel free to reach out and say hello via the community slack channel and I anticipate many great ideas coming forward to us on how we enhance and build the experience with our modules and tools.&lt;/p>
+&lt;p>Aaron.&lt;/p></description></item><item><title>Blog: Puppet Runtime Manager 0.1.0 Release 🚀</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/prm-initial-release/</link><pubDate>Mon, 31 Jan 2022 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/posts/prm-initial-release/</guid><description>
 &lt;p>We are proud to announce the first release for the new tool for executing arbitrary commands against your code in a Puppet runtime: The &lt;strong>Puppet Runtime Manager (PRM)&lt;/strong>.&lt;/p>
 &lt;p>The &lt;strong>Puppet Runtime Manager&lt;/strong> abstracts away the Puppet Ruby development environment to enable you to execute against and validate content for any Puppet Product that you might author!&lt;/p>
 &lt;h2 id="installing-prm-">Installing PRM 💾&lt;/h2>
@@ -2981,67 +3057,4 @@ In his talk, Chris shows how it is used, and a number of useful tips and tricks 
 &lt;li>&lt;a href="https://www.youtube.com/watch?v=bbZ9T3Hp_xI&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=26">Update your code safely&lt;/a>&lt;/li>
 &lt;li>&lt;a href="https://www.youtube.com/watch?v=8FblErxC1OY&amp;amp;list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW&amp;amp;index=33">Git Workflows for Puppet&lt;/a>&lt;/li>
 &lt;/ul>
-&lt;p>You can find the &lt;a href="https://www.youtube.com/playlist?list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW">entire playlist on YouTube&lt;/a>.&lt;/p></description></item><item><title>Blog: 2020-11-20: IAC Team Status Update</title><link>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-11-20-status-update/</link><pubDate>Fri, 20 Nov 2020 00:00:00 +0000</pubDate><guid>https://puppetlabs.github.io/content-and-tooling-team/blog/updates/2020-11-20-status-update/</guid><description>
-&lt;p>Coming at you with the latest weekly blog post, here to fill you in on all the juicy IAC gossip!&lt;/p>
-&lt;h2 id="gitpod">Gitpod&lt;/h2>
-&lt;p>As of a few days ago a pr (&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/354">pdk-templates#354&lt;/a>), submitted by the excellent &lt;a href="https://github.com/logicminds">logicminds&lt;/a> has been merged in, adding support for gitpod puppet development to the pdk-templates as an opt in option, allowing contributors to edit any enabled module via VSCode from the browser without requiring any local setup or install.&lt;/p>
-&lt;p>These changes include not only the basic gitpod setup, but also the creation of a container that comes packed with pdk, puppet-debugger, puppet-agent, zsh, oh-my-zsh plugins and several other productivity improvements to help enhance puppet development.&lt;/p>
-&lt;p>We in the IAC team are especially excited by this as it will be a great help with the many small changes that we need to make on a regular basis and so give a big thanks to &lt;a href="https://github.com/logicminds">logicminds&lt;/a> for the work that he put into this.&lt;/p>
-&lt;p>To anyone who wants to try it out, this change has been rolled out to the majority of our own modules already and we look forward to hearing any feedback that you have reguarding this change.&lt;/p>
-&lt;p>If you&amp;rsquo;d like some more information on Gitpod and how it works please check out the demo from James Pogran at this year&amp;rsquo;s Puppetize, which will provide you with an excellent start to the use of this new functionality.&lt;/p>
-&lt;h2 id="dsc-updates">DSC Updates&lt;/h2>
-&lt;p>A handful of minor bugfixes and improvements to the &lt;a href="https://github.com/puppetlabs/Puppet.Dsc">Puppet.Dsc&lt;/a> module and the &lt;a href="https://github.com/puppetlabs/ruby-pwsh/blob/main/lib/puppet/provider/dsc_base_provider/dsc_base_provider.rb">base provider&lt;/a> have landed—
-we&amp;rsquo;ve got several more to come in quick succession, which means new releases of the &lt;a href="https://github.com/puppetlabs/ruby-pwsh">ruby-pwsh&lt;/a> gem, the &lt;a href="https://github.com/puppetlabs/Puppet.Dsc">Puppet.Dsc&lt;/a> module, and the &lt;a href="https://forge.puppet.com/dsc">Puppetized DSC modules on the forge&lt;/a>!&lt;/p>
-&lt;p>Here&amp;rsquo;s some of what we&amp;rsquo;ve been up to:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://github.com/puppetlabs/Puppet.Dsc/pull/76">Enable Puppetizing pre-release modules&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/Puppet.Dsc/pull/77">Ensure type description and attribute strings parse for reference&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/Puppet.Dsc/pull/82">Fix minor typos&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/Puppet.Dsc/pull/78">Ensure Optional CIM Instances are properly defined in generated types&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/ruby-pwsh/pull/56">Ensure DateTimes are handled properly&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/ruby-pwsh/pull/58">Ensure empty arrays are handled properly&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/Puppet.Dsc/pull/84">Clarify property usage in generated readmes&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>If you&amp;rsquo;d like to see the rest of our planned work for the next cycle of releases, you can peek in on our &lt;a href="https://github.com/puppetlabs/Puppet.Dsc/milestone/3">active milestone on GitHub&lt;/a> and generally watch our &lt;a href="https://github.com/orgs/puppetlabs/projects/28">GitHub project&lt;/a> for all the work in flight!&lt;/p>
-&lt;h2 id="cloud-ci-update">Cloud CI Update&lt;/h2>
-&lt;p>This week we managed to port the puppetlabs-apache and puppetlabs-java modules to run using our new Cloud CI setup.
-We’ve prepared the templates in &lt;a href="pdk-templates">pdk-templates&lt;/a> for the nightly and PR Github Action workflows that will be used in the future for porting the rest of the modules.&lt;/p>
-&lt;p>The puppetlabs-iis porting PR is still waiting to be merged, however we have stumbled upon some acceptance test issues there that we are currently investigating.&lt;/p>
-&lt;p>For next week we will be focusing on improving the provision service and the associated task error handling and stabilization improvement, ironing out any remaining bumps we stumble across as we port more and more modules to use the new CI solution.&lt;/p>
-&lt;p>Some required changes for deploying the Github Actions to all our modules (and the reporting from the changes) can be seen in &lt;a href="https://github.com/puppetlabs/pdk-templates/pull/363">puppetlabs/pdk-templates#363&lt;/a>.&lt;/p>
-&lt;h2 id="triage-day">Triage day&lt;/h2>
-&lt;p>Another busy and productive Monday. During IAC triage day the team processed 30 community PR’s (20 related to our tooling, and 10 related to our supported modules). On top of this, the team managed to release 3 modules as part of triage day.&lt;/p>
-&lt;h2 id="life-of-an-intern-at-puppet">Life of an intern at Puppet&lt;/h2>
-&lt;p>&lt;a href="https://github.com/Disha-maker">Disha&amp;rsquo;s&lt;/a> Placement Journey Continues&amp;hellip;&lt;/p>
-&lt;p>Hard to believe she is in the Week 12 already? Refer to the life of an intern channel &lt;a href="https://puppetlabs.github.io/iac/docs/life_of_intern.html">here&lt;/a> for more interesting information!&lt;/p>
-&lt;h2 id="community-contributions">Community Contributions&lt;/h2>
-&lt;p>We&amp;rsquo;d like to thank the following people in the Puppet Community for their contributions over this past week:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-apache/pull/2091">&lt;code>puppetlabs-apache#2091&lt;/code>&lt;/a>: &amp;ldquo;(docs) small readme change&amp;rdquo;, thanks to &lt;a href="https://github.com/tphoney">tphoney&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-docker/pull/672">&lt;code>puppetlabs-docker#672&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Use docker-compose config instead file parsing&amp;rdquo;, thanks to &lt;a href="https://github.com/rbelnap">rbelnap&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-firewall/pull/951">&lt;code>puppetlabs-firewall#951&lt;/code>&lt;/a>: &amp;ldquo;Restore copyright names&amp;rdquo;, thanks to &lt;a href="https://github.com/hunner">hunner&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks/pull/336">&lt;code>puppetlabs-java_ks#336&lt;/code>&lt;/a>: &amp;ldquo;Change latest/current comparison to account for chains&amp;rdquo;, thanks to &lt;a href="https://github.com/mwpower">mwpower&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-kubernetes/pull/448">&lt;code>puppetlabs-kubernetes#448&lt;/code>&lt;/a>: &amp;ldquo;Remove invalid kube-proxy config resourceContainer&amp;rdquo;, thanks to &lt;a href="https://github.com/treydock">treydock&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/puppetlabs-stdlib/pull/1137">&lt;code>puppetlabs-stdlib#1137&lt;/code>&lt;/a>: &amp;ldquo;Allow options injection for to_yaml&amp;rdquo;, thanks to &lt;a href="https://github.com/baurmatt">baurmatt&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/action-litmus_parallel/pull/68">&lt;code>action-litmus_parallel#68&lt;/code>&lt;/a>: &amp;ldquo;(docs) point users to the main branch&amp;rdquo;, thanks to &lt;a href="https://github.com/tphoney">tphoney&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/community_management/pull/50">&lt;code>community_management#50&lt;/code>&lt;/a>: &amp;ldquo;add link to adoption page to the nav bar&amp;rdquo;, thanks to &lt;a href="https://github.com/binford2k">binford2k&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/community_management/pull/49">&lt;code>community_management#49&lt;/code>&lt;/a>: &amp;ldquo;[WIP] first draft of adoptable modules&amp;rdquo;, thanks to &lt;a href="https://github.com/binford2k">binford2k&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/pdk/pull/922">&lt;code>pdk#922&lt;/code>&lt;/a>: &amp;ldquo;(MAINT) Default to Ruby 2.5.x on packaged installations&amp;rdquo;, thanks to &lt;a href="https://github.com/scotje">scotje&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-docker/pull/11">&lt;code>pdk-docker#11&lt;/code>&lt;/a>: &amp;ldquo;(PF-2226) Add github workflow for building &amp;amp; pushing Docker images&amp;rdquo;, thanks to &lt;a href="https://github.com/nkanderson">nkanderson&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/361">&lt;code>pdk-templates#361&lt;/code>&lt;/a>: &amp;ldquo;Add object templates for generating new facts&amp;rdquo;, thanks to &lt;a href="https://github.com/logicminds">logicminds&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/puppetlabs/pdk-templates/pull/354">&lt;code>pdk-templates#354&lt;/code>&lt;/a>: &amp;ldquo;Add gitpod support for puppet modules&amp;rdquo;, thanks to &lt;a href="https://github.com/logicminds">logicminds&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://github.com/voxpupuli/metadata-json-lint/pull/112">&lt;code>metadata-json-lint#112&lt;/code>&lt;/a>: &amp;ldquo;Require Ruby 2.1 and drop post_install_message&amp;rdquo;, thanks to &lt;a href="https://github.com/ekohl">ekohl&lt;/a> and the following people who helped get it over the line (&lt;a href="https://github.com/ghoneycutt">ghoneycutt&lt;/a>)&lt;/li>
-&lt;/ul>
-&lt;h2 id="new-module--gem-releases">New Module / Gem Releases&lt;/h2>
-&lt;p>The following modules were released this week:&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-java_ks">&lt;code>puppetlabs-java_ks&lt;/code>&lt;/a> (&lt;code>3.3.0&lt;/code>)&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-reboot">&lt;code>puppetlabs-reboot&lt;/code>&lt;/a> (&lt;code>3.1.0&lt;/code>)&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>&lt;a href="https://github.com/puppetlabs/puppetlabs-puppet_conf">&lt;code>puppetlabs-puppet_conf&lt;/code>&lt;/a> (&lt;code>0.7.0&lt;/code>)&lt;/p>
-&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;p>You can find the &lt;a href="https://www.youtube.com/playlist?list=PLV86BgbREluXpEPnW_Bb4kgZAlGit4EnW">entire playlist on YouTube&lt;/a>.&lt;/p></description></item></channel></rss>
