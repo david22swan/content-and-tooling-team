@@ -199,7 +199,7 @@ enable = false
         desc = "Follow us on Twitter to get the latest news!"
 [[params.links.user]]
 	name = "Slack"
-	url = "https://puppetcommunity.slack.com/"
+	url = "https://slack.puppet.com/"
 	icon = "fab fa-slack"
         desc = "Chat with us!"
 [[params.links.user]]
