@@ -2,7 +2,7 @@
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 description: "ENTER DESCRIPTION HERE"
-github_repo: "https://github.com/puppetlabs/pdkgo"
+github_repo: "https://github.com/puppetlabs/pct"
 draft: true
 ---
 

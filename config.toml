@@ -224,7 +224,7 @@ enable = false
 [[module.imports]]
   ignoreImports = true
   ignoreConfig = true
-  path = 'github.com/puppetlabs/pdkgo/docs/md'
+  path = 'github.com/puppetlabs/pct/docs/md'
   [[module.imports.mounts]]
     source = 'content'
     target = 'content/docs/pct/'

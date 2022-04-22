@@ -26,7 +26,7 @@ iex "&{ $(irm https://pup.pt/prm/install.ps1); Install-Prm }"
 This will install the latest release of PRM to `~/.puppetlabs/prm`.
 
 {{% alert title="PRM is Experimental!" color="warning" %}}
-PRM is currently in an EXPERIMENTAL phase and feedback is encouraged via [our Discussions page on GitHub](https://github.com/puppetlabs/pdkgo/discussions).
+PRM is currently in an EXPERIMENTAL phase and feedback is encouraged via [our Discussions page on GitHub](https://github.com/puppetlabs/pct/discussions).
 {{% /alert %}}
 
 ### Telemetry & PRM
@@ -57,7 +57,7 @@ Right now, only Linux containers in Docker are supported, but the Docker backend
 
 A future release will add a local execution backend, enabling you to just use your locally installed Puppet Agent for the runtime.
 
-If there are other backends you'd like to see supported, please [raise a discussion with us!](https://github.com/puppetlabs/pdkgo/discussions)
+If there are other backends you'd like to see supported, please [raise a discussion with us!](https://github.com/puppetlabs/pct/discussions)
 
 ## Docs in the Terminal 📃
 

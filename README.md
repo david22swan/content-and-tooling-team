@@ -16,7 +16,7 @@ To install/update the Docsy theme use
 `git submodule update --init --recursive --depth 50`
 
 ## Add Hugo Modules
-Run the following command to download the pdkgo and prm modules and their dependencies:
+Run the following command to download the pct and prm modules and their dependencies:
 
 `hugo mod get`
 

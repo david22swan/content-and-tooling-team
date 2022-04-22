@@ -61,10 +61,10 @@ The following modules were released this week:
 
 ## DevX Updates
 
-We released [version `0.3.0` of the PCT tool](https://github.com/puppetlabs/pdkgo/releases/tag/0.3.0) last Friday.
-This introduces the ability to package up and [share content templates](https://github.com/puppetlabs/pdkgo#sharing-templates).
+We released [version `0.3.0` of the PCT tool](https://github.com/puppetlabs/pct/releases/tag/0.3.0) last Friday.
+This introduces the ability to package up and [share content templates](https://github.com/puppetlabs/pct#sharing-templates).
 
-Instructions on how to install the PCT tool can be [found here](https://github.com/puppetlabs/pdkgo#installing).
+Instructions on how to install the PCT tool can be [found here](https://github.com/puppetlabs/pct#installing).
 
 ## Community Day
 

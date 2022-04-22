@@ -81,7 +81,7 @@ We released version `0.4.0` of the PCT tool on Friday, which brings a number of 
 
 As highlighted, PCT templates are now in a new format that is **not backwards compatible** with earlier formats.
 
-Check out the [`0.4.0` README entry](https://github.com/puppetlabs/pdkgo/blob/main/CHANGELOG.md#040) for full details.
+Check out the [`0.4.0` README entry](https://github.com/puppetlabs/pct/blob/main/CHANGELOG.md#040) for full details.
 
 ### `puppet-lint 2.5.2`
 

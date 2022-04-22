@@ -59,9 +59,9 @@ We're happy to report that we are making great progress and will have a limited 
 
 ### DSC And the PDK Go Prototype
 
-The [new PDK approach][pdkgo-templating] that the DevX team is working on is implemented in Go and screamingly fast. Since their LA release is imminent, this week felt like a good time to see what it will be like to use the new templating in a real project.
+The [new PDK approach][pct-templating] that the DevX team is working on is implemented in Go and screamingly fast. Since their LA release is imminent, this week felt like a good time to see what it will be like to use the new templating in a real project.
 
-We put up a [prototype PR][puppet-dsc-pdkgo-template] for switching to the new templating (when it becomes available) in our [`Puppet.Dsc`][puppet-dsc-intro-blog] module.
+We put up a [prototype PR][puppet-dsc-pct-template] for switching to the new templating (when it becomes available) in our [`Puppet.Dsc`][puppet-dsc-intro-blog] module.
 
 How well did it work?
 
@@ -81,12 +81,12 @@ That means even if we are extremely conservative with our estimations and preten
 
 The real time to rebuild and publish is, of course, shorter because we will be running this all in parallel; but saving more than a literal month's worth of build time on every release of `Puppet.Dsc` is an overwhelming win for us (and for the folks who maintain the Github Actions infrastructure)!
 
-[pdkgo-templating]: https://github.com/puppetlabs/pdkgo
+[pct-templating]: https://github.com/puppetlabs/pct
 [puppet-dsc-autopublish]: https://github.com/puppetlabs/Puppet.Dsc/milestone/2
 [puppet-dsc-forge]: https://forge.puppet.com/modules/dsc
 [puppet-dsc-gallery]: https://www.powershellgallery.com/packages/Puppet.Dsc/0.5.0
 [puppet-dsc-intro-blog]: https://puppetlabs.github.io/iac/news/roadmap/2020/09/21/dsc-release.html
-[puppet-dsc-pdkgo-template]: https://github.com/puppetlabs/Puppet.Dsc/pull/154
+[puppet-dsc-pct-template]: https://github.com/puppetlabs/Puppet.Dsc/pull/154
 [puppet-dsc-stable]: https://github.com/puppetlabs/Puppet.Dsc/milestone/1
 
 

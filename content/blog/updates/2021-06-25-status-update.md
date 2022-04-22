@@ -76,8 +76,8 @@ It's been a busy week on the DevX team!
 We're delighted to announce the release of PDK version `2.1.1`.
 This release resolves an issue in which [child processes were unable to spawn](https://puppet.com/docs/pdk/2.x/release_notes_pdk.html#resolved-issue-with-access-denied-error-on-win-github-actions) on some Windows systems.
 Check out the [release notes](https://puppet.com/docs/pdk/2.x/release_notes_pdk.html) for a full list of enhancements and fixes that have gone in to `2.1.1`.
-We also have a new release of the [PCT tool]( /blog/updates/2021-06-04-pct-early-release.md). Version `0.2.0` can be installed over the top of `0.1.0` using these [installation instructions](https://github.com/puppetlabs/pdkgo#installing).
-Check out the [the `0.2.0` release page](https://github.com/puppetlabs/pdkgo/releases/tag/0.2.0) for full details of what's included.
+We also have a new release of the [PCT tool]( /blog/updates/2021-06-04-pct-early-release.md). Version `0.2.0` can be installed over the top of `0.1.0` using these [installation instructions](https://github.com/puppetlabs/pct#installing).
+Check out the [the `0.2.0` release page](https://github.com/puppetlabs/pct/releases/tag/0.2.0) for full details of what's included.
 
 ## Community shout out
 
