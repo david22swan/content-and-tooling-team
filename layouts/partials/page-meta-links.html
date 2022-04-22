@@ -19,7 +19,7 @@
         {{ $new_path = "CHANGELOG.md" }}
       {{ end }}
       {{ $gh_repo_path = printf "%s/%s" $gh_branch $new_path }}
-      {{ $gh_repo = "https://github.com/puppetlabs/pdkgo" }}
+      {{ $gh_repo = "https://github.com/puppetlabs/pct" }}
     {{ else if hasPrefix $pathFormatted "prm/" }}
       {{ $new_path := replace $pathFormatted "prm" "docs/md/content" }}{{ if strings.HasSuffix $pathFormatted "CONTRIBUTING.md" }}
         {{ $new_path = "CONTRIBUTING.md" }}

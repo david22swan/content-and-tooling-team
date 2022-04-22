@@ -54,7 +54,7 @@ There's a number of other folks awaiting this fix, so thanks to you both for dia
 Also, thanks to [Glenn](https://github.com/glennsarti) for his help in the early stages of RCA'ing it too.
 In other news, we've been planning and discussing some of the next big pieces of functionality we want to get in to next release of the PCT EA programme (`0.2.0`).
 The sort of things you can expect is template installation and formalized template structure.
-Another area is addition of telemetry data that will help us determine how the app is being used and provide us with another feedback vector on top of the great [Github Discussions](https://github.com/puppetlabs/pdkgo/discussions) we've had so far.
+Another area is addition of telemetry data that will help us determine how the app is being used and provide us with another feedback vector on top of the great [Github Discussions](https://github.com/puppetlabs/pct/discussions) we've had so far.
 If you want to get involved in the PCT Early Access programme, check [this blog post out]( /blog/updates/2021-06-04-pct-early-release.md)
 
 ## Community Day

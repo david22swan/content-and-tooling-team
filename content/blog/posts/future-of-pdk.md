@@ -76,4 +76,4 @@ Feedback is so important to us at this early stage of design and development. Th
 
 To get in touch, you can find us on the #office-hours channel within Puppet Community Slack every Monday, alternating weekly between about 1pm and 5pm GMT.
 
-Out of those hours, please get involved in our discussions at Discussions · puppetlabs/pdkgo · GitHub.
+Out of those hours, please get involved in our discussions at Discussions · puppetlabs/pct · GitHub.
