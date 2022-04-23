@@ -104,7 +104,7 @@ mediaType = 'application/json'
 
 # Comment out if you don't want the "print entire section" link enabled.
 [outputs]
-section = ["HTML", "jsonlist"] #"print"
+section = ["HTML", "RSS", "jsonlist"] #"print"
 
 [params]
 copyright = "Puppet"
