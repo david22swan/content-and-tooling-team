@@ -1,15 +1,38 @@
 ---
-author: "chelnak"
+author: "david22swan"
 categories:
   - updates
 date: "2022-05-09"
-blog_tags: null
+blog_tags:
+- status
+- prm
+- community
+- releases
+- shoutouts
+- social
 title: "2022-05-09: Content & Tooling Team Status Update"
 ---
 
+## Welcome Back
+
+Hello and welcome back, this is the first of what should be many more weekly status updates going forward!
+
+I know it has been quite some time since the last one was made, but with all the changes that the team has gone through, from a near complete change of members to be given a brand new name, we just have not been in a place to get this out.
+
+For more information on the various changes that we have gone through please take a look at our previous blog which introduced the team as it is now, which you can find just through [here](https://puppetlabs.github.io/content-and-tooling-team/blog/posts/team-rebrand/)!
+Anyway onto the real reason your here, the updates:
+
+## PRM 0.2.0
+
+As you may have noticed from the blog release that just went out we have just made a new release of PRM, the Puppet Runtime Manager!
+
+While I'm not going to write to much about it here as it has an entire blog post to itself I will encourage everyone to take a look when they can and put out a big thanks to team intern [Peter Murphy][petergmurphy]! Without who this release would never have happened.
+
+Anyway that's enough from me, for more information on the release please find the previously mentioned blog through [here](https://puppetlabs.github.io/content-and-tooling-team/blog/posts/prm-0-2-0-release/)!
+
 ## Community Contributions
 
-We'd like to thank the following people in the Puppet Community for their contributions over this past week:
+We'd like to thank the following people in the Puppet Community for their contributions since our last upate:
 
 - [`provision#196`][provision-pr-196]: "add snyk", thanks to [LivingInSyn][LivingInSyn]
 - [`provision#190`][provision-pr-190]: "(GH-187) Fixes abs failing provision if inventory file exists", thanks to [jpartlow][jpartlow]
@@ -155,7 +178,7 @@ We'd like to thank the following people in the Puppet Community for their contri
 
 ## New Module / Gem Releases
 
-The following modules were released this week:
+The following modules were released since our last update:
 
 - [`puppetlabs-docker`][puppetlabs-docker] (`4.2.1`)
 - [`puppetlabs-java`][puppetlabs-java] (`8.0.0`)
@@ -167,6 +190,9 @@ The following modules were released this week:
 - [`puppetlabs-chocolatey`][puppetlabs-chocolatey] (`6.1.1`)
 - [`puppetlabs-iis`][puppetlabs-iis] (`8.1.0`)
 - [`puppetlabs-dsc_lite`][puppetlabs-dsc_lite] (`3.2.0`)
+
+
+  [petergmurphy]: https://github.com/petergmurphy
 
   [puppetlabs-docker]: https://github.com/puppetlabs/puppetlabs-docker
   [puppetlabs-java]: https://github.com/puppetlabs/puppetlabs-java
