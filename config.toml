@@ -237,3 +237,7 @@ enable = false
   [[module.imports.mounts]]
     source = 'content'
     target = 'content/docs/prm/'
+
+[privacy]
+  [privacy.googleAnalytics]
+    anonymizeIP = true
