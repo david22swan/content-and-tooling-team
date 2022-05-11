@@ -23,12 +23,12 @@ Community day benefits us as a team too!
 
 We are here to help **you**!
 
-* 🕘 We will be available between 9am and 5pm UK tie
+* 🕘 We will be available between 9am and 5pm UK time
 * 🏢 We hang out on [GitHub](https://puppetlabs.github.io/) and our [community slack channel](https://puppetcommunity.slack.com/archives/C11LCKKQ9)
-* 📚 We want to help you with Issues, pull requests and product related questions
+* 📚 We want to help you with issues, pull requests and product related questions
 
 ## Signing off
 
-Thats it for now! We are excited to see you all on Monday.
+That's it for now! We are excited to see you all on Monday.
 
-For a more information about who we are and what we do in the Content and Tooling team, check out our intro [blog post](https://puppetlabs.github.io/content-and-tooling-team/blog/posts/team-rebrand/).
+For more information about who we are and what we do in the Content and Tooling team, check out our intro [blog post](https://puppetlabs.github.io/content-and-tooling-team/blog/posts/team-rebrand/).
