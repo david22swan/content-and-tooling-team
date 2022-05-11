@@ -6,7 +6,7 @@ slug: return-of-community-day
 github_repo: "" # Disable the edit commands
 ---
 
-We are excited to announce that community day is returning on May 16th 2022 and will be continuing every Monday for the forseable future.
+We are excited to announce that community day is returning on May 16th 2022 and will be continuing every Monday for the foreseeable future.
 
 ## Why is community day so good anyway?
 
@@ -14,18 +14,18 @@ It means we get to spend time with our **amazing** community, understand how our
 
 Community day benefits us as a team too!
 
-* Promotes collaboration and healthy team work :hearts: 
-* Upskills new *and* existing engineers :female-construction-worker: 
-* Increases prodictivity :100: 
-* Overall increase of team morale :+1: 
+* Promotes collaboration and healthy team work ❤️
+* Upskills new *and* existing engineers 👷🏾‍♀️
+* Increases productivity 💯
+* Overall increase of team morale 👍
 
 ## What to expect
 
 We are here to help **you**!
 
-* :clock9: We will be available between 9am and 5pm UK tie 
-* :office: We hang out on [GitHub](https://puppetlabs.github.io/) and our [community slack channel](https://puppetcommunity.slack.com/archives/C11LCKKQ9) 
-* :books: We want to help you with Issues, pull requests and product related questions 
+* 🕘 We will be available between 9am and 5pm UK tie
+* 🏢 We hang out on [GitHub](https://puppetlabs.github.io/) and our [community slack channel](https://puppetcommunity.slack.com/archives/C11LCKKQ9)
+* 📚 We want to help you with Issues, pull requests and product related questions
 
 ## Signing off
 
