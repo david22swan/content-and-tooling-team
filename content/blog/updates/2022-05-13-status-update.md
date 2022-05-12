@@ -13,6 +13,7 @@ title: "2022-05-13: Content & Tooling Team Status Update"
 ---
 
 ## This week...
+
 We have been busy working on a number of items, from internal tools that our team uses on a regular basis to work more efficiently, to the module side where we are constantly keeping an eye to make sure everything
 works the way its supposed to.
 
@@ -39,7 +40,6 @@ We'd like to thank the following people in the Puppet Community for their contri
 ## New Module / Gem Releases
 
 The following modules were released this week:
-
 
   [puppetlabs-apache-pr-2212]: https://github.com/puppetlabs/puppetlabs-apache/pull/2212
   [olifre]: https://github.com/olifre
