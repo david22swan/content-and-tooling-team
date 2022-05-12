@@ -1,11 +1,28 @@
 ---
-author: "chelnak"
+author: "LukasAud"
 categories:
   - updates
 date: "2022-05-13"
-blog_tags: null
+blog_tags:
+- status
+- update
+- may
+- community
+- kubernetes
 title: "2022-05-13: Content & Tooling Team Status Update"
 ---
+
+## This week...
+We have been busy working on a number of items, from internal tools that our team uses on a regular basis to work more efficiently, to the module side where we are constantly keeping an eye to make sure everything
+works the way its supposed to.
+
+On the tooling half of our workload, our engineers have been working on further bugfixing our newly released version of PRM, as well as PCT, which was acting up lately. On the other side of the balance, our modules
+work has been mostly focused on the re-certification process of Kubernetes and some heavy maintenance work on the mySQL module. Adding to this, some minor changes have also been merged on our Satellite and Apache
+modules.
+
+Finally, we are excited to announce the return of community day next week. If you want more information about the topic, check out our latest blogpost: 
+https://github.com/puppetlabs/content-and-tooling-team/blob/main/content/blog/posts/2022-05-11-return-of-community-day.md
+
 
 ## Community Contributions
 
