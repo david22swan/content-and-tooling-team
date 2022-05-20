@@ -7,6 +7,34 @@ blog_tags: null
 title: "2022-05-20: Content & Tooling Team Status Update"
 ---
 
+## It's Friday!
+
+What a week! The CAT team have been super busy this week.
+
+At the close of Community Day on Monday we had cut 10 new module releases.
+Many of the modules hadn't seen a release since 2021.
+I'm hoping to be able to keep this cadence up so that content available on the forge is always nice and fresh ✨. 
+
+A while back we introduced a "stale" bot 🤖. The aim of the bot was to help us keep on top of the vast amount of issues and pull requests we were seeing.
+Being a small team means that staying organised is important and the first version of the bot helped us get back up and running.
+
+When the bot started to do it's thing, we received some really good feedback from you and we learnt alot about how the bot was being perceived.
+In the spirit of learning and iteration, Lukas has tweaked how the bot will work in the future and once again will observe how useful it is for us and you.
+
+The main changes include a change of wording and how we label issues and pull requests that don't meet the time constraints we've configured.
+Additionally we will no longer be auto-closing issues. They will just get labeled so we can pick them up in our filters and give them the attention that they deserve.
+
+In other news, as part of our effords to increase the overall level of quality for our modules, David has begun an effort to better enforce the various syntax standards
+that have been driven by the community.
+
+For me the highlight of this week was the successful return of Community Day.
+It's refreshing spending time with our amazing community and I'm excited to have the opportunity to do it more often.
+
+Have a great weekend!
+
+![Happy Friday](https://media.giphy.com/media/kyLYXonQYYfwYDIeZl/giphy.gif)
+
+
 ## Community Contributions
 
 We'd like to thank the following people in the Puppet Community for their contributions over this past week:
@@ -50,8 +78,8 @@ The following modules were released this week:
   [puppetlabs-chocolatey]: https://github.com/puppetlabs/puppetlabs-chocolatey
   [puppetlabs-accounts]: https://github.com/puppetlabs/puppetlabs-accounts
   [puppetlabs-scheduled_task]: https://github.com/puppetlabs/puppetlabs-scheduled_task
-  [puppetlabs-service]: 
-  [puppetlabs-puppet_conf]: 
+  [puppetlabs-service]: https://github.com/puppetlabs/puppetlabs-service
+  [puppetlabs-puppet_conf]: https://github.com/puppetlabs/puppetlabs-puppet_conf
   [puppetlabs-accounts-pr-410]: https://github.com/puppetlabs/puppetlabs-accounts/pull/410
   [PorkCharsui79]: https://github.com/PorkCharsui79
   [puppetlabs-docker-pr-823]: https://github.com/puppetlabs/puppetlabs-docker/pull/823
