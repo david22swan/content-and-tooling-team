@@ -1,11 +1,32 @@
 ---
-author: "chelnak"
+author: "Peter Murphy"
 categories:
   - updates
 date: "2022-05-27"
 blog_tags: null
 title: "2022-05-27: Content & Tooling Team Status Update"
 ---
+
+## Friday Team Roundup
+
+Happy Friday from the CAT team! The team has been up to lots this week and there's much to celebrate 🍾.
+
+[Craig](https://github.com/chelnak) has released PDK `2.5.0` 🎉. With this release, PDK now supports the `SLES 15`
+OS. Massive shoutout to Craig for this, it was a lot of work and he's done a fantastic job.
+
+[Lukas](https://github.com/LukasAud) has put out a new release of the [MySQL](https://github.com/puppetlabs/puppetlabs-mysql)
+module, we're now at version `12.0.3`. This release includes the return of Debian systems to a functional state along 
+with other changes that can be found [here](https://forge.puppet.com/modules/puppetlabs/mysql/12.0.3/changelog).
+
+We've begun work on syntax fixes and restructuring of modules to make sure they abide by community module standards. 
+[David](https://github.com/david22swan) has commenced this process on the [apache](https://github.com/puppetlabs/puppetlabs-apache) 
+module. As this process is difficult and takes time, David would be grateful to anyone from the community that
+would be available to help him. Please feel free to message David Swan on the Puppet Community Slack channel.
+Additionally, it is imperative going forth that community module PRs and syntax stricty abide by community standards
+and conventions.
+
+I ([Peter](https://github.com/petergmurphy)) have continued work on minor bug fixes and enhancements for 
+[PRM](https://github.com/puppetlabs/prm). There will be a minor version release coming to PRM next week.
 
 ## Community Contributions
 
