@@ -74,8 +74,8 @@ The following modules were released these weeks:
   [puppetlabs-motd]: https://github.com/puppetlabs/puppetlabs-motd
   [puppetlabs-registry]: https://github.com/puppetlabs/puppetlabs-registry
   [puppetlabs-sqlserver]: https://github.com/puppetlabs/puppetlabs-sqlserver
-  [puppetlabs-package]: 
-  [puppetlabs-exec]: 
+  [puppetlabs-package]: https://github.com/puppetlabs/puppetlabs-package
+  [puppetlabs-exec]: https://github.com/puppetlabs/puppetlabs-exec
   [puppetlabs-apache-pr-2243]: https://github.com/puppetlabs/puppetlabs-apache/pull/2243
   [ekohl]: https://github.com/ekohl
   [puppetlabs-apache-pr-2240]: https://github.com/puppetlabs/puppetlabs-apache/pull/2240
