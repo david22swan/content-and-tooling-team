@@ -22,7 +22,7 @@ the Apache module syntax, removing any legacy facts and ensuring that each varia
 
 Finally, we have reworked some internal documentation to ensure that our team is ready to welcome new members in the future.
 
-That's all for this week, folks! We still have many projects in the drawing board so keep tuned in onto our weekly blogposts.
+That's all for this week, folks! We still have many projects in the drawing board so keep tuned in to our weekly blogposts.
 Hope you all enjoy your weekend.
 
 ## Community Contributions
