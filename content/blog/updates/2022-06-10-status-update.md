@@ -1,5 +1,5 @@
 ---
-author: "chelnak"
+author: "LukasAud"
 categories:
   - updates
 date: "2022-06-10"
@@ -7,9 +7,29 @@ blog_tags: null
 title: "2022-06-10: Content & Tooling Team Status Update"
 ---
 
+## Yet another friday
+
+Another week, another report. Except its actually been two weeks.  These weeks in Content and Tooling we have worked on:
+
+On community days we have released 11 modules, hitting a new record since the comeback of the CAT team and our weekly blogs.
+Soon enough we are expecting all our modules to be up-to-date at the forge with all the upgrades they have been receiving.
+But we still have a few bad boys out there that refuse to cooperate.
+
+On the development side of things, our tooling team member has been working on releasing a new version of PRM.
+This new 0.2.1 version includes some minor bugfixes and enhacements that aim to increase the QOL of its users.
+
+In addition to this, we have been working on a number of things, from implementing RedHat 9 into our supported modules to
+completely rewriting the Apache module syntax, as well as working on several bugfixes for other modules, but those will have
+to wait until next week to see the daylight.
+
+Finally, we have reworked some internal documentation to ensure that our team is ready to welcome new members in the future.
+
+That's all for this week, folks! It hasn't been that much of an exciting week but we still have many projects in the drawing board.
+Hope you all enjoy your weekend.
+
 ## Community Contributions
 
-We'd like to thank the following people in the Puppet Community for their contributions over this past week:
+We'd like to thank the following people in the Puppet Community for their contributions over these past weeks:
 
 - [`puppetlabs-apache#2243`][puppetlabs-apache-pr-2243]: "Acceptance tests: correct EPEL usage", thanks to [ekohl][ekohl]
 - [`puppetlabs-apache#2240`][puppetlabs-apache-pr-2240]: "Let limitreqfieldsize and limitreqfields be integers", thanks to [traylenator][traylenator]
@@ -31,7 +51,7 @@ We'd like to thank the following people in the Puppet Community for their contri
 
 ## New Module / Gem Releases
 
-The following modules were released this week:
+The following modules were released these weeks:
 
 - [`puppetlabs-ntp`][puppetlabs-ntp] (`9.1.1`)
 - [`puppetlabs-docker`][puppetlabs-docker] (`4.4.0`)
