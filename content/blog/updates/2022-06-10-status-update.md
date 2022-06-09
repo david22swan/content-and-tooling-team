@@ -9,22 +9,20 @@ title: "2022-06-10: Content & Tooling Team Status Update"
 
 ## Yet another friday
 
-Another week, another report. Except its actually been two weeks.  These weeks in Content and Tooling we have worked on:
+Another week, another report. Except it's actually been two weeks!
 
-On community days we have released 11 modules, hitting a new record since the comeback of the CAT team and our weekly blogs.
+Over the two community days we have released 11 modules, hitting a new record since the comeback of the CAT team and our weekly blogs.
 Soon enough we are expecting all our modules to be up-to-date at the forge with all the upgrades they have been receiving.
-But we still have a few bad boys out there that refuse to cooperate.
 
-On the development side of things, our tooling team member has been working on releasing a new version of PRM.
-This new 0.2.1 version includes some minor bugfixes and enhacements that aim to increase the QOL of its users.
+We are also happy to announce that we've released a new version of PRM, 0.2.1. This new version includes some minor bugfixes and enhancements
+that aim to improve the user experience. The full release notes can be found [here](https://github.com/puppetlabs/prm/releases/tag/0.2.1).
 
-In addition to this, we have been working on a number of things, from implementing RedHat 9 into our supported modules to
-completely rewriting the Apache module syntax, as well as working on several bugfixes for other modules, but those will have
-to wait until next week to see the daylight.
+In addition to this, we have been working on a number of things, from implementing RedHat 9 into our supported modules to doing an overhaul of
+the Apache module syntax, removing any legacy facts and ensuring that each variable has it's own type and description.
 
 Finally, we have reworked some internal documentation to ensure that our team is ready to welcome new members in the future.
 
-That's all for this week, folks! It hasn't been that much of an exciting week but we still have many projects in the drawing board.
+That's all for this week, folks! We still have many projects in the drawing board so keep tuned in onto our weekly blogposts.
 Hope you all enjoy your weekend.
 
 ## Community Contributions
