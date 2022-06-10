@@ -7,7 +7,7 @@ blog_tags: null
 title: "2022-06-10: Content & Tooling Team Status Update"
 ---
 
-## Yet another friday
+## Fri-yay 🥂
 
 Another week, another report. Except it's actually been two weeks!
 
