@@ -6,6 +6,12 @@
         "category": "Networking"
     },
     {
+        "name": "device_manager",
+        "owner": "puppetlabs",
+        "description": "Manage devices used by 'puppet device' on puppet agents.",
+        "category": "Networking"
+    },
+    {
         "name": "puppetlabs-accounts",
         "owner": "puppetlabs",
         "description": "Account management module.",
