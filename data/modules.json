@@ -2,277 +2,231 @@
     {
         "name": "cisco_ios",
         "owner": "puppetlabs",
-        "description": "Management of Cisco Catalyst (IOS, IOS-XE)",
-        "category": "Networking"
+        "description": "Management of Cisco Catalyst (IOS, IOS-XE)"
     },
     {
         "name": "device_manager",
         "owner": "puppetlabs",
-        "description": "Manage devices used by 'puppet device' on puppet agents.",
-        "category": "Networking"
+        "description": "Manage devices used by 'puppet device' on puppet agents."
     },
     {
         "name": "puppetlabs-accounts",
         "owner": "puppetlabs",
-        "description": "Account management module.",
-        "category": "Linux"
+        "description": "Account management module."
     },
     {
         "name": "puppetlabs-acl",
         "owner": "puppetlabs",
-        "description": "This module provides the ability to manage ACLs on nodes",
-        "category": "Windows"
+        "description": "This module provides the ability to manage ACLs on nodes"
     },
     {
         "name": "puppetlabs-apache",
         "owner": "puppetlabs",
-        "description": "Installs, configures, and manages Apache virtual hosts, web services, and modules.",
-        "category": "Linux"
+        "description": "Installs, configures, and manages Apache virtual hosts, web services, and modules."
     },
     {
         "name": "puppetlabs-apt",
         "owner": "puppetlabs",
-        "description": "Provides an interface for managing Apt source, key, and definitions with Puppet",
-        "category": "Linux"
+        "description": "Provides an interface for managing Apt source, key, and definitions with Puppet"
     },
     {
         "name": "puppetlabs-chocolatey",
         "owner": "puppetlabs",
-        "description": "Chocolatey package provider for Puppet",
-        "category": "Windows"
+        "description": "Chocolatey package provider for Puppet"
     },
     {
         "name": "puppetlabs-concat",
         "owner": "puppetlabs",
-        "description": "Construct files from multiple fragments.",
-        "category": "Crossplatform"
+        "description": "Construct files from multiple fragments."
     },
     {
         "name": "puppetlabs-docker",
         "owner": "puppetlabs",
-        "description": "Module for installing and managing docker",
-        "category": "Crossplatform"
+        "description": "Module for installing and managing docker"
     },
     {
         "name": "puppetlabs-dropsonde",
         "owner": "puppetlabs",
-        "description": "Module for installing and managing dropsonde gem",
-        "category": "Linux"
+        "description": "Module for installing and managing dropsonde gem"
     },
     {
         "name": "puppetlabs-dsc",
         "owner": "puppetlabs",
-        "description": "PowerShell Desired State Configuration (DSC)",
-        "category": "Windows"
+        "description": "PowerShell Desired State Configuration (DSC)"
     },
     {
         "name": "puppetlabs-dsc_lite",
         "owner": "puppetlabs",
-        "description": "PowerShell Desired State Configuration (DSC) Lite",
-        "category": "Windows"
+        "description": "PowerShell Desired State Configuration (DSC) Lite"
     },
     {
         "name": "puppetlabs-exec",
         "owner": "puppetlabs",
-        "description": "Tasks that allows the execution of a command and parameters",
-        "category": "Crossplatform"
+        "description": "Tasks that allows the execution of a command and parameters"
     },
     {
         "name": "puppetlabs-facter_task",
         "owner": "puppetlabs",
-        "description": "Tasks that inspect the value of system facts",
-        "category": "Crossplatform"
+        "description": "Tasks that inspect the value of system facts"
     },
     {
         "name": "puppetlabs-firewall",
         "owner": "puppetlabs",
-        "description": "Manages Firewalls such as iptables",
-        "category": "Linux"
+        "description": "Manages Firewalls such as iptables"
     },
     {
         "name": "puppetlabs-haproxy",
         "owner": "puppetlabs",
-        "description": "Configures HAProxy servers and manages the configuration of backend member servers.",
-        "category": "Linux"
+        "description": "Configures HAProxy servers and manages the configuration of backend member servers."
     },
     {
         "name": "puppetlabs-helm",
         "owner": "puppetlabs",
-        "description": "A module to install Helm, a kubernetes package manager",
-        "category": "Linux"
+        "description": "A module to install Helm, a kubernetes package manager"
     },
     {
         "name": "puppetlabs-ibm_installation_manager",
         "owner": "puppetlabs",
-        "description": "Manages IBM Installation Manager and IBM packages",
-        "category": "Linux"
+        "description": "Manages IBM Installation Manager and IBM packages"
     },
     {
         "name": "puppetlabs-iis",
         "owner": "puppetlabs",
-        "description": "Manage IIS for Windows Server 2008R2, 2012, 2012R2 and 2016. Maintain application sites, pools, installation, and many other IIS settings.",
-        "category": "Windows"
+        "description": "Manage IIS for Windows Server 2008R2, 2012, 2012R2 and 2016. Maintain application sites, pools, installation, and many other IIS settings."
     },
     {
         "name": "puppetlabs-inifile",
         "owner": "puppetlabs",
-        "description": "Resource types for managing settings in INI files",
-        "category": "Crossplatform"
+        "description": "Resource types for managing settings in INI files"
     },
     {
         "name": "puppetlabs-java",
         "owner": "puppetlabs",
-        "description": "Installs the correct Java package on various platforms.",
-        "category": "Crossplatform"
+        "description": "Installs the correct Java package on various platforms."
     },
     {
         "name": "puppetlabs-java_ks",
         "owner": "puppetlabs",
-        "description": "Manage arbitrary Java keystore files",
-        "category": "Crossplatform"
+        "description": "Manage arbitrary Java keystore files"
     },
     {
         "name": "puppetlabs-kubernetes",
         "owner": "puppetlabs",
-        "description": "The module installs and configures a Kubernetes cluster",
-        "category": "Linux"
+        "description": "The module installs and configures a Kubernetes cluster"
     },
     {
         "name": "puppetlabs-motd",
         "owner": "puppetlabs",
-        "description": "A simple module to demonstrate managing /etc/motd or Windows Logon Message as a template",
-        "category": "Crossplatform"
+        "description": "A simple module to demonstrate managing /etc/motd or Windows Logon Message as a template"
     },
     {
         "name": "puppetlabs-mysql",
         "owner": "puppetlabs",
-        "description": "Installs, configures, and manages the MySQL service.",
-        "category": "Linux"
+        "description": "Installs, configures, and manages the MySQL service."
     },
     {
         "name": "puppetlabs-ntp",
         "owner": "puppetlabs",
-        "description": "Installs, configures, and manages the NTP service.",
-        "category": "Linux"
+        "description": "Installs, configures, and manages the NTP service."
     },
     {
         "name": "puppetlabs-package",
         "owner": "puppetlabs",
-        "description": "Tasks that manipulate a package",
-        "category": "Crossplatform"
+        "description": "Tasks that manipulate a package"
     },
     {
         "name": "puppetlabs-panos",
         "owner": "puppetlabs",
-        "description": "Manage Palo Alto firewalls",
-        "category": "Networking"
+        "description": "Manage Palo Alto firewalls"
     },
     {
         "name": "puppetlabs-postgresql",
         "owner": "puppetlabs",
-        "description": "Offers support for basic management of PostgreSQL databases.",
-        "category": "Linux"
+        "description": "Offers support for basic management of PostgreSQL databases."
     },
     {
         "name": "puppetlabs-powershell",
         "owner": "puppetlabs",
-        "description": "Adds a new exec provider for executing PowerShell commands.",
-        "category": "Crossplatform"
+        "description": "Adds a new exec provider for executing PowerShell commands."
     },
     {
         "name": "puppetlabs-puppet_conf",
         "owner": "puppetlabs",
-        "description": "Tasks that manipulates a puppet configuration file",
-        "category": "Crossplatform"
+        "description": "Tasks that manipulates a puppet configuration file"
     },
     {
         "name": "puppetlabs-reboot",
         "owner": "puppetlabs",
-        "description": "Adds a type and provider for managing system reboots.",
-        "category": "Crossplatform"
+        "description": "Adds a type and provider for managing system reboots."
     },
     {
         "name": "puppetlabs-registry",
         "owner": "puppetlabs",
-        "description": "This module provides a native type and provider to manage keys and values in the Windows Registry",
-        "category": "Windows"
+        "description": "This module provides a native type and provider to manage keys and values in the Windows Registry"
     },
     {
         "name": "puppetlabs-rook",
         "owner": "puppetlabs",
-        "description": "A module for installing and configuring rook https://rook.io",
-        "category": "Linux"
+        "description": "A module for installing and configuring rook https://rook.io"
     },
     {
         "name": "puppetlabs-satellite_pe_tools",
         "owner": "puppetlabs",
-        "description": "Configures reports and inventory data to be sent to Satellite 6",
-        "category": "Linux"
+        "description": "Configures reports and inventory data to be sent to Satellite 6"
     },
     {
         "name": "puppetlabs-scheduled_task",
         "owner": "puppetlabs",
-        "description": "Manage scheduled tasks for Windows Server 2008 and newer operating systems.",
-        "category": "Windows"
+        "description": "Manage scheduled tasks for Windows Server 2008 and newer operating systems."
     },
     {
         "name": "puppetlabs-service",
         "owner": "puppetlabs",
-        "description": "Tasks that manipulate a service",
-        "category": "Crossplatform"
+        "description": "Tasks that manipulate a service"
     },
     {
         "name": "puppetlabs-sqlserver",
         "owner": "puppetlabs",
-        "description": "The `sqlserver` module installs and manages MS SQL Server 2012, 2014, 2016, 2017, and 2019 on Windows systems.",
-        "category": "Windows"
+        "description": "The `sqlserver` module installs and manages MS SQL Server 2012, 2014, 2016, 2017, and 2019 on Windows systems."
     },
     {
         "name": "puppetlabs-stdlib",
         "owner": "puppetlabs",
-        "description": "Standard library of resources for Puppet modules.",
-        "category": "Other"
+        "description": "Standard library of resources for Puppet modules."
     },
     {
         "name": "puppetlabs-tagmail",
         "owner": "puppetlabs",
-        "description": "This module provides a report processor that sends events to email addresses based on tagging of resources",
-        "category": "Other"
+        "description": "This module provides a report processor that sends events to email addresses based on tagging of resources"
     },
     {
         "name": "puppetlabs-testing",
         "owner": "puppetlabs",
-        "description": "A test module used for various projects to test new features and processes.",
-        "category": "Other"
+        "description": "A test module used for various projects to test new features and processes."
     },
     {
         "name": "puppetlabs-tomcat",
         "owner": "puppetlabs",
-        "description": "Installs, deploys, and configures Apache Tomcat web services.",
-        "category": "Linux"
+        "description": "Installs, deploys, and configures Apache Tomcat web services."
     },
     {
         "name": "puppetlabs-vcsrepo",
         "owner": "puppetlabs",
-        "description": "Puppet module providing a type to manage repositories from various version control systems",
-        "category": "Linux"
+        "description": "Puppet module providing a type to manage repositories from various version control systems"
     },
     {
         "name": "puppetlabs-vsphere",
         "owner": "puppetlabs",
-        "description": "Create and manage machines running on VMWare vSphere with Puppet",
-        "category": "Other"
+        "description": "Create and manage machines running on VMWare vSphere with Puppet"
     },
     {
         "name": "puppetlabs-websphere_application_server",
         "owner": "puppetlabs",
-        "description": "Manages IBM WebSphere Application Server",
-        "category": "Linux"
+        "description": "Manages IBM WebSphere Application Server"
     },
     {
         "name": "puppetlabs-wsus_client",
         "owner": "puppetlabs",
-        "description": "Manage WSUS (Windows Server Update Service) settings for client nodes",
-        "category": "Windows"
+        "description": "Manage WSUS (Windows Server Update Service) settings for client nodes"
     }
 ]
