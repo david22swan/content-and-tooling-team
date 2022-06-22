@@ -218,6 +218,9 @@ enable = false
 #         url = "https://github.com/orgs/modules/people"
 #         icon = "fa fa-user-friends"
 #         desc = "Project Maintainers"
+[params.home] # Takes a RelPermalink e.g. "/content-and-tooling-team/blog/posts/return-of-community-day/"
+pinnedPost = "/content-and-tooling-team/blog/posts/prm-0-2-0-release/"
+
 
 # Import of modules
 [module]
