@@ -1,17 +1,5 @@
 [
     {
-        "name": "action-litmus_parallel",
-        "owner": "puppetlabs",
-        "description": "This action was designed to allow running acceptance tests for Puppet modules using Litmus.",
-        "category": "Puppet Litmus"
-    },
-    {
-        "name": "action-litmus_spec",
-        "owner": "puppetlabs",
-        "description": "This action was designed to allow running spec tests for Puppet modules.",
-        "category": "Puppet Litmus"
-    },
-    {
         "name": "device_manager",
         "owner": "puppetlabs",
         "description": "Manage devices used by 'puppet device' on puppet agents.",
@@ -24,21 +12,9 @@
         "category": "Other"
     },
     {
-        "name": "community_management",
-        "owner": "puppetlabs",
-        "description": "This set of scripts collates daily reports on our responsibilities as the stewards of supported modules.",
-        "category": "Misc Module tools"
-    },
-    {
         "name": "dependency_checker",
         "owner": "puppetlabs",
         "description": "The dependency-checker tool validates dependencies in metadata.json files in Puppet modules or YAML files containing arrays of Puppet modules against the latest published versions on the Puppet Forge.",
-        "category": "Misc Module tools"
-    },
-    {
-        "name": "dropsonde",
-        "owner": "puppetlabs",
-        "description": "A simple telemetry probe for gathering non-identifiable information about Puppet infrastructures.",
         "category": "Misc Module tools"
     },
     {
@@ -46,18 +22,6 @@
         "owner": "camptocamp",
         "description": "A Database of OS facts provided by Facter.",
         "category": "PDK - external dependencies"
-    },
-    {
-        "name": "iac",
-        "owner": "puppetlabs",
-        "description": "Infrastructure Automation Content Team Content.",
-        "category": "Misc Module tools"
-    },
-    {
-        "name": "litmus",
-        "owner": "puppetlabs",
-        "description": "This repository contains the docs mini site for Puppet Litmus.",
-        "category": "Puppet Litmus"
     },
     {
         "name": "puppet_litmus",
@@ -72,21 +36,9 @@
         "category": "Puppet Litmus"
     },
     {
-        "name": "metadata-json-lint",
-        "owner": "voxpupuli",
-        "description": "Tool to check the validity of Puppet metadata.json files.",
-        "category": "PDK - external dependencies"
-    },
-    {
         "name": "pdk-docker",
         "owner": "puppetlabs",
         "description": "Official Puppet Development Kit (PDK) Docker Image.",
-        "category": "PDK"
-    },
-    {
-        "name": "pdk-planning",
-        "owner": "puppetlabs",
-        "description": "Public planning repository for the PDK project.",
         "category": "PDK"
     },
     {
@@ -150,27 +102,9 @@
         "category": "PDK"
     },
     {
-        "name": "puppet-syntax",
-        "owner": "voxpupuli",
-        "description": "Syntax checks for Puppet manifests and templates.",
-        "category": "PDK - external dependencies"
-    },
-    {
         "name": "puppetlabs_spec_helper",
         "owner": "puppetlabs",
         "description": "A set of shared spec helpers specific to Puppetlabs projects.",
-        "category": "PDK - external dependencies"
-    },
-    {
-        "name": "puppet-resource_api",
-        "owner": "puppetlabs",
-        "description": "This library provides a simple way to write new native resources.",
-        "category": "Resource API"
-    },
-    {
-        "name": "rspec-puppet-facts",
-        "owner": "mcanevet",
-        "description": "Simplify your unit tests by looping on every supported Operating System and populating facts.",
         "category": "PDK - external dependencies"
     },
     {
@@ -184,5 +118,29 @@
         "owner": "puppetlabs",
         "description": "This gem enables you to execute PowerShell from within ruby without having to instantiate and tear down a PowerShell process for each command called.",
         "category": "Misc Module tools"
+    },
+    {
+        "name": "puppet-vscode",
+        "owner": "puppetlabs",
+        "description": "Puppet Editing. Redefined",
+        "category": "Developer experience"
+    },
+    {
+        "name": "puppet-editor-services",
+        "owner": "puppetlabs",
+        "description": "Puppet language server for editors",
+        "category": "Developer experience"
+    },
+    {
+        "name": "prm",
+        "owner": "puppetlabs",
+        "description": "The Puppet Runtime Manager (PRM) is a tool for validating Puppet content and for running arbitrary development/maintenance tasks against that content.",
+        "category": "Developer experience"
+    },
+    {
+        "name": "pct",
+        "owner": "puppetlabs",
+        "description": "Puppet Content Templates (PCT) codify a structure to produce content for any Puppet Product",
+        "category": "Developer experience"
     }
 ]
