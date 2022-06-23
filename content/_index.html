@@ -6,12 +6,21 @@ linkTitle = "Content and Tooling"
 <section class="row td-box td-box--1 position-relative td-box--gradient td-box--height-auto">
 	<div class="container text-center td-arrow-down">
 		<span class="h4 mb-0">
-			<h1>Welcome!</h1>
+			<h1>Welcome from the CAT team! 👋</h1>
 		</span>
+		<h6 class="mt-4">Keeping you up to date with the latests news and documentation from the Puppet Content and Tooling team.</h6>
+		
 	</div>
 </section>
 
-<div class="card-deck p-0 center mt-5 mb-5 container-md mx-auto">
+<div class="container-md">
+
+<div class="home-heading mt-5 mb-5 text-center">Check out our recent blog posts 📝</div>
+
+{{% blog-posts %}}
+
+<div class="home-heading mb-5 text-center">Find out more about our new tools 🛠</div>
+<div class="card-deck p-0 center mt-4 mb-5 container-md mx-auto">
 	{{< project-card title="PCT" icon="fa-align-left" installUrl="docs/pct/install" docsUrl="docs/pct" >}} 
 	Puppet Content Templates (PCT) codify a structure to produce content for any Puppet Product that can be authored by Puppet Product Teams or external users without direct help of the PDK team. 
 	{{< /project-card>}}
@@ -21,18 +30,4 @@ linkTitle = "Content and Tooling"
 	{{< /project-card>}}
 </div>
 
-{{< blocks/section color="dark">}}
-{{% blocks/feature icon="fas fa-book-reader" title="All new documentation site!" %}}
-This site is the central location for Content and Tooling documentation.
-{{% /blocks/feature %}}
-
-
-{{% blocks/feature icon="fa-lightbulb" title="New streamlined tools" %}}
-Find out how Puppet Content Templates (PCT) and the Puppet Runtime Manager (PRM) can help you with your Puppet code development and validation.
-{{% /blocks/feature %}}
-
-
-{{% blocks/feature icon="fab fa-github" title="Contributions welcome!" %}}
-We do a Pull Request contributions workflow on [GitHub](https://github.com/puppetlabs). New users are always welcome!
-{{% /blocks/feature %}}
-{{< /blocks/section>}}
+</div>
