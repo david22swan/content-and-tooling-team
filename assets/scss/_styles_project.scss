@@ -69,13 +69,10 @@ footer {
 .card-animation:hover{
   -webkit-transform: scale(1.1);
   -ms-transform: scale(1.1);
-  transition: all .4s;
+  transition: transform .4s;
   transform: scale(1.1);
   -moz-transition: all .4s;
   -webkit-transition:all .4s;
   -o-transition: all .4s;
-  max-height: fit-content;
-  transition: filter 400ms ease-in-out;  
-  overflow: hidden;
   cursor: pointer;
 }
