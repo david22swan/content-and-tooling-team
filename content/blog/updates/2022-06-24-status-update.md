@@ -7,6 +7,22 @@ blog_tags: null
 title: "2022-06-24: Content & Tooling Team Status Update"
 ---
 
+# Happy Friday ✨
+
+It's been a quiet week in terms of announcements for the team.
+The weeks work has been focused on helping our amazing support team with some outstanding tickets.
+
+While I'm here though, I want to take the opportunity to say a big thank you to all of our contributors, past and present.
+The wheel wouldn't turn without you 🤘.
+
+The weather has been roasting here in England this week and I'm hoping it continues in to the weekend.
+
+Hopefully it is nice and warm where you are too!
+
+Have a great weekend!
+
+🏖️
+
 ## Community Contributions
 
 We'd like to thank the following people in the Puppet Community for their contributions over this past week:
