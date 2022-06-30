@@ -12,7 +12,7 @@ title: "2022-07-01: Content & Tooling Team Status Update"
 It's been another quiet week while we work on replacing cogs and putting out fires behind the scenes.
 It feels like weeks are getting shorter as the holiday season starts hitting us.
 
-As mentioned on a previous post, this week we have decided to announce offically the retirement of several modules from our supported list.
+As mentioned on a previous [`post`][post], this week we have decided to announce offically the retirement of several modules from our supported list.
 This is done in an effort to focus our resources on the areas that matter the most.
 We have also been discussing about the future of some of our internal tools, such as PRM, which might need a refactor soon enough.
 
@@ -41,3 +41,4 @@ The following modules were released this week:
   [puppetlabs-apache-pr-2254]: https://github.com/puppetlabs/puppetlabs-apache/pull/2254
   [pdk-pr-1177]: https://github.com/puppetlabs/pdk/pull/1177
   [davidsandilands]: https://github.com/davidsandilands
+  [post]: https://puppetlabs.github.io/content-and-tooling-team/blog/posts/2022-06-30-changes-to-supported-modules/
