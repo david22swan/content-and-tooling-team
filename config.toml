@@ -219,7 +219,7 @@ enable = false
 #         icon = "fa fa-user-friends"
 #         desc = "Project Maintainers"
 [params.home] # Takes a RelPermalink e.g. "/content-and-tooling-team/blog/posts/return-of-community-day/"
-pinnedPost = "/content-and-tooling-team/blog/posts/return-of-community-day/"
+pinnedPost = ""
 
 # Import of modules
 [module]
