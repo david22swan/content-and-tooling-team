@@ -2,7 +2,11 @@ github.com/puppetlabs/pct/docs/md v0.0.0-20220422103212-0dd5c8cc4465 h1:6jwSNqEg
 github.com/puppetlabs/pct/docs/md v0.0.0-20220422103212-0dd5c8cc4465/go.mod h1:yYLqP/WN4nIDIcWSPOcR65rj9vtFYs8QlrG7In2/W2Y=
 github.com/puppetlabs/pct/docs/md v0.0.0-20220511115803-840950f273b4 h1:aM2wKjb8HuZrYSMjF5a5khepPZMbFaws+MBvz2UJYZQ=
 github.com/puppetlabs/pct/docs/md v0.0.0-20220511115803-840950f273b4/go.mod h1:yYLqP/WN4nIDIcWSPOcR65rj9vtFYs8QlrG7In2/W2Y=
+github.com/puppetlabs/pct/docs/md v0.0.0-20220615150514-34c540e5f770 h1:d7K2AE6wlXjEqxT85Wc3KUtxdcA1v58tzD1VZFOjpQw=
+github.com/puppetlabs/pct/docs/md v0.0.0-20220615150514-34c540e5f770/go.mod h1:yYLqP/WN4nIDIcWSPOcR65rj9vtFYs8QlrG7In2/W2Y=
 github.com/puppetlabs/prm/docs/md v0.0.0-20220422093551-94e526698bed h1:6SRZrlpv8Axkqxl0ldCXJCo76XhJqRNGe+YalGJDYwQ=
 github.com/puppetlabs/prm/docs/md v0.0.0-20220422093551-94e526698bed/go.mod h1:spfr7W49WwAzw1dddZd5W0aZMzbIDj3Dm9x6+ecAbW4=
 github.com/puppetlabs/prm/docs/md v0.0.0-20220511145445-9108e23dce68 h1:u6jbLDCQATmt1byv2szV1DVfN07EA0CXCLoYqeui4iw=
 github.com/puppetlabs/prm/docs/md v0.0.0-20220511145445-9108e23dce68/go.mod h1:spfr7W49WwAzw1dddZd5W0aZMzbIDj3Dm9x6+ecAbW4=
+github.com/puppetlabs/prm/docs/md v0.0.0-20220615150721-7928adf45ca6 h1:jyOQ5CVkasQuPgLwFqmhk98N2DvBkvEHSQPAVH+Mk+w=
+github.com/puppetlabs/prm/docs/md v0.0.0-20220615150721-7928adf45ca6/go.mod h1:spfr7W49WwAzw1dddZd5W0aZMzbIDj3Dm9x6+ecAbW4=
