@@ -1,11 +1,33 @@
 ---
-author: "chelnak"
+author: "pmcmaw"
 categories:
   - updates
 date: "2022-07-15"
 blog_tags: null
 title: "2022-07-15: Content & Tooling Team Status Update"
 ---
+
+## Friday again (yay!)
+
+The team are looking forward to summer hours this week to enjoy some of the great weather that has been forecast for the weekend. As always with July a lot of the team are in and out on holidays but there will always be someone around keeping the lights on.
+
+## Support has now officially ended
+
+Please note as of today we no longer support the following modules, for more indepth information [Aaron's blog post](https://pup.pt/cat/blog/posts/2022-06-30-changes-to-supported-modules/): 
+
+* [Helm](https://forge.puppet.com/modules/puppetlabs/helm)
+* [Rook](https://forge.puppet.com/modules/puppetlabs/rook)
+* [Panos](https://forge.puppet.com/modules/puppetlabs/panos)
+* [Cisco-IOS](https://forge.puppet.com/modules/puppetlabs/cisco_ios)
+* [Tagmail](https://forge.puppet.com/modules/puppetlabs/tagmail)
+* [Vsphere](https://forge.puppet.com/modules/puppetlabs/vsphere)
+* [IBM Installation Manager](https://forge.puppet.com/modules/puppetlabs/ibm_installation_manager)
+* [Websphere Application Server](https://forge.puppet.com/modules/puppetlabs/websphere_application_server)
+
+## We are now using Github Issues
+
+Dropping in a quick reminder that we have deactivated issue tracking in Jira. The best way to log an issue is now via GitHub issues on the repo that you are having problems with. 
+We will respond to all issues as promptly as we can.
 
 ## Community Contributions
 
