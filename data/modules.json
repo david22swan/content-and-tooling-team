@@ -1,10 +1,5 @@
 [
     {
-        "name": "cisco_ios",
-        "owner": "puppetlabs",
-        "description": "Management of Cisco Catalyst (IOS, IOS-XE)"
-    },
-    {
         "name": "device_manager",
         "owner": "puppetlabs",
         "description": "Manage devices used by 'puppet device' on puppet agents."
@@ -55,11 +50,6 @@
         "description": "PowerShell Desired State Configuration (DSC)"
     },
     {
-        "name": "puppetlabs-dsc_lite",
-        "owner": "puppetlabs",
-        "description": "PowerShell Desired State Configuration (DSC) Lite"
-    },
-    {
         "name": "puppetlabs-exec",
         "owner": "puppetlabs",
         "description": "Tasks that allows the execution of a command and parameters"
@@ -78,16 +68,6 @@
         "name": "puppetlabs-haproxy",
         "owner": "puppetlabs",
         "description": "Configures HAProxy servers and manages the configuration of backend member servers."
-    },
-    {
-        "name": "puppetlabs-helm",
-        "owner": "puppetlabs",
-        "description": "A module to install Helm, a kubernetes package manager"
-    },
-    {
-        "name": "puppetlabs-ibm_installation_manager",
-        "owner": "puppetlabs",
-        "description": "Manages IBM Installation Manager and IBM packages"
     },
     {
         "name": "puppetlabs-iis",
@@ -135,11 +115,6 @@
         "description": "Tasks that manipulate a package"
     },
     {
-        "name": "puppetlabs-panos",
-        "owner": "puppetlabs",
-        "description": "Manage Palo Alto firewalls"
-    },
-    {
         "name": "puppetlabs-postgresql",
         "owner": "puppetlabs",
         "description": "Offers support for basic management of PostgreSQL databases."
@@ -163,11 +138,6 @@
         "name": "puppetlabs-registry",
         "owner": "puppetlabs",
         "description": "This module provides a native type and provider to manage keys and values in the Windows Registry"
-    },
-    {
-        "name": "puppetlabs-rook",
-        "owner": "puppetlabs",
-        "description": "A module for installing and configuring rook https://rook.io"
     },
     {
         "name": "puppetlabs-satellite_pe_tools",
@@ -195,16 +165,6 @@
         "description": "Standard library of resources for Puppet modules."
     },
     {
-        "name": "puppetlabs-tagmail",
-        "owner": "puppetlabs",
-        "description": "This module provides a report processor that sends events to email addresses based on tagging of resources"
-    },
-    {
-        "name": "puppetlabs-testing",
-        "owner": "puppetlabs",
-        "description": "A test module used for various projects to test new features and processes."
-    },
-    {
         "name": "puppetlabs-tomcat",
         "owner": "puppetlabs",
         "description": "Installs, deploys, and configures Apache Tomcat web services."
@@ -213,16 +173,6 @@
         "name": "puppetlabs-vcsrepo",
         "owner": "puppetlabs",
         "description": "Puppet module providing a type to manage repositories from various version control systems"
-    },
-    {
-        "name": "puppetlabs-vsphere",
-        "owner": "puppetlabs",
-        "description": "Create and manage machines running on VMWare vSphere with Puppet"
-    },
-    {
-        "name": "puppetlabs-websphere_application_server",
-        "owner": "puppetlabs",
-        "description": "Manages IBM WebSphere Application Server"
     },
     {
         "name": "puppetlabs-wsus_client",
