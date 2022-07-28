@@ -48,5 +48,6 @@ The following modules were released this week:
   [tvpartytonight]: https://github.com/tvpartytonight
   [puppetlabs-satellite_pe_tools-pr-180]: https://github.com/puppetlabs/puppetlabs-satellite_pe_tools/pull/180
   [bastelfreak]: https://github.com/bastelfreak
+  [binford2k]: https://github.com/binford2k
   [facterdb-pr-256]: https://github.com/voxpupuli/facterdb/pull/256
   [facterdb-pr-254]: https://github.com/voxpupuli/facterdb/pull/254
