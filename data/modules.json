@@ -40,16 +40,6 @@
         "description": "Module for installing and managing docker"
     },
     {
-        "name": "puppetlabs-dropsonde",
-        "owner": "puppetlabs",
-        "description": "Module for installing and managing dropsonde gem"
-    },
-    {
-        "name": "puppetlabs-dsc",
-        "owner": "puppetlabs",
-        "description": "PowerShell Desired State Configuration (DSC)"
-    },
-    {
         "name": "puppetlabs-exec",
         "owner": "puppetlabs",
         "description": "Tasks that allows the execution of a command and parameters"
