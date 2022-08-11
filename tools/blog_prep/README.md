@@ -1,12 +1,17 @@
 # Bootstrap Blog
 
-## Psst...IAC Team Member! Read This!
+## Psst...CAT Team Member! Read This!
 
-Have you been on Triage?
+Is it your turn to publish the blog post this week? Don't worry the bulk of it is automated for you. It will run the script, gather stats and publish them in a PR. Your job is to:
+* ping around the rest of the team to see if they want anything else included
+* push your changes to the already created PR that exists in this repo 
+* Ensure your changes are merged on Friday morning
 
-Don't you hate it when you had to go through all the various Slack threads and Github PRs to try and figure out what awesome contributions the Puppet Community have made this week for our weekly blog?
+## What does the automated script **NOT** do?
 
-Well, this is the tool for you!
+- Fill in the tags
+- Give a genuine heartfelt thanks to the contributors and collaborators for their contributions
+- Magically know what else happened on the CAT Team worth mentioning this week
 
 ## What does it do?
 
@@ -23,7 +28,7 @@ The `bootstrap_blog.rb` script will:
 
 ...and all the necessary links required at the bottom of the file!
 
-## How do I run it?
+## How do I run it? (This is automated but if you ever need to run it manually)
 
 You'll need to supply your Github authentication token with a minimum or RO access to the `GITHUB_TOKEN` ENV var:
 
@@ -57,7 +62,7 @@ _posts/2020-09-25-status-update.md
 ```md
 ---
 layout: post
-title: "2020-09-25: IAC Team Status Update"
+title: "2020-09-25: CAT Team Status Update"
 author: sanfrancrisko
 categories:
   - team
@@ -72,7 +77,7 @@ tags:
 - The author's Github profiles will be linked
 - If there were any other contributors / collaborators commenting on the PR, the will be credited too
 - Bots (e.g. `codecov`) and other such comments attributed to them will be filtered out (**NOTE:** You may need to add to this - see the `COMMENT_AUTHOR_IGNORE_LIST` in `lib/community_prs.rb`)
-- IAC Team members will not be credited for their PRs or contributions to Community member PRs...sorry. 
+- CAT Team members will not be credited for their PRs or contributions to Community member PRs...sorry. 
 
 ```md
 ## Community Contributions
@@ -110,10 +115,4 @@ All the link references required to render the data above are dumped at the bott
 [Contributor-Name-C]: https://github.com/Contributor-Name-C
 ```
 
-## What does it **NOT** do?
-
-- Fills in the tags
-- Gives a genuine heartfelt thanks to the contributors and collaborators for their contributions
-- Magically knows what else happened on the IAC Team worth mentioning this week
-
-[iac-supported-modules]: https://puppetlabs.github.io/iac/modules/
+[cat-supported-modules]: https://puppetlabs.github.io/content-and-tooling-team/modules/
