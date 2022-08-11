@@ -8,16 +8,13 @@ title: "2022-08-12: Content & Tooling Team Status Update"
 ---
 
 ## Happy Friday!
-Hey! I'm Gavin. I'm new here on the CAT team and have had a very exciting first few weeks getting stuck in. I moved here from the Puppet Comply team working on both the front-end and back-end side of things. Outside of work, I enjoy keeping fit, bouldering, music, reading and spending time with my wife and dog. 
+Hey! I'm [Gavin][GSPatton]. I'm new here on the CAT team and have had a very exciting first few weeks getting stuck in. I moved here from the Puppet Comply team working on both the front-end and back-end side of things. Outside of work, I enjoy keeping fit, bouldering, music, reading and spending time with my wife and dog. 
 
 Here are our updates for the week.
 
 After several weeks of work, one of the largest releases we have made has been done for the Apache module.
 Containing multiple backwards incompatible updates including the addition of strict data types for each and every type within the module.
 As part of this we would like to give a big thanks to both [ekohl][ekohl], [cocker-cc][cocker-cc] and many others for the amount of work they have put into the module over the last few months.
-
-  [ekohl]: https://github.com/ekohl
-  [cocker-cc]: https://github.com/cocker-cc
 
 ## Community Contributions
 
@@ -86,3 +83,5 @@ The following modules were released this week:
   [sp-ricard-valverde]: https://github.com/sp-ricard-valverde
   [litmusimage-pr-44]: https://github.com/puppetlabs/litmusimage/pull/44
   [kajinamit]: https://github.com/kajinamit
+  [cocker-cc]: https://github.com/cocker-cc
+  [GSPatton]: https://github.com/GSPatton
