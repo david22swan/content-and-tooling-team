@@ -19,8 +19,6 @@ As part of this we would like to give a big thanks to both [ekohl][ekohl], [cock
   [ekohl]: https://github.com/ekohl
   [cocker-cc]: https://github.com/cocker-cc
 
-
-
 ## Community Contributions
 
 We'd like to thank the following people in the Puppet Community for their contributions over this past week:
