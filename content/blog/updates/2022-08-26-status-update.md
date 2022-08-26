@@ -12,7 +12,7 @@ title: "2022-08-26: Content & Tooling Team Status Update"
 
 ## Take it easy, it's Friday!!
 
-Hey guys, back again with another friday update. As the end of summer starts to approach, we have been busy working on a few important updates. Firstly, as part of our latest maintenance patch, we have made merged
+Hey guys, back again with another friday update. As the end of summer starts to approach, we have been busy working on a few important updates. Firstly, as part of our latest maintenance patch, we have merged
 a few important changes on the MySQL and Docker modules and released a new major version for them. Be sure to check them out!
 
 We also want to take this chance to remind the community that our team is moving away from the MODULES project and, as such, any (new or old) issues or bug reports with our modules should be raised in GitHub at the 
