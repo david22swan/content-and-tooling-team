@@ -18,6 +18,10 @@ a few important changes on the MySQL and Docker modules and released a new major
 We also want to take this chance to remind the community that our team is moving away from the MODULES project and, as such, any (new or old) issues or bug reports with our modules should be raised in GitHub at the 
 appropriate section. This helps us keep better track of our current workload and be more efficient around the issue resolution area.
 
+Finally, it's worth mentioning that, due to the bank holiday, we are not going be holding a community day on Monday 29th.
+
+And that's it, folks. See you next Friday and enjoy your weekend!
+
 ## Community Contributions
 
 We'd like to thank the following people in the Puppet Community for their contributions over this past week:
