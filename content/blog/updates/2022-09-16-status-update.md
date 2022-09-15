@@ -1,11 +1,28 @@
 ---
-author: "chelnak"
+author: "david22swan"
 categories:
   - updates
 date: "2022-09-16"
 blog_tags: null
 title: "2022-09-16: Content & Tooling Team Status Update"
 ---
+
+## Another week gone by
+
+Another week has passed and we are here again to give you an update on what had been going on.
+
+## DSC
+
+Work has been continued on the DSC base provider by our own [Craig][chelnak] with a bug preventing the honoring of metaparameters being fixed. This shoudl go out in a rwby-pwsh release some time next week.
+
+## Clarification of Support
+
+Many of our modules have drifted over the years, making the support OS section of our modules inaccurate at times. In order to resolve this both [Jordan][Jordan] and [Gavin][Gavin] have been working hard, going through each and every one of our supported modules and ensuring that the support that we claim is in line with what we intend to provide.
+
+## Ruby 3 Support
+
+It has been an unfortunate fact that our ruby support has started to lag behind in recent times, with Ruby 3 having done unsupported by our [puppet-module-gems][puppet-module-gems].
+This is something that we are currently aiming to resolve with [I myself][David] having begun an investigation into adding support for Ruby 3 and 3.1 and the way in which we can ensure this does not occur again in the future.
 
 ## Community Contributions
 
@@ -41,3 +58,8 @@ The following modules were released this week:
   [puppetlabs-vcsrepo-pr-566]: https://github.com/puppetlabs/puppetlabs-vcsrepo/pull/566
   [KoenDierckx]: https://github.com/KoenDierckx
   [elfranne]: https://github.com/elfranne
+  [Craig]: https://github.com/chelnak
+  [Gavin]: https://github.com/GSPatton
+  [Jordan]: https://github.com/jordanbreenpuppet
+  [David]: https://github.com/david22swan
+  [puppet-module-gems]: https://github.com/puppetlabs/puppet-module-gems
