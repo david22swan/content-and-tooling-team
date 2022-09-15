@@ -9,11 +9,11 @@ title: "2022-09-16: Content & Tooling Team Status Update"
 
 ## Another week gone by
 
-Another week has passed and we are here again to give you an update on what had been going on.
+Another week has passed and we are here again to give you an update on what has been going on.
 
 ## DSC
 
-Work has been continued on the DSC base provider by our own [Craig][chelnak] with a bug preventing the honoring of metaparameters being fixed. This shoudl go out in a rwby-pwsh release some time next week.
+Work has been continued on the DSC base provider by our own [Craig][chelnak] with a bug preventing the honouring of metaparameters being fixed. This should go out in a rwby-pwsh release some time next week.
 
 ## Clarification of Support
 
