@@ -29,17 +29,4 @@ We'd like to thank the following people in the Puppet Community for their contri
 - [`puppetlabs-stdlib#1266`][puppetlabs-stdlib-pr-1266]: "Fix typo in CHANGELOG.md and HISTORY.md", thanks to [Universal-Omega][Universal-Omega]
 
 
-  [puppetlabs-accounts-pr-418]: https://github.com/puppetlabs/puppetlabs-accounts/pull/418
-  [Jordan]: https://github.com/jordanbreen28
-  [puppetlabs-apache-pr-2317]: https://github.com/puppetlabs/puppetlabs-apache/pull/2317
-  [puppetlabs-concat-pr-741]: https://github.com/puppetlabs/puppetlabs-concat/pull/741
-  [puppetlabs-exec-pr-198]: https://github.com/puppetlabs/puppetlabs-exec/pull/198
-  [puppetlabs-facter_task-pr-198]: https://github.com/puppetlabs/puppetlabs-facter_task/pull/198
-  [puppetlabs-iis-pr-350]: https://github.com/puppetlabs/puppetlabs-iis/pull/350
-  [puppetlabs-inifile-pr-485]: https://github.com/puppetlabs/puppetlabs-inifile/pull/485
-  [puppetlabs-java_ks-pr-410]: https://github.com/puppetlabs/puppetlabs-java_ks/pull/410
-  [puppetlabs-ntp-pr-650]: https://github.com/puppetlabs/puppetlabs-ntp/pull/650
-  [puppetlabs-package-pr-287]: https://github.com/puppetlabs/puppetlabs-package/pull/287
-  [puppetlabs-puppet_conf-pr-177]: https://github.com/puppetlabs/puppetlabs-puppet_conf/pull/177
-  [puppetlabs-stdlib-pr-1266]: https://github.com/puppetlabs/puppetlabs-stdlib/pull/1266
   [Universal-Omega]: https://github.com/Universal-Omega
