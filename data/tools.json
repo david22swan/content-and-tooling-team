@@ -45,11 +45,6 @@
         "description": "PDKSync is an efficient way to run a command against the various Puppet module repositories that you manage \u2014 keeping them up-to-date with the changes made to PDK."
     },
     {
-        "name": "puppet-approved",
-        "owner": "puppetlabs",
-        "description": "A small script to test for the easy Puppet Approved criteria."
-    },
-    {
         "name": "PuppetDscBuilder",
         "owner": "puppetlabs",
         "description": "A PowerShell function to wrap DSC resources in puppet providers."
