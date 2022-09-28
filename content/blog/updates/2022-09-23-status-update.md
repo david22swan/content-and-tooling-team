@@ -11,7 +11,7 @@ Hey guys, hope you are enjoying your Friday as much as we are. It's been another
 
 ## Current projects and maintenance
 
-On our side, we are continuing to work on some projects such as our Ruby 3 update. We have also been doing some maintenance work around, focusing on bugfixing our DSC builder. Finally, [Jordan]Jordan 
+On our side, we are continuing to work on some projects such as our Ruby 3 update. We have also been doing some maintenance work around, focusing on bugfixing our DSC builder. Finally, [Jordan] 
 has been busy cleaning up our modules from unsupported OSs.
 
 ## Are you currently using our puppetlabs-firewall module?
@@ -26,9 +26,9 @@ And thats everything for this week. Hope you have a great weekend!
 
 We'd like to thank the following people in the Puppet Community for their contributions over this past week:
 
-- [`puppetlabs-stdlib#1266`][puppetlabs-stdlib-pr-1266]: "Fix typo in CHANGELOG.md and HISTORY.md", thanks to [Universal-Omega][Universal-Omega]
+- [puppetlabs-stdlib-pr-1266]: "Fix typo in CHANGELOG.md and HISTORY.md", thanks to [Universal-Omega][Universal-Omega]
 
 
   [Universal-Omega]: https://github.com/Universal-Omega
-  [Jordan]: https://github.com/jordanbreenpuppet
-  [puppetlabs-stdlib#1266]: https://github.com/puppetlabs/puppetlabs-stdlib/pull/1266
+  [Jordan]: https://github.com/jordanbreen28
+  [puppetlabs-stdlib-pr-1266]: https://github.com/puppetlabs/puppetlabs-stdlib/pull/1266
