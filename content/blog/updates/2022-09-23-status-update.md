@@ -30,3 +30,5 @@ We'd like to thank the following people in the Puppet Community for their contri
 
 
   [Universal-Omega]: https://github.com/Universal-Omega
+  [Jordan]: https://github.com/jordanbreenpuppet
+  [puppetlabs-stdlib#1266]: https://github.com/puppetlabs/puppetlabs-stdlib/pull/1266
