@@ -7,6 +7,46 @@ blog_tags: null
 title: "2022-09-30: Content & Tooling Team Status Update"
 ---
 
+## It's Fishy Friday 🐟
+
+Hello! How is everyone?
+It feels like ages since my last post.
+
+In my house Fridays are known as 'Fishy Fridays'.
+It came from my daughters school because one of the meal options on Fridays is fish and chips (🤷) and kind of stuck.
+
+Here are a few highlights from our week:
+
+### puppet-strings
+
+The ci for `puppet-strings` has now been moved to GitHub actions and the existing travis integration has been removed.
+In addition, some time was spent aligning the project with our current standards.
+This meant lots of fun with Rubocop and spec tests.
+You can see the work in [this pr][this-pr].
+
+The goal is to work through all of our [supported tooling][supported-tooling] and carry out similar tasks.
+
+The icing on the cake was the contributions from [danielparks][danielparks].
+Big shout out and thank you for helping us move the project forward.
+
+### puppet-module-gems
+
+[David][david] has been investigating the removal of `puppet-module-gems` from our modules. Our hope is that by removing this
+layer of abstraction we can make module development easier and remove any confusing version constraints.
+
+### Hacktoberfest
+
+The month of October is Hacktoberfest for many open source communities.
+This year the CaT team are excited to be participating so keep your eyes open for modules and tools repositories with
+the `hacktoberfest` topic!
+
+Alternatively, you can check out [this page][hacktoberfest] to see all of the Puppet repositories that will be participating.
+
+That's all from me. Enjoy your weekends.
+
+See you soon!
+
+
 ## Community Contributions
 
 We'd like to thank the following people in the Puppet Community for their contributions over this past week:
@@ -27,6 +67,10 @@ The following modules were released this week:
 
 - [`puppetlabs-apache`][puppetlabs-apache] (`8.2.1`)
 
+  [hacktoberfest]: https://github.com/puppetlabs/community/blob/main/hacktoberfest_dashboard.md
+  [david]: https://github.com/david22swan
+  [supported-tooling]: https://pup.pt/cat/tools
+  [this-pr]: https://github.com/puppetlabs/puppet-strings/pull/310
   [puppetlabs-apache]: https://github.com/puppetlabs/puppetlabs-apache
   [puppetlabs-kubernetes-pr-571]: https://github.com/puppetlabs/puppetlabs-kubernetes/pull/571
   [deric]: https://github.com/deric
