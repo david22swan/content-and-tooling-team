@@ -235,10 +235,18 @@ pinnedPost = ""
 [[module.imports]]
   ignoreImports = true
   ignoreConfig = true
-  path = 'github.com/puppetlabs/prm/docs/md'  # Change to correct Git URI
+  path = 'github.com/puppetlabs/prm/docs/md'
   [[module.imports.mounts]]
     source = 'content'
     target = 'content/docs/prm/'
+
+[[module.imports]]
+  ignoreImports = true
+  ignoreConfig = true
+  path = 'github.com/puppetlabs/puppet_litmus/docs/md'
+  [[module.imports.mounts]]
+    source = 'content'
+    target = 'content/docs/litmus/'
 
 [privacy]
   [privacy.googleAnalytics]
