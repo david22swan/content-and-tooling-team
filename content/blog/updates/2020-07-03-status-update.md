@@ -29,7 +29,7 @@ Here’s a brief overview of what we’ve been up to:
 
 ## puppet_litmus 0.18.4 was released
 
-We have released v0.18.4 of the [puppet_litmus gem][https://github.com/puppetlabs/puppet_litmus].
+We have released v0.18.4 of the [puppet_litmus gem](https://github.com/puppetlabs/puppet_litmus).
 There were quite a number of fixes but a few highlights worth mentioning:
 
 [DavidS](https://github.com/DavidS) - Protect version reporting from undefined-ness: [312](https://github.com/puppetlabs/puppet_litmus/pull/312) 

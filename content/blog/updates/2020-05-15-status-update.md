@@ -44,7 +44,7 @@ Thanks to [crazymind1337](https://github.com/crazymind1337) for [the great effor
 
 ## New surprises
 
-We added a [docs page]({% link docs.html %}), where we will post some of our architecture docs and some “how to” documents that might be helpful in the future.
+We added a [docs page](/content-and-tooling-team/docs/), where we will post some of our architecture docs and some “how to” documents that might be helpful in the future.
 
 ## Paula continues her way back to Puppet goodies
 
