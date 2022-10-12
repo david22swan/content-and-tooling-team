@@ -22,7 +22,7 @@ There is a [playlist](https://www.youtube.com/playlist?list=PLV86BgbREluXpEPnW_B
 The [Puppet VSCode Plugin](https://puppet-vscode.github.io/) has evolved into THE canonical way to edit puppet modules.
 The authors of the plugin, [James Pogran](https://www.linkedin.com/in/jamespogran/) and [Glenn Sarti](https://www.linkedin.com/in/glenn-sarti/) are sharing the newest updates to the plugin, as well as some of the benefits of working with a modern, full-featured Development Environment:
 
-{% youtube j3o-U1c_dXs 800 450 %}
+{{<youtube j3o-U1c_dXs 800 450>}}
 
 Since last week we also provide a default [gitpod](https://gitpod.io) and [codespaces](https://github.com/features/codespaces) environment on our supported modules. This way you can try out and use all of that goodness directly from your browser.
 
@@ -34,7 +34,7 @@ Since last week we also provide a default [gitpod](https://gitpod.io) and [codes
 * announcing the Trusted Contributor programme
 * a demo by [Daniel Carabas](https://www.linkedin.com/in/daniel-carabas-b2bb0851/) to show off our new public Cloud CI for modules
 
-{% youtube FspzumfFvBg 800 450 %}
+{{<youtube FspzumfFvBg 800 450>}}
 
 ## Puppetizing DSC
 
@@ -44,7 +44,7 @@ This means that any improvement on upstream DSC resources will become available 
 The way it is designed also means that from this point forward, everyone can build their local DSC resources into a puppet module using the [Puppet.Dsc Powershell Module](https://www.powershellgallery.com/packages/Puppet.Dsc).
 
 
-{% youtube i-eo58NaYKg 800 450 %}
+{{<youtube i-eo58NaYKg 800 450>}}
 
 ## Automate Everything
 
@@ -54,7 +54,7 @@ Based on a few scripts and bolt, he single-handedly (and very handily) replaces 
 In his talk, Chris shows how it is used, and a number of useful tips and tricks for working with bolt plans.
 
 
-{% youtube 48m8b5VRWoY 800 450 %}
+{{<youtube 48m8b5VRWoY 800 450>}}
 
 
 ## Further Content Watching

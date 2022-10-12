@@ -15,7 +15,7 @@ This week sees version `v5.5.0` of the [puppetlabs-apache][puppetlabs-apache-for
 There are a lot of new features within this release - check out the [CHANGELOG entry for this version][apache-5-5-0-changelog] to see what's included.
 
 The last release of this module was `v5.4.0` on `2020-01-23`, over 5 months ago.
-Currently the IAC Team is responsible for [these supported modules]({% link modules.html %}) and [tools]({% link tools.html %}).
+Currently the IAC Team is responsible for these supported [modules](/content-and-tooling-team/modules/) and [tools](/content-and-tooling-team/tools/).
 As a small team we always continue to improve our processes to ensure we're maximising our time and efforts.
 Still, the gap in time between the release of `v5.4.0` and `v5.5.0` of the [puppetlabs-apache][puppetlabs-apache-forge] module was a concern for us.
 What happened and how did we address this issue?

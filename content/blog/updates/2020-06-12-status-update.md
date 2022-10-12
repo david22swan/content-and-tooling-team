@@ -43,7 +43,7 @@ THANK YOU for our great community members that continue to contribute to our mod
 - **[`puppetlabs-mysql#1305`](https://github.com/puppetlabs/puppetlabs-mysql/pull/1305):** [Evgeny Kisel](https://github.com/evgenkisel) adding a bug-fix for mysql managed directories as specified in [MODULES-10679](https://tickets.puppetlabs.com/browse/MODULES-10679)
 
 ## Tools
-This week we have organised our first all day PR review for all the [tools]({% link tools.html %}) currently under the team's supervision.
+This week we have organised our first all day PR review for all the [tools](/content-and-tooling-team/tools/) currently under the team's supervision.
 This was a very productive day as we have managed to get a clear view across the team on the current development work on all our tool repositories and close out/merge a lot of PRs.
 This will make the triage process a lot easier in the future.
 Thanks to everyone in the community who's chipping in with fixes and features!
