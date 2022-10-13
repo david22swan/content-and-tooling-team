@@ -1,12 +1,20 @@
 ---
-author: "chelnak"
+author: "jordanbreen28"
 categories:
   - updates
 date: "2022-10-14"
 blog_tags: null
 title: "2022-10-14: Content & Tooling Team Status Update"
 ---
+Happy Friday!!! Hey guys, back again with another Friday blog post. As we approach the middle of October, we can start to feel a hint of spookiness in the air (👻) with Halloween fast approaching. 
+This week, as always, the CAT team have been working hard to get updates merged and releases published.
 
+# Puppet-lint improvements
+To kick off, this week our team member [Gavin](https://github.com/GSPatton) has been continuing his great work on the puppet-lint plugin, which will help to detect potential security vulnerabilites in puppet code. Remember to check back for more updates on this!
+# Rolling out of new releases - some big changes!
+[Craig] (https://github.com/chelnak) has been working behind the scenes to cut new releases for both our [puppet-lint](https://github.com/puppetlabs/puppet-lint) and [puppet-strings](https://github.com/puppetlabs/puppet-strings) repos. Perhaps one of the most important changes to note, is the bumping of the minimum supported Ruby version in both repos to 2.7. Some other important changes included is the refactoring of the repos against a new set of rubocop rules, and some general fixes and improvements. 
+# Hacktoberfest
+Just another quick reminder, if you are a regular contributor or want to get involved, ensure to sign up to [Hacktoberfest](https://hacktoberfest.com/). Most of our open source repos are participating, for an extended list check out our [Hacktoberfest Dashboard](https://github.com/puppetlabs/community/blob/main/hacktoberfest_dashboard.md).
 ## Community Contributions
 
 We'd like to thank the following people in the Puppet Community for their contributions over this past week:
