@@ -42,7 +42,7 @@
     {
         "name": "pdksync",
         "owner": "puppetlabs",
-        "description": "PDKSync is an efficient way to run a command against the various Puppet module repositories that you manage \u2014 keeping them up-to-date with the changes made to PDK."
+        "description": "PDKSync is an efficient way to run a command against the various Puppet module repositories that you manage, keeping them up-to-date with the changes made to PDK."
     },
     {
         "name": "PuppetDscBuilder",
@@ -54,12 +54,7 @@
         "owner": "puppetlabs",
         "description": "Check that your Puppet manifests conform to the style guide."
     },
-    {
-        "name": "puppet-module-gems",
-        "owner": "puppetlabs",
-        "description": "dependency management gems for all puppet modules."
-    },
-    {
+   {
         "name": "puppet-modulebuilder",
         "owner": "puppetlabs",
         "description": "The canonical gem to build puppet modules."
@@ -93,15 +88,5 @@
         "name": "puppet-editor-services",
         "owner": "puppetlabs",
         "description": "Puppet language server for editors"
-    },
-    {
-        "name": "prm",
-        "owner": "puppetlabs",
-        "description": "The Puppet Runtime Manager (PRM) is a tool for validating Puppet content and for running arbitrary development/maintenance tasks against that content."
-    },
-    {
-        "name": "pct",
-        "owner": "puppetlabs",
-        "description": "Puppet Content Templates (PCT) codify a structure to produce content for any Puppet Product"
     }
 ]
