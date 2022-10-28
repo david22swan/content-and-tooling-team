@@ -1,11 +1,30 @@
 ---
-author: "chelnak"
+author: "david22swan"
 categories:
   - updates
 date: "2022-10-28"
 blog_tags: null
 title: "2022-10-28: Content & Tooling Team Status Update"
 ---
+
+## Happy Halloween!
+
+Happy Halloween everybody!!!
+
+Hope your all having fun getting dressed up and overdosing on candy, I know we are. Anyway back to the main reason we're here.
+It's been a bit of a slow week, lot of holidays have been taken.
+
+## Puppet Strings
+
+The tool puppet-strings has has had some work done to it to fix up a bug and has since been released.
+
+## Continuing Work
+
+A good bit of work is continuing in the background, we are still finishing of some larger projects that have taken a good few weeks to get though or have run into issue's as we went.
+
+## Puppet Approved
+
+We've done a rework of the Puppet approval process for community modules, more information on this can be found [here][puppet-approved] within it's very own blog post.
 
 ## Community Contributions
 
@@ -43,3 +62,4 @@ The following modules were released this week:
   [puppetlabs_spec_helper-pr-353]: https://github.com/puppetlabs/puppetlabs_spec_helper/pull/353
   [puppetlabs_spec_helper-pr-346]: https://github.com/puppetlabs/puppetlabs_spec_helper/pull/346
   [bastelfreak]: https://github.com/bastelfreak
+  [puppet-approved]: https://github.com/puppetlabs/content-and-tooling-team/blob/main/content/blog/posts/2022-10-28-module-approval-process.md
